@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
+</script>
+
+<template>
+  <div class="fixed bottom-0 left-0 right-0 md:top-0 md:w-1/3 flex flex-row md:flex-col items-center md:items-end justify-center bg-white z-20">
+
+        <div class="hidden md:block text-5xl font-bold text-end">
+          <p>Scott</p>
+          <p>Hitchcock</p>
+        </div>
+
+        <div class="basis-1/3 md:basis-0 text-center">
+          <router-link to="/">Home</router-link>
+        </div>
+        <router-link to="/projects" class="basis-1/3 md:basis-0 text-center">Projects</router-link>
+        <router-link to="/resume" class="basis-1/3 md:basis-0 text-center">Resume</router-link>
+
+  </div>
+
+
+</template>
+
+<style scoped>  
+</style>
