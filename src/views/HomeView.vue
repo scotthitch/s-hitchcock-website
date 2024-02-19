@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import script from "../drawings/sdf.js"
-import P5 from 'p5' // Package from npm
-import { onMounted } from 'vue';
-
-onMounted(() => {
-  const p5canvas = new P5(script, 'hello');
-
-
-})
+import KS from "../drawings/KS/KS.vue"
 
 </script>
 
 <template>
-  <div id="hello">This is a home page</div>
+  <KS :height="500" :width="500" />
+  
 </template>
