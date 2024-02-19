@@ -3,11 +3,17 @@ import P5 from 'p5' // Package from npm
 import { onMounted, defineProps } from 'vue';
 import type { PolarCoordinates, CartesianCoordinates } from '../../types'
 
-const props = defineProps({
-    screenWidth: {type: Number, required: true},
-    screenHeight: {type: Number, required: true},
-    scriptIsPlaying: {type: Boolean, required: true},
-})
+// const props = defineProps({
+//     screenWidth: {type: Number, required: true},
+//     screenHeight: {type: Number, required: true},
+//     scriptIsPlaying: {type: Boolean, required: true},
+// })
+
+const props = defineProps<{
+    screenWidth: number,
+    screenHeight: number,
+    scriptIsPlaying: boolean,
+}>()
 
 
 const script = (p5) => {
@@ -66,7 +72,6 @@ const script = (p5) => {
 
     // Redraw the canvas on every iteration
     p5.draw = () => {
-        console.log(p5.mouseX, p5.mouseY)
         // If the user hasn't yet interacted then don't bother to draw anything
         if (!checkUserInteraction()) {
             return;
