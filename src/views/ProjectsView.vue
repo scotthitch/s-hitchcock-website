@@ -1,8 +1,31 @@
 <script setup lang="ts">
+import P5ScriptDescriptor from "@/components/P5ScriptDescriptor.vue";
+import KaleidoscopeScript from "../drawings/Kaleidoscope/KaleidoscopeScript.vue"
+import { ref } from 'vue';
+
+const isPlaying = ref(true)
+
 </script>
 
 <template>
   <div>
+    <p class="text-justify">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget lorem congue nunc lacinia porta. Aliquam rutrum lacus eu urna pretium mattis. Phasellus non aliquet nisi, sit amet rhoncus libero. Donec eget mauris nisl. Nullam ultricies efficitur lectus, rhoncus consequat libero ullamcorper vel. Integer molestie ullamcorper augue lacinia tempor. Duis malesuada, nulla non tristique finibus, felis tortor mattis dui, nec tincidunt purus leo sit amet diam. Vestibulum eget lacinia tortor. Donec fermentum pulvinar nisl, sit amet convallis eros. Cras aliquet leo lectus, ac pharetra lectus malesuada quis. Mauris porttitor, nulla id venenatis venenatis, arcu augue pulvinar ante, vitae tempus metus ipsum in odio. Vestibulum non mi et orci congue dapibus ut vitae sapien. 
+      Duis et sem rhoncus, auctor erat eget, gravida justo. Nunc sit amet est sodales, aliquet leo et, molestie leo. Donec elementum pulvinar elit, nec porta erat fermentum ut. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce lacus dui, ullamcorper efficitur dui id, ornare rutrum diam. Phasellus ac posuere libero. In at dictum est, et tempor ex. Maecenas ultrices volutpat ipsum vitae mollis. Phasellus vulputate diam orci.
+      Nam malesuada nisl sit amet dolor scelerisque porttitor. Morbi porttitor, mi vel vestibulum efficitur, magna ex sagittis felis, imperdiet scelerisque massa nulla sit amet quam. Phasellus convallis eget ex ut tristique. Vestibulum porttitor ipsum odio, quis auctor nisi pellentesque sit amet. Pellentesque id tincidunt diam, at interdum massa. Nunc quam neque, consectetur vitae eleifend sed, semper nec tellus. Curabitur mattis cursus odio at pharetra. Proin tincidunt purus vitae diam bibendum, ut iaculis dui auctor. Sed ullamcorper eleifend dolor eu varius.
+      Sed ut enim eu ipsum gravida vestibulum. Etiam ac lacus vehicula, suscipit justo non, vestibulum est. Fusce rutrum quis nisi in hendrerit. Vestibulum id dolor ut justo dictum fringilla eu id velit. Mauris massa nibh, dictum sit amet purus at, lobortis rutrum tellus. Aenean a est ac nibh scelerisque luctus. Mauris facilisis at eros sed commodo. Nullam vitae dolor eu nunc porta pharetra et et ante. Vivamus eleifend velit ut felis dapibus condimentum. Aliquam nec scelerisque diam. Pellentesque facilisis metus eu elit interdum, placerat pellentesque lectus luctus. Curabitur non egestas mauris. Nunc rhoncus nulla eu tortor pretium, vitae venenatis nibh tincidunt. Sed egestas scelerisque vestibulum. Curabitur volutpat imperdiet enim sed viverra.
+      Suspendisse non ullamcorper mauris, vel tincidunt nulla. Quisque tempus nibh vitae placerat dapibus. Morbi id mauris ut magna bibendum suscipit. Nulla molestie orci eget neque ultricies, ut condimentum eros aliquam. Cras porta pretium nunc vitae vehicula. Proin ac tellus posuere, pulvinar erat ultricies, congue mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam quis arcu eu ex pulvinar egestas. Donec in odio eu diam consequat hendrerit. Pellentesque ultricies neque eget rhoncus malesuada. Quisque egestas rutrum malesuada. Aenean vitae dolor gravida, consectetur nisl rhoncus, eleifend ligula. Quisque pellentesque euismod consectetur.
+    </p>
+    <!-- <button @click="isPlaying=!isPlaying">{{isPlaying ? "Pause" : "Play"}}</button> -->
+    <P5ScriptDescriptor 
+      title="Kaleidoscope"
+      description="Draw some symmetrical pictures"
+      usageInstructions="Use the up and down keys to change the number of reflections. Click to clear the screen"
+    />
+    <KaleidoscopeScript :screen-height="500" :screen-width="500" :scriptIsPlaying="isPlaying"/>
+    <!-- </P5ScriptDescriptor> -->
+
+
     <p class="text-justify">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget lorem congue nunc lacinia porta. Aliquam rutrum lacus eu urna pretium mattis. Phasellus non aliquet nisi, sit amet rhoncus libero. Donec eget mauris nisl. Nullam ultricies efficitur lectus, rhoncus consequat libero ullamcorper vel. Integer molestie ullamcorper augue lacinia tempor. Duis malesuada, nulla non tristique finibus, felis tortor mattis dui, nec tincidunt purus leo sit amet diam. Vestibulum eget lacinia tortor. Donec fermentum pulvinar nisl, sit amet convallis eros. Cras aliquet leo lectus, ac pharetra lectus malesuada quis. Mauris porttitor, nulla id venenatis venenatis, arcu augue pulvinar ante, vitae tempus metus ipsum in odio. Vestibulum non mi et orci congue dapibus ut vitae sapien. 
       Duis et sem rhoncus, auctor erat eget, gravida justo. Nunc sit amet est sodales, aliquet leo et, molestie leo. Donec elementum pulvinar elit, nec porta erat fermentum ut. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce lacus dui, ullamcorper efficitur dui id, ornare rutrum diam. Phasellus ac posuere libero. In at dictum est, et tempor ex. Maecenas ultrices volutpat ipsum vitae mollis. Phasellus vulputate diam orci.
