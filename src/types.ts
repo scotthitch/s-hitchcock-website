@@ -1,9 +1,9 @@
 export interface PolarCoordinates {
     r: number,
-    theta: string,
+    theta: number,
 }
 
 export interface CartesianCoordinates {
     x: number,
-    y: string,
+    y: number,
 }

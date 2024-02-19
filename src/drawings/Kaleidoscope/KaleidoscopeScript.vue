@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import P5 from 'p5' // Package from npm
 import { onMounted, defineProps } from 'vue';
+import type { PolarCoordinates, CartesianCoordinates } from '../../types'
 
 const props = defineProps({
     screenWidth: {type: Number, required: true},
@@ -31,7 +32,7 @@ const script = (p5) => {
     const HUE_HALF_RANGE = ((HUE_MAXIMUM - HUE_MINIMUM) / 2);
     
     let hueOffset = 0;
-    let prevTranslatedPolarMouse;
+    let prevTranslatedPolarMouse: PolarCoordinates;
 
     let userHasInteracted = false;
     let firstIterationOfInteraction = true;
@@ -48,7 +49,7 @@ const script = (p5) => {
         // For each reflection draw a new line with a slightly different colour
         let reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
 
-        let startingPolarPoint = {r: (props.screenWidth)*0.45, theta: 0}
+        let startingPolarPoint: PolarCoordinates = {r: (props.screenWidth)*0.45, theta: 0}
         for (let i = 0; i < numberOfReflections; i++) {
             let theta = reflectionAngle * i;
             let hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);
@@ -103,7 +104,7 @@ const script = (p5) => {
         prevTranslatedPolarMouse = translatedPolarMouse
     }; 
 
-    const checkUserInteraction = () => {
+    const checkUserInteraction = (): boolean => {
         if (userHasInteracted) {
             return true;
         }
@@ -119,17 +120,17 @@ const script = (p5) => {
         p5.translate(p5.width/2, p5.height/2);
     }
 
-    const calculateAngleOfRelfection = (nReflections: number) => {
+    const calculateAngleOfRelfection = (nReflections: number): number => {
         return 2 * Math.PI / nReflections;
     }
 
-    const getTranslatedCartesianMouse = () => {
+    const getTranslatedCartesianMouse = (): CartesianCoordinates => {
         let translatedMouseX = p5.mouseX - p5.width / 2;
         let translatedMouseY = p5.mouseY - p5.height / 2;
         return {x: translatedMouseX, y: translatedMouseY};
     }
     
-    const cartesianToPolar = (translatedCartesianMouse) => {
+    const cartesianToPolar = (translatedCartesianMouse: CartesianCoordinates): PolarCoordinates => {
         let r = Math.sqrt(translatedCartesianMouse.x * translatedCartesianMouse.x + 
                           translatedCartesianMouse.y * translatedCartesianMouse.y)
         let theta = Math.atan2(translatedCartesianMouse.y, translatedCartesianMouse.x)
