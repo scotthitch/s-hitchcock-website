@@ -4,9 +4,8 @@ import { onMounted, defineProps } from 'vue';
 
 const props = defineProps({width: Number, height: Number})
 
-
-
-let inc;
+let reflectionAngle;
+let userHasInteracted = false;
 let prevTheta;
 let prevmagM;
 let flag = 0;
@@ -20,58 +19,75 @@ let light = 70;
 let ranOff = 20;
 let hAvg = ((hMin + hMax) / 2);
 let hDif = ((hMin - hMax) / 2);
-let reflections = 4;
+let numberOfReflections = 4;
 
-const script = p5 =>
-{
-    // These are your typical setup() and draw() methods
-    p5.setup = () =>
-    {
-      p5.createCanvas(props.width, props.height);
-      p5.colorMode(p5.HSL);
-      p5.background(0);
-
-
+const script = p5 => {
+    
+    // Setup the canvas
+    p5.setup = () => {
+        p5.createCanvas(props.width, props.height);
+        p5.colorMode(p5.HSL);
+        p5.background(0);
     };
-    p5.draw = () =>
-    {
-      p5.translate(p5.width/2, p5.height/2);
-      let xPos = p5.mouseX - p5.width / 2;
-      let yPos = p5.mouseY - p5.height / 2 ;
-      inc = 2 * Math.PI / reflections;
 
-      if (!flag) {
-        prevTheta = cartesian2Polar(xPos, yPos);
-        prevmagM = calcMag(xPos, yPos);
-      } else {
-        prevmagM = magM;
-        prevTheta = theta;
-      }
-      flag++;
-      
-      if (p5.mouseX != 0 && p5.mouseY != 0)
-      {
-        // stroke(255);
-        p5.strokeWeight(magM / 15 + 2);
-
-        magM = calcMag(xPos, yPos);
-        theta = cartesian2Polar(xPos, yPos);
-        // stk = hAvg + hDif * cos(theta + ranOff);
-
-        if (isDrawing) 
-        {
-            for (let i = 0; i < 2 * Math.PI; i += inc) 
-            {
-                let stk = hAvg + hDif * p5.cos(i + ranOff);
-                p5.stroke(stk, sat, light)
-                p5.line(magM * p5.cos(theta + i), magM * p5.sin(theta + i), prevmagM * p5.cos(prevTheta + i), prevmagM * p5.sin(prevTheta + i));
-
-            }
+    // Redraw the canvas on every iteration
+    p5.draw = () => {
+        // If the user hasn't yet interacted then don't bother to draw anything
+        if (!checkUserInteraction()) {
+            return;
         }
+
+        p5.translate(p5.width/2, p5.height/2); // Move origin of the canvas to the centre
+        let translatedMouseX = p5.mouseX - p5.width / 2;
+        let translatedMouseY = p5.mouseY - p5.height / 2;
+        reflectionAngle = 2 * Math.PI / numberOfReflections;
+
+        
+        
+        if (!flag) {
+            prevTheta = cartesian2Polar(translatedMouseX, translatedMouseY);
+            prevmagM = calcMag(translatedMouseX, translatedMouseY);
+            theta = cartesian2Polar(translatedMouseX, translatedMouseY);
+            magM = calcMag(translatedMouseX, translatedMouseY);
+        } else {
+            prevmagM = magM;
+            prevTheta = theta;
+        }
+        flag++;
+        
+        if (p5.mouseX != 0 && p5.mouseY != 0) {
+            // stroke(255);
+            p5.strokeWeight(magM / 15 + 2);
+
+            magM = calcMag(translatedMouseX, translatedMouseY);
+            theta = cartesian2Polar(translatedMouseX, translatedMouseY);
+            // stk = hAvg + hDif * cos(theta + ranOff);
+
+            if (isDrawing) {
+                for (let i = 0; i < 2 * Math.PI; i += reflectionAngle) 
+                {
+                    let stk = hAvg + hDif * p5.cos(i + ranOff);
+                    p5.stroke(stk, sat, light)
+                    p5.line(magM * p5.cos(theta + i), magM * p5.sin(theta + i), prevmagM * p5.cos(prevTheta + i), prevmagM * p5.sin(prevTheta + i));
+
+                }
+            }
 
         }
 
     }; 
+
+    const checkUserInteraction = () => {
+        if (userHasInteracted) {
+            return true;
+        }
+        if (mouseInWindow()) {
+            userHasInteracted = true;
+            return true;
+        }
+        return false;        
+    }
+
     function calcMag(x, y) {
         magM = Math.sqrt(x * x + y * y)
         return magM
@@ -83,10 +99,9 @@ const script = p5 =>
     }
 
     function mouseInWindow() {
-    if (p5.mouseX > 0 && p5.mouseX < p5.width && p5.mouseY > 0 && p5.mouseY < p5.height) {
-        return true
+        return (p5.mouseX > 0 && p5.mouseX < p5.width   // mouse in x bounds
+             && p5.mouseY > 0 && p5.mouseY < p5.height) // mouse in y bounds 
     }
-}
 
     p5.mouseClicked = () => {
     if (mouseInWindow()) {
@@ -97,10 +112,10 @@ const script = p5 =>
 
     p5.keyPressed = () => {
         if (p5.keyCode === p5.UP_ARROW) {
-            reflections++;
+            numberOfReflections++;
             p5.background(0);
         } else if (p5.keyCode === p5.DOWN_ARROW) {
-            reflections = Math.max(1, reflections - 1)
+            numberOfReflections = Math.max(1, numberOfReflections - 1)
             p5.background(0);
 
         }
@@ -114,5 +129,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="Kaleidoscope">This is a home page</div>
+    <div>This is a home page</div>
+  <div id="Kaleidoscope"></div>
 </template>
