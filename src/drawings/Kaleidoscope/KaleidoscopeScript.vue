@@ -3,9 +3,9 @@ import P5 from 'p5' // Package from npm
 import { onMounted, defineProps } from 'vue';
 
 const props = defineProps({
-    screenWidth: Number,
-    screenHeight: Number,
-    scriptIsPlaying: Boolean
+    screenWidth: {type: Number, required: true},
+    screenHeight: {type: Number, required: true},
+    scriptIsPlaying: {type: Boolean, required: true},
 })
 
 
@@ -43,6 +43,24 @@ const script = (p5) => {
         p5.createCanvas(props.screenWidth, props.screenHeight);
         p5.colorMode(p5.HSL);
         p5.background(0);
+        translateCanvasToCenter();
+
+        // For each reflection draw a new line with a slightly different colour
+        let reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
+
+        let startingPolarPoint = {r: (props.screenWidth)*0.45, theta: 0}
+        for (let i = 0; i < numberOfReflections; i++) {
+            let theta = reflectionAngle * i;
+            let hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);
+
+            // Draw the line
+            p5.strokeWeight(startingPolarPoint.r * STROKE_MULTIPLIER + STROKE_MINIMUM);
+            p5.stroke(hue, DRAWING_SATURATION, DRAWING_LIGHT)
+            p5.point(startingPolarPoint.r * p5.cos(startingPolarPoint.theta + theta), // x1
+                     startingPolarPoint.r * p5.sin(startingPolarPoint.theta + theta));// y2
+
+            }
+
     };
 
     // Redraw the canvas on every iteration
@@ -90,6 +108,7 @@ const script = (p5) => {
             return true;
         }
         if (mouseInWindow()) {
+            p5.background(0);
             userHasInteracted = true;
             return true;
         }
