@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import KaleidoscopeWindow from '../drawings/Kaleidoscope/KaleidoscopeWindow.vue';
+import KaleidoscopeProject from '../drawings/Kaleidoscope/KaleidoscopeProject.vue';
 
 </script>
 
 <template>
   <div>
-    <KaleidoscopeWindow />
+    <KaleidoscopeProject />
   </div>
 </template>

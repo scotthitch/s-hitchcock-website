@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import P5ScriptDescriptor from "../../components/P5ScriptDescriptor.vue";
-import KaleidoscopeCanvas from "./KaleidoscopeCanvas.vue"
+import KaleidoscopeScript from "./KaleidoscopeScript.vue"
 
 </script>
 
@@ -9,6 +9,6 @@ import KaleidoscopeCanvas from "./KaleidoscopeCanvas.vue"
       title="Kaleidoscope"
       description="Draw some symmetrical pictures"
       usageInstructions="Use the up and down keys to change the number of reflections. Click to clear the screen"
-      :p5Script="KaleidoscopeCanvas"
+      :p5Script="KaleidoscopeScript"
     />
 </template>
