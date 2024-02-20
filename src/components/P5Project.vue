@@ -3,7 +3,6 @@ import { defineProps, ref, onMounted, onUnmounted } from 'vue';
 import type { ScreenDimensions, P5ProjectProps } from '../types';
 import P5Canvas from "./P5Canvas.vue"
 
-// TODO: create props for this
 const props = defineProps<P5ProjectProps>();
 
 const componentKey = ref(0);
