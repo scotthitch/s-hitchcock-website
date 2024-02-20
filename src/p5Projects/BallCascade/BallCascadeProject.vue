@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import P5ScriptDescriptor from "../../components/P5ScriptDescriptor.vue";
+import P5Project from "../../components/P5Project.vue";
 import BallCascadeScript from "./BallCascadeScript.vue"
 
 </script>
 
 <template>
-    <P5ScriptDescriptor
+    <P5Project
       title="Ball Cascade"
       description="Wee watch them fall"
       usageInstructions="Not much to do here. You can flip gravity by clicking"
