@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import KaleidoscopeProject from '../drawings/Kaleidoscope/KaleidoscopeProject.vue';
-import BallCascadeProject from '../drawings/BallCascade/BallCascadeProject.vue';
+import KaleidoscopeProject from '../p5Projects/Kaleidoscope/KaleidoscopeProject.vue';
+import BallCascadeProject from '../p5Projects/BallCascade/BallCascadeProject.vue';
 
 </script>
 

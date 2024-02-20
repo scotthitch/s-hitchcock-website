@@ -14,4 +14,4 @@ onMounted(() => {
 
 <template>
     <div id="ball-cascade"></div>
-</template>./ballScript
+</template>./ballScript./script
