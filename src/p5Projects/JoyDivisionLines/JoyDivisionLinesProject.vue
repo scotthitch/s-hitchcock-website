@@ -7,8 +7,8 @@ import JoyDivisionLines from "./JoyDivisionLinesScript.vue"
 <template>
     <P5ScriptDescriptor 
       title="Joy Division Lines"
-      description="Draw some symmetrical pictures"
-      usageInstructions="Use the up and down keys to change the number of reflections. Click to clear the screen"
+      description="Inspired by Joy Division's Unknown Pleasures album art and built using the Gaussian distribution plus some random noise."
+      usageInstructions="Simply move the mouse around to se"
       :p5Script="JoyDivisionLines"
     />
 </template>
