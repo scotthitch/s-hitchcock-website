@@ -5,7 +5,7 @@ import P5Canvas from "./P5Canvas.vue"
 
 const props = defineProps<P5ProjectProps>();
 
-const componentKey = ref(0);
+const p5CanvasComponentKey = ref(0);
 
 const liveScreenDimensions = ref<ScreenDimensions>({
     width: window.innerWidth, 
@@ -13,7 +13,7 @@ const liveScreenDimensions = ref<ScreenDimensions>({
 });
 
 const handleResize = () => {
-    componentKey.value++; // Update key to force re render of P5Canvas component
+    p5CanvasComponentKey.value++; // Update key to force re render of P5Canvas component
     liveScreenDimensions.value.width = window.innerWidth;
     liveScreenDimensions.value.height = window.innerHeight;
 }
@@ -39,7 +39,7 @@ onUnmounted(() => {
     <p class="text-3xl font-bold">{{ props.title }}</p>
     <p>{{ props.description }}</p>
     <P5Canvas 
-        :key="componentKey"
+        :key="p5CanvasComponentKey"
         :scriptName="props.scriptName"
         :script="props.script"
         :screenDimensions="calculateCanvasDimensions()"
