@@ -12,6 +12,7 @@ onMounted(() => {
     p5.value = new P5(props.script(props.screenDimensions), props.scriptName);
 })
 
+// TODO: fix this
 onUnmounted(() => {
     p5.value.remove()
 })

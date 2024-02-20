@@ -4,6 +4,8 @@ import script from "./script"
 
 </script>
 
+
+<!-- TODO: fix scriptname issue -->
 <template>
     <P5Project
       title="Ball Cascade"
@@ -11,7 +13,7 @@ import script from "./script"
       description="Wee watch them fall"
       usageInstructions="Not much to do here. You can flip gravity by clicking"
       :script="script"
-      :defaultScreenDimensions="{
+      :defaultCanvasDimensions="{
         width: 400,
         height: 400
       }"

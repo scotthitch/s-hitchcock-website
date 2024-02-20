@@ -1,29 +1,22 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted, onUnmounted } from 'vue';
-import type { ScreenDimensions, p5ScriptWrapperFunction } from '../types';
+import type { ScreenDimensions, P5ProjectProps } from '../types';
 import P5Canvas from "./P5Canvas.vue"
 
 // TODO: create props for this
-const props = defineProps<{
-    title: string,
-    scriptName: HTMLElement,
-    description: string,
-    usageInstructions: string,
-    script: p5ScriptWrapperFunction,
-    defaultScreenDimensions: ScreenDimensions
-}>();
+const props = defineProps<P5ProjectProps>();
 
 const componentKey = ref(0);
 
-const screenDimensions = ref({
+const liveScreenDimensions = ref<ScreenDimensions>({
     width: window.innerWidth * 0.95,
     height: window.innerHeight * 0.95
 });
 
 const handleResize = () => {
     componentKey.value++;
-    screenDimensions.value.width = window.innerWidth*0.95;
-    screenDimensions.value.height = window.innerHeight*0.95;
+    liveScreenDimensions.value.width = window.innerWidth*0.95;
+    liveScreenDimensions.value.height = window.innerHeight*0.95;
 }
 
 onMounted(() => {
@@ -44,8 +37,8 @@ onUnmounted(() => {
         :scriptName="props.scriptName"
         :script="props.script"
         :screenDimensions="{
-            width: Math.min(props.defaultScreenDimensions.width, screenDimensions.width),
-            height: Math.min(props.defaultScreenDimensions.height, screenDimensions.width)
+            width: Math.min(props.defaultCanvasDimensions.width, liveScreenDimensions.width),
+            height: Math.min(props.defaultCanvasDimensions.height, liveScreenDimensions.width)
         }" />
     
     <p>{{ props.usageInstructions }}</p>
