@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-const props = defineProps({
-    title: String,
-    description: String,
-    usageInstructions: String,
-    p5Script: Object,
-})
+const props = defineProps<{
+    title: string,
+    description: string,
+    usageInstructions: string,
+    p5Script: object, // TODO: this shouldn't be of type object. need to find a custom component type
+}>()
 
 </script>
 
 <template>
-      <div>{{ props.title }}</div>
-      <div>{{ props.description }}</div>
-      <component :is="p5Script" :screenWidth="400" :screenHeight="400" :scriptIsPlaying="true"></component>
-      <div>{{ props.usageInstructions }}</div>
+    <div>{{ props.title }}</div>
+    <div>{{ props.description }}</div>
+    <component :is="p5Script" :screenWidth="400" :screenHeight="400" :scriptIsPlaying="true"></component>
+    <div>{{ props.usageInstructions }}</div>
 </template>
 
 <style scoped>  
