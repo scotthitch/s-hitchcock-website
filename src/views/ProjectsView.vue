@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import KaleidoscopeProject from '../p5Projects/Kaleidoscope/KaleidoscopeProject.vue';
 import BallCascadeProject from '../p5Projects/BallCascade/BallCascadeProject.vue';
+import JoyDivisionLinesProject from '../p5Projects/JoyDivisionLines/JoyDivisionLinesProject.vue';
 import { ref, shallowRef } from 'vue'
 
 
 const projectSelectIndex = ref(0)
-const projects = shallowRef([KaleidoscopeProject, BallCascadeProject]);
+const projects = shallowRef([JoyDivisionLinesProject, KaleidoscopeProject, BallCascadeProject]);
 
 const incrementProjectSelect = () => {
   projectSelectIndex.value = Math.min(projectSelectIndex.value+1, projects.value.length-1);
