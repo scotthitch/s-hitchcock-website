@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import P5 from 'p5' // Package from npm
 import { onMounted, defineProps, ref, onUnmounted } from 'vue';
-import type { P5ScriptProps } from '../types'
+import type { P5CanvasProps } from '../types'
 
 
-const props = defineProps<P5ScriptProps>()
+const props = defineProps<P5CanvasProps>()
 
 const p5 = ref<P5>();
 
@@ -19,4 +19,4 @@ onUnmounted(() => {
 
 <template>
     <div :id="props.scriptName"></div>
-</template>
+</template>P5CanvasPropsP5CanvasPropsP5CanvasPropsP5CanvasProps

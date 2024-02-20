@@ -14,7 +14,7 @@ export interface P5Props {
     scriptIsPlaying: boolean,
 }
 
-export interface P5ScriptProps {
+export interface P5CanvasProps {
     screenWidth: number,
     screenHeight: number,
     script: Function,
