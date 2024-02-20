@@ -10,6 +10,8 @@ const script = (props: P5Props) => {
         //     console.log("started")
         //     p5.loop();
         // }
+        const BACKGROUND_COLOUR = 0;
+
         const STROKE_MULTIPLIER = 1/12;
         const STROKE_MINIMUM = 2;
     
@@ -34,7 +36,7 @@ const script = (props: P5Props) => {
         p5.setup = () => {
             p5.createCanvas(props.screenWidth, props.screenHeight);
             p5.colorMode(p5.HSL);
-            p5.background(0);
+            p5.background(BACKGROUND_COLOUR);
             translateCanvasToCenter();
     
             // For each reflection draw a new line with a slightly different colour
@@ -99,7 +101,7 @@ const script = (props: P5Props) => {
                 return true;
             }
             if (mouseInWindow()) {
-                p5.background(0);
+                p5.background(BACKGROUND_COLOUR);
                 userHasInteracted = true;
                 return true;
             }
@@ -136,7 +138,7 @@ const script = (props: P5Props) => {
             // On mouse click if the mouse is in the window then clear the
             // background and shift the colour wheel around 
             if (mouseInWindow()) {
-                p5.background(0);
+                p5.background(BACKGROUND_COLOUR);
                 hueOffset += 10;
             }
         }
@@ -144,12 +146,10 @@ const script = (props: P5Props) => {
         p5.keyPressed = () => {
             if (p5.keyCode === p5.UP_ARROW) {
                 numberOfReflections++;
-                p5.background(0);
             } else if (p5.keyCode === p5.DOWN_ARROW) {
                 numberOfReflections = Math.max(1, numberOfReflections - 1)
-                p5.background(0);
-    
             }
+            p5.background(BACKGROUND_COLOUR);    
         }
     }
     return s;

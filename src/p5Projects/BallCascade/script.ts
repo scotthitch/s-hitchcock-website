@@ -2,6 +2,9 @@ import type { P5Props } from '../../types'
 import P5 from 'p5' // Package from npm
 
 const script = (props: P5Props) => {
+    const BACKGROUND_COLOUR = 0;
+
+
     const s = (p5: P5) => {
         const balls: Ball[] = [];
         let gravDir = 1;
@@ -15,7 +18,7 @@ const script = (props: P5Props) => {
     
         // Redraw the canvas on every iteration
         p5.draw = () => {
-            p5.background(30);
+            p5.background(BACKGROUND_COLOUR);
             if (!(p5.mouseX == 0 && p5.mouseY == 0)){
             balls.push(new Ball(p5.mouseX, p5.mouseY, gravDir));
                 for (const ball of balls) {
@@ -23,7 +26,7 @@ const script = (props: P5Props) => {
                     ball.render();
                 }
         
-                if (balls.length > 250) {
+                if (balls.length > 100) {
                     balls.splice(0, 1);
                 }
             }
@@ -52,11 +55,11 @@ const script = (props: P5Props) => {
                 if(gravDir > 0) {
                     this.yVel = p5.random(0, -2);
         
-                }else {
+                } else {
                     this.yVel = p5.random(0, 1);
         
                 }
-                this.yAcc = 0.05 * gravDir;
+                this.yAcc = 0.1 * gravDir;
                 
                 this.colours = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"]
                 this.index = p5.floor(p5.random(0, this.colours.length));
