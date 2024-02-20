@@ -5,7 +5,7 @@ const props = defineProps<{
     title: string,
     description: string,
     usageInstructions: string,
-    p5Script: object, // TODO: this shouldn't be of type object. need to find a custom component type
+    p5Canvas: object, // TODO: this shouldn't be of type object. need to find a custom component type
     defaultScreenWidth: number,
     defaultScreenHeight: number
 }>();
@@ -42,7 +42,7 @@ onUnmounted(() => {
     <p>{{ props.description }}</p>
     <component 
         :key="componentKey"
-        :is="p5Script" 
+        :is="p5Canvas" 
         :screenWidth="Math.min(props.defaultScreenWidth, screenDimensions.width)"
         :screenHeight="Math.min(props.defaultScreenHeight, screenDimensions.width)"
         :scriptIsPlaying="true">
