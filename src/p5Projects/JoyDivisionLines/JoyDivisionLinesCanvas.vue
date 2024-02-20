@@ -9,7 +9,6 @@ import script from "./script"
         :screenHeight="400"
         :screenWidth="400"
         :script="script"
-        :scriptIsPlaying="true"
         scriptName="joy-division-lines"
         />
 </template>

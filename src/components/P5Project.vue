@@ -44,8 +44,7 @@ onUnmounted(() => {
         :key="componentKey"
         :is="p5Canvas" 
         :screenWidth="Math.min(props.defaultScreenWidth, screenDimensions.width)"
-        :screenHeight="Math.min(props.defaultScreenHeight, screenDimensions.width)"
-        :scriptIsPlaying="true">
+        :screenHeight="Math.min(props.defaultScreenHeight, screenDimensions.width)">
     </component>
     <p>{{ props.usageInstructions }}</p>
 </template>
