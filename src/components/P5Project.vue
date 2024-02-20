@@ -8,14 +8,21 @@ const props = defineProps<P5ProjectProps>();
 const componentKey = ref(0);
 
 const liveScreenDimensions = ref<ScreenDimensions>({
-    width: window.innerWidth * 0.95,
-    height: window.innerHeight * 0.95
+    width: window.innerWidth, 
+    height: window.innerHeight
 });
 
 const handleResize = () => {
-    componentKey.value++;
-    liveScreenDimensions.value.width = window.innerWidth*0.95;
-    liveScreenDimensions.value.height = window.innerHeight*0.95;
+    componentKey.value++; // Update key to force re render of P5Canvas component
+    liveScreenDimensions.value.width = window.innerWidth;
+    liveScreenDimensions.value.height = window.innerHeight;
+}
+
+const calculateCanvasDimensions = (): ScreenDimensions => {
+    const width = Math.min(props.defaultCanvasDimensions.width, liveScreenDimensions.value.width*0.95)
+    const height = Math.min(props.defaultCanvasDimensions.height, liveScreenDimensions.value.width*0.95)
+
+    return {width: width, height: height}
 }
 
 onMounted(() => {
@@ -35,11 +42,8 @@ onUnmounted(() => {
         :key="componentKey"
         :scriptName="props.scriptName"
         :script="props.script"
-        :screenDimensions="{
-            width: Math.min(props.defaultCanvasDimensions.width, liveScreenDimensions.width),
-            height: Math.min(props.defaultCanvasDimensions.height, liveScreenDimensions.width)
-        }" />
-    
+        :screenDimensions="calculateCanvasDimensions()"
+    />
     <p>{{ props.usageInstructions }}</p>
 </template>
 
