@@ -1,11 +1,11 @@
-import type { ScreenDimensions } from '../../types'
+import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (screenDimensions: ScreenDimensions) => {
+const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const BACKGROUND_COLOUR = 0;
 
 
-    const s = (p5: P5) => {
+    const s = (p5: P5): void => {
         const balls: Ball[] = [];
         let gravDir = 1;
         
@@ -80,6 +80,7 @@ const script = (screenDimensions: ScreenDimensions) => {
             }
         }
     }
+    console.log(typeof(s))
     return s;
 }
 

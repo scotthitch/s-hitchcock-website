@@ -1,8 +1,8 @@
-import type { ScreenDimensions } from '../../types'
+import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (screenDimensions: ScreenDimensions) => {
-    const s = (p5: P5) => {
+const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
+    const s = (p5: P5): void => {
         const X_LEFT_DRAWING_BOUNDS = screenDimensions.width/20;
         const X_RIGHT_DRAWING_BOUNDS = screenDimensions.width - X_LEFT_DRAWING_BOUNDS;
         const Y_TOP_DRAWING_BOUNDS = screenDimensions.height/20;

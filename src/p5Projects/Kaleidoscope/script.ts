@@ -1,8 +1,8 @@
-import type { PolarCoordinates, CartesianCoordinates, ScreenDimensions } from '../../types'
+import type { PolarCoordinates, CartesianCoordinates, ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (screenDimensions: ScreenDimensions) => {
-    const s = (p5: P5) => {
+const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
+    const s = (p5: P5): void => {
         // if (!props.isPlaying) {
         //     console.log("stopped")
         //     p5.noLoop();

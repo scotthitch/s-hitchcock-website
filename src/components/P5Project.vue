@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted, onUnmounted } from 'vue';
-import type { ScreenDimensions } from '../types';
+import type { ScreenDimensions, p5ScriptWrapperFunction } from '../types';
 import P5Canvas from "./P5Canvas.vue"
 
 // TODO: create props for this
@@ -9,7 +9,7 @@ const props = defineProps<{
     scriptName: HTMLElement,
     description: string,
     usageInstructions: string,
-    script: Function,
+    script: p5ScriptWrapperFunction,
     defaultScreenDimensions: ScreenDimensions
 }>();
 
