@@ -8,7 +8,9 @@ import JoyDivisionLines from "./JoyDivisionLinesScript.vue"
     <P5ScriptDescriptor 
       title="Joy Division Lines"
       description="Inspired by Joy Division's Unknown Pleasures album art and built using the Gaussian distribution plus some random noise."
-      usageInstructions="Simply move the mouse around to se"
+      usageInstructions="Simply move the mouse around to see. Click to save one that you like"
       :p5Script="JoyDivisionLines"
+      :defaultScreenWidth="400"
+      :defaultScreenHeight="400"
     />
 </template>
