@@ -80,7 +80,6 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             }
         }
     }
-    console.log(typeof(s))
     return s;
 }
 

@@ -8,7 +8,6 @@ const props = defineProps<P5ProjectProps>();
 const p5CanvasComponentKey = ref(0);
 
 const canvasAspectRatio = ref<number>(props.defaultCanvasDimensions.height/props.defaultCanvasDimensions.width);
-// console.log(canvasAspectRatio)
 
 const liveScreenDimensions = ref<ScreenDimensions>({
     width: window.innerWidth, 
