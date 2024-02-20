@@ -1,9 +1,8 @@
 import type { PolarCoordinates, CartesianCoordinates, P5Props } from '../../types'
 import P5 from 'p5' // Package from npm
 
-
-const scriptPropsWrapper = (props: P5Props) => {
-    const script = (p5: P5) => {
+const script = (props: P5Props) => {
+    const s = (p5: P5) => {
         // if (!props.isPlaying) {
         //     console.log("stopped")
         //     p5.noLoop();
@@ -39,12 +38,12 @@ const scriptPropsWrapper = (props: P5Props) => {
             translateCanvasToCenter();
     
             // For each reflection draw a new line with a slightly different colour
-            let reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
+            const reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
     
-            let startingPolarPoint: PolarCoordinates = {r: (props.screenWidth)*0.45, theta: 0}
+            const startingPolarPoint: PolarCoordinates = {r: (props.screenWidth)*0.45, theta: 0}
             for (let i = 0; i < numberOfReflections; i++) {
-                let theta = reflectionAngle * i;
-                let hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);
+                const theta = reflectionAngle * i;
+                const hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);
     
                 // Draw the line
                 p5.strokeWeight(startingPolarPoint.r * STROKE_MULTIPLIER + STROKE_MINIMUM);
@@ -65,10 +64,10 @@ const scriptPropsWrapper = (props: P5Props) => {
     
             // Move origin to centre of canvas and calculate translated mouse (x, y) coords
             translateCanvasToCenter();
-            let translatedCartesianMouse = getTranslatedCartesianMouse();
+            const translatedCartesianMouse = getTranslatedCartesianMouse();
     
-            let reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
-            let translatedPolarMouse = cartesianToPolar(translatedCartesianMouse);
+            const reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
+            const translatedPolarMouse = cartesianToPolar(translatedCartesianMouse);
             
             // If the first iteration, then set previous polar mouse coords to current
             if (firstIterationOfInteraction) {
@@ -79,8 +78,8 @@ const scriptPropsWrapper = (props: P5Props) => {
             
             // For each reflection draw a new line with a slightly different colour
             for (let i = 0; i < numberOfReflections; i++) {
-                let theta = reflectionAngle * i;
-                let hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);
+                const theta = reflectionAngle * i;
+                const hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);
     
                 // Draw the line
                 p5.strokeWeight(translatedPolarMouse.r * STROKE_MULTIPLIER + STROKE_MINIMUM);
@@ -116,15 +115,15 @@ const scriptPropsWrapper = (props: P5Props) => {
         }
     
         const getTranslatedCartesianMouse = (): CartesianCoordinates => {
-            let translatedMouseX = p5.mouseX - p5.width / 2;
-            let translatedMouseY = p5.mouseY - p5.height / 2;
+            const translatedMouseX = p5.mouseX - p5.width / 2;
+            const translatedMouseY = p5.mouseY - p5.height / 2;
             return {x: translatedMouseX, y: translatedMouseY};
         }
         
         const cartesianToPolar = (translatedCartesianMouse: CartesianCoordinates): PolarCoordinates => {
-            let r = Math.sqrt(translatedCartesianMouse.x * translatedCartesianMouse.x + 
+            const r = Math.sqrt(translatedCartesianMouse.x * translatedCartesianMouse.x + 
                                 translatedCartesianMouse.y * translatedCartesianMouse.y)
-            let theta = Math.atan2(translatedCartesianMouse.y, translatedCartesianMouse.x)
+            const theta = Math.atan2(translatedCartesianMouse.y, translatedCartesianMouse.x)
             return {r: r, theta: theta}
         }
     
@@ -153,9 +152,9 @@ const scriptPropsWrapper = (props: P5Props) => {
             }
         }
     }
-    return script;
+    return s;
 }
 
 
   
-export default scriptPropsWrapper;
+export default script;
