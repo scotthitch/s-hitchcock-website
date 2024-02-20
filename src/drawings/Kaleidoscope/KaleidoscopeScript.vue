@@ -14,4 +14,4 @@ onMounted(() => {
 
 <template>
     <div id="Kaleidoscope"></div>
-</template>scriptscript
+</template>
