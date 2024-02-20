@@ -7,6 +7,9 @@ const props = defineProps<P5ProjectProps>();
 
 const p5CanvasComponentKey = ref(0);
 
+const canvasAspectRatio = ref<number>(props.defaultCanvasDimensions.height/props.defaultCanvasDimensions.width);
+// console.log(canvasAspectRatio)
+
 const liveScreenDimensions = ref<ScreenDimensions>({
     width: window.innerWidth, 
     height: window.innerHeight
@@ -20,7 +23,7 @@ const handleResize = () => {
 
 const calculateCanvasDimensions = (): ScreenDimensions => {
     const width = Math.min(props.defaultCanvasDimensions.width, liveScreenDimensions.value.width*0.95)
-    const height = Math.min(props.defaultCanvasDimensions.height, liveScreenDimensions.value.width*0.95)
+    const height = Math.min(props.defaultCanvasDimensions.height, liveScreenDimensions.value.width*0.95*canvasAspectRatio.value)
 
     return {width: width, height: height}
 }

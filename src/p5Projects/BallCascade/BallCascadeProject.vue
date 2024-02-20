@@ -15,7 +15,7 @@ import script from "./script"
       :script="script"
       :defaultCanvasDimensions="{
         width: 400,
-        height: 400
+        height: 500
       }"
     />
 </template>
