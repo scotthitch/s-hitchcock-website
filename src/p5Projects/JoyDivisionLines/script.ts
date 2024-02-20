@@ -1,4 +1,4 @@
-import type { PolarCoordinates, CartesianCoordinates, P5Props } from '../../types'
+import type { P5Props } from '../../types'
 import P5 from 'p5' // Package from npm
 
 const script = (props: P5Props) => {
@@ -17,7 +17,7 @@ const script = (props: P5Props) => {
         let sdMin;
         let sdMax;
         let preSd = sd;
-        let magn = 600;
+        let magn = 400;
         let preMagn = magn;
         let isLooping = 1;
 
@@ -32,10 +32,10 @@ const script = (props: P5Props) => {
             sdMax = p5.height / 6;
 
             p5.strokeWeight(p5.height / 350);
-            renderAll();
+            firstRender();
         }
 
-        function renderAll() {
+        function firstRender() {
             p5.background(0, 32, 63);
             for (let j = Y_TOP_DRAWING_BOUNDS; j <= Y_BOTTOM_DRAWING_BOUNDS; j += yStep) {
                 let y1 = j;
@@ -84,12 +84,12 @@ const script = (props: P5Props) => {
 
         function muChanged() {
             preMu = mu;
-            renderAll();
+            firstRender();
         }
 
         function sdChanged() {
             preSd = sd;
-            renderAll();
+            firstRender();
         }
 
 
@@ -123,14 +123,14 @@ const script = (props: P5Props) => {
                     
                 } else {
                     magn = Math.min(1000, magn + 50);
-                    renderAll();
+                    firstRender();
                 }
             } else if (p5.keyCode === p5.DOWN_ARROW) {
                 if (magn === 0) {
 
                 } else {
                     magn = Math.max(0, magn - 50);
-                    renderAll();
+                    firstRender();
                 }
             }
         }
