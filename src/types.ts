@@ -13,3 +13,12 @@ export interface P5Props {
     screenHeight: number,
     scriptIsPlaying: boolean,
 }
+
+export interface P5ScriptProps {
+    screenWidth: number,
+    screenHeight: number,
+    script: Function,
+    scriptIsPlaying: boolean,
+    scriptName: HTMLElement
+
+}
