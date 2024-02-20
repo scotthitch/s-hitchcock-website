@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
       <div>{{ props.title }}</div>
       <div>{{ props.description }}</div>
-      <component :is="p5Script" :screenWidth="450" :screenHeight="450" :scriptIsPlaying="true"></component>
+      <component :is="p5Script" :screenWidth="400" :screenHeight="400" :scriptIsPlaying="true"></component>
       <div>{{ props.usageInstructions }}</div>
 </template>
 

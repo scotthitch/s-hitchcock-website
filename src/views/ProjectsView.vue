@@ -21,12 +21,10 @@ const decrementProjectSelect = () => {
 
 <template>
   <div>
-    <div class="flex flex-col items-center text-center justify-center py-[5rem]">
-      
-      <button :disabled="projectSelectIndex === 0" @click="decrementProjectSelect()">Previous</button>
-      <component :is="projects[projectSelectIndex]"></component>
-      <button :disabled="projectSelectIndex === projects.length-1" @click="incrementProjectSelect()">Next</button>
-      
+    <div class="flex flex-col items-center text-center justify-center h-screen">
+      <button :disabled="projectSelectIndex === 0" @click="decrementProjectSelect()">Previous</button>  
+      <component :is="projects[projectSelectIndex]"></component>     
+      <button :disabled="projectSelectIndex === projects.length-1" @click="incrementProjectSelect()">Next</button>     
     </div>
   </div>
 </template>
