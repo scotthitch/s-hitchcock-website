@@ -8,14 +8,13 @@ export interface CartesianCoordinates {
     y: number,
 }
 
-export interface P5Props {
-    screenWidth: number,
-    screenHeight: number,
+export interface ScreenDimensions {
+    width: number,
+    height: number,
 }
 
 export interface P5CanvasProps {
-    screenWidth: number,
-    screenHeight: number,
+    screenDimensions: ScreenDimensions,
     script: Function,
     scriptName: HTMLElement
 }

@@ -9,7 +9,7 @@ const props = defineProps<P5CanvasProps>()
 const p5 = ref<P5>();
 
 onMounted(() => {
-    p5.value = new P5(props.script(props), props.scriptName);
+    p5.value = new P5(props.script(props.screenDimensions), props.scriptName);
 })
 
 onUnmounted(() => {
@@ -19,4 +19,4 @@ onUnmounted(() => {
 
 <template>
     <div :id="props.scriptName"></div>
-</template>P5CanvasPropsP5CanvasPropsP5CanvasPropsP5CanvasProps
+</template>

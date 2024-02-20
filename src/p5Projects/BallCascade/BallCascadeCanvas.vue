@@ -6,8 +6,7 @@ import script from "./script"
 
 <template>
     <P5Canvas
-        :screenHeight="400"
-        :screenWidth="400"
+        :screenDimensions="{width: 400, height: 400}"
         :script="script"
         scriptName="ball-cascade"
         />

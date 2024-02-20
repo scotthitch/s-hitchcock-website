@@ -1,7 +1,7 @@
-import type { PolarCoordinates, CartesianCoordinates, P5Props } from '../../types'
+import type { PolarCoordinates, CartesianCoordinates, ScreenDimensions } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (props: P5Props) => {
+const script = (screenDimensions: ScreenDimensions) => {
     const s = (p5: P5) => {
         // if (!props.isPlaying) {
         //     console.log("stopped")
@@ -34,7 +34,7 @@ const script = (props: P5Props) => {
         
         // Setup the canvas
         p5.setup = () => {
-            p5.createCanvas(props.screenWidth, props.screenHeight);
+            p5.createCanvas(screenDimensions.width, screenDimensions.height);
             p5.colorMode(p5.HSL);
             p5.background(BACKGROUND_COLOUR);
             translateCanvasToCenter();
@@ -42,7 +42,7 @@ const script = (props: P5Props) => {
             // For each reflection draw a new line with a slightly different colour
             const reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
     
-            const startingPolarPoint: PolarCoordinates = {r: (props.screenWidth)*0.45, theta: 0}
+            const startingPolarPoint: PolarCoordinates = {r: (screenDimensions.width)*0.45, theta: 0}
             for (let i = 0; i < numberOfReflections; i++) {
                 const theta = reflectionAngle * i;
                 const hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);

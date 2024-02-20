@@ -1,7 +1,7 @@
-import type { P5Props } from '../../types'
+import type { ScreenDimensions } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (props: P5Props) => {
+const script = (screenDimensions: ScreenDimensions) => {
     const BACKGROUND_COLOUR = 0;
 
 
@@ -12,7 +12,7 @@ const script = (props: P5Props) => {
         
         // Setup the canvas
         p5.setup = () => {
-            p5.createCanvas(props.screenWidth, props.screenHeight);
+            p5.createCanvas(screenDimensions.width, screenDimensions.height);
 
         };
     

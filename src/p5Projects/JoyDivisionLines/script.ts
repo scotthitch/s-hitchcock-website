@@ -1,12 +1,12 @@
-import type { P5Props } from '../../types'
+import type { ScreenDimensions } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (props: P5Props) => {
+const script = (screenDimensions: ScreenDimensions) => {
     const s = (p5: P5) => {
-        const X_LEFT_DRAWING_BOUNDS = props.screenWidth/20;
-        const X_RIGHT_DRAWING_BOUNDS = props.screenWidth - X_LEFT_DRAWING_BOUNDS;
-        const Y_TOP_DRAWING_BOUNDS = props.screenHeight/20;
-        const Y_BOTTOM_DRAWING_BOUNDS = props.screenHeight - Y_TOP_DRAWING_BOUNDS;
+        const X_LEFT_DRAWING_BOUNDS = screenDimensions.width/20;
+        const X_RIGHT_DRAWING_BOUNDS = screenDimensions.width - X_LEFT_DRAWING_BOUNDS;
+        const Y_TOP_DRAWING_BOUNDS = screenDimensions.height/20;
+        const Y_BOTTOM_DRAWING_BOUNDS = screenDimensions.height - Y_TOP_DRAWING_BOUNDS;
         const ONE_OVER_ROOT_2_PI = 1 / Math.sqrt(Math.PI);
 
         let xStep;
@@ -22,7 +22,7 @@ const script = (props: P5Props) => {
         let isLooping = 1;
 
         p5.setup = () => {
-            p5.createCanvas(props.screenWidth, props.screenWidth);       
+            p5.createCanvas(screenDimensions.width, screenDimensions.width);       
 
             xStep = (X_RIGHT_DRAWING_BOUNDS - X_LEFT_DRAWING_BOUNDS) / 100;
             yStep = (Y_BOTTOM_DRAWING_BOUNDS - Y_TOP_DRAWING_BOUNDS) / 60;

@@ -43,8 +43,10 @@ onUnmounted(() => {
     <component 
         :key="componentKey"
         :is="p5Canvas" 
-        :screenWidth="Math.min(props.defaultScreenWidth, screenDimensions.width)"
-        :screenHeight="Math.min(props.defaultScreenHeight, screenDimensions.width)">
+        :screenDimensions="{
+            width: Math.min(props.defaultScreenWidth, screenDimensions.width),
+            height: Math.min(props.defaultScreenHeight, screenDimensions.width)
+        }">
     </component>
     <p>{{ props.usageInstructions }}</p>
 </template>
