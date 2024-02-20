@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted, onUnmounted } from 'vue';
+import type { ScreenDimensions } from '../types';
+import P5Canvas from "./P5Canvas.vue"
 
+// TODO: create props for this
 const props = defineProps<{
     title: string,
+    scriptName: HTMLElement,
     description: string,
     usageInstructions: string,
-    p5Canvas: object, // TODO: this shouldn't be of type object. need to find a custom component type
-    defaultScreenWidth: number,
-    defaultScreenHeight: number
+    script: Function,
+    defaultScreenDimensions: ScreenDimensions
 }>();
 
 const componentKey = ref(0);
@@ -31,23 +34,20 @@ onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
 })
 
-// const calculateScreenDimension = () => {
-
-// }
-
 </script>
 
 <template>
     <p class="text-3xl font-bold">{{ props.title }}</p>
     <p>{{ props.description }}</p>
-    <component 
+    <P5Canvas 
         :key="componentKey"
-        :is="p5Canvas" 
+        :scriptName="props.scriptName"
+        :script="props.script"
         :screenDimensions="{
-            width: Math.min(props.defaultScreenWidth, screenDimensions.width),
-            height: Math.min(props.defaultScreenHeight, screenDimensions.width)
-        }">
-    </component>
+            width: Math.min(props.defaultScreenDimensions.width, screenDimensions.width),
+            height: Math.min(props.defaultScreenDimensions.height, screenDimensions.width)
+        }" />
+    
     <p>{{ props.usageInstructions }}</p>
 </template>
 

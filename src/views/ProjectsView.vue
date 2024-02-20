@@ -7,6 +7,7 @@ import { ref, shallowRef } from 'vue'
 
 const projectSelectIndex = ref(0)
 const projects = shallowRef([JoyDivisionLinesProject, KaleidoscopeProject, BallCascadeProject]);
+// const projects = shallowRef([BallCascadeProject]);
 
 const incrementProjectSelect = () => {
   projectSelectIndex.value = Math.min(projectSelectIndex.value+1, projects.value.length-1);
