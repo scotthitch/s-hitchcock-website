@@ -11,7 +11,7 @@ import script from "./script"
       description="Inspired by Joy Division's Unknown Pleasures album art and built using the Gaussian distribution plus some random noise."
       usageInstructions="Simply move the mouse around to see. Click to save one that you like"
       :script="script"
-      :defaultCanvasDimensions="{
+      :maxCanvasDimensions="{
         width: 400,
         height: 400
       }"
