@@ -23,9 +23,9 @@ const decrementProjectSelect = () => {
 <template>
   <div>
     <div class="flex flex-col items-center text-center justify-center h-screen">
-      <button :disabled="projectSelectIndex === 0" @click="decrementProjectSelect()">Previous</button>  
+      <button class="fixed top-5" :disabled="projectSelectIndex === 0" @click="decrementProjectSelect()">Previous</button>  
       <component :is="projects[projectSelectIndex]"></component>     
-      <button :disabled="projectSelectIndex === projects.length-1" @click="incrementProjectSelect()">Next</button>     
+      <button class="fixed bottom-5" :disabled="projectSelectIndex === projects.length-1" @click="incrementProjectSelect()">Next</button>     
     </div>
   </div>
 </template>
