@@ -2,11 +2,13 @@
 import KaleidoscopeProject from '../p5Projects/Kaleidoscope/KaleidoscopeProject.vue';
 import BallCascadeProject from '../p5Projects/BallCascade/BallCascadeProject.vue';
 import JoyDivisionLinesProject from '../p5Projects/JoyDivisionLines/JoyDivisionLinesProject.vue';
+import GrowingCircleProject from '../p5Projects/GrowingCircle/GrowingCircleProject.vue'
+
 import { ref, shallowRef } from 'vue'
 
 
 const projectSelectIndex = ref(0)
-const projects = shallowRef([JoyDivisionLinesProject, KaleidoscopeProject, BallCascadeProject]);
+const projects = shallowRef([GrowingCircleProject, JoyDivisionLinesProject, KaleidoscopeProject, BallCascadeProject]);
 // const projects = shallowRef([BallCascadeProject]);
 
 const incrementProjectSelect = () => {
