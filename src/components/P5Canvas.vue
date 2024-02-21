@@ -19,5 +19,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div :id="props.scriptName"></div>
+    <div class="shadow-lg":id="props.scriptName"></div>
 </template>
