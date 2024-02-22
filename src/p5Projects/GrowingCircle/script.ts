@@ -4,24 +4,24 @@ import P5 from 'p5' // Package from npm
 const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5: P5): void => {
         // Params for drawing the initial shape
-        const INITAL_SHAPE_MEAN_RADIUS = screenDimensions.width * 0.25;
+        const INITAL_SHAPE_MEAN_RADIUS = screenDimensions.width * 0.22;
         const INITIAL_SHAPE_NOISE_FACTOR = 0.2;
         
         // Shape parameters
         const N_SHAPE_NODES = 15;
         const ANGLE_BETWEEN_NODES = 2 * Math.PI / N_SHAPE_NODES;
-        const STROKE_WEIGHT =  screenDimensions.width * 0.005;
-        const OPACITY = 25; // %
+        const STROKE_WEIGHT =  screenDimensions.width * 0.004;
+        const OPACITY = 30; // %
         
         // Growth rate constants
         const GROWTH_INCREMENT = screenDimensions.width * 0.0004;
-        const GROWTH_NOISE = screenDimensions.width * 0.04; // % of growth increment
+        const GROWTH_NOISE = 10; // % of growth increment
         
         const shapeNodesRadii: number[] = [];
 
         p5.setup = () => {
             p5.createCanvas(screenDimensions.width, screenDimensions.height);
-            p5.background(0)
+            p5.background(255)
             
             for (let i = 0; i < N_SHAPE_NODES; i++) {
                 const nodeRadius = p5.random(
@@ -47,7 +47,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
         const setDrawParameters = () => {
             p5.translate(p5.width/2, p5.height/2)
-            p5.stroke(255, 255, 255, OPACITY);
+            p5.stroke(0, 0, 0, OPACITY);
             p5.strokeWeight(STROKE_WEIGHT);
             p5.noFill();
         }
