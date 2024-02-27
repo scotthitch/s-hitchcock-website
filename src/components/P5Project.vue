@@ -7,6 +7,7 @@ const props = defineProps<P5ProjectProps>();
 
 const p5CanvasComponentKey = ref(0);
 
+// TODO: explore if ref is the right thing to use here. probably should be 'computed'
 const canvasAspectRatio = ref<number>(props.maxCanvasDimensions.height/props.maxCanvasDimensions.width);
 
 const liveScreenDimensions = ref<ScreenDimensions>({
