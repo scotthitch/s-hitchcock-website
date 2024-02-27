@@ -38,15 +38,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <p class="text-3xl font-bold">{{ props.title }}</p>
-    <p>{{ props.description }}</p>
-    <P5Canvas 
-        :key="p5CanvasComponentKey"
-        :scriptName="props.scriptName"
-        :script="props.script"
-        :screenDimensions="calculateCanvasDimensions()"
-    />
-    <p>{{ props.usageInstructions }}</p>
+    <div class="flex flex-col items-center text-center place-content-center h-screen snap-always snap-center">
+        <p class="text-3xl font-bold">{{ props.title }}</p>
+        <p>{{ props.description }}</p>
+        <P5Canvas 
+            :key="p5CanvasComponentKey"
+            :scriptName="props.scriptName"
+            :script="props.script"
+            :screenDimensions="calculateCanvasDimensions()"
+        />
+        <p>{{ props.usageInstructions }}</p>
+    </div>
 </template>
 
 <style scoped>  
