@@ -9,7 +9,7 @@ import script from "./script"
 <template>
     <P5Project
       title="Waterfall"
-      scriptName="waterfal"
+      scriptName="waterfall"
       description="Wee watch them fall"
       usageInstructions="Not much to do here."
       :script="script"
