@@ -10,10 +10,14 @@ const wasP5CanvasInViewport = ref(false);
 
 const p5 = ref<P5>();
 
+const generateNewP5Sketch = () => {
+    const targetElement = document.getElementById(props.scriptID) || undefined;
+    p5.value = new P5(props.script(props.screenDimensions), targetElement);
+}
 
 // Function to check if element is in viewport
-function isElementInViewport(el: HTMLElement) {
-    var rect = el.getBoundingClientRect();
+const isElementInViewport = (el: HTMLElement) => {
+    const rect = el.getBoundingClientRect();
     // rect.
     return (
         rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
@@ -21,8 +25,8 @@ function isElementInViewport(el: HTMLElement) {
     );
 }
 
-function handleP5ViewportInteraction() {
-    let targetElement = document.getElementById(props.scriptName);
+const handleP5ViewportInteraction = () => {
+    const targetElement = document.getElementById(props.scriptID);
 
     // If the target element is not an elemnent on the DOM
     if (targetElement === null) {
@@ -36,7 +40,7 @@ function handleP5ViewportInteraction() {
     if (isP5CanvasInViewport && !wasP5CanvasInViewport.value) {
         // Reset the p5 sketch
         p5.value?.remove();
-        p5.value = new P5(props.script(props.screenDimensions), props.scriptName);
+        generateNewP5Sketch();
 
         // Set visibility to true
         wasP5CanvasInViewport.value = true;
@@ -57,7 +61,7 @@ function handleP5ViewportInteraction() {
 
 onMounted(() => {
     // Initially start up all projects and immediately pause them
-    p5.value = new P5(props.script(props.screenDimensions), props.scriptName);
+    generateNewP5Sketch()
     p5.value?.noLoop();
 
     handleP5ViewportInteraction();
@@ -71,5 +75,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="border-8 border-black shadow-lg" :id="props.scriptName"></div>
+    <div class="border-8 border-black shadow-lg" :id="props.scriptID"></div>
 </template>

@@ -44,7 +44,7 @@ onUnmounted(() => {
         <p>{{ props.description }}</p>
         <P5Canvas 
             :key="p5CanvasComponentKey"
-            :scriptName="props.scriptName"
+            :scriptID="props.scriptID"
             :script="props.script"
             :screenDimensions="calculateCanvasDimensions()"
         />

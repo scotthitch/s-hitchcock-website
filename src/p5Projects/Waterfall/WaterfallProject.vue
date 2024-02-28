@@ -5,11 +5,11 @@ import script from "./script"
 </script>
 
 
-<!-- TODO: fix scriptname issue -->
+<!-- TODO: fix scriptID issue -->
 <template>
     <P5Project
       title="Waterfall"
-      scriptName="waterfall"
+      scriptID="waterfall"
       description="Wee watch them fall"
       usageInstructions="Not much to do here."
       :script="script"

@@ -18,12 +18,12 @@ export interface ScreenDimensions {
 export interface P5CanvasProps {
     screenDimensions: ScreenDimensions,
     script: Function,
-    scriptName: HTMLElement
+    scriptID: string
 }
 
 export interface P5ProjectProps {
     title: string,
-    scriptName: HTMLElement,
+    scriptID: string,
     description: string,
     usageInstructions: string,
     script: p5ScriptWrapperFunction,
