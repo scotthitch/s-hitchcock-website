@@ -17,7 +17,7 @@ export interface ScreenDimensions {
 
 export interface P5CanvasProps {
     screenDimensions: ScreenDimensions,
-    script: Function,
+    script: p5ScriptWrapperFunction,
     scriptID: string
 }
 
