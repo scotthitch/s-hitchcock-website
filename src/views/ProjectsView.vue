@@ -4,9 +4,26 @@ import BallCascadeProject from '../p5Projects/BallCascade/BallCascadeProject.vue
 import JoyDivisionLinesProject from '../p5Projects/JoyDivisionLines/JoyDivisionLinesProject.vue';
 import GrowingCircleProject from '../p5Projects/GrowingCircle/GrowingCircleProject.vue'
 import WaterfallProject from '../p5Projects/Waterfall/WaterfallProject.vue'
-import { shallowRef } from 'vue'
+import { onMounted, onUnmounted, shallowRef } from 'vue'
 
 const projects = shallowRef([WaterfallProject, GrowingCircleProject, JoyDivisionLinesProject, KaleidoscopeProject, BallCascadeProject]);
+
+
+
+function preventDefaultForScrollKeys(event: KeyboardEvent) {
+    const keysToPrevent = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']; // Arrow keys
+    if (keysToPrevent.includes(event.code)) {
+        event.preventDefault();
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('keydown', e => {preventDefaultForScrollKeys(e)});
+})
+
+onUnmounted(() => {
+    window.removeEventListener('keydown', e => {preventDefaultForScrollKeys(e)});
+})
 
 </script>
 
