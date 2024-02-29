@@ -20,8 +20,8 @@ const isElementInViewport = (el: HTMLElement) => {
     const rect = el.getBoundingClientRect();
     // rect.
     return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.bottom >= 0
+        rect.top < window.innerHeight &&
+        rect.bottom > 10
     );
 }
 
@@ -39,6 +39,8 @@ const handleP5ViewportInteraction = () => {
     // P5 canvas just moved into viewport
     if (isP5CanvasInViewport && !wasP5CanvasInViewport.value) {
         // Start the p5 sketch up
+        // console.log(`${props.scriptID} appeared`);
+        
         p5.value?.loop()
 
         // Set visibility to true
@@ -49,6 +51,7 @@ const handleP5ViewportInteraction = () => {
 
     // P5 canvas just moved out of viewport
     if (!isP5CanvasInViewport && wasP5CanvasInViewport.value) {
+        // console.log(`${props.scriptID} disappeared`);
         // Remove the old sketch, start a new one and immediately pause it
         p5.value?.remove();
         generateNewP5Sketch();
