@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DownloadAsset from '../components/DownloadAsset.vue';
+import DownloadAssetButton from '../components/DownloadAssetButton.vue';
 import cvURL from '../assets/scott_hitchcock_cv.pdf'
 
 </script>
@@ -9,7 +9,7 @@ import cvURL from '../assets/scott_hitchcock_cv.pdf'
     
       <img src="../assets/scott_hitchcock_cv-1.png">
       <img class="mt-2" src="../assets/scott_hitchcock_cv-2.png">
-      <DownloadAsset
+      <DownloadAssetButton
         :assetPath="cvURL"
         assetFileType="pdf"
         downloadName="Scott Hitchcock CV"
