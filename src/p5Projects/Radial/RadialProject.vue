@@ -6,8 +6,8 @@ import script from "./script"
 
 <template>
     <P5Project 
-      title="Kaleidoscope"
-      scriptID="kaleidoscope"
+      title="Radial"
+      scriptID="radial"
       description="Draw some symmetrical pictures"
       usageInstructions="Use the up and down keys to change the number of reflections. Click to clear the screen"
       :script="script"
