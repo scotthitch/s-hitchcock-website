@@ -38,9 +38,8 @@ const handleP5ViewportInteraction = () => {
 
     // P5 canvas just moved into viewport
     if (isP5CanvasInViewport && !wasP5CanvasInViewport.value) {
-        // Reset the p5 sketch
-        p5.value?.remove();
-        generateNewP5Sketch();
+        // Start the p5 sketch up
+        p5.value?.loop()
 
         // Set visibility to true
         wasP5CanvasInViewport.value = true;
@@ -50,7 +49,9 @@ const handleP5ViewportInteraction = () => {
 
     // P5 canvas just moved out of viewport
     if (!isP5CanvasInViewport && wasP5CanvasInViewport.value) {
-        // Stop the script from looping
+        // Remove the old sketch, start a new one and immediately pause it
+        p5.value?.remove();
+        generateNewP5Sketch();
         p5.value?.noLoop();
 
         // Set old visibility to false

@@ -9,8 +9,8 @@ import script from "./script"
     <P5Project
       title="Perlin Flow Field"
       scriptID="perlin-flow-field"
-      description="PFF"
-      usageInstructions="Just sit back and relax"
+      description="description"
+      usageInstructions="usage instructions"
       :script="script"
       :maxCanvasDimensions="{
         width: 400,
