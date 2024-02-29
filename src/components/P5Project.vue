@@ -51,15 +51,15 @@ onUnmounted(() => {
             />        
         </div>
         <div class="absolute bottom-0 left-0">
-            <p class="text-8xl font-bold text-white opacity-75">{{ props.title }}</p>
+            <p class="text-8xl font-bold text-white opacity-80">{{ props.title }}</p>
         </div>
         
         <div class="absolute bottom-0 right-0">
-            <p class="text-2xl font-bold text-white opacity-75">{{ props.description }}</p>
+            <p class="text-2xl font-bold text-white opacity-80">{{ props.description }}</p>
         </div>
 
         <div class="absolute top-0 right-0">
-            <p class="text-4xl font-bold text-white opacity-75">{{ props.usageInstructions }}</p>
+            <p class="text-4xl font-bold text-white opacity-80">{{ props.usageInstructions }}</p>
         </div>
 
         <!-- <p>{{ props.description }}</p> -->
