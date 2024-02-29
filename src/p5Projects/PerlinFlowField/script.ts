@@ -3,11 +3,14 @@ import P5, { Vector } from 'p5' // Package from npm
 
 const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5: P5): void => {
-        const GRID_ITEM_WIDTH = 1;
-        const FORCE_SCALE_FACTOR = 5;
-        const N_POINTS = 1000;
-        const NOISE_SCALE = 0.005;
-        const CURL = 1
+        const GRID_ITEM_WIDTH = screenDimensions.width/400;
+        const FORCE_SCALE_FACTOR = 50;
+        const N_POINTS = 10000;
+        const NOISE_SCALE = 0.03;
+        const CURL = 0.6
+        const POINT_VELOCITY_LIMIT = 1;
+        const POINT_OPACITY = 3; // %
+        const RANDOM_BASE_OFFSET = p5.random(2*p5.TWO_PI);
         
         let grassPatches = [];
         let points = [];
@@ -15,13 +18,13 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         function generatePerlinForcePatch(i, j) {
             let pos = p5.createVector(i * GRID_ITEM_WIDTH, j * GRID_ITEM_WIDTH);
             
-            let angle = p5.noise(i * NOISE_SCALE, j * NOISE_SCALE)*CURL*p5.TWO_PI; // Adjust noise parameters
+            let angle = p5.noise(i * NOISE_SCALE, j * NOISE_SCALE)*CURL*p5.TWO_PI + RANDOM_BASE_OFFSET; // Adjust noise parameters
             let force = Vector.fromAngle(angle);
             // p5.fromAng÷
             // Vector.fromAngle
             // p5.Vec
             // p5.vec
-            force.setMag(50);
+            force.setMag(FORCE_SCALE_FACTOR);
             
             grassPatches[i][j] = (
                 new GrassPatch(pos, GRID_ITEM_WIDTH, force, FORCE_SCALE_FACTOR)
@@ -88,7 +91,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             updatePosition(force) {
                 this.acc = force;
                 this.vel.add(this.acc);
-                this.vel.limit(1)
+                this.vel.limit(POINT_VELOCITY_LIMIT)
                 this.pos.add(this.vel);
         
   
@@ -98,7 +101,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             }
         
             display() {
-                p5.fill(255, 255, 255, 5);
+                p5.fill(255, 255, 255, POINT_OPACITY);
                 p5.noStroke();
                 p5.ellipse(this.pos.x, this.pos.y, 2);
             }
