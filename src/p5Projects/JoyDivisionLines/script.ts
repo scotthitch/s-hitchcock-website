@@ -22,7 +22,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         let isLooping = 1;
 
         p5.setup = () => {
-            p5.createCanvas(screenDimensions.width, screenDimensions.width);       
+            p5.createCanvas(screenDimensions.width, screenDimensions.height);       
 
             xStep = (X_RIGHT_DRAWING_BOUNDS - X_LEFT_DRAWING_BOUNDS) / 100;
             yStep = (Y_BOTTOM_DRAWING_BOUNDS - Y_TOP_DRAWING_BOUNDS) / 60;
