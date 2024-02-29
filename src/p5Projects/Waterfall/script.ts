@@ -6,7 +6,8 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         let veils = [];
         let numVeils = 16;
         let veilsMin2 = numVeils - 2;
-        let colours = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"]
+        // let colours = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"]
+        const COLOURS = ["#464655", "#F4D35E", "#8ACDEA", "#A89B9D", "#FF521B"]
         let inc;
         let flux;
 
@@ -19,9 +20,9 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             let colIndex = 1;
             let prevColIndex = colIndex;
             for (let j = -inc; j < p5.height + inc; j += inc / 2) {
-                colIndex = generateRandomIndex(prevColIndex, colours.length);
+                colIndex = generateRandomIndex(prevColIndex, COLOURS.length);
                 prevColIndex = colIndex;
-                let v = new Veil(j, flux, colours[colIndex], colIndex);
+                let v = new Veil(j, flux, COLOURS[colIndex], colIndex);
                 veils.push(v)
                 v.calcTopRow();
             }
