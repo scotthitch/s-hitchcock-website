@@ -6,13 +6,14 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const GRID_ITEM_WIDTH = screenDimensions.width/400;
         const FORCE_SCALE_FACTOR = 50;
         const N_POINTS = 10000;
-        const NOISE_SCALE = 0.03;
+        const NOISE_SCALE = 0.04;
         const CURL = 0.6
         const POINT_VELOCITY_LIMIT = 1;
         const POINT_OPACITY = 3; // %
         const RANDOM_BASE_OFFSET = p5.random(2*p5.TWO_PI);
         const BACKGROUND_COLOUR = "#FF1B1C";
         const PRIMARY_COLOUR = "#FFE099";
+        const POINT_SIZE = Math.min(screenDimensions.height, screenDimensions.width) / 200;
         
         let grassPatches = [];
         let points = [];
@@ -109,7 +110,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
                 pointColour.setAlpha(POINT_OPACITY);
                 p5.fill(pointColour);
                 p5.noStroke();
-                p5.ellipse(this.pos.x, this.pos.y, 2);
+                p5.ellipse(this.pos.x, this.pos.y, POINT_SIZE);
             }
         
             // need some bounds checker
