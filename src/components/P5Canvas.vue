@@ -76,5 +76,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="border-8 border-black shadow-lg" :id="props.scriptID"></div>
+    <div :id="props.scriptID"></div>
 </template>
