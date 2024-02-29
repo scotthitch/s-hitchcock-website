@@ -11,6 +11,8 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const POINT_VELOCITY_LIMIT = 1;
         const POINT_OPACITY = 3; // %
         const RANDOM_BASE_OFFSET = p5.random(2*p5.TWO_PI);
+        const BACKGROUND_COLOUR = "#FF1B1C";
+        const PRIMARY_COLOUR = "#FFE099";
         
         let grassPatches = [];
         let points = [];
@@ -33,7 +35,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         
         p5.setup = () => {
             p5.createCanvas(screenDimensions.width, screenDimensions.height);
-            p5.background(0);
+            p5.background(BACKGROUND_COLOUR);
         
             // Generate points
             for (let i = 0; i < N_POINTS; i++) {
@@ -101,7 +103,11 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             }
         
             display() {
-                p5.fill(255, 255, 255, POINT_OPACITY);
+                // let col = ;
+                // col.setAlpha
+                const pointColour = p5.color(PRIMARY_COLOUR);
+                pointColour.setAlpha(POINT_OPACITY);
+                p5.fill(pointColour);
                 p5.noStroke();
                 p5.ellipse(this.pos.x, this.pos.y, 2);
             }
