@@ -42,7 +42,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             // For each reflection draw a new line with a slightly different colour
             const reflectionAngle = calculateAngleOfRelfection(numberOfReflections);
     
-            const startingPolarPoint: PolarCoordinates = {r: (screenDimensions.width)*0.45, theta: 0}
+            const startingPolarPoint: PolarCoordinates = {r: (p5.min(screenDimensions.width, screenDimensions.height))*0.4, theta: 0}
             for (let i = 0; i < numberOfReflections; i++) {
                 const theta = reflectionAngle * i;
                 const hue = HUE_AVERAGE + HUE_HALF_RANGE * p5.cos(theta + hueOffset);
