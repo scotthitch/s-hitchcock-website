@@ -6,8 +6,8 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const GRID_ITEM_WIDTH = screenDimensions.width/400;
         const FORCE_SCALE_FACTOR = 50;
         const N_POINTS = 10000;
-        const NOISE_SCALE = 0.1;
-        const CURL = 0.5
+        const NOISE_SCALE = 0.05;
+        const CURL = 6.3;
         const POINT_VELOCITY_LIMIT = 1;
         const POINT_OPACITY = 3; // %
         const RANDOM_BASE_OFFSET = p5.random(2*p5.TWO_PI);
@@ -26,7 +26,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         function generatePerlinForcePatch(i, j) {
             let pos = p5.createVector(i * GRID_ITEM_WIDTH, j * GRID_ITEM_WIDTH);
             
-            let angle = p5.noise(i * NOISE_SCALE, j * NOISE_SCALE)*CURL*p5.TWO_PI + RANDOM_BASE_OFFSET; // Adjust noise parameters
+            let angle = p5.noise(i * NOISE_SCALE, j * NOISE_SCALE) * CURL + RANDOM_BASE_OFFSET; // Adjust noise parameters
             let force = Vector.fromAngle(angle);
             // p5.fromAng÷
             // Vector.fromAngle
