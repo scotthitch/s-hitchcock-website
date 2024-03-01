@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import NavBar from './components/NavBar.vue'
+import NavBar2 from './components/Navbar2.vue'
 </script>
 
 <template>
-  <!-- <NavBar /> -->
+  <NavBar2 />
 
   <!-- <div class="fixed hidden sm:block left-[31%] w-0.5 bg-black" style="top: 3%; bottom: 3%;"></div> -->
 
