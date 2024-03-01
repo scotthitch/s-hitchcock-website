@@ -14,14 +14,14 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const OPACITY = 30; // %
         
         // Growth rate constants
-        const GROWTH_INCREMENT = 0.25;
-        const GROWTH_NOISE = 15; // % of growth increment
+        const GROWTH_INCREMENT = 0.22;
+        const GROWTH_NOISE = 17; // % of growth increment
 
         // const BACKGROUND_COLOUR = "#D2BBA0"
         // const PRIMARY_COLOUR = "#54457F"
         
-        const BACKGROUND_COLOUR = "#FF1B1C";
-        const PRIMARY_COLOUR = "#FFE099";
+        const BACKGROUND_COLOUR = "#f00000";
+        const PRIMARY_COLOUR = "#ffedc7";
 
         const shapeNodesRadii: number[] = [];
 
