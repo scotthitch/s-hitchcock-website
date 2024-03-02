@@ -7,7 +7,7 @@ import WaterfallProject from '../p5Projects/Waterfall/WaterfallProject.vue'
 import PerlinFlowFieldProject from "../p5Projects/PerlinFlowField/PerlinFlowFieldProject.vue"
 import { onMounted, onUnmounted, shallowRef } from 'vue'
 
-const projects = shallowRef([PerlinFlowFieldProject, WaterfallProject, GrowingCircleProject, JoyDivisionLinesProject, RadialProject, BallCascadeProject]);
+const projects = shallowRef([WaterfallProject, PerlinFlowFieldProject, GrowingCircleProject, JoyDivisionLinesProject, RadialProject, BallCascadeProject]);
 
 
 
