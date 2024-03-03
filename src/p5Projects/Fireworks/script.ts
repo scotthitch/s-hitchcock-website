@@ -2,10 +2,15 @@ import { getImpliedNodeFormatForFile } from 'typescript'
 import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
+interface FlightParams {
+  initialVelocity: P5.Vector, explodeTime: number
+}
+
 const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5Instance: P5): void => {
 
-        const GRAVITY = p5Instance.createVector(0, -0.15)
+        const GRAVITY = p5Instance.createVector(0, -0.15);
+        const COLOURS = ["#ED254E", "#F9DC5C", "#0FA3B1", "#8A4FFF", "#33CA7F"]
         const fireworks: Missile[] = [];
 
         p5Instance.setup = () => {
@@ -22,7 +27,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
             // If the missile is ready to explode then generate it's children and remove it
             if (firework.readyToExplode()) {
-              generateExplodedFireworks(36, firework.position)
+              generateExplodedFireworks(20, firework.position)
               missilesArray.splice(index, 1)
             }
 
@@ -39,15 +44,19 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
         const generateExplodedFireworks = (nFireworks: number, parentPosition: P5.Vector) => {
           // const n = 12;
-          const nFireworksSquareRoot = 20
-          const angleDelta = p5Instance.TWO_PI / nFireworksSquareRoot;
-
+          // const nFireworksSquareRoot = 20
+          const angleDelta = p5Instance.TWO_PI / nFireworks;
+          
           for (let phi = 0; phi < p5Instance.TWO_PI; phi += angleDelta) {
+            // Only render the visible parts on xy plane
             for (let theta = 0; theta < p5Instance.HALF_PI; theta += angleDelta) {
-              let xPosition = 1 * p5Instance.cos(phi) * p5Instance.random(1, 1.5)
-              let yPosition = 1 * p5Instance.sin(phi) * p5Instance.sin(theta) * p5Instance.random(1, 1.5)
-              const missileVelocity = p5Instance.createVector(xPosition, yPosition).mult(1.5);
-              fireworks.push(new Missile(parentPosition.copy(), missileVelocity, 1000, 0.05, true))
+              const xVelocity = 1 * p5Instance.cos(phi) * p5Instance.random(1, 1.5)
+              const yVelocity = 1 * p5Instance.sin(phi) * p5Instance.sin(theta) * p5Instance.random(1, 1.5)
+              const missileVelocity = p5Instance.createVector(xVelocity, yVelocity).mult(1.5);
+              // const colour = 
+              const colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
+
+              fireworks.push(new Missile(parentPosition.copy(), missileVelocity, 1000, 0.05, true, colour))
             }
           }     
         }
@@ -66,7 +75,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           return roots;
         }
 
-        const calculateFlightParamsFromClick = (p0: P5.Vector, p2: P5.Vector): {initialVelocity: P5.Vector, explodeTime: number} => {
+        const calculateFlightParamsFromClick = (p0: P5.Vector, p2: P5.Vector): FlightParams => {
           const maxHeight = p2.y*1.15
 
           const initialVelocity_y = p5Instance.sqrt(-maxHeight*2*GRAVITY.y); 
@@ -89,7 +98,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
       
           const flightParams = calculateFlightParamsFromClick(launchLocation, targetLocation)
 
-          fireworks.push(new Missile(launchLocation, flightParams.initialVelocity, flightParams.explodeTime, 1, false))
+          fireworks.push(new Missile(launchLocation, flightParams.initialVelocity, flightParams.explodeTime, 1, false, "#ffffff"))
         }
 
 
@@ -101,24 +110,24 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           position: P5.Vector;
           velocity: P5.Vector;
           explodeCountdown: number;
-          testNumber: number
+          gravityMultiplier: number
           opacity: number
           willFade: boolean
+          colour: string
 
-
-          constructor(initialPosition: P5.Vector, initialVelocity: P5.Vector, explodeTime: number, testNumber: number, willFade: boolean) {
+          constructor(initialPosition: P5.Vector, initialVelocity: P5.Vector, explodeTime: number, gravityMultiploer: number, willFade: boolean, colour: string) {
             this.position = initialPosition;
             this.velocity = initialVelocity;
             this.explodeCountdown = explodeTime;
-            this.testNumber = testNumber;
-            
+            this.gravityMultiplier = gravityMultiploer;
+            this.colour = colour
             this.willFade = willFade;  
-            this.opacity = 255
+            this.opacity = 255;
           
           }
 
           fly() {
-            const acceleration = GRAVITY.copy().mult(this.testNumber)
+            const acceleration = GRAVITY.copy().mult(this.gravityMultiplier)
             this.velocity.add(acceleration);
             this.position.add(this.velocity);
             this.explodeCountdown--;
@@ -142,7 +151,9 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
           draw() {
             p5Instance.noStroke();
-            p5Instance.fill(255, 255, 255, this.opacity)
+            const colour = p5Instance.color(this.colour)
+            colour.setAlpha(this.opacity)
+            p5Instance.fill(colour)
             p5Instance.ellipse(this.position.x, this.position.y, 5)
           }
         }
