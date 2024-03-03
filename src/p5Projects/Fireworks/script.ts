@@ -6,14 +6,13 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
         const GRAVITY = p5Instance.createVector(0, 0.025)
         const fireworks: Firework[] = [];
-        // fireworks.push(new Firework())
 
         p5Instance.setup = () => {
           p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
         }
         
         p5Instance.draw = () => {
-          p5Instance.background(0)
+          p5Instance.background(0, 0, 0, 50)
           // p5Instance.background(0);
           fireworks.forEach(firework => {
           // if (firework) {
@@ -94,8 +93,8 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             const n = 12;
             const angleDelta = p5Instance.TWO_PI / n;
             for (let i: number = 0; i < n; i++) {
-              const angle = angleDelta * i;
-              const missileVelocity = P5.Vector.fromAngle(angle, 0.2).add(this.velocity);
+              const angle = angleDelta * i * p5Instance.random(1, 1.08);
+              const missileVelocity = P5.Vector.fromAngle(angle, 0.6).add(this.velocity).mult(p5Instance.random(1, 1.08));
               this.childProjectile.push(new Projectile(this.position.copy(), missileVelocity))
             }
 
