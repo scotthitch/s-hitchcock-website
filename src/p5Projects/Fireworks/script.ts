@@ -11,9 +11,10 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         p5Instance.setup = () => {
           p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
         }
-
+        
         p5Instance.draw = () => {
-          p5Instance.background(0);
+          p5Instance.background(0)
+          // p5Instance.background(0);
           fireworks.forEach(firework => {
           // if (firework) {
             firework.fly()
@@ -40,7 +41,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
 
 
-        class Missile {
+        class Projectile {
           position: P5.Vector;
           velocity: P5.Vector;
 
@@ -56,6 +57,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
           draw() {
             p5Instance.noStroke();
+            p5Instance.fill(255, 255, 255, 255)
             p5Instance.ellipse(this.position.x, this.position.y, 5)
           }
         }
@@ -65,17 +67,17 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
 
 
-        class Firework extends Missile {
+        class Firework extends Projectile {
           origin: P5.Vector;
           targetLocation: P5.Vector;
-          childMissiles: Missile[];
+          childProjectile: Projectile[];
           hasExploded: boolean;
 
           constructor(targetLocation: P5.Vector, origin: P5.Vector, initialVelocity: P5.Vector) {
             super(origin, initialVelocity);
             this.origin = origin;
             this.targetLocation = targetLocation;
-            this.childMissiles = [];
+            this.childProjectile = [];
             this.hasExploded = false;
           }
 
@@ -83,20 +85,18 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             
             if (this.position.y < 80 && !this.hasExploded) {
               this.explode()
-              return
-            } 
-            super.fly()
+            } else {
+              super.fly()
+            }
           }
 
           explode() {
-            console.log('explode')
             const n = 12;
             const angleDelta = p5Instance.TWO_PI / n;
             for (let i: number = 0; i < n; i++) {
               const angle = angleDelta * i;
               const missileVelocity = P5.Vector.fromAngle(angle, 0.2).add(this.velocity);
-              console.log(missileVelocity)
-              this.childMissiles.push(new Missile(this.position.copy(), missileVelocity))
+              this.childProjectile.push(new Projectile(this.position.copy(), missileVelocity))
             }
 
             this.hasExploded = true;
@@ -106,10 +106,9 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             if (!this.hasExploded) {
               super.draw()
             }
-            this.childMissiles.forEach((missile) => {
-              // console.log(ind)
-              missile.fly()
-              missile.draw()
+            this.childProjectile.forEach((projectile) => {
+              projectile.fly()
+              projectile.draw()
             })
             
           }
