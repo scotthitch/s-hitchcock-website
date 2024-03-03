@@ -5,29 +5,32 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5Instance: P5): void => {
 
         const GRAVITY = p5Instance.createVector(0, -0.2)
-        const missiles: Missile[] = [];
+        const fireworks: Missile[] = [];
 
         p5Instance.setup = () => {
           p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
         }
         
         p5Instance.draw = () => {
-          console.log(missiles.length)
+          console.log(fireworks.length)
           p5Instance.background(0, 0, 0, 50)
           // p5Instance.
-          missiles.forEach((missile, index, missilesArray) => {
-            missile.fly()
-            missile.draw()
+          fireworks.forEach((firework, index, missilesArray) => {
+            firework.fly()
+            firework.draw()
 
-            // If the missile has exploded then generate it's children and remove it
-            if (missile.readyToExplode()) {
-              generateExplodedFireworks(30, missile.position)
+            // If the missile is ready to explode then generate it's children and remove it
+            if (firework.readyToExplode()) {
+              generateExplodedFireworks(30, firework.position)
               missilesArray.splice(index, 1)
-              return
             }
 
             // If missile out of screen then remove it
-            if (missile.belowScreenBottom(0)) {
+            if (firework.belowScreenBottom(0)) {
+              missilesArray.splice(index, 1)
+            }
+
+            if (firework.hasFaded()) {
               missilesArray.splice(index, 1)
             }
           })
@@ -38,8 +41,9 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           const angleDelta = p5Instance.TWO_PI / nFireworks;
           for (let i: number = 0; i < nFireworks; i++) {
             const angle = angleDelta * i * p5Instance.random(1, 1.08);
-            const missileVelocity = P5.Vector.fromAngle(angle, 2.6).mult(p5Instance.random(0.1, 1.2));
-            missiles.push(new Missile(parentPosition.copy(), missileVelocity, 1000))
+            // P5.Vector.
+            const missileVelocity = P5.Vector.fromAngle(angle, 1).mult(p5Instance.random(0.1, 1.2));
+            fireworks.push(new Missile(parentPosition.copy(), missileVelocity, 1000, 0.02, true))
           }          
         }
 
@@ -80,7 +84,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
       
           const flightParams = calculateFlightParamsFromClick(launchLocation, targetLocation)
 
-          missiles.push(new Missile(launchLocation, flightParams.initialVelocity, flightParams.explodeTime))   
+          fireworks.push(new Missile(launchLocation, flightParams.initialVelocity, flightParams.explodeTime, 1, false))
         }
 
 
@@ -92,18 +96,35 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           position: P5.Vector;
           velocity: P5.Vector;
           explodeCountdown: number;
+          testNumber: number
+          opacity: number
+          willFade: boolean
 
 
-          constructor(initialPosition: P5.Vector, initialVelocity: P5.Vector, explodeTime: number) {
+          constructor(initialPosition: P5.Vector, initialVelocity: P5.Vector, explodeTime: number, testNumber: number, willFade: boolean) {
             this.position = initialPosition;
             this.velocity = initialVelocity;
             this.explodeCountdown = explodeTime;
+            this.testNumber = testNumber;
+            
+            this.willFade = willFade;  
+            this.opacity = 255
+          
           }
 
           fly() {
-            this.velocity.add(GRAVITY);
+            const acceleration = GRAVITY.copy().mult(this.testNumber)
+            this.velocity.add(acceleration);
             this.position.add(this.velocity);
             this.explodeCountdown--;
+
+            if (this.willFade) {
+              this.opacity -= 2;
+            }
+          }
+
+          hasFaded() {
+            return (this.opacity < 0)
           }
 
           readyToExplode() {
@@ -116,7 +137,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
           draw() {
             p5Instance.noStroke();
-            p5Instance.fill(255, 255, 255, 255)
+            p5Instance.fill(255, 255, 255, this.opacity)
             p5Instance.ellipse(this.position.x, this.position.y, 5)
           }
         }
