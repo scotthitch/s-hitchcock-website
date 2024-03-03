@@ -1,10 +1,11 @@
+import { getImpliedNodeFormatForFile } from 'typescript'
 import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
 const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5Instance: P5): void => {
 
-        const GRAVITY = p5Instance.createVector(0, -0.2)
+        const GRAVITY = p5Instance.createVector(0, -0.15)
         const fireworks: Missile[] = [];
 
         p5Instance.setup = () => {
@@ -13,7 +14,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         
         p5Instance.draw = () => {
           console.log(fireworks.length)
-          p5Instance.background(0, 0, 0, 50)
+          p5Instance.background(0, 0, 0, 20)
           // p5Instance.
           fireworks.forEach((firework, index, missilesArray) => {
             firework.fly()
@@ -21,7 +22,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
             // If the missile is ready to explode then generate it's children and remove it
             if (firework.readyToExplode()) {
-              generateExplodedFireworks(30, firework.position)
+              generateExplodedFireworks(36, firework.position)
               missilesArray.splice(index, 1)
             }
 
@@ -38,12 +39,17 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
         const generateExplodedFireworks = (nFireworks: number, parentPosition: P5.Vector) => {
           // const n = 12;
-          const angleDelta = p5Instance.TWO_PI / nFireworks;
-          for (let i: number = 0; i < nFireworks; i++) {
-            const angle = angleDelta * i;
-            const missileVelocity = P5.Vector.fromAngle(angle, 1);
-            fireworks.push(new Missile(parentPosition.copy(), missileVelocity, 1000, 0.02, true))
-          }          
+          const nFireworksSquareRoot = 20
+          const angleDelta = p5Instance.TWO_PI / nFireworksSquareRoot;
+
+          for (let phi = 0; phi < p5Instance.TWO_PI; phi += angleDelta) {
+            for (let theta = 0; theta < p5Instance.HALF_PI; theta += angleDelta) {
+              let xPosition = 1 * p5Instance.cos(phi) * p5Instance.random(1, 1.5)
+              let yPosition = 1 * p5Instance.sin(phi) * p5Instance.sin(theta) * p5Instance.random(1, 1.5)
+              const missileVelocity = p5Instance.createVector(xPosition, yPosition).mult(1.5);
+              fireworks.push(new Missile(parentPosition.copy(), missileVelocity, 1000, 0.05, true))
+            }
+          }     
         }
 
         const quadraticRoots = (a: number, b: number, c: number) => {
@@ -118,7 +124,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             this.explodeCountdown--;
 
             if (this.willFade) {
-              this.opacity -= 2;
+              this.opacity -= 2.5;
             }
           }
 
