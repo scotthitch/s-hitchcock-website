@@ -40,9 +40,8 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           // const n = 12;
           const angleDelta = p5Instance.TWO_PI / nFireworks;
           for (let i: number = 0; i < nFireworks; i++) {
-            const angle = angleDelta * i * p5Instance.random(1, 1.08);
-            // P5.Vector.
-            const missileVelocity = P5.Vector.fromAngle(angle, 1).mult(p5Instance.random(0.1, 1.2));
+            const angle = angleDelta * i;
+            const missileVelocity = P5.Vector.fromAngle(angle, 1);
             fireworks.push(new Missile(parentPosition.copy(), missileVelocity, 1000, 0.02, true))
           }          
         }
