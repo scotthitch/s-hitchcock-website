@@ -45,13 +45,16 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           // const n = 12;
           // const nFireworksSquareRoot = 20
           const angleDelta = p5Instance.TWO_PI / nFireworks;
-          
+
+          const velocityMagnitude = p5Instance.random(0.8, 1.5)
           for (let phi = 0; phi < p5Instance.TWO_PI; phi += angleDelta) {
             // Only render the visible parts on xy plane
             for (let theta = 0; theta < p5Instance.HALF_PI; theta += angleDelta) {
-              const xVelocity = 1 * p5Instance.cos(phi) * p5Instance.random(1, 1.5)
-              const yVelocity = 1 * p5Instance.sin(phi) * p5Instance.sin(theta) * p5Instance.random(1, 1.5)
-              const missileVelocity = p5Instance.createVector(xVelocity, yVelocity).mult(1.5);
+              const phiRandom = phi * p5Instance.random(1, 1.2);
+              const thetaRandom = theta * p5Instance.random(1, 1.2);
+              const xVelocity = 1 * p5Instance.cos(phiRandom) * p5Instance.random(1, 1.5);
+              const yVelocity = 1 * p5Instance.sin(phiRandom) * p5Instance.sin(thetaRandom) * p5Instance.random(1, 1.5);
+              const missileVelocity = p5Instance.createVector(xVelocity, yVelocity).mult(velocityMagnitude);
               // const colour = 
               const colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
 
