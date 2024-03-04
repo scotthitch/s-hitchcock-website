@@ -1,4 +1,3 @@
-import { getImpliedNodeFormatForFile } from 'typescript'
 import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
