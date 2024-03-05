@@ -9,7 +9,10 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5Instance: P5): void => {
 
         const GRAVITY = p5Instance.createVector(0, -0.15);
+        const PARENT_GRAVITY_MULTIPLIER = 1;
+        const CHILD_GRAVITY_MULTIPLIER = 0.05;
         const COLOURS = ["#ED254E", "#F9DC5C", "#0FA3B1", "#8A4FFF", "#33CA7F"]
+        const CHILD_OPACITY_FADE_RATE = 2.5
         const fireworks: Missile[] = [];
 
         p5Instance.setup = () => {
@@ -17,9 +20,9 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         }
         
         p5Instance.draw = () => {
-          console.log(fireworks.length)
-          p5Instance.background(0, 0, 0, 20)
-          // p5Instance.
+          p5Instance.background(0, 0, 0, 50)
+
+          // Iterate through all the fireworks
           fireworks.forEach((firework, index, missilesArray) => {
             firework.fly()
             firework.draw()
@@ -35,30 +38,37 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
               missilesArray.splice(index, 1)
             }
 
+            // If the missile has faded away then remove it
             if (firework.hasFaded()) {
               missilesArray.splice(index, 1)
             }
           })
         }
 
-        const generateExplodedFireworks = (nFireworks: number, parentPosition: P5.Vector) => {
-          // const n = 12;
-          // const nFireworksSquareRoot = 20
-          const angleDelta = p5Instance.TWO_PI / nFireworks;
+        const calculateChildFlightParams = (phi: number, theta: number, velocityMagnitude: number): FlightParams => {
+          const xVelocity = 1 * p5Instance.cos(phi) * p5Instance.random(1, 1.5);
+          const yVelocity = 1 * p5Instance.sin(phi) * p5Instance.sin(theta) * p5Instance.random(1, 1.5);
+          const missileVelocity = p5Instance.createVector(xVelocity, yVelocity).mult(velocityMagnitude);
 
+          return {
+            initialVelocity: missileVelocity,
+            explodeTime: 1000
+          }
+        }
+
+        const generateExplodedFireworks = (nFireworks: number, parentPosition: P5.Vector) => {
+          const angleDelta = p5Instance.TWO_PI / nFireworks;
           const velocityMagnitude = p5Instance.random(0.8, 1.5)
+
           for (let phi = 0; phi < p5Instance.TWO_PI; phi += angleDelta) {
             // Only render the visible parts on xy plane
             for (let theta = 0; theta < p5Instance.HALF_PI; theta += angleDelta) {
               const phiRandom = phi * p5Instance.random(1, 1.2);
               const thetaRandom = theta * p5Instance.random(1, 1.2);
-              const xVelocity = 1 * p5Instance.cos(phiRandom) * p5Instance.random(1, 1.5);
-              const yVelocity = 1 * p5Instance.sin(phiRandom) * p5Instance.sin(thetaRandom) * p5Instance.random(1, 1.5);
-              const missileVelocity = p5Instance.createVector(xVelocity, yVelocity).mult(velocityMagnitude);
-              // const colour = 
+              const flightParams = calculateChildFlightParams(phiRandom, thetaRandom, velocityMagnitude);
               const colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
 
-              fireworks.push(new Missile(parentPosition.copy(), missileVelocity, 1000, 0.05, true, colour))
+              fireworks.push(new Missile(parentPosition.copy(), flightParams.initialVelocity, flightParams.explodeTime, CHILD_GRAVITY_MULTIPLIER, true, colour))
             }
           }     
         }
@@ -135,7 +145,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             this.explodeCountdown--;
 
             if (this.willFade) {
-              this.opacity -= 2.5;
+              this.opacity -= CHILD_OPACITY_FADE_RATE;
             }
           }
 
