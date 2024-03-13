@@ -73,39 +73,39 @@ onUnmounted(() => {
 
 <template>
     <div class="fixed z-30 top-0 bottom-0 left-0 flex items-center" id="navbar">
-      <div
-        class="rounded-r-2xl flex flex-col justify-center items-center nav-bar-background"
-        :class="isNavBarExpanded ? 
-                'h-screen w-[40vw] sm:w-[25vw] lg:w-[20vw]':
-                'h-24 w-12'"
-        style="background-color: rgba(0, 0, 0, 0.65);"
-        >
-            <Transition name="arrow">
-                <img v-if="!isNavBarExpanded"
-                    src="../assets/arrow.svg"
-                    alt="arrow-icon"
-                    class="absolute"
-                />
-            </Transition>
-            <Transition name="arrow">
-                <div v-if="isNavBarExpanded" class="flex flex-col gap-12 w-full px-8 place-items-end h-screen">
-                    <div class="absolute py-6">
-                        <p class="text-white text-xs sm:text-xl font-bold">
-                            Scott Hitchcock
-                        </p> 
-                    </div>          
-                    <div class="basis-1/3"></div>
-                    <div v-for="(navBarRoute, index) in navBarRoutes" v-bind:key="index" class="text-white text-3xl font-semibold">
-                        <router-link
-                            :to="navBarRoute.to"
-                            :id="navBarRoute.id"
-                        >{{ navBarRoute.title }}</router-link>
+        <a :href="isNavBarExpanded ? undefined : '#'">
+            <div
+                class="rounded-r-2xl flex flex-col justify-center items-center nav-bar-background"
+                :class="isNavBarExpanded ? 
+                        'h-screen w-[40vw] sm:w-[25vw] lg:w-[20vw]':
+                        'h-24 w-12'"
+                style="background-color: rgba(0, 0, 0, 0.55);">
+                <Transition name="arrow">
+                    <img v-if="!isNavBarExpanded"
+                        src="../assets/arrow.svg"
+                        alt="arrow-icon"
+                        class="absolute"
+                    />
+                </Transition>
+                <Transition name="arrow">
+                    <div v-if="isNavBarExpanded" class="flex flex-col gap-12 w-full px-8 place-items-end h-screen">
+                        <div class="absolute py-6">
+                            <p class="text-white text-xs sm:text-xl font-bold">
+                                Scott Hitchcock
+                            </p> 
+                        </div>          
+                        <div class="basis-1/3"></div>
+                        <div v-for="(navBarRoute, index) in navBarRoutes" v-bind:key="index" class="text-white text-3xl font-semibold">
+                            <router-link
+                                :to="navBarRoute.to"
+                                :id="navBarRoute.id"
+                            >{{ navBarRoute.title }}</router-link>
+                        </div>
+                        <div class="basis-1/3"></div>
                     </div>
-                    <div class="basis-1/3"></div>
-                </div>
-            </Transition>
-            
-        </div>
+                </Transition>
+            </div>
+        </a>
     </div>
   </template>
 
