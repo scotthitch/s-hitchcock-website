@@ -21,22 +21,23 @@ const navBarRoutes = [
     }
 ]
 
-const elementIsNavRoute = (id: string): boolean => {
+const elementIsNavigationRoute = (id: string): boolean => {
     for (const route of navBarRoutes) {
         if (route.id === id) {
-            return true; // Word found
+            return true; // id is from a nav element
         }
     }
-    return false; // Word not found
+    return false; // id isn't from a nav element
 }
 
 const handlePageClick = (event: MouseEvent) => {
     const navBarElement = document.getElementById('navbar');
     const clickedElement = event.target as HTMLElement
 
-    if (elementIsNavRoute(clickedElement.id)) {
+    // If the clicked element is a navigation route, then make sure navbar is closed
+    if (elementIsNavigationRoute(clickedElement.id)) {
         isNavBarExpanded.value = false;
-        return
+        return;
     }
 
     // Null element
@@ -44,18 +45,13 @@ const handlePageClick = (event: MouseEvent) => {
         return;
     }
     
-    // If the click isn't on the element
+    // If the click isn't on the navbar then close the navbar
     if (!navBarElement.contains(clickedElement) && clickedElement !== navBarElement) {
         isNavBarExpanded.value = false;
         return;
     }
 
-    // If the navbar is already expanded then just close it
-    if (isNavBarExpanded.value === true) {
-        return;
-    }
-    
-    // Click was on navbar
+    // If the click is on the navbar then set it 
     isNavBarExpanded.value = true;
     return
 }
