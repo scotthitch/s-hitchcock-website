@@ -85,11 +85,11 @@ onUnmounted(() => {
                 </Transition>
                 <Transition name="arrow">
                     <div v-if="isNavBarExpanded" class="flex flex-col gap-12 w-full px-8 place-items-end h-screen">
-                        <div class="absolute py-6">
+                        <!-- <div class="absolute py-6">
                             <p class="text-white text-xs sm:text-xl font-bold">
                                 Scott Hitchcock
                             </p> 
-                        </div>          
+                        </div>           -->
                         <div class="basis-1/3"></div>
                         <div v-for="(navBarRoute, index) in navBarRoutes" v-bind:key="index" class="text-white text-3xl font-semibold">
                             <router-link
