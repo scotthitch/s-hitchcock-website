@@ -50,16 +50,16 @@ onUnmounted(() => {
             :screenDimensions="calculateCanvasDimensions()"
             />        
         </div>
-        <div class="absolute bottom-0 left-0">
-            <p class="text-8xl font-bold text-white opacity-80">{{ props.title }}</p>
+        <div class="absolute bottom-2 left-2">
+            <p class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">{{ props.title }}</p>
         </div>
         
-        <div class="absolute bottom-0 right-0">
+        <!-- <div class="absolute bottom-0 right-0">
             <p class="text-2xl font-bold text-white opacity-80">{{ props.description }}</p>
-        </div>
+        </div> -->
 
-        <div class="absolute top-0 right-0">
-            <p class="text-4xl font-bold text-white opacity-80">{{ props.usageInstructions }}</p>
+        <div class="absolute top-2 right-2">
+            <p class="text-xl lg:text-3xl font-bold text-white opacity-80">{{ props.usageInstructions }}</p>
         </div>
 
         <!-- <p>{{ props.description }}</p> -->
@@ -67,5 +67,5 @@ onUnmounted(() => {
     </div>
 </template>
 
-<style scoped>  
+<style scoped>
 </style>
