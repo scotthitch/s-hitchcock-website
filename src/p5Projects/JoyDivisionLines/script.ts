@@ -3,31 +3,42 @@ import P5 from 'p5' // Package from npm
 
 const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5: P5): void => {
-        const X_LEFT_DRAWING_BOUNDS = screenDimensions.width/20;
-        const X_RIGHT_DRAWING_BOUNDS = screenDimensions.width - X_LEFT_DRAWING_BOUNDS;
-        const Y_TOP_DRAWING_BOUNDS = screenDimensions.height/20;
-        const Y_BOTTOM_DRAWING_BOUNDS = screenDimensions.height - Y_TOP_DRAWING_BOUNDS;
         const ONE_OVER_ROOT_2_PI = 1 / Math.sqrt(Math.PI);
 
+
+        const DRAWING_WIDTH = p5.max(screenDimensions.width*0.45, 300)
+        const X_LEFT_DRAWING_BOUNDS = (screenDimensions.width-DRAWING_WIDTH)/2
+        const X_RIGHT_DRAWING_BOUNDS = screenDimensions.width - X_LEFT_DRAWING_BOUNDS;
+
+        const DRAWING_HEIGHT = p5.max(screenDimensions.height*0.7, 100)
+        // const HEIGHT_DRAWING_PERCENTAGE = 0.7; // as a percantage of screen height
+        const Y_TOP_DRAWING_BOUNDS = (screenDimensions.height-DRAWING_HEIGHT)/2
+
+        // const Y_TOP_DRAWING_BOUNDS = screenDimensions.height * ((1-HEIGHT_DRAWING_PERCENTAGE)/2);;
+        const Y_BOTTOM_DRAWING_BOUNDS = screenDimensions.height - Y_TOP_DRAWING_BOUNDS;
+
+        const N_LINES = 100
+        const Y_STEP = (Y_BOTTOM_DRAWING_BOUNDS - Y_TOP_DRAWING_BOUNDS) / (N_LINES-1);
         const X_STEP = (X_RIGHT_DRAWING_BOUNDS - X_LEFT_DRAWING_BOUNDS) / 100;
-        const Y_STEP = (Y_BOTTOM_DRAWING_BOUNDS - Y_TOP_DRAWING_BOUNDS) / 60;
-        const MIN_STANDARD_DEVIATION = screenDimensions.height / 45;
-        const MAX_STANDARD_DEVIATION = screenDimensions.height / 6;
-        let MU = 250;
-        let PREVIOUS_MU = MU;
-        let STANDARD_DEVIATION = 40;
-        let preSd = STANDARD_DEVIATION;
-        const magn = 800;
-        let isLooping = 1;
+        const MAX_STANDARD_DEVIATION = screenDimensions.width * 0.05;
+        const MIN_STANDARD_DEVIATION = screenDimensions.width * 0.01;
+        const magn = 600;
+
+        let mu = 0;
+        let previousMu = mu;
+        let standardDeviation = 0;
+        let previousStandardDeviation = standardDeviation;
+        let scriptIsLooping = 1;
 
         p5.setup = () => {
             p5.createCanvas(screenDimensions.width, screenDimensions.height);
             p5.strokeWeight(p5.height / 350);
-            firstRender();
+            rendarLines();
         }
 
-        function firstRender() {
-            p5.background(0, 32, 63);
+        function rendarLines() {
+            p5.background(0);
+            // p5.background(0, 32, 63);
             for (let j = Y_TOP_DRAWING_BOUNDS; j <= Y_BOTTOM_DRAWING_BOUNDS; j += Y_STEP) {
                 const y1 = j;
                 const x1 = X_LEFT_DRAWING_BOUNDS;
@@ -44,11 +55,13 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
                     p5.noFill();
 
                     p5.curveVertex(xVal, yVal);
-                    if (p5.random() < 0.7) {
-                        p5.stroke(173, 232, 244);
-                    } else {
-                        p5.stroke(72, 202, 228)
-                    }
+                    p5.stroke(255);
+
+                    // if (p5.random() < 0.7) {
+                    //     p5.stroke(173, 232, 244);
+                    // } else {
+                    //     p5.stroke(72, 202, 228)
+                    // }
 
                 }
                 p5.curveVertex(xVal, yVal)
@@ -60,36 +73,36 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
         p5.draw = () => {
 
-            MU = p5.mouseX;
-            if (MU != PREVIOUS_MU) {
-                muChanged();
+            mu = p5.mouseX;
+            if (mu != previousMu) {
+                handleMuChange();
             }
 
-            STANDARD_DEVIATION = p5.map(p5.mouseY, 0, p5.height, MIN_STANDARD_DEVIATION, MAX_STANDARD_DEVIATION, true);
-            if (STANDARD_DEVIATION != preSd) {
-                sdChanged()
+            standardDeviation = p5.map(p5.mouseY, Y_TOP_DRAWING_BOUNDS, Y_BOTTOM_DRAWING_BOUNDS, MIN_STANDARD_DEVIATION, MAX_STANDARD_DEVIATION, true);
+            if (standardDeviation != previousStandardDeviation) {
+                handleStandardDeviationChange()
             }
         }
 
-        function muChanged() {
-            PREVIOUS_MU = MU;
-            firstRender();
+        const handleMuChange = () => {
+            previousMu = mu;
+            rendarLines();
         }
 
-        function sdChanged() {
-            preSd = STANDARD_DEVIATION;
-            firstRender();
+        const handleStandardDeviationChange = () => {
+            previousStandardDeviation = standardDeviation;
+            rendarLines();
         }
 
 
 
         function deltaY(x: number) {
-            let sign = 1;
+            let sign = -1;
             if (Math.random() > 0.5) {
-                sign *= -1;
+                sign *= 1;
             }
-            const power = Math.exp(-((x - MU) * (x - MU)) / (2 * STANDARD_DEVIATION * STANDARD_DEVIATION))
-            let y = ((power * ONE_OVER_ROOT_2_PI) / STANDARD_DEVIATION) * sign
+            const power = Math.exp(-((x - mu) * (x - mu)) / (2 * standardDeviation * standardDeviation))
+            let y = ((power * ONE_OVER_ROOT_2_PI) / standardDeviation) * sign
             y *= magn;
             y *= p5.random(0.4, 1.4)
             return y;
@@ -97,12 +110,12 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         }
 
         p5.mouseClicked = () => {
-            if (isLooping) {
+            if (scriptIsLooping) {
                 p5.noLoop();
-                isLooping = 0;
+                scriptIsLooping = 0;
             } else {
                 p5.loop();
-                isLooping = 1;
+                scriptIsLooping = 1;
             }
         }
     }
