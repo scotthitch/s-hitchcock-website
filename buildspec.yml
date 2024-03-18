@@ -6,6 +6,7 @@ phases:
       - npm install
   build:
     commands:
+      - npx tailwindcss init
       - npm run build
   post_build:
     commands:
