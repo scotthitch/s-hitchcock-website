@@ -47,7 +47,6 @@ coverage/
 tsconfig.tsbuildinfo
 
 # Tailwind configuration files
-tailwind.config.js
 postcss.config.js
 
 # Pinia store specific files
