@@ -46,9 +46,6 @@ coverage/
 .idea/
 tsconfig.tsbuildinfo
 
-# Tailwind configuration files
-postcss.config.js
-
 # Pinia store specific files
 src/stores/_generated/
 
