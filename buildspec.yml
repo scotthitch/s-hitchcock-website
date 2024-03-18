@@ -3,6 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo trying
       - echo $S3_BUCKET
       - npm install
   build:
