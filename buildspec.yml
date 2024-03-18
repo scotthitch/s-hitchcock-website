@@ -9,4 +9,5 @@ phases:
       - npm run build
   post_build:
     commands:
+      - echo $S3_BUCKET
       - aws s3 sync ./dist $S3_BUCKET
