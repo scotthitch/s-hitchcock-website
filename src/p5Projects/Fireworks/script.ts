@@ -1,3 +1,5 @@
+import QuadraticRoots from '../../helpers/QuadraticRoots'
+
 import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
@@ -8,11 +10,12 @@ interface FlightParams {
 const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
     const s = (p5Instance: P5): void => {
 
-        const GRAVITY = p5Instance.createVector(0, -0.15);
-        const PARENT_GRAVITY_MULTIPLIER = 1;
-        const CHILD_GRAVITY_MULTIPLIER = 0.05;
-        const COLOURS = ["#ED254E", "#F9DC5C", "#0FA3B1", "#8A4FFF", "#33CA7F"]
+        const GRAVITY = p5Instance.createVector(0, 0.15);
+        const PARENT_MASS = 1;
+        const CHILD_MASS_AVG = 0.05;
+        const FIREWORK_COLOURS = ["#ED254E", "#F9DC5C", "#0FA3B1", "#8A4FFF", "#33CA7F"]
         const CHILD_OPACITY_FADE_RATE = 2.5
+        const N_CHILD_FIREWORKS = 20;
         const fireworks: Missile[] = [];
 
         p5Instance.setup = () => {
@@ -23,31 +26,31 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           p5Instance.background(0, 0, 0, 50)
 
           // Iterate through all the fireworks
-          fireworks.forEach((firework, index, missilesArray) => {
+          fireworks.forEach((firework, index, fireworksArray) => {
             firework.fly()
             firework.draw()
 
             // If the missile is ready to explode then generate it's children and remove it
             if (firework.readyToExplode()) {
-              generateExplodedFireworks(20, firework.position)
-              missilesArray.splice(index, 1)
+              generateExplodedFireworks(N_CHILD_FIREWORKS, firework.position)
+              fireworksArray.splice(index, 1)
             }
 
             // If missile out of screen then remove it
-            if (firework.belowScreenBottom(0)) {
-              missilesArray.splice(index, 1)
+            if (firework.belowScreenBottom(p5Instance.height)) {
+              fireworksArray.splice(index, 1)
             }
 
             // If the missile has faded away then remove it
             if (firework.hasFaded()) {
-              missilesArray.splice(index, 1)
+              fireworksArray.splice(index, 1)
             }
           })
         }
 
         const calculateChildFlightParams = (phi: number, theta: number, velocityMagnitude: number): FlightParams => {
-          const xVelocity = 1 * p5Instance.cos(phi) * p5Instance.random(1, 1.5);
-          const yVelocity = 1 * p5Instance.sin(phi) * p5Instance.sin(theta) * p5Instance.random(1, 1.5);
+          const xVelocity = p5Instance.cos(phi) * p5Instance.random(1, 1.5);
+          const yVelocity = p5Instance.sin(phi) * p5Instance.sin(theta) * p5Instance.random(1, 1.5);
           const missileVelocity = p5Instance.createVector(xVelocity, yVelocity).mult(velocityMagnitude);
 
           return {
@@ -62,55 +65,47 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
           for (let phi = 0; phi < p5Instance.TWO_PI; phi += angleDelta) {
             // Only render the visible parts on xy plane
-            for (let theta = 0; theta < p5Instance.HALF_PI; theta += angleDelta) {
-              const phiRandom = phi * p5Instance.random(1, 1.2);
-              const thetaRandom = theta * p5Instance.random(1, 1.2);
+            for (let theta = 0; theta < p5Instance.TWO_PI; theta += angleDelta) {
+              const phiRandom = phi * p5Instance.random(0.8, 1.5);
+              const thetaRandom = theta * p5Instance.random(0.8, 1.5);
               const flightParams = calculateChildFlightParams(phiRandom, thetaRandom, velocityMagnitude);
-              const colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
-
-              fireworks.push(new Missile(parentPosition.copy(), flightParams.initialVelocity, flightParams.explodeTime, CHILD_GRAVITY_MULTIPLIER, true, colour))
+              const colour = FIREWORK_COLOURS[Math.floor(Math.random() * FIREWORK_COLOURS.length)];
+              const randomMass = CHILD_MASS_AVG * p5Instance.random(0.8, 1.5)
+              fireworks.push(new Missile(parentPosition.copy(), flightParams.initialVelocity, flightParams.explodeTime, randomMass, true, colour))
             }
           }     
         }
 
-        const quadraticRoots = (a: number, b: number, c: number) => {
-          let discriminant = b*b - 4*a*c;
-          let roots = [];
-      
-          // Only checking for the valid case. might do something for other cases
-          if (discriminant > 0) {
-              let root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-              let root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-              roots.push(root1, root2);
-          }
-      
-          return roots;
-        }
-
         const calculateFlightParamsFromClick = (p0: P5.Vector, p2: P5.Vector): FlightParams => {
+          const flightParams: FlightParams = {initialVelocity: p5Instance.createVector(0, 0), explodeTime: 0};
+
           const maxHeight = p2.y*1.15
+          const initialVelocity_y = p5Instance.sqrt(maxHeight*2*GRAVITY.y);
+          const roots = new QuadraticRoots(1/2 * -GRAVITY.y, initialVelocity_y, -p2.y)
 
-          const initialVelocity_y = p5Instance.sqrt(-maxHeight*2*GRAVITY.y); 
-          const t2 = p5Instance.max([... quadraticRoots(1/2 * GRAVITY.y, initialVelocity_y, -p2.y)])
-          console.log(t2)
-          const initialVelocity_x = (p2.x-p0.x)/t2
-          
-          const flightParams = {
-            initialVelocity: p5Instance.createVector(initialVelocity_x, initialVelocity_y),
-            explodeTime: t2
+          // Only real roots should ever be return
+          if (!roots.containsImaginaryRoots()) {
+            const t2 = p5Instance.max(roots.getRealRoots())
+            const initialVelocity_x = (p2.x-p0.x)/t2
+            
+            flightParams.initialVelocity = p5Instance.createVector(initialVelocity_x, -initialVelocity_y)
+            flightParams.explodeTime = t2
+
           }
-
 
           return flightParams;
         }
         
         p5Instance.mouseClicked = (event: MouseEvent) => {
           const launchLocation = p5Instance.createVector(p5Instance.width/2, 0)
-          const targetLocation = p5Instance.createVector(event.x, event.y)
+          const targetLocation = p5Instance.createVector(event.x, p5Instance.height-event.y)
       
           const flightParams = calculateFlightParamsFromClick(launchLocation, targetLocation)
 
-          fireworks.push(new Missile(launchLocation, flightParams.initialVelocity, flightParams.explodeTime, 1, false, "#ffffff"))
+
+          const launchLocation2 = p5Instance.createVector(p5Instance.width/2, p5Instance.height)
+
+          fireworks.push(new Missile(launchLocation2, flightParams.initialVelocity, flightParams.explodeTime, PARENT_MASS, false, "#ffffff"))
         }
 
 
@@ -122,16 +117,16 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           position: P5.Vector;
           velocity: P5.Vector;
           explodeCountdown: number;
-          gravityMultiplier: number
+          mass: number
           opacity: number
           willFade: boolean
           colour: string
 
-          constructor(initialPosition: P5.Vector, initialVelocity: P5.Vector, explodeTime: number, gravityMultiploer: number, willFade: boolean, colour: string) {
+          constructor(initialPosition: P5.Vector, initialVelocity: P5.Vector, explodeTime: number, mass: number, willFade: boolean, colour: string) {
             this.position = initialPosition;
             this.velocity = initialVelocity;
             this.explodeCountdown = explodeTime;
-            this.gravityMultiplier = gravityMultiploer;
+            this.mass = mass;
             this.colour = colour
             this.willFade = willFade;  
             this.opacity = 255;
@@ -139,7 +134,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           }
 
           fly() {
-            const acceleration = GRAVITY.copy().mult(this.gravityMultiplier)
+            const acceleration = GRAVITY.copy().mult(this.mass)
             this.velocity.add(acceleration);
             this.position.add(this.velocity);
             this.explodeCountdown--;
@@ -158,7 +153,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
           }
 
           belowScreenBottom(screenBottom: number) {
-            return (this.position.y < screenBottom);
+            return (this.position.y > screenBottom);
           }
 
           draw() {
