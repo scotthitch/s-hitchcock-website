@@ -13,9 +13,10 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const GRAVITY = p5Instance.createVector(0, 0.15);
         const PARENT_MASS = 1;
         const CHILD_MASS_AVG = 0.05;
-        const FIREWORK_COLOURS = ["#ED254E", "#F9DC5C", "#0FA3B1", "#8A4FFF", "#33CA7F"]
+        const PARENT_FIREWORK_COLOUR = "#FFFFFF"
+        const CHILD_FIREWORK_COLOURS = ["#ED254E", "#F9DC5C", "#0FA3B1", "#8A4FFF", "#33CA7F"]
         const CHILD_OPACITY_FADE_RATE = 2.5
-        const N_CHILD_FIREWORKS = 20;
+        const N_CHILD_FIREWORKS = 300;
         const fireworks: Missile[] = [];
 
         p5Instance.setup = () => {
@@ -55,21 +56,21 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
 
           return {
             initialVelocity: missileVelocity,
-            explodeTime: 1000
+            explodeTime: 1000 // set unrealistically high so it doesn't explode
           }
         }
 
         const generateExplodedFireworks = (nFireworks: number, parentPosition: P5.Vector) => {
-          const angleDelta = p5Instance.TWO_PI / nFireworks;
+          // const nFireworks = 
+          const angleDelta = p5Instance.TWO_PI / p5Instance.sqrt(nFireworks);
           const velocityMagnitude = p5Instance.random(0.8, 1.5)
 
           for (let phi = 0; phi < p5Instance.TWO_PI; phi += angleDelta) {
-            // Only render the visible parts on xy plane
             for (let theta = 0; theta < p5Instance.TWO_PI; theta += angleDelta) {
               const phiRandom = phi * p5Instance.random(0.8, 1.5);
               const thetaRandom = theta * p5Instance.random(0.8, 1.5);
               const flightParams = calculateChildFlightParams(phiRandom, thetaRandom, velocityMagnitude);
-              const colour = FIREWORK_COLOURS[Math.floor(Math.random() * FIREWORK_COLOURS.length)];
+              const colour = CHILD_FIREWORK_COLOURS[Math.floor(Math.random() * CHILD_FIREWORK_COLOURS.length)];
               const randomMass = CHILD_MASS_AVG * p5Instance.random(0.8, 1.5)
               fireworks.push(new Missile(parentPosition.copy(), flightParams.initialVelocity, flightParams.explodeTime, randomMass, true, colour))
             }
@@ -98,20 +99,15 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         
         p5Instance.mouseClicked = (event: MouseEvent) => {
           const launchLocation = p5Instance.createVector(p5Instance.width/2, 0)
-          const targetLocation = p5Instance.createVector(event.x, p5Instance.height-event.y)
-      
-          const flightParams = calculateFlightParamsFromClick(launchLocation, targetLocation)
+          const effectiveLaunchLocation = p5Instance.createVector(p5Instance.width/2, p5Instance.height)
+
+          const clickLocation = p5Instance.createVector(event.x, p5Instance.height-event.y)
+          const flightParams = calculateFlightParamsFromClick(launchLocation, clickLocation)
 
 
-          const launchLocation2 = p5Instance.createVector(p5Instance.width/2, p5Instance.height)
-
-          fireworks.push(new Missile(launchLocation2, flightParams.initialVelocity, flightParams.explodeTime, PARENT_MASS, false, "#ffffff"))
+          fireworks.push(new Missile(effectiveLaunchLocation, flightParams.initialVelocity,
+                                     flightParams.explodeTime, PARENT_MASS, false, PARENT_FIREWORK_COLOUR))
         }
-
-
-
-
-
 
         class Missile {
           position: P5.Vector;
