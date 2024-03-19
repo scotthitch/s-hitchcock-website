@@ -5,7 +5,6 @@ import script from "./script"
 </script>
 
 
-<!-- TODO: fix scriptID issue -->
 <template>
     <P5Project
       title="Ball Cascade"
