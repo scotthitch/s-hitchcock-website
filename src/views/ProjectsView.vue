@@ -9,7 +9,7 @@ import FireworksProject from "../p5Projects/Fireworks/FireworksProject.vue"
 
 import { onMounted, onUnmounted, shallowRef } from 'vue'
 
-const projects = shallowRef([FireworksProject, WaterfallProject, PerlinFlowFieldProject, GrowingCircleProject, JoyDivisionLinesProject, RadialProject, BallCascadeProject]);
+const projects = shallowRef([WaterfallProject, PerlinFlowFieldProject, GrowingCircleProject, FireworksProject, JoyDivisionLinesProject, RadialProject, BallCascadeProject]);
 
 
 
