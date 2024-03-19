@@ -6,10 +6,12 @@ import GrowingCircleProject from '../p5Projects/GrowingCircle/GrowingCircleProje
 import WaterfallProject from '../p5Projects/Waterfall/WaterfallProject.vue'
 import PerlinFlowFieldProject from "../p5Projects/PerlinFlowField/PerlinFlowFieldProject.vue"
 import FireworksProject from "../p5Projects/Fireworks/FireworksProject.vue"
+import FourierSeriesProject from "../p5Projects/FourierSeries/FourierSeriesProject.vue"
+
 
 import { onMounted, onUnmounted, shallowRef } from 'vue'
 
-const projects = shallowRef([WaterfallProject, PerlinFlowFieldProject, GrowingCircleProject, FireworksProject, JoyDivisionLinesProject, RadialProject, BallCascadeProject]);
+const projects = shallowRef([FourierSeriesProject, WaterfallProject, PerlinFlowFieldProject, GrowingCircleProject, FireworksProject, JoyDivisionLinesProject, RadialProject, BallCascadeProject]);
 
 
 
