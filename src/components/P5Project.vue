@@ -40,7 +40,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="relative h-screen snap-always snap-center">
+    <div class="verticalPan relative h-screen snap-always snap-center">
         <div class="absolute">
 
             <P5Canvas 
@@ -68,4 +68,9 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+
+.verticalPan {
+    touch-action: pan-y;
+}
+
 </style>
