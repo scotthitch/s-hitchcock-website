@@ -10,7 +10,7 @@ import script from "./script"
       title="Fourier Series"
       scriptID="fourier-series"
       description="spin"
-      usageInstructions="more info"
+      usageInstructions="Approximating a square wave with a sum of trigonometric functions. Press the up and down arrows"
       :script="script"
       :maxCanvasDimensions="{
         width: 400,
