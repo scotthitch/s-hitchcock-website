@@ -61,9 +61,9 @@ onUnmounted(() => {
 <template>
     <div class="snap-y snap-mandatory h-screen overflow-scroll">
         <component
-            v-for="project in projects"
+            v-for="(project, i) in projects"
             :is="project"
-            :key="`${project.title}-${p5ProjectKey}`"
+            :key="`${i}-${p5ProjectKey}`"
             :projectDimensions="liveScreenDimensions"
         >
         </component>
