@@ -90,6 +90,8 @@ onUnmounted(() => {
     window.removeEventListener('keydown', (e) => {
         preventDefaultForScrollKeys(e)
     })
+    document.getElementById('projects-view')?.removeEventListener('scroll', setProjectVisibilityStates)
+
 })
 </script>
 
