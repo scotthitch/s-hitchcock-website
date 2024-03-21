@@ -73,7 +73,7 @@ onUnmounted(() => {
             <div
                 class="rounded-r-2xl flex flex-col justify-center items-center nav-bar-background"
                 :class="isNavBarExpanded ? 
-                        'h-screen w-[40vw] sm:w-[25vw] lg:w-[20vw]':
+                        'h-[100svh] w-[40vw] sm:w-[25vw] lg:w-[20vw]':
                         'h-24 w-12'"
                 style="background-color: rgba(0, 0, 0, 0.55);">
                 <Transition name="arrow">
@@ -84,7 +84,7 @@ onUnmounted(() => {
                     />
                 </Transition>
                 <Transition name="arrow">
-                    <div v-if="isNavBarExpanded" class="flex flex-col gap-12 w-full px-8 place-items-end h-screen">
+                    <div v-if="isNavBarExpanded" class="flex flex-col gap-12 w-full px-8 place-items-end h-[100svh]">
                         <!-- <div class="absolute py-6">
                             <p class="text-white text-xs sm:text-xl font-bold">
                                 Scott Hitchcock
