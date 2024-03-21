@@ -30,8 +30,7 @@ const projects = shallowRef([
     BallCascadeProject
 ])
 
-const projectStates = ref<P5ProjectState[]>([])
-// console.log(projectStates.value)
+const projectStates = ref<P5ProjectState[]>(Array(projects.value.length).fill('invisible'))
 
 const setProjectVisibilityStates = () => {
     let wasPreviousProjectVisible = false
@@ -59,7 +58,6 @@ const setProjectVisibilityStates = () => {
             projectStates.value[i] = 'invisible'
         }
     })
-    console.log(projectStates.value)
 }
 
 const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
@@ -103,7 +101,7 @@ onUnmounted(() => {
             :key="`${i}-${p5ProjectKey}`"
             :id="`project-${i}`"
             :projectDimensions="liveScreenDimensions"
-            :projectState="projectStates[i]"
+            :state="projectStates[i]"
         >
         </component>
     </div>
