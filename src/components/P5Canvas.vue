@@ -1,80 +1,50 @@
 <script setup lang="ts">
 import P5 from 'p5' // Package from npm
-import { onMounted, defineProps, ref, onUnmounted } from 'vue';
+import { onMounted, defineProps, ref, onUnmounted, onUpdated } from 'vue'
 import type { P5CanvasProps } from '../types'
-
 
 const props = defineProps<P5CanvasProps>()
 
-const wasP5CanvasInViewport = ref(false);
-
-const p5 = ref<P5>();
+const p5 = ref<P5>()
 
 const generateNewP5Sketch = () => {
-    const targetElement = document.getElementById(props.scriptID) || undefined;
-    p5.value = new P5(props.script(props.screenDimensions), targetElement);
+    const targetElement = document.getElementById(props.scriptID) || undefined
+    p5.value = new P5(props.script(props.screenDimensions), targetElement)
 }
 
-// Function to check if element is in viewport
-const isElementInViewport = (el: HTMLElement) => {
-    const rect = el.getBoundingClientRect();
-    // rect.
-    return (
-        rect.top < window.innerHeight &&
-        rect.bottom > 10
-    );
-}
+const handleP5SketchGeneration = () => {
+    switch (props.state) {
+        // If invisible then do nothing
+        case 'invisible':
+            break
 
-const handleP5ViewportInteraction = () => {
-    const targetElement = document.getElementById(props.scriptID);
+        // If it's visible then play the sketch
+        case 'visible':
+            // First check if one has been made yet
+            if (p5.value === undefined) {
+                generateNewP5Sketch()
+            }
+            p5.value?.loop()
+            break
 
-    // If the target element is not an elemnent on the DOM
-    if (targetElement === null) {
-        console.log('Not an element');
-        return
-    }
-    
-    let isP5CanvasInViewport = isElementInViewport(targetElement);
-
-    // P5 canvas just moved into viewport
-    if (isP5CanvasInViewport && !wasP5CanvasInViewport.value) {
-        // Start the p5 sketch up
-        // console.log(`${props.scriptID} appeared`);
-        
-        p5.value?.loop()
-
-        // Set visibility to true
-        wasP5CanvasInViewport.value = true;
-        
-        return;
-    }
-
-    // P5 canvas just moved out of viewport
-    if (!isP5CanvasInViewport && wasP5CanvasInViewport.value) {
-        // console.log(`${props.scriptID} disappeared`);
-        // Remove the old sketch, start a new one and immediately pause it
-        p5.value?.remove();
-        generateNewP5Sketch();
-        p5.value?.noLoop();
-
-        // Set old visibility to false
-        wasP5CanvasInViewport.value = false;
-        return;
+        // If it's a neighbour then remove the old sketch, make a new one then pause
+        case 'neighbour':
+            p5.value?.remove()
+            generateNewP5Sketch()
+            p5.value?.noLoop()
     }
 }
+
+onUpdated(() => {
+    handleP5SketchGeneration()
+})
 
 onMounted(() => {
-    // Initially start up all projects and immediately pause them
-    generateNewP5Sketch()
-    p5.value?.noLoop();
-
-    handleP5ViewportInteraction();
-    window.addEventListener('wheel', handleP5ViewportInteraction);
+    handleP5SketchGeneration()
 })
 
 onUnmounted(() => {
     p5.value?.remove()
-    window.removeEventListener('wheel', handleP5ViewportInteraction);
 })
 </script>
 
