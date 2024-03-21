@@ -30,7 +30,7 @@ const projects = shallowRef([
     BallCascadeProject
 ])
 
-const projectStates = ref<P5ProjectState[]>([]);
+const projectStates = ref<P5ProjectState[]>([])
 // console.log(projectStates.value)
 
 const setProjectVisibilityStates = () => {
@@ -103,6 +103,7 @@ onUnmounted(() => {
             :key="`${i}-${p5ProjectKey}`"
             :id="`project-${i}`"
             :projectDimensions="liveScreenDimensions"
+            :projectState="projectStates[i]"
         >
         </component>
     </div>

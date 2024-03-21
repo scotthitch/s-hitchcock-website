@@ -34,6 +34,7 @@ onMounted(() => {
                     :scriptID="props.scriptID"
                     :script="props.script"
                     :screenDimensions="props.projectDimensions"
+                    :state="props.state"
                 />
             </div>
 

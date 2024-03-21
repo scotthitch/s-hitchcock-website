@@ -16,5 +16,6 @@ import script from "./script"
         width: 400,
         height: 400
       }"
+      state="invisible"
     />
 </template>
