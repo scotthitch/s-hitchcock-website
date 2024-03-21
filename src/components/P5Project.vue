@@ -33,9 +33,9 @@ const calculateCanvasDimensions = (): ScreenDimensions => {
 onMounted(() => {
     window.addEventListener('resize', handleResize)
 
-    const intersectionObersverOptions = {
+    const intersectionObserverOptions = {
         root: null,
-        rootMargin: '0px',
+        rootMargin: '500px',
         threshold: 0.00001
     }
 
@@ -44,7 +44,7 @@ onMounted(() => {
         ([{ isIntersecting }]) => {
             targetIsVisible.value = isIntersecting
         },
-        intersectionObersverOptions
+        intersectionObserverOptions
     )
 })
 
@@ -55,8 +55,8 @@ onUnmounted(() => {
 
 <template>
     <div ref="target" class="verticalPan relative h-screen snap-always snap-center">
-        <div>
-            <div v-if="targetIsVisible" class="absolute">
+        <div v-if="targetIsVisible">
+            <div class="absolute">
                 <P5Canvas
                     :key="p5CanvasComponentKey"
                     :scriptID="props.scriptID"
