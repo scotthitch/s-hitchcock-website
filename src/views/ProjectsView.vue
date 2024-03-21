@@ -36,7 +36,7 @@ const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
 }
 
 const handleResize = () => {
-    p5ProjectKey.value++ // Update key to force re render of P5Canvas component
+    p5ProjectKey.value++ // Update key to force re render of each P5 project component
     liveScreenDimensions.value.width = window.innerWidth
     liveScreenDimensions.value.height = window.innerHeight
 }
