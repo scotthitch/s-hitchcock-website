@@ -1,34 +1,15 @@
 <script setup lang="ts">
-import { defineProps, ref, onMounted } from 'vue'
+import { defineProps } from 'vue'
 import type { P5ProjectProps } from '../types'
 import P5Canvas from './P5Canvas.vue'
-import { useIntersectionObserver } from '@vueuse/core'
 
 const props = defineProps<P5ProjectProps>()
 
-const target = ref(null)
-const targetIsVisible = ref(false)
-
-onMounted(() => {
-    const intersectionObserverOptions = {
-        root: null,
-        rootMargin: '500px',
-        threshold: 0.00001
-    }
-
-    useIntersectionObserver(
-        target,
-        ([{ isIntersecting }]) => {
-            targetIsVisible.value = isIntersecting
-        },
-        intersectionObserverOptions
-    )
-})
 </script>
 
 <template>
-    <div ref="target" class="verticalPan relative h-screen snap-always snap-center">
-        <div v-if="targetIsVisible">
+    <div class="verticalPan relative h-screen snap-always snap-center">
+        <div v-if="props.state !== 'invisible'">
             <div class="absolute">
                 <P5Canvas
                     :scriptID="props.scriptID"
