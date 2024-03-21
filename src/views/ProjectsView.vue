@@ -8,6 +8,8 @@ import PerlinFlowFieldProject from '../p5Projects/PerlinFlowField/PerlinFlowFiel
 import FireworksProject from '../p5Projects/Fireworks/FireworksProject.vue'
 import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProject.vue'
 import { ref, onMounted, onUnmounted, shallowRef } from 'vue'
+import type { P5ProjectState } from '../types'
+
 import type { ScreenDimensions } from '../types'
 
 const p5ProjectKey = ref(0)
@@ -28,6 +30,38 @@ const projects = shallowRef([
     BallCascadeProject
 ])
 
+const projectStates = ref<P5ProjectState[]>([]);
+// console.log(projectStates.value)
+
+const setProjectVisibilityStates = () => {
+    let wasPreviousProjectVisible = false
+    projects.value.forEach((project, i) => {
+        const el = document.getElementById(`project-${i}`)
+
+        if (el === null) {
+            return
+        }
+
+        const projectBoundingRect = el.getBoundingClientRect()
+
+        if (projectBoundingRect.top < window.innerHeight && projectBoundingRect.bottom > 10) {
+            //TODO need 10?
+            projectStates.value[i] = 'visible'
+            wasPreviousProjectVisible = true
+
+            if (projectStates.value[i - 1] === 'invisible') {
+                projectStates.value[i - 1] = 'neighbour'
+            }
+        } else if (wasPreviousProjectVisible) {
+            projectStates.value[i] = 'neighbour'
+            wasPreviousProjectVisible = false
+        } else {
+            projectStates.value[i] = 'invisible'
+        }
+    })
+    console.log(projectStates.value)
+}
+
 const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
     const keysToPrevent = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'] // Arrow keys
     if (keysToPrevent.includes(event.code)) {
@@ -42,11 +76,14 @@ const handleResize = () => {
 }
 
 onMounted(() => {
+    setProjectVisibilityStates()
     window.addEventListener('resize', handleResize)
 
     window.addEventListener('keydown', (e) => {
         preventDefaultForScrollKeys(e)
     })
+
+    document.getElementById('projects-view')?.addEventListener('scroll', setProjectVisibilityStates)
 })
 
 onUnmounted(() => {
@@ -59,11 +96,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="snap-y snap-mandatory h-screen overflow-scroll">
+    <div id="projects-view" class="snap-y snap-mandatory h-screen overflow-scroll">
         <component
             v-for="(project, i) in projects"
             :is="project"
             :key="`${i}-${p5ProjectKey}`"
+            :id="`project-${i}`"
             :projectDimensions="liveScreenDimensions"
         >
         </component>
