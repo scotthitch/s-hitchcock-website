@@ -10,7 +10,7 @@ import script from './script'
         description="spin"
         usageInstructions="Approximating a square wave with a sum of trigonometric functions. Press the up and down arrows"
         :script="script"
-        :maxCanvasDimensions="{
+        :projectDimensions="{
             width: 400,
             height: 500
         }"

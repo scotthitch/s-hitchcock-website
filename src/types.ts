@@ -27,7 +27,7 @@ export interface P5ProjectProps {
     description: string,
     usageInstructions: string,
     script: p5ScriptWrapperFunction,
-    maxCanvasDimensions: ScreenDimensions
+    projectDimensions: ScreenDimensions
 }
 
 export type p5ScriptInnerFunction = (p5: P5) => void;

@@ -13,7 +13,7 @@ import script from "./script"
       description="Wee watch them fall"
       usageInstructions="Not much to do here."
       :script="script"
-      :maxCanvasDimensions="{
+      :projectDimensions="{
         width: 400,
         height: 550
       }"

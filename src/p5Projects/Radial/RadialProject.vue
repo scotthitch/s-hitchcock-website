@@ -11,7 +11,7 @@ import script from "./script"
       description="Draw some symmetrical pictures"
       usageInstructions="instructions"
       :script="script"
-      :maxCanvasDimensions="{
+      :projectDimensions="{
         width: 400,
         height: 400
       }"

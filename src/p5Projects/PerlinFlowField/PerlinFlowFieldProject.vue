@@ -12,7 +12,7 @@ import script from "./script"
       description="description"
       usageInstructions="usage instructions"
       :script="script"
-      :maxCanvasDimensions="{
+      :projectDimensions="{
         width: 400,
         height: 400
       }"
