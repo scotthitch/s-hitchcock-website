@@ -37,3 +37,6 @@ export interface QuadraticRoot {
     real: number,
     imaginary: number
 }
+
+// Define a type for project state
+export type P5ProjectState = "visible" | 'neighbour' | 'invisible';
