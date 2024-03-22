@@ -43,7 +43,7 @@ const setProjectVisibilityStates = () => {
 
         const projectBoundingRect = el.getBoundingClientRect()
 
-        if (projectBoundingRect.top < window.innerHeight && projectBoundingRect.bottom > 10) {
+        if (projectBoundingRect.top < window.innerHeight-5 && projectBoundingRect.bottom > 0) {
             //TODO need 10?
             projectStates.value[i] = 'visible'
             wasPreviousProjectVisible = true
