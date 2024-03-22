@@ -3,6 +3,10 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 const isNavBarExpanded = ref(false);
 
+// TODO: make this into global context
+const isDeviceAppleTouchScreen = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const clickInteractionEventType = isDeviceAppleTouchScreen ? 'touchstart' : 'click';
+
 const navBarRoutes = [
     {
         to: "/",
@@ -30,7 +34,7 @@ const elementIsNavigationRoute = (id: string): boolean => {
     return false; // id isn't from a nav element
 }
 
-const handlePageClick = (event: MouseEvent) => {
+const handlePageClick = (event: MouseEvent | TouchEvent) => {
     const navBarElement = document.getElementById('navbar');
     const clickedElement = event.target as HTMLElement
 
@@ -56,13 +60,12 @@ const handlePageClick = (event: MouseEvent) => {
     return
 }
 
-
 onMounted(() => {
-    window.addEventListener('click', e => handlePageClick(e))
+    window.addEventListener(clickInteractionEventType, e => handlePageClick(e))
 })
 
 onUnmounted(() => {
-    window.removeEventListener('click', e => handlePageClick(e))
+    window.removeEventListener(clickInteractionEventType, e => handlePageClick(e))
 })
 
 </script>
