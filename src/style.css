@@ -36,7 +36,7 @@
 }
 
 .fadeToNothing {
-    animation: fadeOut 1.5s forwards;
+    animation: fadeOut 1.3s forwards;
 }
 
 @keyframes fadeOut {
