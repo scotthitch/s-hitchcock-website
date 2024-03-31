@@ -4,13 +4,12 @@ import script from "./script"
 </script>
 
 
-<!-- TODO: fix scriptID issue -->
 <template>
     <P5Project
       title="Perlin Flow Field"
       scriptID="perlin-flow-field"
       description="description"
-      usageInstructions="usage instructions"
+      usageInstructions="A random vector flow field generated using 2D Perlin Noise."
       :script="script"
       :projectDimensions="{
         width: 400,
