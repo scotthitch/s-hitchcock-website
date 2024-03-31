@@ -26,3 +26,21 @@
     font-weight: 700;
     src: url(fonts/Inter/Inter-BoldItalic.woff2) format("woff2");
 }
+
+.p5Button {
+    font-size: 40px;
+    border-radius: 25px;
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    opacity: 1;
+}
+
+.fadeToNothing {
+    animation: fadeOut 1.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
