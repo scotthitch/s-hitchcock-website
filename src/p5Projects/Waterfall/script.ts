@@ -110,7 +110,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
                 const newY = this.heightAvg - p5.noise(i + this.xOff) * this.flux;
                 this.topRowArray[i].y = newY;
               }
-              this.xOff += 0.009;
+              this.xOff += 0.006;
             }
           }
           
