@@ -20,13 +20,13 @@ const props = defineProps<P5ProjectProps>()
             </div>
 
             <div class="absolute bottom-2 left-2">
-                <p class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">
+                <p class="text-6xl sm:text-6xl md:text-7xl font-bold italic text-white opacity-80">
                     {{ props.title }}
                 </p>
             </div>
 
             <div class="absolute top-2 right-2">
-                <p class="text-xl lg:text-3xl font-bold text-white opacity-80">
+                <p class="text-xl lg:text-2xl font-bold italic text-white opacity-80">
                     {{ props.usageInstructions }}
                 </p>
             </div>
