@@ -7,7 +7,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const N_ORBITERS_MAX = 101
         const orbiters: Orbiter[] = []
         const AMPLITUDE_COEFFICIENT = p5Instance.max(screenDimensions.width / 20, 40)
-        const FREQUENCY_COEFFICIENT = 1/20
+        const FREQUENCY_COEFFICIENT = 1 / 20
         let yVals: number[] = []
         let origin: P5.Vector
         const NODE_RADIUS = p5Instance.max(screenDimensions.width / 230, 4.5) // TODO: make this a fnc of screensize
@@ -18,6 +18,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const MAX_LEN = 700
         let upButton: P5.Element
         let downButton: P5.Element
+        let firstIncrementalButtonClick = true
 
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
@@ -89,10 +90,21 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         }
 
         const restartButtonAnimation = (button: P5.Element) => {
+            if (firstIncrementalButtonClick) {
+                upButton.removeClass('fadeToNothing')
+                downButton.removeClass('fadeToNothing')
+                setTimeout(function () {
+                    upButton.addClass('fadeToNothing')
+                    downButton.addClass('fadeToNothing')
+                }, 10)
+
+                firstIncrementalButtonClick = false
+                return
+            }
             // button.removeClass('p5Button')
-            button.removeClass("fadeToNothing")
+            button.removeClass('fadeToNothing')
             setTimeout(function () {
-                button.addClass("fadeToNothing")
+                button.addClass('fadeToNothing')
             }, 10)
         }
 
