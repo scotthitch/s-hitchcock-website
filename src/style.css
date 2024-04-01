@@ -52,27 +52,39 @@
 }
 
 .slide-from-right-40 {
-    animation: slideFromRight40 0.6s forwards;
+    animation-name: slideFromRight40, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
 }
 
 .slide-from-right-60 {
-    animation: slideFromRight60 0.6s forwards;
+    animation-name: slideFromRight60, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
 }
 
 .slide-from-right-80 {
-    animation: slideFromRight80 0.6s forwards;
+    animation-name: slideFromRight80, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
 }
 
 .slide-from-left-40 {
-    animation: slideFromLeft40 0.6s forwards;
+    animation-name: slideFromLeft40, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
 }
 
 .slide-from-left-60 {
-    animation: slideFromLeft60 0.6s forwards;
+    animation-name: slideFromLeft60, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
 }
 
 .slide-from-left-80 {
-    animation: slideFromLeft80 0.6s forwards;
+    animation-name: slideFromLeft80, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
 }
 
 @keyframes slideFromLeft40 {
