@@ -2,36 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-    font-family: "Inter";
-    src: url(/fonts/Inter/Inter-Regular.woff2) format("woff2");
+    font-family: 'Inter';
+    src: url(/fonts/Inter/Inter-Regular.woff2) format('woff2');
 }
 
 @font-face {
-    font-family: "Inter";
+    font-family: 'Inter';
     font-weight: 600;
-    src: url(/fonts/Inter/Inter-SemiBold.woff2) format("woff2");
-}  
-
-@font-face {
-    font-family: "Inter";
-    font-weight: 700;
-    src: url(/fonts/Inter/Inter-Bold.woff2) format("woff2");
+    src: url(/fonts/Inter/Inter-SemiBold.woff2) format('woff2');
 }
 
 @font-face {
-    font-family: "Inter";
+    font-family: 'Inter';
+    font-weight: 700;
+    src: url(/fonts/Inter/Inter-Bold.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
     font-style: italic;
     font-weight: 700;
-    src: url(/fonts/Inter/Inter-BoldItalic.woff2) format("woff2");
+    src: url(/fonts/Inter/Inter-BoldItalic.woff2) format('woff2');
 }
 
 .p5Button {
     font-size: 40px;
     border-radius: 25px;
     color: white;
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.1);
     opacity: 1;
 }
 
@@ -40,23 +39,43 @@
 }
 
 @keyframes fadeOut {
-    from {opacity: 1;}
-    to {opacity: 0;}
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .fade-in {
     animation: fadeIn 0.8s forwards;
 }
 
-.slide-from-right {
-    animation: slideFromRight 0.5s forwards;
+.slide-from-right-40 {
+    animation: slideFromRight40 0.6s forwards;
 }
 
-.slide-from-left {
-    animation: slideFromLeft 0.5s forwards;
+.slide-from-right-60 {
+    animation: slideFromRight60 0.6s forwards;
 }
 
-@keyframes slideFromLeft {
+.slide-from-right-80 {
+    animation: slideFromRight80 0.6s forwards;
+}
+
+.slide-from-left-40 {
+    animation: slideFromLeft40 0.6s forwards;
+}
+
+.slide-from-left-60 {
+    animation: slideFromLeft60 0.6s forwards;
+}
+
+.slide-from-left-80 {
+    animation: slideFromLeft80 0.6s forwards;
+}
+
+@keyframes slideFromLeft40 {
     from {
         transform: translateX(-40px);
     }
@@ -65,9 +84,45 @@
     }
 }
 
-@keyframes slideFromRight {
+@keyframes slideFromLeft60 {
+    from {
+        transform: translateX(-60px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromLeft80 {
+    from {
+        transform: translateX(-80px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromRight40 {
     from {
         transform: translateX(40px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromRight60 {
+    from {
+        transform: translateX(60px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromRight80 {
+    from {
+        transform: translateX(80px);
     }
     to {
         transform: translateX(0px);
@@ -82,4 +137,3 @@
         opacity: 1;
     }
 }
-
