@@ -98,7 +98,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div id="projects-view" class="snap-y snap-mandatory h-[100svh] overflow-scroll">
+    <div id="projects-view" class="snap-y snap-mandatory h-[100svh] overflow-scroll overflow-x-hidden">
         <ScrollDownIndicator />
         <component
             v-for="(project, i) in projects"
