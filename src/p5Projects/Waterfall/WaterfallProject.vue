@@ -11,7 +11,7 @@ import script from "./script"
       title="Waterfall"
       scriptID="waterfall"
       description="Wee watch them fall"
-      usageInstructions="Not much to do here."
+      usageInstructions="A cascade of veils built using Perlin Noise"
       :script="script"
       :projectDimensions="{
         width: 400,
