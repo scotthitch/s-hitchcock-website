@@ -8,7 +8,7 @@ import script from './script'
         title="Fourier Series"
         scriptID="fourier-series"
         description="spin"
-        usageInstructions="A sum of sinusoidal curves approximating a square wave"
+        usageInstructions="Sinusoidal terms summing to approximate a square wave. Adjust the term count with the buttons"
         :script="script"
         :projectDimensions="{
             width: 400,
