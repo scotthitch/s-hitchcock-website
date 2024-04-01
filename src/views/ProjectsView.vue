@@ -7,6 +7,7 @@ import WaterfallProject from '../p5Projects/Waterfall/WaterfallProject.vue'
 import PerlinFlowFieldProject from '../p5Projects/PerlinFlowField/PerlinFlowFieldProject.vue'
 import FireworksProject from '../p5Projects/Fireworks/FireworksProject.vue'
 import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProject.vue'
+import ScrollDownIndicator from "../components/ScrollDownIndicator.vue"
 import { ref, onMounted, onUnmounted, shallowRef } from 'vue'
 import type { P5ProjectState } from '../types'
 
@@ -20,9 +21,9 @@ const liveScreenDimensions = ref<ScreenDimensions>({
 })
 
 const projects = shallowRef([
-    FourierSeriesProject,
     WaterfallProject,
     PerlinFlowFieldProject,
+    FourierSeriesProject,
     GrowingCircleProject,
     FireworksProject,
     JoyDivisionLinesProject,
@@ -43,7 +44,7 @@ const setProjectVisibilityStates = () => {
 
         const projectBoundingRect = el.getBoundingClientRect()
 
-        if (projectBoundingRect.top < window.innerHeight-5 && projectBoundingRect.bottom > 0) {
+        if (projectBoundingRect.top < window.innerHeight - 5 && projectBoundingRect.bottom > 0) {
             //TODO need 10?
             projectStates.value[i] = 'visible'
             wasPreviousProjectVisible = true
@@ -90,13 +91,15 @@ onUnmounted(() => {
     window.removeEventListener('keydown', (e) => {
         preventDefaultForScrollKeys(e)
     })
-    document.getElementById('projects-view')?.removeEventListener('scroll', setProjectVisibilityStates)
-
+    document
+        .getElementById('projects-view')
+        ?.removeEventListener('scroll', setProjectVisibilityStates)
 })
 </script>
 
 <template>
     <div id="projects-view" class="snap-y snap-mandatory h-[100svh] overflow-scroll">
+        <ScrollDownIndicator />
         <component
             v-for="(project, i) in projects"
             :is="project"
