@@ -22,8 +22,8 @@ const liveScreenDimensions = ref<ScreenDimensions>({
 
 const projects = shallowRef([
     WaterfallProject,
-    PerlinFlowFieldProject,
     FourierSeriesProject,
+    PerlinFlowFieldProject,
     GrowingCircleProject,
     FireworksProject,
     JoyDivisionLinesProject,
