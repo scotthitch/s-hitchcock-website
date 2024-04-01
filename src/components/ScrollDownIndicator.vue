@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="relative top-[94svh] sm:top-[99svh] w-[100svw] z-30 flex flex-row justify-center items-center">
+    <div class="relative top-[93svh] sm:top-[99svh] w-[100svw] z-30 flex flex-row justify-center items-center">
         <div class="dot animate-bounce flex flex-col justify-center items-center">
             <img src="../assets/arrow.svg" alt="arrow-icon" class="pl-2 w-[100%] h-[100%] rotate-90 scale-[0.6]" />
         </div>
