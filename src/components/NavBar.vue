@@ -76,7 +76,7 @@ onUnmounted(() => {
                 :class="
                     isNavBarExpanded
                         ? 'h-[100svh] w-[40svw] sm:w-[30svw] md:w-[25svw] lg:w-[20svw] xl:w-[15svw] rounded-r-[1.8rem]'
-                        : 'h-24 w-12 rounded-r-2xl'
+                        : 'h-24 w-12 rounded-r-[2.0rem]'
                 "
                 style="background-color: rgba(0, 0, 0, 0.55)"
             >
