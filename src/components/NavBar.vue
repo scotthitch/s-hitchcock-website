@@ -59,11 +59,11 @@ const handlePageClick = (event: MouseEvent | TouchEvent) => {
 }
 
 onMounted(() => {
-    window.addEventListener(store.clickInteractionEventType, (e) => handlePageClick(e))
+    window.addEventListener(store.interactionEvent, (e) => handlePageClick(e))
 })
 
 onUnmounted(() => {
-    window.removeEventListener(store.clickInteractionEventType, (e) => handlePageClick(e))
+    window.removeEventListener(store.interactionEvent, (e) => handlePageClick(e))
 })
 </script>
 
