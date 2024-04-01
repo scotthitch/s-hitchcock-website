@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-
+import { useDeviceTypeStore } from '../stores/deviceType'
 const isNavBarExpanded = ref(false)
 
-// TODO: make this into global context
-const isDeviceAppleTouchScreen = /iPad|iPhone|iPod/.test(navigator.userAgent)
-const clickInteractionEventType = isDeviceAppleTouchScreen ? 'touchend' : 'click'
+const store = useDeviceTypeStore()
 
 const navBarRoutes = [
     {
@@ -61,11 +59,11 @@ const handlePageClick = (event: MouseEvent | TouchEvent) => {
 }
 
 onMounted(() => {
-    window.addEventListener(clickInteractionEventType, (e) => handlePageClick(e))
+    window.addEventListener(store.clickInteractionEventType, (e) => handlePageClick(e))
 })
 
 onUnmounted(() => {
-    window.removeEventListener(clickInteractionEventType, (e) => handlePageClick(e))
+    window.removeEventListener(store.clickInteractionEventType, (e) => handlePageClick(e))
 })
 </script>
 
@@ -77,7 +75,7 @@ onUnmounted(() => {
                 class="flex flex-col justify-center items-center nav-bar-background"
                 :class="
                     isNavBarExpanded
-                        ? 'h-[100svh] w-[40vw] sm:w-[30vw] md:w-[25vw] lg:w-[20vw] xl:w-[15vw] rounded-r-[1.8rem]'
+                        ? 'h-[100svh] w-[40svw] sm:w-[30svw] md:w-[25svw] lg:w-[20svw] xl:w-[15svw] rounded-r-[1.8rem]'
                         : 'h-24 w-12 rounded-r-2xl'
                 "
                 style="background-color: rgba(0, 0, 0, 0.55)"
