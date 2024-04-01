@@ -18,13 +18,13 @@ const props = defineProps<P5ProjectProps>()
                 />
             </div>
 
-            <div class="absolute bottom-2 left-2 fade-in slide-from-left">
+            <div class="absolute bottom-2 left-2 slide-from-left-40">
                 <p class="text-5xl sm:text-6xl md:text-7xl font-bold italic text-white opacity-80">
                     {{ props.title }}
                 </p>
             </div>
 
-            <div class="absolute top-2 right-2 left-2 text-right fade-in slide-from-right">
+            <div class="absolute top-2 right-2 left-2 text-right fade-in slide-from-right-40">
                 <p class="text-l sm:text-xl lg:text-2xl font-bold italic text-white opacity-80">
                     {{ props.usageInstructions }}
                 </p>
