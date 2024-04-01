@@ -1,7 +1,11 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div>This is a home page that needs more work done on it</div>
+    <div>
+        <div class="w-100svw text-gray-800 text-center text-6xl font-bold italic">
+            Scott Hitchcock
+        </div>
+    </div>
 </template>
+
+<style></style>
