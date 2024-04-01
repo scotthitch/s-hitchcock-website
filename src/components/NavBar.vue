@@ -97,7 +97,7 @@ onUnmounted(() => {
                         <div
                             v-for="(navBarRoute, index) in navBarRoutes"
                             v-bind:key="index"
-                            class="text-white italic hover:scale-110 opacity-100 text-2xl xs:text-3xl sm:text-4xl navbarRoute font-bold"
+                            class="text-white hover:scale-110 opacity-100 text-2xl xs:text-3xl sm:text-4xl navbarRoute font-bold"
                         >
                             <div class="flex flex-row gap-2 items-center">
                                 <router-link :to="navBarRoute.to" :id="navBarRoute.id">{{
