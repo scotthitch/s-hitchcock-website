@@ -21,43 +21,4 @@
     </div>
 </template>
 
-<style>
-.fade-in {
-    animation: fadeIn 0.8s forwards;
-}
-
-.slide-from-right {
-    animation: slideFromRight 0.5s forwards;
-}
-
-.slide-from-left {
-    animation: slideFromLeft 0.5s forwards;
-}
-
-@keyframes slideFromLeft {
-    from {
-        transform: translateX(-40px);
-    }
-    to {
-        transform: translateX(0px);
-    }
-}
-
-@keyframes slideFromRight {
-    from {
-        transform: translateX(40px);
-    }
-    to {
-        transform: translateX(0px);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-</style>
+<style></style>
