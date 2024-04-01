@@ -11,7 +11,7 @@ import script from "./script"
       title="Fireworks"
       scriptID="fireworks"
       description="Festivities"
-      usageInstructions="Shoot some fireworks."
+      usageInstructions="Click to shoot some fireworks."
       :script="script"
       :projectDimensions="{
         width: 400,
