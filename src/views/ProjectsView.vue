@@ -7,7 +7,8 @@ import WaterfallProject from '../p5Projects/Waterfall/WaterfallProject.vue'
 import PerlinFlowFieldProject from '../p5Projects/PerlinFlowField/PerlinFlowFieldProject.vue'
 import FireworksProject from '../p5Projects/Fireworks/FireworksProject.vue'
 import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProject.vue'
-import ScrollDownIndicator from "../components/ScrollDownIndicator.vue"
+import TilingProject from '../p5Projects/Tiling/TilingProject.vue'
+import ScrollDownIndicator from '../components/ScrollDownIndicator.vue'
 import { ref, onMounted, onUnmounted, shallowRef } from 'vue'
 import type { P5ProjectState } from '../types'
 
@@ -22,6 +23,7 @@ const liveScreenDimensions = ref<ScreenDimensions>({
 
 const projects = shallowRef([
     WaterfallProject,
+    TilingProject,
     FourierSeriesProject,
     PerlinFlowFieldProject,
     GrowingCircleProject,
@@ -98,7 +100,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div id="projects-view" class="snap-y snap-mandatory h-[100svh] overflow-scroll overflow-x-hidden">
+    <div
+        id="projects-view"
+        class="snap-y snap-mandatory h-[100svh] overflow-scroll overflow-x-hidden"
+    >
         <ScrollDownIndicator />
         <component
             v-for="(project, i) in projects"
