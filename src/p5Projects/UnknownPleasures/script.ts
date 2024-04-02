@@ -6,14 +6,9 @@ const script = (p5Instance: P5): void => {
     const DRAWING_WIDTH = p5Instance.max(window.innerWidth * 0.45, 300)
     const X_LEFT_DRAWING_BOUNDS = (window.innerWidth - DRAWING_WIDTH) / 2
     const X_RIGHT_DRAWING_BOUNDS = window.innerWidth - X_LEFT_DRAWING_BOUNDS
-
     const DRAWING_HEIGHT = p5Instance.max(window.innerHeight * 0.7, 100)
-    // const HEIGHT_DRAWING_PERCENTAGE = 0.7; // as a percantage of screen height
     const Y_TOP_DRAWING_BOUNDS = (window.innerHeight - DRAWING_HEIGHT) / 2
-
-    // const Y_TOP_DRAWING_BOUNDS = screenDimensions.height * ((1-HEIGHT_DRAWING_PERCENTAGE)/2);;
     const Y_BOTTOM_DRAWING_BOUNDS = window.innerHeight - Y_TOP_DRAWING_BOUNDS
-
     const N_LINES = 100
     const Y_STEP = (Y_BOTTOM_DRAWING_BOUNDS - Y_TOP_DRAWING_BOUNDS) / (N_LINES - 1)
     const X_STEP = (X_RIGHT_DRAWING_BOUNDS - X_LEFT_DRAWING_BOUNDS) / 100
