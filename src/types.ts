@@ -34,6 +34,8 @@ export interface P5ProjectProps {
 
 export type p5ScriptFunction = (p5: P5) => void
 
+export type emptyFunction = () => void
+
 export interface QuadraticRoot {
     real: number
     imaginary: number
