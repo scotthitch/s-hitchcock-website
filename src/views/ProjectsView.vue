@@ -9,6 +9,8 @@ import FireworksProject from '../p5Projects/Fireworks/FireworksProject.vue'
 import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProject.vue'
 import TilingProject from '../p5Projects/Tiling/TilingProject.vue'
 import ScrollDownIndicator from '../components/ScrollDownIndicator.vue'
+import ExploreMoreProjectsOnDesktop from '../components/ExploreMoreProjectsOnDesktop.vue'
+
 import { ref, onMounted, onUnmounted, shallowRef, computed } from 'vue'
 import type { P5ProjectState } from '../types'
 import { useDeviceTypeStore } from '../stores/deviceType'
@@ -37,7 +39,14 @@ const projects = shallowRef([
 
 const projectsToRender = computed(() => {
     if (store.isMobileOrTablet) {
-        return projects.value.filter((project) => project.isMobileOrTabletFriendly)
+        return projects.value
+            .filter((project) => project.isMobileOrTabletFriendly)
+            .concat([
+                {
+                    component: ExploreMoreProjectsOnDesktop,
+                    isMobileOrTabletFriendly: true
+                }
+            ])
     }
 
     return projects.value
