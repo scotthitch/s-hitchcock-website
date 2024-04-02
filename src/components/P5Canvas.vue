@@ -9,7 +9,7 @@ const p5 = ref<P5>()
 
 const generateNewP5Sketch = () => {
     const targetElement = document.getElementById(props.scriptID) || undefined
-    p5.value = new P5(props.script(), targetElement)
+    p5.value = new P5(props.script, targetElement)
 }
 
 const handleP5SketchGeneration = () => {

@@ -18,7 +18,7 @@ export interface ScreenDimensions {
 export type P5ProjectState = 'visible' | 'neighbour' | 'invisible'
 
 export interface P5CanvasProps {
-    script: p5ScriptWrapperFunction
+    script: p5ScriptFunction
     scriptID: string
     state: P5ProjectState
 }
@@ -28,12 +28,11 @@ export interface P5ProjectProps {
     scriptID: string
     description: string
     usageInstructions: string
-    script: p5ScriptWrapperFunction
+    script: p5ScriptFunction
     state: P5ProjectState
 }
 
-export type p5ScriptInnerFunction = (p5: P5) => void
-export type p5ScriptWrapperFunction = () => p5ScriptInnerFunction
+export type p5ScriptFunction = (p5: P5) => void
 
 export interface QuadraticRoot {
     real: number
