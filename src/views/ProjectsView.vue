@@ -17,6 +17,10 @@ import { useDeviceTypeStore } from '../stores/deviceType'
 
 const store = useDeviceTypeStore()
 
+const p5ProjectKey = ref(0)
+
+
+
 const projects = shallowRef([
     { component: WaterfallProject, isMobileOrTabletFriendly: true },
     { component: TilingProject, isMobileOrTabletFriendly: true },
@@ -81,8 +85,14 @@ const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
     }
 }
 
+const handleResize = () => {
+    p5ProjectKey.value++ // Update key to force re render of each P5 project component
+    
+}
+
 onMounted(() => {
     setProjectVisibilityStates()
+    window.addEventListener('resize', handleResize)
 
     window.addEventListener('keydown', (e) => {
         preventDefaultForScrollKeys(e)
@@ -92,6 +102,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+
     window.removeEventListener('keydown', (e) => {
         preventDefaultForScrollKeys(e)
     })
@@ -110,7 +122,7 @@ onUnmounted(() => {
         <component
             v-for="(project, i) in projectsToRender"
             :is="project.component"
-            :key="`${i}`"
+            :key="`${i}-${p5ProjectKey}`"
             :id="`project-${i}`"
             :state="projectStates[i]"
         >
