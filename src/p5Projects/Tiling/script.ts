@@ -1,8 +1,8 @@
 import P5 from 'p5' // Package from npm
 
 const script = (p5Instance: P5): void => {
-    const BACKGROUND_COLOUR = "#037171"
-    const RECTANGLE_COLOUR = "#00B9AE"
+    const BACKGROUND_COLOUR = '#037171'
+    const RECTANGLE_COLOUR = '#00B9AE'
     let a1: number
     let a2: number
     let l: number
@@ -69,33 +69,25 @@ const script = (p5Instance: P5): void => {
     p5Instance.keyPressed = () => {
         switch (p5Instance.keyCode) {
             case p5Instance.UP_ARROW:
-                if (l >= 320) {
-                    // pass
-                } else {
+                if (l < 320) {
                     newDimensions(p5Instance.min(320, l * 2))
                     renderAll()
                 }
                 break
             case p5Instance.DOWN_ARROW:
-                if (l <= 10) {
-                    // pass
-                } else {
+                if (l > 10) {
                     newDimensions(p5Instance.max(10, l / 2))
                     renderAll()
                 }
                 break
             case p5Instance.LEFT_ARROW:
-                if (avg >= 1) {
-                    // pass
-                } else {
+                if (avg < 1) {
                     avg += 0.125
                     renderAll()
                 }
                 break
             case p5Instance.RIGHT_ARROW:
-                if (avg <= 0) {
-                    // pass
-                } else {
+                if (avg > 0) {
                     avg -= 0.125
                     renderAll()
                 }
