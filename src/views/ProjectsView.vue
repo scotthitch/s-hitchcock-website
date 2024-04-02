@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import RadialProject from '../p5Projects/Radial/RadialProject.vue'
 import BallCascadeProject from '../p5Projects/BallCascade/BallCascadeProject.vue'
-import JoyDivisionLinesProject from '../p5Projects/JoyDivisionLines/JoyDivisionLinesProject.vue'
+import UnknownPleasuresProject from '../p5Projects/UnknownPleasures/UnknownPleasuresProject.vue'
 import GrowingCircleProject from '../p5Projects/GrowingCircle/GrowingCircleProject.vue'
 import WaterfallProject from '../p5Projects/Waterfall/WaterfallProject.vue'
 import PerlinFlowFieldProject from '../p5Projects/PerlinFlowField/PerlinFlowFieldProject.vue'
@@ -28,7 +28,7 @@ const projects = shallowRef([
     PerlinFlowFieldProject,
     GrowingCircleProject,
     FireworksProject,
-    JoyDivisionLinesProject,
+    UnknownPleasuresProject,
     RadialProject,
     BallCascadeProject
 ])
@@ -116,3 +116,4 @@ onUnmounted(() => {
         </component>
     </div>
 </template>
+../p5Projects/UnknownPleasures/JoyDivisionLinesProject.vue

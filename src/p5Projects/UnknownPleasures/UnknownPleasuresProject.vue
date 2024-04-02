@@ -6,10 +6,10 @@ import script from "./script"
 
 <template>
     <P5Project 
-      title="Joy Division Lines"
-      scriptID="joy-division-lines"
+      title="Unknown Pleasures"
+      scriptID="unknown-pleasures"
       description="Inspired by Joy Division's Unknown Pleasures album art and built using the Gaussian distribution plus some random noise."
-      usageInstructions="Simply move the mouse around to see. Click to save one that you like"
+      usageInstructions="Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise."
       :script="script"
       :projectDimensions="{
         width: 400,
