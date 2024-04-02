@@ -1,4 +1,5 @@
 import P5 from 'p5' // Package from npm
+import createUpDownLeftOrRightP5Button from '../../helpers/createUpDownLeftOrRightP5Button'
 
 const script = (p5Instance: P5): void => {
     const BACKGROUND_COLOUR = '#037171'
@@ -19,6 +20,12 @@ const script = (p5Instance: P5): void => {
 
     p5Instance.setup = () => {
         p5Instance.createCanvas(window.innerWidth, window.innerHeight)
+
+        createUpDownLeftOrRightP5Button(p5Instance, '+', handleUpEvent)
+        createUpDownLeftOrRightP5Button(p5Instance, '-', handleDownEvent)
+        createUpDownLeftOrRightP5Button(p5Instance, '>', handleRightEvent)
+        createUpDownLeftOrRightP5Button(p5Instance, '<', handleLeftEvent)
+
         iFirst = -p5Instance.width / 20
         iLast = p5Instance.width + p5Instance.width / 20
         jFirst = -p5Instance.height / 20
