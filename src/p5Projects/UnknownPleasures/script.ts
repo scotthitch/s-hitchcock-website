@@ -50,7 +50,8 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
                 for (let i = X_LEFT_DRAWING_BOUNDS; i <= X_RIGHT_DRAWING_BOUNDS; i += X_STEP) {
                     yVal = deltaY(i) + j
                     xVal = i
-                    p5.noFill()
+                    p5.fill(0)
+                    // p5.noFill()
 
                     p5.curveVertex(xVal, yVal)
                     p5.stroke(255)
