@@ -3,8 +3,8 @@ import HomeFooterIcon from './HomeFooterIcon.vue'
 </script>
 
 <template>
-    <div class="flex flex-col gap-2 items-center bottom-0 pb-2 pt-3">
-        <div class="text-sm sm:text-base font-bold">Built With</div>
+    <div class="flex flex-col gap-2 items-center bottom-0 pb-3 pt-2 bg-white">
+        <div class="text-sm sm:text-base font-bold text-cv-blue">Built With</div>
 
         <div class="w-full flex flex-row gap-[12svw] sm:gap-28 md:gap-32 justify-center">
             <HomeFooterIcon

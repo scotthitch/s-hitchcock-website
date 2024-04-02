@@ -17,7 +17,7 @@ const props = defineProps<{
                 :alt="props.iconAlt"
                 class="h-7 sm:h-9"
             />
-            <div class="text-neutral-700 text-sm">
+            <div class="text-sm text-cv-blue font-medium">
                 {{ props.iconName }}
             </div>
         </div>
