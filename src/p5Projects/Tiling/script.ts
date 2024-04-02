@@ -66,31 +66,47 @@ const script = (p5Instance: P5): void => {
         }
     }
 
+    const handleUpEvent = () => {
+        if (l < 320) {
+            newDimensions(p5Instance.min(320, l * 2))
+            renderAll()
+        }
+    }
+
+    const handleDownEvent = () => {
+        if (l > 10) {
+            newDimensions(p5Instance.max(10, l / 2))
+            renderAll()
+        }
+    }
+
+    const handleLeftEvent = () => {
+        if (avg < 1) {
+            avg += 0.125
+            renderAll()
+        }
+    }
+
+    const handleRightEvent = () => {
+        if (avg > 0) {
+            avg -= 0.125
+            renderAll()
+        }
+    }
+
     p5Instance.keyPressed = () => {
         switch (p5Instance.keyCode) {
             case p5Instance.UP_ARROW:
-                if (l < 320) {
-                    newDimensions(p5Instance.min(320, l * 2))
-                    renderAll()
-                }
+                handleUpEvent()
                 break
             case p5Instance.DOWN_ARROW:
-                if (l > 10) {
-                    newDimensions(p5Instance.max(10, l / 2))
-                    renderAll()
-                }
+                handleDownEvent()
                 break
             case p5Instance.LEFT_ARROW:
-                if (avg < 1) {
-                    avg += 0.125
-                    renderAll()
-                }
+                handleLeftEvent()
                 break
             case p5Instance.RIGHT_ARROW:
-                if (avg > 0) {
-                    avg -= 0.125
-                    renderAll()
-                }
+                handleRightEvent()
                 break
             default:
                 // Default behavior for other keys
