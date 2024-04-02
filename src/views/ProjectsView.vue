@@ -8,7 +8,6 @@ import PerlinFlowFieldProject from '../p5Projects/PerlinFlowField/PerlinFlowFiel
 import FireworksProject from '../p5Projects/Fireworks/FireworksProject.vue'
 import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProject.vue'
 import TilingProject from '../p5Projects/Tiling/TilingProject.vue'
-import ScrollDownIndicator from '../components/ScrollDownIndicator.vue'
 import ExploreMoreProjectsOnDesktop from '../components/ExploreMoreProjectsOnDesktop.vue'
 import ProjectsIntro from '../components/ProjectsIntro.vue'
 
@@ -23,13 +22,13 @@ const p5ProjectKey = ref(0)
 const projects = shallowRef([
     { component: ProjectsIntro, isMobileOrTabletFriendly: true },
     { component: WaterfallProject, isMobileOrTabletFriendly: true },
-    { component: TilingProject, isMobileOrTabletFriendly: true },
     { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
     { component: PerlinFlowFieldProject, isMobileOrTabletFriendly: true },
     { component: GrowingCircleProject, isMobileOrTabletFriendly: true },
     { component: FireworksProject, isMobileOrTabletFriendly: true },
     { component: UnknownPleasuresProject, isMobileOrTabletFriendly: false },
     { component: RadialProject, isMobileOrTabletFriendly: false },
+    { component: TilingProject, isMobileOrTabletFriendly: true },
     { component: BallCascadeProject, isMobileOrTabletFriendly: true }
 ])
 
