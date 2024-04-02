@@ -14,16 +14,8 @@ import ExploreMoreProjectsOnDesktop from '../components/ExploreMoreProjectsOnDes
 import { ref, onMounted, onUnmounted, shallowRef, computed } from 'vue'
 import type { P5ProjectState } from '../types'
 import { useDeviceTypeStore } from '../stores/deviceType'
-import type { ScreenDimensions } from '../types'
 
 const store = useDeviceTypeStore()
-
-const p5ProjectKey = ref(0)
-
-const liveScreenDimensions = ref<ScreenDimensions>({
-    width: window.innerWidth,
-    height: window.innerHeight
-})
 
 const projects = shallowRef([
     { component: WaterfallProject, isMobileOrTabletFriendly: true },
@@ -89,15 +81,8 @@ const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
     }
 }
 
-const handleResize = () => {
-    p5ProjectKey.value++ // Update key to force re render of each P5 project component
-    liveScreenDimensions.value.width = window.innerWidth
-    liveScreenDimensions.value.height = window.innerHeight
-}
-
 onMounted(() => {
     setProjectVisibilityStates()
-    window.addEventListener('resize', handleResize)
 
     window.addEventListener('keydown', (e) => {
         preventDefaultForScrollKeys(e)
@@ -107,8 +92,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-    window.removeEventListener('resize', handleResize)
-
     window.removeEventListener('keydown', (e) => {
         preventDefaultForScrollKeys(e)
     })
@@ -129,7 +112,6 @@ onUnmounted(() => {
             :is="project.component"
             :key="`${i}`"
             :id="`project-${i}`"
-            :projectDimensions="liveScreenDimensions"
             :state="projectStates[i]"
         >
         </component>
