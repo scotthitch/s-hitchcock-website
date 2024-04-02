@@ -9,7 +9,7 @@ import FireworksProject from '../p5Projects/Fireworks/FireworksProject.vue'
 import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProject.vue'
 import TilingProject from '../p5Projects/Tiling/TilingProject.vue'
 import ScrollDownIndicator from '../components/ScrollDownIndicator.vue'
-import { ref, onMounted, onUnmounted, shallowRef } from 'vue'
+import { ref, onMounted, onUnmounted, shallowRef, computed } from 'vue'
 import type { P5ProjectState } from '../types'
 import { useDeviceTypeStore } from '../stores/deviceType'
 import type { ScreenDimensions } from '../types'
@@ -24,16 +24,24 @@ const liveScreenDimensions = ref<ScreenDimensions>({
 })
 
 const projects = shallowRef([
-    WaterfallProject,
-    TilingProject,
-    FourierSeriesProject,
-    PerlinFlowFieldProject,
-    GrowingCircleProject,
-    FireworksProject,
-    UnknownPleasuresProject,
-    RadialProject,
-    BallCascadeProject
+    { component: WaterfallProject, isMobileOrTabletFriendly: true },
+    { component: TilingProject, isMobileOrTabletFriendly: true },
+    { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
+    { component: PerlinFlowFieldProject, isMobileOrTabletFriendly: true },
+    { component: GrowingCircleProject, isMobileOrTabletFriendly: true },
+    { component: FireworksProject, isMobileOrTabletFriendly: true },
+    { component: UnknownPleasuresProject, isMobileOrTabletFriendly: false },
+    { component: RadialProject, isMobileOrTabletFriendly: false },
+    { component: BallCascadeProject, isMobileOrTabletFriendly: true }
 ])
+
+const projectsToRender = computed(() => {
+    if (store.isMobileOrTablet) {
+        return projects.value.filter((project) => project.isMobileOrTabletFriendly)
+    }
+
+    return projects.value
+})
 
 const projectStates = ref<P5ProjectState[]>(Array(projects.value.length).fill('invisible'))
 
@@ -108,8 +116,8 @@ onUnmounted(() => {
     >
         <ScrollDownIndicator />
         <component
-            v-for="(project, i) in projects"
-            :is="project"
+            v-for="(project, i) in projectsToRender"
+            :is="project.component"
             :key="`${i}-${p5ProjectKey}`"
             :id="`project-${i}`"
             :projectDimensions="liveScreenDimensions"
