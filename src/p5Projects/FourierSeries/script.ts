@@ -2,7 +2,6 @@ import P5 from 'p5' // Package from npm
 import createIncrementalP5Button from '@/helpers/createIncrementalP5Button'
 
 const script = (p5Instance: P5): void => {
-    console.log('restart')
     const N_ORBITERS_MAX = 101
     const orbiters: Orbiter[] = []
     const AMPLITUDE_COEFFICIENT = p5Instance.max(window.innerWidth / 20, 40)
