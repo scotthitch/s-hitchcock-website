@@ -10,6 +10,7 @@ import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProje
 import TilingProject from '../p5Projects/Tiling/TilingProject.vue'
 import ScrollDownIndicator from '../components/ScrollDownIndicator.vue'
 import ExploreMoreProjectsOnDesktop from '../components/ExploreMoreProjectsOnDesktop.vue'
+import ProjectsIntro from '../components/ProjectsIntro.vue'
 
 import { ref, onMounted, onUnmounted, shallowRef, computed } from 'vue'
 import type { P5ProjectState } from '../types'
@@ -19,9 +20,8 @@ const store = useDeviceTypeStore()
 
 const p5ProjectKey = ref(0)
 
-
-
 const projects = shallowRef([
+    { component: ProjectsIntro, isMobileOrTabletFriendly: true },
     { component: WaterfallProject, isMobileOrTabletFriendly: true },
     { component: TilingProject, isMobileOrTabletFriendly: true },
     { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
@@ -87,7 +87,6 @@ const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
 
 const handleResize = () => {
     p5ProjectKey.value++ // Update key to force re render of each P5 project component
-    
 }
 
 onMounted(() => {
@@ -118,7 +117,7 @@ onUnmounted(() => {
         id="projects-view"
         class="snap-y snap-mandatory h-[100svh] overflow-scroll overflow-x-hidden"
     >
-        <ScrollDownIndicator />
+        <!-- <ScrollDownIndicator /> -->
         <component
             v-for="(project, i) in projectsToRender"
             :is="project.component"
