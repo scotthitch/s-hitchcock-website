@@ -9,7 +9,7 @@ import script from "./script"
       title="Tiling"
       scriptID="tiling"
       description="Wee watch them fall"
-      usageInstructions="Press the left and right buttons"
+      usageInstructions="Click to change the zoom and tilt"
       :script="script"
       :projectDimensions="{
         width: 400,
