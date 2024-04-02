@@ -8,48 +8,43 @@ const createUpDownLeftOrRightP5Button = (
 ): P5.Element => {
     const p5button = p5Instance.createButton(name)
     p5button.addClass('p5Button')
+    const minWidth = p5Instance.min(p5Instance.width, p5Instance.height) * 0.25
 
     switch (name) {
         case '+':
             p5button.style(`
-        width: ${p5Instance.width * 0.25}px;
-        height: ${p5Instance.width * 0.25}px;
+        width: ${minWidth}px;
+        height: ${minWidth}px;
     `)
             p5button.position(
-                p5Instance.width * 0.375,
-                p5Instance.height / 2 - p5Instance.width * 0.25
+                p5Instance.width / 2 - minWidth * 0.5,
+                p5Instance.height / 2 - minWidth
             )
             break
 
         case '-':
             p5button.style(`
-        width: ${p5Instance.width * 0.25}px;
-        height: ${p5Instance.width * 0.25}px;
+            width: ${minWidth}px;
+            height: ${minWidth}px;
     `)
-            p5button.position(p5Instance.width * 0.375, p5Instance.height / 2)
+            p5button.position(p5Instance.width / 2 - minWidth * 0.5, p5Instance.height / 2)
             break
 
         case '<':
             p5button.style(`
-        width: ${p5Instance.width * 0.25}px;
-        height: ${p5Instance.width * 0.5}px;
+            width: ${minWidth}px;
+            height: ${minWidth*2}px;
     `)
-            p5button.position(
-                p5Instance.width * 0.125,
-                p5Instance.height / 2 - p5Instance.width * 0.25
-            )
+            p5button.position(p5Instance.width / 2 - minWidth * 1.5, p5Instance.height / 2 - minWidth)
 
             break
 
         case '>':
             p5button.style(`
-        width: ${p5Instance.width * 0.25}px;
-        height: ${p5Instance.width * 0.5}px;
+            width: ${minWidth}px;
+            height: ${minWidth*2}px;
     `)
-            p5button.position(
-                p5Instance.width * 0.625,
-                p5Instance.height / 2 - p5Instance.width * 0.25
-            )
+            p5button.position(p5Instance.width / 2 + minWidth * 0.5, p5Instance.height / 2 - minWidth)
 
             break
     }
