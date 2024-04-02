@@ -1,18 +1,19 @@
-import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
+import type { p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 import createIncrementalP5Button from '@/helpers/createIncrementalP5Button'
 
-const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
+const script = (): p5ScriptInnerFunction => {
     const s = (p5Instance: P5): void => {
+        console.log('restart')
         const N_ORBITERS_MAX = 101
         const orbiters: Orbiter[] = []
-        const AMPLITUDE_COEFFICIENT = p5Instance.max(screenDimensions.width / 20, 40)
+        const AMPLITUDE_COEFFICIENT = p5Instance.max(window.innerWidth / 20, 40)
         const FREQUENCY_COEFFICIENT = 1 / 20
         let yVals: number[] = []
         let origin: P5.Vector
-        const NODE_RADIUS = p5Instance.max(screenDimensions.width / 230, 4.5) // TODO: make this a fnc of screensize
-        const WAVE_MOVE_SPEED = screenDimensions.width / 600
-        const WAVE_X_SHIFT = p5Instance.max(screenDimensions.width / 2.5, 200)
+        const NODE_RADIUS = p5Instance.max(window.innerWidth / 230, 4.5) // TODO: make this a fnc of screensize
+        const WAVE_MOVE_SPEED = window.innerWidth / 600
+        const WAVE_X_SHIFT = p5Instance.max(window.innerWidth / 2.5, 200)
         let nTermsInSeries = 3
         let nPreviousTermsInSeries = nTermsInSeries
         const MAX_LEN = 700
@@ -21,14 +22,12 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         let firstIncrementalButtonClick = true
 
         p5Instance.setup = () => {
-            p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
+            p5Instance.createCanvas(window.innerWidth, window.innerHeight)
             upButton = createIncrementalP5Button(p5Instance, '+')
             upButton.mousePressed(handleUpButtonPress)
             downButton = createIncrementalP5Button(p5Instance, '-')
             downButton.mousePressed(handleDownButtonPress)
-            // downButton.mousePressed(handleDownPress)
 
-            // aSlider = p5Instance.createSlider(1, a, aChoose, 2);
             origin = p5Instance.createVector(p5Instance.width / 5, p5Instance.height / 2)
             // orbiters.push(new Orbiter(atude, 1, radius))
             for (let n = 1; n <= N_ORBITERS_MAX; n++) {
