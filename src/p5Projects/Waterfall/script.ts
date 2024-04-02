@@ -1,9 +1,9 @@
-import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
+import type { p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
+const script = (): p5ScriptInnerFunction => {
     const s = (p5: P5): void => {
-        const veils: Veil[] = []
+        let veils: Veil[] = []
         const NUM_VEILS = 16
         // let colours = ["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"]
         const COLOURS = ['#464655', '#F4D35E', '#8ACDEA', '#A89B9D', '#FF521B']
@@ -11,8 +11,14 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const FLUX = 80 // TODO: give this a better name
 
         p5.setup = () => {
-            p5.createCanvas(screenDimensions.width, screenDimensions.height)
+            p5.createCanvas(p5.windowWidth, p5.windowHeight)
             // let colVal = 255;
+            restartSketch()
+        }
+
+        const restartSketch = () => {
+            veils = []
+
             inc = (2 * p5.height) / (NUM_VEILS - 2)
 
             let colIndex = 1
@@ -24,6 +30,11 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
                 veils.push(newVeil)
                 newVeil.calcTopRow()
             }
+        }
+
+        p5.windowResized = () => {
+            p5.resizeCanvas(p5.windowWidth, p5.windowHeight)
+            restartSketch()
         }
 
         p5.draw = () => {
