@@ -1,6 +1,8 @@
 import P5 from 'p5' // Package from npm
 
 const script = (p5Instance: P5): void => {
+    const BACKGROUND_COLOUR = "#1282A2"
+    const RECTANGLE_COLOUR = "#EAFCFB"
     let a1: number
     let a2: number
     let l: number
@@ -37,10 +39,10 @@ const script = (p5Instance: P5): void => {
     const calcDeltaX = () => (l / 2 - w / 2) * cosPiOver4 * 2
 
     function renderAll() {
-        p5Instance.background(18, 130, 162) //Blue
+        p5Instance.background(BACKGROUND_COLOUR) //Blue
 
         p5Instance.rectMode(p5Instance.CENTER)
-        p5Instance.fill(234, 252, 251)
+        p5Instance.fill(RECTANGLE_COLOUR)
         deltaX = calcDeltaX()
         for (let i = iFirst; i < iLast; i += deltaX) {
             for (let j = jFirst; j < jLast; j += deltaX) {
