@@ -9,7 +9,7 @@ import script from "./script"
       title="Unknown Pleasures"
       scriptID="unknown-pleasures"
       description="Inspired by Joy Division's Unknown Pleasures album art and built using the Gaussian distribution plus some random noise."
-      usageInstructions="Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise."
+      usageInstructions="Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise"
       :script="script"
       :projectDimensions="{
         width: 400,
