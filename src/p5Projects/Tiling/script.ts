@@ -26,11 +26,11 @@ const script = (p5Instance: P5): void => {
         a1 = (3 * Math.PI) / 4
         a2 = Math.PI / 4
         cosPiOver4 = p5Instance.cos(Math.PI / 4)
-        newDimensions(80)
+        setNewDimensions(80)
         renderAll()
     }
 
-    const newDimensions = (newL: number) => {
+    const setNewDimensions = (newL: number) => {
         l = newL
         w = l / 6
         r = w / 2
@@ -68,14 +68,14 @@ const script = (p5Instance: P5): void => {
 
     const handleUpEvent = () => {
         if (l < 320) {
-            newDimensions(p5Instance.min(320, l * 2))
+            setNewDimensions(p5Instance.min(320, l * 2))
             renderAll()
         }
     }
 
     const handleDownEvent = () => {
         if (l > 10) {
-            newDimensions(p5Instance.max(10, l / 2))
+            setNewDimensions(p5Instance.max(10, l / 2))
             renderAll()
         }
     }
