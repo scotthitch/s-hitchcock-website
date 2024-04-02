@@ -2,18 +2,17 @@ import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
 const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
-    let RECTS = []
-    let a1
-    let a2
-    let l
-    let w
-    let r
-    let cosPiOver4
+    let a1: number
+    let a2: number
+    let l: number
+    let w: number
+    let r: number
+    let cosPiOver4: number
     let avg = 0.5
-    let iFirst
-    let iLast
-    let jLast
-    let jFirst
+    let iFirst: number
+    let iLast: number
+    let jLast: number
+    let jFirst: number
     let deltaX
     let ang
 
@@ -31,7 +30,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
             renderAll()
         }
 
-        function newDimensions(newL) {
+        function newDimensions(newL: number) {
             l = newL
             w = l / 6
             r = w / 2
