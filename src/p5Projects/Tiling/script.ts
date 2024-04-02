@@ -18,16 +18,7 @@ const script = (): p5ScriptInnerFunction => {
 
     const s = (p5Instance: P5): void => {
         p5Instance.setup = () => {
-            p5Instance.createCanvas(p5Instance.windowWidth, p5Instance.windowHeight)
-            restartSketch()
-        }
-
-        p5Instance.windowResized = () => {
-            p5Instance.resizeCanvas(p5Instance.windowWidth, p5Instance.windowHeight)
-            restartSketch()
-        }
-
-        const restartSketch = () => {
+            p5Instance.createCanvas(window.innerWidth, window.innerHeight)
             iFirst = -p5Instance.width / 20
             iLast = p5Instance.width + p5Instance.width / 20
             jFirst = -p5Instance.height / 20
