@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="verticalPan relative h-[100svh] snap-always snap-center bg-slate-700">
+    <div class="verticalPan relative h-[100svh] snap-always snap-center bg-cv-blue">
         <div class="absolute bottom-2 left-2 slide-from-left-40">
             <p class="text-5xl sm:text-6xl md:text-7xl font-bold italic text-white opacity-80">
                 More to see...
