@@ -1,8 +1,8 @@
 import P5 from 'p5' // Package from npm
 
 const script = (p5Instance: P5): void => {
-    const BACKGROUND_COLOUR = "#1282A2"
-    const RECTANGLE_COLOUR = "#EAFCFB"
+    const BACKGROUND_COLOUR = "#037171"
+    const RECTANGLE_COLOUR = "#00B9AE"
     let a1: number
     let a2: number
     let l: number
