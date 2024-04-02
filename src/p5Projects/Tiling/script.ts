@@ -1,7 +1,7 @@
-import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
+import type { p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
-const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
+const script = (): p5ScriptInnerFunction => {
     let a1: number
     let a2: number
     let l: number
