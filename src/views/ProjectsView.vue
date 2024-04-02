@@ -127,7 +127,7 @@ onUnmounted(() => {
         <component
             v-for="(project, i) in projectsToRender"
             :is="project.component"
-            :key="`${i}-${p5ProjectKey}`"
+            :key="`${i}`"
             :id="`project-${i}`"
             :projectDimensions="liveScreenDimensions"
             :state="projectStates[i]"
