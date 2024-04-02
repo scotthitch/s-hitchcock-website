@@ -30,7 +30,7 @@ const script = (p5Instance: P5): void => {
         renderAll()
     }
 
-    function newDimensions(newL: number) {
+    const newDimensions = (newL: number) => {
         l = newL
         w = l / 6
         r = w / 2
@@ -38,7 +38,7 @@ const script = (p5Instance: P5): void => {
 
     const calcDeltaX = () => (l / 2 - w / 2) * cosPiOver4 * 2
 
-    function renderAll() {
+    const renderAll = () => {
         p5Instance.background(BACKGROUND_COLOUR) //Blue
 
         p5Instance.rectMode(p5Instance.CENTER)
