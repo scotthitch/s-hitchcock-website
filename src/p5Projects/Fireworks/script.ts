@@ -1,6 +1,6 @@
 import QuadraticRoots from '../../helpers/QuadraticRoots'
 
-import type { ScreenDimensions, p5ScriptInnerFunction } from '../../types'
+import type { p5ScriptInnerFunction } from '../../types'
 import P5 from 'p5' // Package from npm
 
 interface FlightParams {
@@ -8,8 +8,8 @@ interface FlightParams {
     explodeTime: number
 }
 
-const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
-    const isDeviceAppleTouchScreen = /iPad|iPhone|iPod/.test(navigator.userAgent)
+const script = (): p5ScriptInnerFunction => {
+    const isDeviceAppleTouchScreen = /iPad|iPhone|iPod/.test(navigator.userAgent) // TODO use store‰
 
     const s = (p5Instance: P5): void => {
         const GRAVITY = p5Instance.createVector(0, 0.15)
@@ -22,7 +22,7 @@ const script = (screenDimensions: ScreenDimensions): p5ScriptInnerFunction => {
         const fireworks: Missile[] = []
 
         p5Instance.setup = () => {
-            p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
+            p5Instance.createCanvas(window.innerWidth, window.innerHeight)
         }
 
         p5Instance.draw = () => {
