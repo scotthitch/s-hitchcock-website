@@ -75,7 +75,7 @@ onUnmounted(() => {
                 class="flex flex-col justify-center items-center nav-bar-background"
                 :class="
                     isNavBarExpanded
-                        ? 'h-[100svh] w-[40svw] sm:w-[30svw] md:w-[25svw] lg:w-[20svw] xl:w-[15svw] rounded-r-[1.8rem]'
+                        ? 'h-[100svh] w-[40svw] sm:w-[30svw] md:w-[25svw] lg:w-[20svw] xl:w-[15svw] rounded-r-[1.6rem]'
                         : 'h-24 w-12 rounded-r-[2.0rem]'
                 "
                 style="background-color: rgba(0, 0, 0, 0.55)"
@@ -97,7 +97,7 @@ onUnmounted(() => {
                         <div
                             v-for="(navBarRoute, index) in navBarRoutes"
                             v-bind:key="index"
-                            class="text-white hover:scale-110 opacity-100 text-2xl xs:text-3xl sm:text-4xl navbarRoute font-bold"
+                            class="text-white hover:scale-110 opacity-100 text-2xl xs:text-3xl navbarRoute font-bold"
                         >
                             <div class="flex flex-row gap-2 items-center">
                                 <router-link :to="navBarRoute.to" :id="navBarRoute.id">{{
