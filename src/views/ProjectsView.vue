@@ -11,8 +11,10 @@ import TilingProject from '../p5Projects/Tiling/TilingProject.vue'
 import ScrollDownIndicator from '../components/ScrollDownIndicator.vue'
 import { ref, onMounted, onUnmounted, shallowRef } from 'vue'
 import type { P5ProjectState } from '../types'
-
+import { useDeviceTypeStore } from '../stores/deviceType'
 import type { ScreenDimensions } from '../types'
+
+const store = useDeviceTypeStore()
 
 const p5ProjectKey = ref(0)
 
