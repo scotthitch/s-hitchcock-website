@@ -11,7 +11,7 @@ import script from "./script"
       scriptID="growing-circle"
       description="Preeety"
       usageInstructions="Just sit back and relax"
-      :script="script"
+      :scriptWrapper="script"
       :projectDimensions="{
         width: 400,
         height: 400

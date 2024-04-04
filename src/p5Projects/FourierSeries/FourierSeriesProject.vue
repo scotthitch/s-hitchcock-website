@@ -9,7 +9,7 @@ import script from './script'
         scriptID="fourier-series"
         description="spin"
         usageInstructions="Sinusoidal terms summing to approximate a square wave. Click to change the number of terms"
-        :script="script"
+        :scriptWrapper="script"
         :projectDimensions="{
             width: 400,
             height: 500

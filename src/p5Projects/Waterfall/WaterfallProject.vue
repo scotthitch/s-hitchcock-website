@@ -12,7 +12,7 @@ import script from "./script"
       scriptID="waterfall"
       description="Wee watch them fall"
       usageInstructions="A cascade of veils built using Perlin Noise"
-      :script="script"
+      :scriptWrapper="script"
       :projectDimensions="{
         width: 400,
         height: 550

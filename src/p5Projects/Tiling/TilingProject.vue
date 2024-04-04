@@ -10,7 +10,7 @@ import script from "./script"
       scriptID="tiling"
       description="Wee watch them fall"
       usageInstructions="Click to change the zoom and tilt"
-      :script="script"
+      :scriptWrapper="script"
       :projectDimensions="{
         width: 400,
         height: 550

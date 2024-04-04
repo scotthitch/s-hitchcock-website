@@ -10,7 +10,7 @@ import script from "./script"
       scriptID="perlin-flow-field"
       description="description"
       usageInstructions="A random vector flow field generated using 2D Perlin Noise."
-      :script="script"
+      :scriptWrapper="script"
       :projectDimensions="{
         width: 400,
         height: 400

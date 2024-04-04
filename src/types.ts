@@ -18,8 +18,9 @@ export interface ScreenDimensions {
 export type P5ProjectState = 'visible' | 'neighbour' | 'invisible'
 
 export interface P5CanvasProps {
-    script: p5ScriptFunction
     scriptID: string
+    scriptWrapper: p5ScriptWrapper
+    screenDimensions: ScreenDimensions
     state: P5ProjectState
 }
 
@@ -28,11 +29,13 @@ export interface P5ProjectProps {
     scriptID: string
     description: string
     usageInstructions: string
-    script: p5ScriptFunction
+    scriptWrapper: p5ScriptWrapper
     state: P5ProjectState
 }
 
-export type p5ScriptFunction = (p5: P5) => void
+export type p5Script = (p5: P5) => void
+
+export type p5ScriptWrapper = (screenDimensions: ScreenDimensions) => p5Script
 
 export type emptyFunction = () => void
 

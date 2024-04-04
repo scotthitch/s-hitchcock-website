@@ -10,7 +10,7 @@ import script from "./script"
       scriptID="radial"
       description="Draw some symmetrical pictures"
       usageInstructions="instructions"
-      :script="script"
+      :scriptWrapper="script"
       :projectDimensions="{
         width: 400,
         height: 400

@@ -2,6 +2,9 @@
 import { defineProps } from 'vue'
 import type { P5ProjectProps } from '../types'
 import P5Canvas from './P5Canvas.vue'
+import { useScreenDimensions } from '../helpers/composables'
+
+const screenDimensions = useScreenDimensions()
 
 const props = defineProps<P5ProjectProps>()
 </script>
@@ -12,7 +15,8 @@ const props = defineProps<P5ProjectProps>()
             <div class="absolute">
                 <P5Canvas
                     :scriptID="props.scriptID"
-                    :script="props.script"
+                    :scriptWrapper="props.scriptWrapper"
+                    :screenDimensions="screenDimensions"
                     :state="props.state"
                 />
             </div>
@@ -37,3 +41,4 @@ const props = defineProps<P5ProjectProps>()
     touch-action: pan-y;
 }
 </style>
+../helpers/composables
