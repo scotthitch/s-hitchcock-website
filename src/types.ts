@@ -20,7 +20,6 @@ export type P5ProjectState = 'visible' | 'neighbour' | 'invisible'
 export interface P5CanvasProps {
     scriptID: string
     scriptWrapper: p5ScriptWrapper
-    screenDimensions: ScreenDimensions
     state: P5ProjectState
 }
 

@@ -13,7 +13,6 @@ const props = defineProps<P5ProjectProps>()
                 <P5Canvas
                     :scriptID="props.scriptID"
                     :scriptWrapper="props.scriptWrapper"
-                    :screenDimensions="{width: 100, height:100}"
                     :state="props.state"
                 />
             </div>
