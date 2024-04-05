@@ -2,6 +2,11 @@
 import P5 from 'p5' // Package from npm
 import { onMounted, defineProps, ref, onUnmounted, onUpdated } from 'vue'
 import type { P5CanvasProps } from '../types'
+import { useElementSize } from '@vueuse/core'
+
+const el = ref(null)
+
+const { width, height } = useElementSize(el)
 
 const props = defineProps<P5CanvasProps>()
 
@@ -9,7 +14,7 @@ const p5 = ref<P5>()
 
 const generateNewP5Sketch = () => {
     const targetElement = document.getElementById(props.scriptID) || undefined
-    p5.value = new P5(props.scriptWrapper(props.screenDimensions), targetElement)
+    p5.value = new P5(props.scriptWrapper({ width: width.value, height: height.value }), targetElement)
 }
 
 const handleP5SketchGeneration = () => {
@@ -49,5 +54,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div :id="props.scriptID"></div>
+    <div ref="el" class="w-full h-full" :id="props.scriptID"></div>
 </template>

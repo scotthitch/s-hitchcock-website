@@ -2,21 +2,18 @@
 import { defineProps } from 'vue'
 import type { P5ProjectProps } from '../types'
 import P5Canvas from './P5Canvas.vue'
-import { useScreenDimensions } from '../helpers/composables'
-
-const screenDimensions = useScreenDimensions()
 
 const props = defineProps<P5ProjectProps>()
 </script>
 
 <template>
     <div class="verticalPan relative h-[100svh] snap-always snap-center">
-        <div v-if="props.state !== 'invisible'">
-            <div class="absolute">
+        <div class="h-full" v-if="props.state !== 'invisible'">
+            <div class="h-full">
                 <P5Canvas
                     :scriptID="props.scriptID"
                     :scriptWrapper="props.scriptWrapper"
-                    :screenDimensions="screenDimensions"
+                    :screenDimensions="{width: 100, height:100}"
                     :state="props.state"
                 />
             </div>
