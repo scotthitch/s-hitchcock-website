@@ -20,15 +20,15 @@ const store = useDeviceTypeStore()
 const p5ProjectKey = ref(0)
 
 const projects = shallowRef([
-    // { component: ProjectsIntro, isMobileOrTabletFriendly: true },
-    // { component: WaterfallProject, isMobileOrTabletFriendly: true },
-    // { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
-    // { component: PerlinFlowFieldProject, isMobileOrTabletFriendly: true },
-    // { component: GrowingCircleProject, isMobileOrTabletFriendly: true },
-    // { component: FireworksProject, isMobileOrTabletFriendly: true },
-    // { component: UnknownPleasuresProject, isMobileOrTabletFriendly: false },
-    // { component: RadialProject, isMobileOrTabletFriendly: false },
-    // { component: TilingProject, isMobileOrTabletFriendly: true },
+    { component: ProjectsIntro, isMobileOrTabletFriendly: true },
+    { component: WaterfallProject, isMobileOrTabletFriendly: true },
+    { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
+    { component: PerlinFlowFieldProject, isMobileOrTabletFriendly: true },
+    { component: GrowingCircleProject, isMobileOrTabletFriendly: true },
+    { component: FireworksProject, isMobileOrTabletFriendly: true },
+    { component: UnknownPleasuresProject, isMobileOrTabletFriendly: false },
+    { component: RadialProject, isMobileOrTabletFriendly: false },
+    { component: TilingProject, isMobileOrTabletFriendly: true },
     { component: BallCascadeProject, isMobileOrTabletFriendly: true }
 ])
 

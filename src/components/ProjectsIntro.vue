@@ -7,7 +7,5 @@
                 Projects
             </div>
         </div>
-
-        Projects
     </div>
 </template>

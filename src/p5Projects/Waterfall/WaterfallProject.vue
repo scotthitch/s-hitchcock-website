@@ -13,10 +13,6 @@ import script from "./script"
       description="Wee watch them fall"
       usageInstructions="A cascade of veils built using Perlin Noise"
       :scriptWrapper="script"
-      :projectDimensions="{
-        width: 400,
-        height: 550
-      }"
       state="invisible"
     />
 </template>

@@ -10,10 +10,6 @@ import script from './script'
         description="spin"
         usageInstructions="Sinusoidal terms summing to approximate a square wave. Click to change the number of terms"
         :scriptWrapper="script"
-        :projectDimensions="{
-            width: 400,
-            height: 500
-        }"
-      state="invisible"
+        state="invisible"
     />
 </template>

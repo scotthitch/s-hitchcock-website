@@ -12,10 +12,6 @@ import script from "./script"
       description="Preeety"
       usageInstructions="Just sit back and relax"
       :scriptWrapper="script"
-      :projectDimensions="{
-        width: 400,
-        height: 400
-      }"
       state="invisible"
     />
 </template>

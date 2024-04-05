@@ -1,6 +1,8 @@
 import P5 from 'p5' // Package from npm
+import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '../../types'
 
-const script = (p5Instance: P5): void => {
+const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+    const script = (p5Instance: P5): void => {
     // Params for drawing the initial shape
     const INITAL_SHAPE_MEAN_RADIUS = 120
     const INITIAL_SHAPE_NOISE_FACTOR = 0.2
@@ -24,7 +26,7 @@ const script = (p5Instance: P5): void => {
     const shapeNodesRadii: number[] = []
 
     p5Instance.setup = () => {
-        p5Instance.createCanvas(window.innerWidth, window.innerHeight)
+        p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
         p5Instance.background(BACKGROUND_COLOUR)
 
         for (let i = 0; i < N_SHAPE_NODES; i++) {
@@ -78,5 +80,7 @@ const script = (p5Instance: P5): void => {
         p5Instance.curveVertex(radius * p5Instance.cos(theta), radius * p5Instance.sin(theta))
     }
 }
+return script
+}
 
-export default script
+export default scriptWrapper
