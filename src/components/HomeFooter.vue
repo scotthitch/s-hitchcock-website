@@ -4,7 +4,7 @@ import HomeFooterIcon from './HomeFooterIcon.vue'
 
 <template>
     <div class="flex flex-col gap-2 items-center bottom-0 pb-3 pt-2 bg-col-secondary">
-        <div class="text-sm sm:text-base font-bold text-col-primary">Built With</div>
+        <div class="text-sm sm:text-base font-bold text-col-primary">Built Using</div>
 
         <div class="w-full flex flex-row gap-[12svw] sm:gap-28 md:gap-32 justify-center">
             <HomeFooterIcon
@@ -24,6 +24,12 @@ import HomeFooterIcon from './HomeFooterIcon.vue'
                 icon-name="p5.js"
                 icon-alt="p5js"
                 external-link="https://p5js.org/"
+            />
+            <HomeFooterIcon
+                file-name="github.png"
+                icon-name="GitHub"
+                icon-alt="github"
+                external-link="https://github.com/scotthitch/s-hitchcock-website/"
             />
             <HomeFooterIcon
                 file-name="aws.png"
