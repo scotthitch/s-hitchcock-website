@@ -1,6 +1,9 @@
 import QuadraticRoots from '../../helpers/QuadraticRoots'
 import P5 from 'p5' // Package from npm
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '../../types'
+import { useDeviceTypeStore } from '@/stores/deviceType'
+
+const deviceTypeStore = useDeviceTypeStore()
 
 interface FlightParams {
     initialVelocity: P5.Vector
@@ -9,7 +12,6 @@ interface FlightParams {
 
 const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
     const script = (p5Instance: P5): void => {
-        const isDeviceAppleTouchScreen = /iPad|iPhone|iPod/.test(navigator.userAgent) // TODO use store‰
         const GRAVITY = p5Instance.createVector(0, 0.15)
         const PARENT_MASS = 1
         const CHILD_MASS_AVG = 0.05
@@ -101,6 +103,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         }
 
         const calculateFlightParamsFromClick = (p0: P5.Vector, p2: P5.Vector): FlightParams => {
+            // console.log(p2)
             const flightParams: FlightParams = {
                 initialVelocity: p5Instance.createVector(0, 0),
                 explodeTime: 0
@@ -124,45 +127,18 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
             return flightParams
         }
-        p5Instance.touchStarted = (event: TouchEvent) => {
-            if (event.touches === undefined) {
-                return
-            }
-            const launchLocation = p5Instance.createVector(p5Instance.width / 2, 0)
-            const effectiveLaunchLocation = p5Instance.createVector(
-                p5Instance.width / 2,
-                p5Instance.height
-            )
+        const createNewFireworkFromInteractionEvent = () => {
             const clickLocation = p5Instance.createVector(
-                event.touches[0].clientX,
-                p5Instance.height - event.touches[0].clientY
+                p5Instance.mouseX,
+                p5Instance.height - p5Instance.mouseY
             )
-            // console.log(clickLocation)
-            const flightParams = calculateFlightParamsFromClick(launchLocation, clickLocation)
 
-            fireworks.push(
-                new Missile(
-                    effectiveLaunchLocation,
-                    flightParams.initialVelocity,
-                    flightParams.explodeTime,
-                    PARENT_MASS,
-                    false,
-                    PARENT_FIREWORK_COLOUR
-                )
-            )
-        }
-
-        p5Instance.mouseClicked = (event: MouseEvent) => {
-            if (isDeviceAppleTouchScreen) {
-                return
-            }
             const launchLocation = p5Instance.createVector(p5Instance.width / 2, 0)
             const effectiveLaunchLocation = p5Instance.createVector(
                 p5Instance.width / 2,
                 p5Instance.height
             )
 
-            const clickLocation = p5Instance.createVector(event.x, p5Instance.height - event.y)
             const flightParams = calculateFlightParamsFromClick(launchLocation, clickLocation)
 
             fireworks.push(
@@ -176,6 +152,11 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
                 )
             )
         }
+
+        window.addEventListener(
+            deviceTypeStore.interactionEvent,
+            createNewFireworkFromInteractionEvent
+        )
 
         class Missile {
             position: P5.Vector
