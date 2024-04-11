@@ -13,7 +13,7 @@ import HomeFooter from '../components/HomeFooter.vue'
                 </div>
 
                 <div
-                    class="flex flex-col-reverse text-sm sm:text-2xl text-neutral-500 italic font-semibold slide-from-right-40 text-end"
+                    class="flex flex-col-reverse text-sm sm:text-2xl text-neutral-400 italic font-semibold slide-from-right-40 text-end"
                 >
                     <div>Engineer</div>
                     <div>Mechatronics</div>
