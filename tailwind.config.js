@@ -7,7 +7,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                'cv-blue': '#0F365B'
+                'cv-blue': '#0F365B',
+                'col-primary': '#181818',
+                'col-secondary': "#F0F0F0   "
             },
             screens: {
                 xs: '400px'
