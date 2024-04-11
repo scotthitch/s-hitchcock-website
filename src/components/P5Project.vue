@@ -24,7 +24,7 @@ const props = defineProps<P5ProjectProps>()
             </div>
 
             <div class="absolute top-2 right-2 left-2 text-right fade-in slide-from-right-40">
-                <p class="text-l sm:text-xl lg:text-2xl font-bold italic text-white opacity-80">
+                <p class=" text-base sm:text-lg lg:text-xl font-bold italic text-white opacity-80">
                     {{ props.usageInstructions }}
                 </p>
             </div>
