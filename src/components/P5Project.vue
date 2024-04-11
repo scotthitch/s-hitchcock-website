@@ -7,7 +7,7 @@ const props = defineProps<P5ProjectProps>()
 </script>
 
 <template>
-    <div class="verticalPan relative h-[100svh] snap-always snap-center">
+    <div class="verticalPan relative h-full snap-always snap-center">
         <div class="h-full" v-if="props.state !== 'invisible'">
             <div class="h-full">
                 <P5Canvas

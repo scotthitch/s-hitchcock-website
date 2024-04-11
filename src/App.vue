@@ -4,8 +4,10 @@ import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-    <NavBar />
-    <RouterView />
+    <div class="flex flex-col h-[100svh]">
+        <NavBar />
+        <RouterView />
+    </div>
 </template>
 
 <style scoped>

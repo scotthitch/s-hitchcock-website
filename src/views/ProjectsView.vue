@@ -50,6 +50,9 @@ const projectsToRender = computed(() => {
 const projectStates = ref<P5ProjectState[]>(Array(projects.value.length).fill('invisible'))
 
 const setProjectVisibilityStates = () => {
+    const navbar = document.getElementById(`navbar`)
+    const navbarBoundingRect = navbar?.getBoundingClientRect() || new DOMRect()
+
     let wasPreviousProjectVisible = false
     projects.value.forEach((project, i) => {
         const el = document.getElementById(`project-${i}`)
@@ -60,7 +63,10 @@ const setProjectVisibilityStates = () => {
 
         const projectBoundingRect = el.getBoundingClientRect()
 
-        if (projectBoundingRect.top < window.innerHeight - 5 && projectBoundingRect.bottom > 0) {
+        if (
+            projectBoundingRect.top < window.innerHeight - 5 &&
+            projectBoundingRect.bottom > navbarBoundingRect.height
+        ) {
             //TODO need 10?
             projectStates.value[i] = 'visible'
             wasPreviousProjectVisible = true
@@ -112,11 +118,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div
-        id="projects-view"
-        class="snap-y snap-mandatory h-[100svh] overflow-scroll overflow-x-hidden"
-    >
-        <!-- <ScrollDownIndicator /> -->
+    <div id="projects-view" class="snap-y snap-mandatory h-full overflow-scroll overflow-x-hidden">
         <component
             v-for="(project, i) in projectsToRender"
             :is="project.component"
