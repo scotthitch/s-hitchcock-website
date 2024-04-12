@@ -1,11 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PageIntro from '../components/PageIntro.vue'
+</script>
 
 <template>
-    <div class="verticalPan relative h-[80svh] sm:h-[80svh] snap-always snap-center bg-col-primary">
-        <div class="flex h-full">
-            <div class="m-auto text-6xl sm:text-8xl font-bold italic slide-from-left-60 text-col-secondary">
-                Projects
-            </div>
-        </div>
-    </div>
+    <PageIntro pageName="Projects" />
 </template>
