@@ -22,44 +22,42 @@ import TextContent from './TextContent.vue'
                             src="../../assets/profile_photo.png"
                             class="mx-auto w-14 xs:w-24 sm:w-30"
                         />
-                        <div class="font-bold italic text-base xs:text-lg sm:text-xl xl:text-2xl text-center">Scott Hitchcock</div>
+                        <div
+                            class="font-bold italic text-base xs:text-lg sm:text-xl xl:text-2xl text-center"
+                        >
+                            Scott Hitchcock
+                        </div>
                         <div class="h-[1.5px] w-6 bg-col-light self-center my-3"></div>
-                        <TextContent class="text-col-mid" content="MECHATRONICS GRADUATE" />
+                        <TextContent  content="MECHATRONICS GRADUATE" />
                     </div>
                     <div>
                         <PrimaryTitle content="Links" />
-                        <TextContent class="text-col-mid" content="LinkedIn" />
-                        <TextContent class="text-col-mid" content="Github" />
+                        <TextContent content="LinkedIn" />
+                        <TextContent content="Github" />
                     </div>
 
                     <!-- SKILLS -->
                     <div class="flex flex-col gap-3">
                         <div>
                             <PrimaryTitle content="Skills" />
-                            <SecondaryTitle content="Software:" />
+                            <SecondaryTitle class="text-col-mid" content="Software:" />
                             <TextContent
-                                class="text-col-mid"
                                 content="Python, C, C++, Full Stack Web Development, MATLAB, Bash, Git, LabVIEW, PLC Ladder Logic."
                             />
                         </div>
                         <div>
-                            <SecondaryTitle content="Electrical:" />
-                            <TextContent
-                                class="text-col-mid"
-                                content="PCB design (Altium, KiCad), Soldering."
-                            />
+                            <SecondaryTitle class="text-col-mid" content="Electrical:" />
+                            <TextContent content="PCB design (Altium, KiCad), Soldering." />
                         </div>
                         <div>
-                            <SecondaryTitle content="Mechanical:" />
+                            <SecondaryTitle class="text-col-mid" content="Mechanical:" />
                             <TextContent
-                                class="text-col-mid"
                                 content="CAD (SOLIDWORKS), Lathes, Milling Machines, Arc Welding, 3D Printing."
                             />
                         </div>
                         <div>
-                            <SecondaryTitle content="Extra:" />
+                            <SecondaryTitle class="text-col-mid" content="Extra:" />
                             <TextContent
-                                class="text-col-mid"
                                 content=" Workplace First Aid Certificate,  Microsoft Office, Intermediate Spanish."
                             />
                         </div>
@@ -69,7 +67,6 @@ import TextContent from './TextContent.vue'
                     <div>
                         <PrimaryTitle content="Personal Interests" />
                         <TextContent
-                            class="text-col-mid"
                             content="In my free time, I take great pleasure in engaging in various sports activities, including hockey, golf, squash, surfing, skiing, and running. I also have a huge passion for travelling and exploring new destinations. I also thoroughly enjoy socialising with friends. Additionally, I actively participated in university culture being the treasurer of Opsoc, a university club."
                         />
                     </div>
@@ -77,35 +74,25 @@ import TextContent from './TextContent.vue'
                     <div class="flex flex-col gap-3">
                         <div>
                             <PrimaryTitle content="Volunteer Work" />
-                            <SecondaryTitle content="Opsoc (2022, 2023):" />
+                            <SecondaryTitle class="text-col-mid" content="Opsoc (2022, 2023):" />
                             <TextContent
-                                class="text-col-mid"
                                 content="I hosted the Charity Art Auction with proceeds going to Ukraine war relief, Waiheke penguins support and Gisborne flooding relief."
                             />
                         </div>
                         <div>
-                            <SecondaryTitle content="Rochester and Rutherford (2020):" />
-                            <TextContent
-                                class="text-col-mid"
-                                content="Ronald McDonald House Charity Dinners."
-                            />
+                            <SecondaryTitle class="text-col-mid" content="Rochester and Rutherford (2020):" />
+                            <TextContent content="Ronald McDonald House Charity Dinners." />
                         </div>
 
                         <div>
-                            <SecondaryTitle content="Student Volunteer Army (2020):" />
-                            <TextContent
-                                class="text-col-mid"
-                                content="Queenstown Reforestation project."
-                            />
+                            <SecondaryTitle class="text-col-mid" content="Student Volunteer Army (2020):" />
+                            <TextContent content="Queenstown Reforestation project." />
                         </div>
                     </div>
                     <div class="flex flex-col gap-3">
                         <div>
                             <PrimaryTitle content="References" />
-                            <TextContent
-                                class="text-col-mid"
-                                content="References are available upon request."
-                            />
+                            <TextContent content="References are available upon request." />
                         </div>
                     </div>
                 </div>

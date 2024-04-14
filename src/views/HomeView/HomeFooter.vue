@@ -4,7 +4,7 @@ import HomeFooterIcon from './HomeFooterIcon.vue'
 
 <template>
     <div class="relative flex flex-col gap-2 items-center bottom-0 w-full pb-4 pt-2 bg-col-light">
-        <div class="text-sm sm:text-base font-bold text-col-primary">Tools Used</div>
+        <div class="text-sm sm:text-base font-bold text-col-dark">Tools Used</div>
 
         <div class="w-full flex flex-row gap-[8svw] sm:gap-20 md:gap-24 justify-center">
             <HomeFooterIcon
