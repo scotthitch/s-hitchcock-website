@@ -12,10 +12,10 @@ import TextContent from './TextContent.vue'
     <div class="overflow-scroll">
         <PageIntro pageName="Resume" />
         <div class="flex flex-row justify-center">
-            <div class="grow bg-cv-blue"></div>
+            <div class="grow bg-col-primary"></div>
             <div class="basis-[100%] sm:basis-[90%] md:basis-[85%] max-w-[800px] flex flex-row">
                 <div
-                    class="text-col-secondary basis-[33%] flex flex-col gap-5 sm:gap-7 px-3 sm:px-6 pb-4 bg-cv-blue"
+                    class="text-col-light basis-[33%] flex flex-col gap-5 sm:gap-7 px-3 sm:px-6 pb-4 bg-col-primary"
                 >
                     <div class="flex flex-col justify-center text-center">
                         <img
@@ -23,13 +23,13 @@ import TextContent from './TextContent.vue'
                             class="mx-auto w-14 xs:w-24 sm:w-30"
                         />
                         <div class="font-bold italic text-base xs:text-lg sm:text-xl xl:text-2xl text-center">Scott Hitchcock</div>
-                        <div class="h-[1.5px] w-6 bg-col-secondary self-center my-3"></div>
-                        <TextContent class="text-col-tertiary" content="MECHATRONICS GRADUATE" />
+                        <div class="h-[1.5px] w-6 bg-col-light self-center my-3"></div>
+                        <TextContent class="text-col-mid" content="MECHATRONICS GRADUATE" />
                     </div>
                     <div>
                         <PrimaryTitle content="Links" />
-                        <TextContent class="text-col-tertiary" content="LinkedIn" />
-                        <TextContent class="text-col-tertiary" content="Github" />
+                        <TextContent class="text-col-mid" content="LinkedIn" />
+                        <TextContent class="text-col-mid" content="Github" />
                     </div>
 
                     <!-- SKILLS -->
@@ -38,28 +38,28 @@ import TextContent from './TextContent.vue'
                             <PrimaryTitle content="Skills" />
                             <SecondaryTitle content="Software:" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content="Python, C, C++, Full Stack Web Development, MATLAB, Bash, Git, LabVIEW, PLC Ladder Logic."
                             />
                         </div>
                         <div>
                             <SecondaryTitle content="Electrical:" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content="PCB design (Altium, KiCad), Soldering."
                             />
                         </div>
                         <div>
                             <SecondaryTitle content="Mechanical:" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content="CAD (SOLIDWORKS), Lathes, Milling Machines, Arc Welding, 3D Printing."
                             />
                         </div>
                         <div>
                             <SecondaryTitle content="Extra:" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content=" Workplace First Aid Certificate,  Microsoft Office, Intermediate Spanish."
                             />
                         </div>
@@ -69,7 +69,7 @@ import TextContent from './TextContent.vue'
                     <div>
                         <PrimaryTitle content="Personal Interests" />
                         <TextContent
-                            class="text-col-tertiary"
+                            class="text-col-mid"
                             content="In my free time, I take great pleasure in engaging in various sports activities, including hockey, golf, squash, surfing, skiing, and running. I also have a huge passion for travelling and exploring new destinations. I also thoroughly enjoy socialising with friends. Additionally, I actively participated in university culture being the treasurer of Opsoc, a university club."
                         />
                     </div>
@@ -79,14 +79,14 @@ import TextContent from './TextContent.vue'
                             <PrimaryTitle content="Volunteer Work" />
                             <SecondaryTitle content="Opsoc (2022, 2023):" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content="I hosted the Charity Art Auction with proceeds going to Ukraine war relief, Waiheke penguins support and Gisborne flooding relief."
                             />
                         </div>
                         <div>
                             <SecondaryTitle content="Rochester and Rutherford (2020):" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content="Ronald McDonald House Charity Dinners."
                             />
                         </div>
@@ -94,7 +94,7 @@ import TextContent from './TextContent.vue'
                         <div>
                             <SecondaryTitle content="Student Volunteer Army (2020):" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content="Queenstown Reforestation project."
                             />
                         </div>
@@ -103,14 +103,14 @@ import TextContent from './TextContent.vue'
                         <div>
                             <PrimaryTitle content="References" />
                             <TextContent
-                                class="text-col-tertiary"
+                                class="text-col-mid"
                                 content="References are available upon request."
                             />
                         </div>
                     </div>
                 </div>
                 <div
-                    class="text-col-primary basis-[67%] flex flex-col gap-5 sm:gap-7 px-2 xs:px-4 sm:px-6 py-4 bg-col-secondary"
+                    class="text-col-dark basis-[67%] flex flex-col gap-5 sm:gap-7 px-2 xs:px-4 sm:px-6 py-4 bg-col-light"
                 >
                     <div>
                         <PrimaryTitle content="Profile" />
@@ -257,7 +257,7 @@ import TextContent from './TextContent.vue'
                     </div>
                 </div>
             </div>
-            <div class="grow bg-col-secondary"></div>
+            <div class="grow bg-col-light"></div>
         </div>
         <!-- <DownloadAssetButton
             buttonName="Download a Copy Here"

@@ -21,10 +21,10 @@ const navBarRoutes = [
 <template>
     <!-- Add some negative margin on the bottom to ensure navbar overlaps whatevever's visible below -->
     <nav
-        class="basis-12 z-30 items-center bg-col-primary -mb-[0.5px] flex flex-row w-full gap-6 py-6"
+        class="basis-12 z-30 items-center bg-col-dark -mb-[0.5px] flex flex-row w-full gap-6 py-6"
         id="navbar"
     >
-        <div class="italic text-col-secondary text-xl xs:text-2xl font-semibold pl-6" id="navbarTitle">
+        <div class="italic text-col-light text-xl xs:text-2xl font-semibold pl-6" id="navbarTitle">
             <router-link to="/">
                 <div class="hidden sm:block pr-10">Scott Hitchcock</div>
                 <div class="block sm:hidden pr-6">S.H</div>
@@ -32,12 +32,12 @@ const navBarRoutes = [
         </div>
         <div v-for="(navBarRoute, index) in navBarRoutes" v-bind:key="index">
             <div
-                class="text-neutral-600 hover:text-neutral-200 text-sm xs:text-base navbarRoute font-semibold"
+                class="text-col-mid hover:text-col-light text-sm xs:text-base navbarRoute font-semibold"
             >
                 <router-link
                     :to="navBarRoute.to"
                     :id="navBarRoute.id"
-                    exact-active-class="text-neutral-200"
+                    exact-active-class="text-col-light"
                     >{{ navBarRoute.title }}</router-link
                 >
             </div>
