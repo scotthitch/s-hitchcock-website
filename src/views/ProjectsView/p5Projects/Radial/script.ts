@@ -4,7 +4,7 @@ import type {
     ScreenDimensions,
     PolarCoordinates,
     CartesianCoordinates
-} from '../../types'
+} from '@/types'
 import P5 from 'p5' // Package from npm
 
 const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import P5Project from "../../components/P5Project.vue";
+import P5Project from "@/components/P5Project.vue";
 import scriptWrapper from "./script"
 </script>
 
