@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import RadialProject from '../p5Projects/Radial/RadialProject.vue'
-import BallCascadeProject from '../p5Projects/BallCascade/BallCascadeProject.vue'
-import UnknownPleasuresProject from '../p5Projects/UnknownPleasures/UnknownPleasuresProject.vue'
-import GrowingCircleProject from '../p5Projects/GrowingCircle/GrowingCircleProject.vue'
-import WaterfallProject from '../p5Projects/Waterfall/WaterfallProject.vue'
-import PerlinFlowFieldProject from '../p5Projects/PerlinFlowField/PerlinFlowFieldProject.vue'
-import FireworksProject from '../p5Projects/Fireworks/FireworksProject.vue'
-import FourierSeriesProject from '../p5Projects/FourierSeries/FourierSeriesProject.vue'
-import TilingProject from '../p5Projects/Tiling/TilingProject.vue'
-import ExploreMoreProjectsOnDesktop from '../components/ExploreMoreProjectsOnDesktop.vue'
-import ProjectsIntro from '../components/ProjectsIntro.vue'
+import RadialProject from '../../p5Projects/Radial/RadialProject.vue'
+import BallCascadeProject from '../../p5Projects/BallCascade/BallCascadeProject.vue'
+import UnknownPleasuresProject from '../../p5Projects/UnknownPleasures/UnknownPleasuresProject.vue'
+import GrowingCircleProject from '../../p5Projects/GrowingCircle/GrowingCircleProject.vue'
+import WaterfallProject from '../../p5Projects/Waterfall/WaterfallProject.vue'
+import PerlinFlowFieldProject from '../../p5Projects/PerlinFlowField/PerlinFlowFieldProject.vue'
+import FireworksProject from '../../p5Projects/Fireworks/FireworksProject.vue'
+import FourierSeriesProject from '../../p5Projects/FourierSeries/FourierSeriesProject.vue'
+import TilingProject from '../../p5Projects/Tiling/TilingProject.vue'
+import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
+import ProjectsIntro from './ProjectsIntro.vue'
 
 import { ref, onMounted, onUnmounted, shallowRef, computed } from 'vue'
-import type { P5ProjectState } from '../types'
-import { useDeviceTypeStore } from '../stores/deviceType'
+import type { P5ProjectState } from '../../types'
+import { useDeviceTypeStore } from '../../stores/deviceType'
 
 const store = useDeviceTypeStore()
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import getImageURL from '../helpers/getImageURL'
+import getImageURL from '../../helpers/getImageURL'
 
 const props = defineProps<{
     iconName: string

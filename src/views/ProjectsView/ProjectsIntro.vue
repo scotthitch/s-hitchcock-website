@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PageIntro from '../components/PageIntro.vue'
+import PageIntro from '../../components/PageIntro.vue'
 </script>
 
 <template>
