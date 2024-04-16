@@ -44,7 +44,7 @@ class Grid {
                     this.cells[j - 1][i].filled = false // Set the cell above to empty
                 }
 
-                // -- If the current cell is full --
+                // -- If the current cell is full then try slide the sand to the left or the right --
                 else {
                     // -- Then check the cell to the left --
                     if (i > 0 && !this.cells[j][i - 1].filled) {
