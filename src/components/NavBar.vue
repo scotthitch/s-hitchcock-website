@@ -26,8 +26,8 @@ const navBarRoutes = [
     >
         <div class="italic text-col-light text-xl xs:text-2xl font-semibold pl-6" id="navbarTitle">
             <router-link to="/">
-                <div class="hidden sm:block pr-10">Scott Hitchcock</div>
-                <div class="block sm:hidden pr-6">S.H</div>
+                <div class="hidden sm:block mr-10">Scott Hitchcock</div>
+                <div class="block sm:hidden mr-6">S.H</div>
             </router-link>
         </div>
         <div v-for="(navBarRoute, index) in navBarRoutes" v-bind:key="index">
