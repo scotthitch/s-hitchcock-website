@@ -19,8 +19,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         }
 
         p5Instance.draw = () => {
-            p5Instance.background("#181818")
-            // console.log(p5Instance.frameRate())
+            p5Instance.background('#181818')
             p5Instance.noStroke()
             grid.render()
             grid.updateCells()
@@ -33,14 +32,12 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         p5Instance.mouseClicked = () => {
             if (isMouseOnScreen(p5Instance.mouseX, p5Instance.mouseY)) {
                 grid.resetCells()
-                // grid.updateHue()
             }
         }
 
         p5Instance.mouseMoved = () => {
             if (isMouseOnScreen(p5Instance.mouseX, p5Instance.mouseY)) {
                 grid.addParticles(p5Instance.mouseX, p5Instance.mouseY)
-                // grid.updateHue()
             }
         }
     }

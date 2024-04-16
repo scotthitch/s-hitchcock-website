@@ -27,12 +27,10 @@ class Grid {
 
         this.cells = []
         this.resetCells()
-        // populate all the cells with a blank cell
-        // this.cells = Array.from(Array(nRows), () => Array(nCols).fill({ ...blankCell }))
     }
 
     resetCells() {
-        this.cells= Array.from(Array(this.nRows), () => Array(this.nCols).fill({ ...blankCell }))
+        this.cells = Array.from(Array(this.nRows), () => Array(this.nCols).fill({ ...blankCell }))
     }
 
     updateCells() {
@@ -102,15 +100,13 @@ class Grid {
         const indexTop = this.p5Instance.max(0, jCenter - matrixSize)
         const indexBottom = this.p5Instance.min(this.nRows, jCenter + matrixSize - 1)
 
-        let kk = 0
         for (let i = indexLeft; i <= indexRight; i++) {
             for (let j = indexTop; j <= indexBottom; j++) {
                 const randomVal = this.p5Instance.random()
-                console.log(randomVal)
+
                 if (randomVal > 0.5) {
                     this.cells[j][i] = { filled: true, hue: this.currentHue }
                 }
-                console.log(kk++)
             }
         }
 
