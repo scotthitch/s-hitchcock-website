@@ -9,7 +9,7 @@ import scriptWrapper from "./script"
       title="Falling Sand"
       scriptID="falling-sand"
       description="Wee watch them fall"
-      usageInstructions="new script"
+      usageInstructions="Credit to Daniel Shiffman"
       :scriptWrapper="scriptWrapper"
       state="invisible"
     />
