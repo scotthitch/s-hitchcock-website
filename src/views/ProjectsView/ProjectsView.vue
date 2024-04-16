@@ -9,6 +9,7 @@ import FireworksProject from './p5Projects/Fireworks/FireworksProject.vue'
 import FourierSeriesProject from './p5Projects/FourierSeries/FourierSeriesProject.vue'
 import TilingProject from './p5Projects/Tiling/TilingProject.vue'
 import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
+import FallingSandProject from './p5Projects/FallingSand/FallingSandProject.vue'
 import ProjectsIntro from './ProjectsIntro.vue'
 
 import { ref, onMounted, onUnmounted, shallowRef, computed } from 'vue'
@@ -20,6 +21,7 @@ const store = useDeviceTypeStore()
 const p5ProjectKey = ref(0)
 
 const projects = shallowRef([
+    { component: FallingSandProject, isMobileOrTabletFriendly: true },
     { component: ProjectsIntro, isMobileOrTabletFriendly: true },
     { component: WaterfallProject, isMobileOrTabletFriendly: true },
     { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
