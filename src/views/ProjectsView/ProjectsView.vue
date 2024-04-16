@@ -21,10 +21,10 @@ const store = useDeviceTypeStore()
 const p5ProjectKey = ref(0)
 
 const projects = shallowRef([
-    { component: FallingSandProject, isMobileOrTabletFriendly: true },
     { component: ProjectsIntro, isMobileOrTabletFriendly: true },
     { component: WaterfallProject, isMobileOrTabletFriendly: true },
     { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
+    { component: FallingSandProject, isMobileOrTabletFriendly: true },
     { component: PerlinFlowFieldProject, isMobileOrTabletFriendly: true },
     { component: GrowingCircleProject, isMobileOrTabletFriendly: true },
     { component: FireworksProject, isMobileOrTabletFriendly: true },
