@@ -40,8 +40,8 @@ class Grid {
         const rightIndex = this.nCols - 1
 
         // Iterate through 2D grid array in reverse (starting from screen bottom right)
-        for (let i = rightIndex; i >= leftIndex; i--) {
-            for (let j = bottomIndex; j >= topIndex + 1; j--) {
+        for (let j = bottomIndex; j >= topIndex + 1; j--) {
+            for (let i = rightIndex; i >= leftIndex; i--) {
                 // -- If the current cell is empty --
                 if (!this.cells[j][i].filled) {
                     this.cells[j][i] = { ...this.cells[j - 1][i] } // Then copy down whatever is above
