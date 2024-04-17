@@ -26,7 +26,7 @@ export interface P5CanvasProps {
 export interface P5ProjectProps {
     title: string
     scriptID: string
-    usageInstructions: string
+    description: string
     scriptWrapper: p5ScriptWrapper
     state: P5ProjectState
 }

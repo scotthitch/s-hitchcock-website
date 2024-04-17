@@ -9,7 +9,7 @@ import script from "./script"
     <P5Project
       title="Growing Circle"
       scriptID="growing-circle"
-      usageInstructions="Just sit back and relax"
+      description="Just sit back and relax"
       :scriptWrapper="script"
       state="invisible"
     />

@@ -8,7 +8,7 @@ import scriptWrapper from "./script"
     <P5Project
       title="Ball Cascade"
       scriptID="ball-cascade"
-      usageInstructions="Not much to do here. You can flip gravity by clicking"
+      description="Not much to do here. You can flip gravity by clicking"
       :scriptWrapper="scriptWrapper"
       state="invisible"
     />

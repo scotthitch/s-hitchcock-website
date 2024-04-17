@@ -7,7 +7,7 @@ import script from './script'
     <P5Project
         title="Unknown Pleasures"
         scriptID="unknown-pleasures"
-        usageInstructions="Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise"
+        description="Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise"
         :scriptWrapper="script"
         state="invisible"
     />

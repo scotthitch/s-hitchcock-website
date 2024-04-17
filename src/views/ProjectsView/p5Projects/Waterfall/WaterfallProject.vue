@@ -7,7 +7,7 @@ import script from './script'
     <P5Project
         title="Waterfall"
         scriptID="waterfall"
-        usageInstructions="A cascade of veils built using Perlin Noise"
+        description="A cascade of veils built using Perlin Noise"
         :scriptWrapper="script"
         state="invisible"
     />
