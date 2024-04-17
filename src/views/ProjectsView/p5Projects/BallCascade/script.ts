@@ -4,14 +4,22 @@ import Ball from './Ball'
 
 const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
     const script = (p5Instance: P5): void => {
-        const BACKGROUND_COLOUR = 0
-        const MAX_NUMBER_BALLS = 250
-        const balls: Ball[] = []
+        const BACKGROUND_COLOUR = '#181818'
+        let balls: Ball[] = []
         let gravity = 0.1
 
         // Setup the canvas
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
+        }
+
+        const withinScreenBounds = (position: P5.Vector): boolean => {
+            return (
+                position.x > 0 &&
+                position.x < screenDimensions.width &&
+                position.y > 0 &&
+                position.y < screenDimensions.height
+            )
         }
 
         // Redraw the canvas on every iterations
@@ -26,19 +34,22 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
             const mousePosition = p5Instance.createVector(p5Instance.mouseX, p5Instance.mouseY)
             balls.push(new Ball(p5Instance, mousePosition, gravity))
-            for (const ball of balls) {
+
+            // Filter all the balls that are within the screen bounds
+            balls = balls.filter((ball) => {
+                // But first move and render them
                 ball.move()
                 ball.render()
-            }
 
-            if (balls.length > MAX_NUMBER_BALLS) {
-                balls.splice(0, 1)
-            }
+                return withinScreenBounds(ball.position)
+            })
         }
 
         p5Instance.mousePressed = () => {
             gravity *= -1
         }
+
+        // console.log(balls.length)
     }
     return script
 }
