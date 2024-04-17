@@ -14,6 +14,11 @@ const navBarRoutes = [
         to: '/resume',
         id: 'resume',
         title: 'Resume'
+    },
+    {
+        to: '/contact',
+        id: 'contact',
+        title: 'Contact'
     }
 ]
 </script>
