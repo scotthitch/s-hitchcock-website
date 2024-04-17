@@ -7,7 +7,6 @@ import script from './script'
     <P5Project
         title="Fourier Series"
         scriptID="fourier-series"
-        description="spin"
         usageInstructions="Sinusoidal terms summing to approximate a square wave. Click to change the number of terms"
         :scriptWrapper="script"
         state="invisible"

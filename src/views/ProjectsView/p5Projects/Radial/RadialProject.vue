@@ -7,7 +7,6 @@ import script from './script'
     <P5Project
         title="Radial"
         scriptID="radial"
-        description="Draw some symmetrical pictures"
         usageInstructions="Press the up and down arrows to change the number of reflections"
         :scriptWrapper="script"
         state="invisible"

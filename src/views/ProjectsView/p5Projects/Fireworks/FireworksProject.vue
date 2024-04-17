@@ -7,7 +7,6 @@ import script from './script'
     <P5Project
         title="Fireworks"
         scriptID="fireworks"
-        description="Festivities"
         usageInstructions="Click to shoot some fireworks."
         :scriptWrapper="script"
         state="invisible"

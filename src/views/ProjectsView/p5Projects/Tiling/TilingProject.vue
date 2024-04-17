@@ -7,7 +7,6 @@ import script from './script'
     <P5Project
         title="Tiling"
         scriptID="tiling"
-        description="Wee watch them fall"
         usageInstructions="Click to change the zoom and tilt"
         :scriptWrapper="script"
         state="invisible"

@@ -8,13 +8,8 @@ import script from "./script"
     <P5Project
       title="Perlin Flow Field"
       scriptID="perlin-flow-field"
-      description="description"
       usageInstructions="A random vector flow field generated using 2D Perlin Noise."
       :scriptWrapper="script"
-      :projectDimensions="{
-        width: 400,
-        height: 400
-      }"
       state="invisible"
     />
 </template>
