@@ -3,10 +3,12 @@
 Welcome to my website at [scotthitchcock.nz](https://scotthitchcock.nz/)\
 I've built this using Vue.js, p5.js, Tailwindcss with AWS for hosting.
 
-<img src="./src//assets//buildToolsLogos//vuejs.png" height="50" />
-<img src="./src//assets//buildToolsLogos//p5js.png" height="50" />
-<img src="./src//assets//buildToolsLogos//tailwindcss.png" height="50" />
-<img src="./src//assets//buildToolsLogos//aws-white.png" height="50" />
+<div style="display: inline-block;">
+    <img src="./src//assets//buildToolsLogos//vuejs.png" height="50" />
+    <img src="./src//assets//buildToolsLogos//p5js.png" height="50" />
+    <img src="./src//assets//buildToolsLogos//tailwindcss.png" height="50" />
+    <img src="./src//assets//buildToolsLogos//aws-white.png" height="50" />
+</div>
 
 <br />
 <br />
