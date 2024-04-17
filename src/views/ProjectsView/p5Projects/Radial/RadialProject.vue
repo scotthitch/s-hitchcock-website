@@ -8,7 +8,7 @@ import script from './script'
         title="Radial"
         scriptID="radial"
         description="Draw some symmetrical pictures"
-        usageInstructions="instructions"
+        usageInstructions="Press the up and down arrows to change the number of reflections"
         :scriptWrapper="script"
         state="invisible"
     />
