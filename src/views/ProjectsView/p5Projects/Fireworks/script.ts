@@ -1,7 +1,8 @@
-import QuadraticRoots from '@/helpers/QuadraticRoots'
 import P5 from 'p5' // Package from npm
+import QuadraticRoots from '@/helpers/QuadraticRoots'
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '@/types'
 import { useDeviceTypeStore } from '@/stores/deviceType'
+import Missile from './Missile'
 
 const deviceTypeStore = useDeviceTypeStore()
 
@@ -17,7 +18,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         const CHILD_MASS_AVG = 0.05
         const PARENT_FIREWORK_COLOUR = '#FFFFFF'
         const CHILD_FIREWORK_COLOURS = ['#ED254E', '#F9DC5C', '#0FA3B1', '#8A4FFF', '#33CA7F']
-        const CHILD_OPACITY_FADE_RATE = 2.5
         const N_CHILD_FIREWORKS = 300
         const fireworks: Missile[] = []
 
@@ -30,7 +30,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
             // Iterate through all the fireworks
             fireworks.forEach((firework, index, fireworksArray) => {
-                firework.fly()
+                firework.fly(GRAVITY)
                 firework.draw()
 
                 // If the missile is ready to explode then generate it's children and remove it
@@ -90,6 +90,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
                     const randomMass = CHILD_MASS_AVG * p5Instance.random(0.8, 1.5)
                     fireworks.push(
                         new Missile(
+                            p5Instance,
                             parentPosition.copy(),
                             flightParams.initialVelocity,
                             flightParams.explodeTime,
@@ -109,7 +110,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
                 explodeTime: 0
             }
 
-            const maxHeight = p2.y * 1.15
+            const maxHeight = p2.y * 1.15 // 1.15 times the height of the click
             const initialVelocity_y = p5Instance.sqrt(maxHeight * 2 * GRAVITY.y)
             const roots = new QuadraticRoots((1 / 2) * -GRAVITY.y, initialVelocity_y, -p2.y)
 
@@ -127,14 +128,17 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
             return flightParams
         }
-        const createNewFireworkFromInteractionEvent = () => {
+
+        const createParentFireworkFromInteractionEvent = () => {
             const clickLocation = p5Instance.createVector(
                 p5Instance.mouseX,
                 p5Instance.height - p5Instance.mouseY
             )
 
+            // Use 'launchLocation' for the maths
+            // Use 'actualLaunchLocation' for the firework
             const launchLocation = p5Instance.createVector(p5Instance.width / 2, 0)
-            const effectiveLaunchLocation = p5Instance.createVector(
+            const actualLaunchLocation = p5Instance.createVector(
                 p5Instance.width / 2,
                 p5Instance.height
             )
@@ -143,7 +147,8 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
             fireworks.push(
                 new Missile(
-                    effectiveLaunchLocation,
+                    p5Instance,
+                    actualLaunchLocation,
                     flightParams.initialVelocity,
                     flightParams.explodeTime,
                     PARENT_MASS,
@@ -155,66 +160,8 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
         window.addEventListener(
             deviceTypeStore.interactionEvent,
-            createNewFireworkFromInteractionEvent
+            createParentFireworkFromInteractionEvent
         )
-
-        class Missile {
-            position: P5.Vector
-            velocity: P5.Vector
-            explodeCountdown: number
-            mass: number
-            opacity: number
-            willFade: boolean
-            colour: string
-
-            constructor(
-                initialPosition: P5.Vector,
-                initialVelocity: P5.Vector,
-                explodeTime: number,
-                mass: number,
-                willFade: boolean,
-                colour: string
-            ) {
-                this.position = initialPosition
-                this.velocity = initialVelocity
-                this.explodeCountdown = explodeTime
-                this.mass = mass
-                this.colour = colour
-                this.willFade = willFade
-                this.opacity = 255
-            }
-
-            fly() {
-                const acceleration = GRAVITY.copy().mult(this.mass)
-                this.velocity.add(acceleration)
-                this.position.add(this.velocity)
-                this.explodeCountdown--
-
-                if (this.willFade) {
-                    this.opacity -= CHILD_OPACITY_FADE_RATE
-                }
-            }
-
-            hasFaded() {
-                return this.opacity < 0
-            }
-
-            readyToExplode() {
-                return this.explodeCountdown <= 0
-            }
-
-            belowScreenBottom(screenBottom: number) {
-                return this.position.y > screenBottom
-            }
-
-            draw() {
-                p5Instance.noStroke()
-                const colour = p5Instance.color(this.colour)
-                colour.setAlpha(this.opacity)
-                p5Instance.fill(colour)
-                p5Instance.ellipse(this.position.x, this.position.y, 5)
-            }
-        }
     }
     return script
 }
