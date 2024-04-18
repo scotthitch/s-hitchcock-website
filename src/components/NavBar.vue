@@ -35,17 +35,18 @@ const navBarRoutes = [
                 <div class="block sm:hidden mr-2">S.H</div>
             </router-link>
         </div>
-        <div v-for="(navBarRoute, index) in navBarRoutes" v-bind:key="index">
-            <div
-                class="text-col-mid hover:text-col-light text-sm xs:text-base navbarRoute font-semibold"
+
+        <div
+            class="text-col-mid hover:text-col-light text-sm xs:text-base navbarRoute font-semibold"
+            v-for="(navBarRoute, index) in navBarRoutes"
+            v-bind:key="index"
+        >
+            <router-link
+                :to="navBarRoute.to"
+                :id="navBarRoute.id"
+                exact-active-class="text-col-light"
+                >{{ navBarRoute.title }}</router-link
             >
-                <router-link
-                    :to="navBarRoute.to"
-                    :id="navBarRoute.id"
-                    exact-active-class="text-col-light"
-                    >{{ navBarRoute.title }}</router-link
-                >
-            </div>
         </div>
     </nav>
 </template>
