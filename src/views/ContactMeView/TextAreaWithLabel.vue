@@ -13,7 +13,7 @@ const props = defineProps<{
         <textarea
             :type="props.type"
             :id="props.id"
-            class="border-b-[1.5px] py-1 placeholder:font-semibold border-col-mid text-col-dark placeholder:text-neutral-300 text-md focus:outline-none block w-full"
+            class="border-b-[1.5px] rounded-none py-1 placeholder:font-semibold border-col-mid text-col-dark placeholder:text-neutral-300 text-md focus:outline-none block w-full"
             :placeholder="props.placeholder"
             required
         />
