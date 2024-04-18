@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import P5 from 'p5' // Package from npm
-import { onMounted, defineProps, ref, onUnmounted, onUpdated } from 'vue'
+import { onMounted, ref, onUnmounted, onUpdated } from 'vue'
 import type { P5CanvasProps } from '../types'
 import { useElementSize } from '@vueuse/core'
 
