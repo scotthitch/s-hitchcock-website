@@ -16,7 +16,6 @@ class QuadraticRoots {
     }
 
     getRealRoots() {
-        // console.log(this.realRoots)
         return [this.roots[0].real, this.roots[1].real]
     }
 

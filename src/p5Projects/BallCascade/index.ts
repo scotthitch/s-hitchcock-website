@@ -48,8 +48,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         p5Instance.mousePressed = () => {
             gravity *= -1
         }
-
-        // console.log(balls.length)
     }
     return script
 }

@@ -104,7 +104,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         }
 
         const calculateFlightParamsFromClick = (p0: P5.Vector, p2: P5.Vector): FlightParams => {
-            // console.log(p2)
             const flightParams: FlightParams = {
                 initialVelocity: p5Instance.createVector(0, 0),
                 explodeTime: 0

@@ -121,18 +121,8 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         }
 
         const handleDownEvent = () => {
-            console.log('down')
             nTermsInSeries = Math.max(1, nTermsInSeries - 2)
         }
-
-        // p5Instance.keyPressed = () => {
-        //     if (p5Instance.keyCode === p5Instance.UP_ARROW) {
-        //         handleUpEvent()
-        //     } else if (p5Instance.keyCode === p5Instance.DOWN_ARROW) {
-        //         console.log('here')
-        //         handleDownEvent()
-        //     }
-        // }
 
         class Orbiter {
             amplitude: number
