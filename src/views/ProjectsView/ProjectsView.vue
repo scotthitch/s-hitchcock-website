@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import P5Project from '@/components/P5Project.vue'
-import ProjectsIntro from './ProjectsIntro.vue'
+import PageIntro from '@/components/PageIntro.vue'
 import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
 import type { P5ProjectState } from '@/types'
@@ -52,6 +52,7 @@ const setProjectVisibilityStates = () => {
             projectStates.value[i] = 'invisible'
         }
     })
+    console.log
 }
 
 const preventDefaultForScrollKeys = (event: KeyboardEvent) => {
@@ -90,7 +91,7 @@ onUnmounted(() => {
 
 <template>
     <div id="projects-view" class="snap-y snap-mandatory h-full overflow-scroll overflow-x-hidden">
-        <ProjectsIntro />
+        <PageIntro pageName="Projects" />
         <P5Project
             v-for="(project, i) in projectsToRender()"
             :key="`${i}-${p5ProjectKey}`"
