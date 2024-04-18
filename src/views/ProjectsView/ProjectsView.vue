@@ -1,52 +1,32 @@
 <script setup lang="ts">
 import P5Project from '@/components/P5Project.vue'
-
-import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
 import ProjectsIntro from './ProjectsIntro.vue'
-import { ref, onMounted, onUnmounted, shallowRef, computed } from 'vue'
-import type { P5ProjectState } from '../../types'
-import { useDeviceTypeStore } from '../../stores/deviceType'
-import projects2 from './projects'
+import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import type { P5ProjectState } from '@/types'
+import { useDeviceTypeStore } from '@/stores/deviceType'
+import projects from './projects'
 
-const store = useDeviceTypeStore()
+const deviceTypeStore = useDeviceTypeStore()
 
 const p5ProjectKey = ref(0)
 
-// const projects = shallowRef([
-//     { component: ProjectsIntro, isMobileOrTabletFriendly: true }
-//     // { component: WaterfallProject, isMobileOrTabletFriendly: true },
-//     // { component: FourierSeriesProject, isMobileOrTabletFriendly: true },
-//     // { component: PerlinFlowFieldProject, isMobileOrTabletFriendly: true },
-//     // { component: GrowingCircleProject, isMobileOrTabletFriendly: true },
-//     // { component: FireworksProject, isMobileOrTabletFriendly: true },
-//     // { component: UnknownPleasuresProject, isMobileOrTabletFriendly: false },
-//     // { component: RadialProject, isMobileOrTabletFriendly: false },
-//     // { component: TilingProject, isMobileOrTabletFriendly: true }
-//     // { component: BallCascadeProject, isMobileOrTabletFriendly: true }
-// ])
-
 const projectsToRender = () => {
-    if (store.isMobileOrTablet) {
-        return projects2.filter((project) => project.isMobileOrTabletFriendly)
-        // .concat([
-        //     {
-        //         component: ExploreMoreProjectsOnDesktop,
-        //         isMobileOrTabletFriendly: true
-        //     }
-        // ])
+    if (deviceTypeStore.isMobileOrTablet) {
+        return projects.filter((project) => project.isMobileOrTabletFriendly)
     }
 
-    return projects2
+    return projects
 }
 
-const projectStates = ref<P5ProjectState[]>(Array(projects2.length).fill('invisible'))
+const projectStates = ref<P5ProjectState[]>(Array(projects.length).fill('invisible'))
 
 const setProjectVisibilityStates = () => {
     const navbar = document.getElementById(`navbar`)
     const navbarBoundingRect = navbar?.getBoundingClientRect() || new DOMRect()
 
     let wasPreviousProjectVisible = false
-    projects2.forEach((project, i) => {
+    projects.forEach((project, i) => {
         const el = document.getElementById(`project-${i}`)
 
         if (el === null) {
@@ -122,14 +102,6 @@ onUnmounted(() => {
             :scriptWrapper="project.scriptWrapper"
             :state="projectStates[i]"
         />
-
-        <!-- <component
-            v-for="(project, i) in projectsToRender"
-            :is="project.component"
-            :key="`${i}-${p5ProjectKey}`"
-            :id="`project-${i}`"
-            :state="projectStates[i]"
-        >
-        </component> -->
+        <ExploreMoreProjectsOnDesktop v-if="deviceTypeStore.isMobileOrTablet" />
     </div>
 </template>
