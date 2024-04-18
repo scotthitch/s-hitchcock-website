@@ -35,7 +35,7 @@ const HERO_TOFU_CONTACT_ME_URL = import.meta.env.VITE_HERO_TOFU_CONTACT_ME_URL
             <div>
                 <TextAreaWithLabel
                     label="Content"
-                    placeholder="Enter your email"
+                    placeholder="Leave me a message"
                     type="text"
                     id="content"
                 />
