@@ -11,7 +11,8 @@ const props = defineProps<{
     <div>
         <label :for="props.id" class="font-semibold text-col-dark">{{ props.label }}</label>
         <input
-            type="props.type"
+            :name="props.label"
+            :type="props.type"
             :id="props.id"
             class="border-b-[1.5px] rounded-none py-1 placeholder:font-semibold border-col-mid text-col-dark placeholder:text-neutral-300 text-md focus:outline-none block w-full"
             :placeholder="props.placeholder"
