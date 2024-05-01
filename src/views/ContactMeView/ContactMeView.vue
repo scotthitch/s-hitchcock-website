@@ -22,12 +22,12 @@ onUnmounted(() => {
 <template>
     <div class="overflow-scroll">
         <PageIntro pageName="Contact Me" />
-        <div class="static container lg:max-w-[1000px] m-auto px-2 sm:px-12">
+        <div class="static container lg:max-w-[1000px] m-auto sm:px-12">
             <div
-                class="flex flex-row border-2 border-col-dark md:border-neutral-300 my-16 outline-2 md:outline outline-col-dark -outline-offset-[20px]"
+                class="flex flex-col-reverse md:flex-row border-2 border-neutral-300 my-16 outline-2 outline outline-col-dark -outline-offset-[20px]"
             >
                 <ContactMeForm class="basis-full md:basis-1/2" />
-                <div class="hidden md:block basis-1/2 w-full">
+                <div class="md:block md:basis-1/2 w-full h-[120px] md:h-auto -z-20">
                     <WavesCanvas :key="p5CanvasKey" />
                 </div>
             </div>
