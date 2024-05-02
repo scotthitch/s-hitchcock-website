@@ -6,19 +6,116 @@
 .cache
 dist
 
-# Node dependencies
-node_modules
-
 # Logs
 logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Misc
+node_modules
 .DS_Store
-.fleet
-.idea
+dist
+dist-ssr
+coverage
+*.local
 
-# Local env files
+/cypress/videos/
+/cypress/screenshots/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+
+# Node.js files
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build and output files
+.vite/
+dist/
+.output/
+
+# IDE and testing files
+coverage/
+.vscode/
+.idea/
+tsconfig.tsbuildinfo
+
+# Pinia store specific files
+src/stores/_generated/
+
+# Draft or temporary files
+*.draft
+*.temp
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# IDE specific editor cache
+# Replace with specific IDE/tool names if needed
+.eslintcache
+.stylelintcache
+
+# Specific filetypes
+*.log
+*.dump
+
+# Any local configurations that should not be shared
 .env
-.env.*
-!.env.example
+.env.local
+
+# Personal access tokens or secrets
+.github/token
+.env.development
+.env.production
+
+# Testing frameworks
+jest/__snapshots__/
+cypress/
+
+# GitKraken client specific
+GKCache/
+
+# Visual Studio Code specific
+code/
+
+# Visual Studio specific
+.vs/
+
+# Vim temporary files
+~
+
+# IntelliJ IDEA / WebStorm specific
+.idea/workspace.xml
+.idea/tasks.xml
+
+# PyCharm specific
+.idea/misc.xml
+
+# Webpack specific
+webpack.config.js
+
+# Yarn specific
+.yarn/cache
+.yarn/unplugged
+
+# Other tools
+.nyc_output/
+coverage/
+
+# Additional files you may want to ignore
+# Add them based on your project requirements
