@@ -24,7 +24,7 @@ onUnmounted(() => {
         <PageIntro pageName="Contact Me" />
         <div class="static container lg:max-w-[1000px] m-auto sm:px-12">
             <div
-                class="flex flex-col-reverse md:flex-row border-2 border-neutral-300 xs:mt-2 sm:mt-14 md:mt-16 outline-2 outline outline-col-dark -outline-offset-[16px] sm:-outline-offset-[20px]"
+                class="flex flex-col-reverse md:flex-row border-2 border-neutral-300 xs:my-2 sm:my-14 md:my-16 outline-2 outline outline-col-dark -outline-offset-[16px] sm:-outline-offset-[20px]"
             >
                 <ContactMeForm class="basis-full md:basis-1/2" />
                 <div class="md:block md:basis-1/2 w-full h-[120px] md:h-auto -z-20">
