@@ -1,75 +1,20 @@
-# Nuxt 3 Minimal Starter
+# Scott Hitchcock's Personal Website
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Welcome to my website at [scotthitchcock.nz](https://scotthitchcock.nz/)\
+I've built this using Vue.js, p5.js, Tailwindcss with AWS for hosting.
 
-## Setup
+<div style="display: inline-block;">
+    <img src="./src//assets//buildToolsLogos//vuejs.png" height="50" />
+    <img src="./src//assets//buildToolsLogos//p5js.png" height="50" />
+    <img src="./src//assets//buildToolsLogos//tailwindcss.png" height="50" />
+    <img src="./src//assets//buildToolsLogos//aws-white.png" height="50" />
+</div>
 
-Make sure to install the dependencies:
+<br />
+<br />
 
-```bash
-# npm
-npm install
+The website showcases many technical and fun projects that I've worked, on as well my past professional experience. If you want to find out more about me, please feel free to [reach out to me here](https://scotthitchcock.nz/contact).
 
-# pnpm
-pnpm install
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+I've used 
+[Figma](https://www.figma.com/file/K5hlheUxWCoPhtrW6ssWek/S-Hitchcock-Wesbite)
