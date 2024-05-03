@@ -42,14 +42,13 @@ const navBarRoutes = [
                 v-for="(navBarRoute, index) in navBarRoutes"
                 v-bind:key="index"
             >
-                {{ navBarRoute.title }}
-                <!-- <router-link
+                <NuxtLink
                     class="sm:p-2"
                     :to="navBarRoute.to"
                     :id="navBarRoute.id"
                     exact-active-class="text-col-light"
-                    >{{ navBarRoute.title }}</router-link
-                > -->
+                    >{{ navBarRoute.title }}</NuxtLink
+                >
             </div>
         </div>
     </nav>
