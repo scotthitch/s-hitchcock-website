@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { P5ProjectProps } from '../types'
+import type { P5ProjectProps } from '~/types'
 import P5Canvas from './P5Canvas.vue'
 
 const props = defineProps<P5ProjectProps>()
@@ -23,7 +23,7 @@ const props = defineProps<P5ProjectProps>()
             </div>
 
             <div class="absolute top-2 right-2 left-2 text-right fade-in slide-from-right-40">
-                <p class=" text-base sm:text-lg lg:text-xl font-bold italic text-white opacity-80">
+                <p class="text-base sm:text-lg lg:text-xl font-bold italic text-white opacity-80">
                     {{ props.description }}
                 </p>
             </div>
@@ -36,4 +36,3 @@ const props = defineProps<P5ProjectProps>()
     touch-action: pan-y;
 }
 </style>
-../helpers/composables
