@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import P5Project from '@/components/P5Project.vue'
-import PageIntro from '@/components/PageIntro.vue'
+import P5Project from '~/components/P5Project.vue'
+import PageIntro from '~/components/PageIntro.vue'
 // import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
 import type { P5ProjectState } from '~/types'

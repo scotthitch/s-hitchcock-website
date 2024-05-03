@@ -1,7 +1,7 @@
 import P5 from 'p5' // Package from npm
-import QuadraticRoots from '@/helpers/QuadraticRoots'
-import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '@/types'
-import { useDeviceTypeStore } from '@/stores/deviceType'
+import QuadraticRoots from '~/helpers/QuadraticRoots'
+import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
+import { useDeviceTypeStore } from '~/stores/deviceType'
 import Missile from './Missile'
 
 const deviceTypeStore = useDeviceTypeStore()

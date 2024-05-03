@@ -1,5 +1,5 @@
 import P5 from 'p5'
-import selectRandomElementFromArray from '@/helpers/selectRandomElementFromArray'
+import selectRandomElementFromArray from '~/helpers/selectRandomElementFromArray'
 
 const COLOURS = ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff']
 const MIN_BALL_RADIUS = 5

@@ -11,7 +11,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
-            console.log(p5Instance.width, p5Instance.height)
             inc = (2 * p5Instance.height) / (NUM_VEILS - 2)
 
             let colIndex = 1

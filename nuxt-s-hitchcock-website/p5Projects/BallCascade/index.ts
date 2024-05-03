@@ -1,5 +1,5 @@
 import P5 from 'p5' // Package from npm
-import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '@/types'
+import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 import Ball from './Ball'
 
 const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {

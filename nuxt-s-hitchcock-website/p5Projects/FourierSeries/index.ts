@@ -1,6 +1,6 @@
 import P5 from 'p5' // Package from npm
-import createIncrementalP5Button from '@/helpers/createIncrementalP5Button'
-import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '@/types'
+import createIncrementalP5Button from '~/helpers/createIncrementalP5Button'
+import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 
 const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
     const script = (p5Instance: P5): void => {
