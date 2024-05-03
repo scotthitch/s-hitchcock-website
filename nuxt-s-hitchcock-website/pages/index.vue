@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <HomeFooter />
+        <!-- <HomeFooter /> -->
     </div>
 </template>
 
