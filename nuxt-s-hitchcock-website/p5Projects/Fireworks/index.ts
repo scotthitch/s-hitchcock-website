@@ -1,10 +1,9 @@
 import P5 from 'p5' // Package from npm
 import QuadraticRoots from '~/helpers/QuadraticRoots'
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
-import { useDeviceTypeStore } from '~/stores/deviceType'
-import Missile from './Missile'
 
-const deviceTypeStore = useDeviceTypeStore()
+import { interactionEvent } from '~/helpers/deviceType'
+import Missile from './Missile'
 
 interface FlightParams {
     initialVelocity: P5.Vector
@@ -20,7 +19,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         const CHILD_FIREWORK_COLOURS = ['#ED254E', '#F9DC5C', '#0FA3B1', '#8A4FFF', '#33CA7F']
         const N_CHILD_FIREWORKS = 300
         const fireworks: Missile[] = []
-
+        console.log(interactionEvent)
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
         }
@@ -157,10 +156,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             )
         }
 
-        window.addEventListener(
-            deviceTypeStore.interactionEvent,
-            createParentFireworkFromInteractionEvent
-        )
+        window.addEventListener(interactionEvent, createParentFireworkFromInteractionEvent)
     }
     return script
 }

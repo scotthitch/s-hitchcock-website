@@ -4,15 +4,14 @@ import PageIntro from '~/components/PageIntro.vue'
 // import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
 import type { P5ProjectState } from '~/types'
-import { useDeviceTypeStore } from '~/stores/deviceType'
-import projects from '~/helpers/projects'
+import { isMobileOrTablet } from '~/helpers/deviceType'
 
-const deviceTypeStore = useDeviceTypeStore()
+import projects from '~/helpers/projects'
 
 const p5ProjectKey = ref(0)
 
 const projectsToRender = () => {
-    if (deviceTypeStore.isMobileOrTablet) {
+    if (isMobileOrTablet) {
         return projects.filter((project) => project.isMobileOrTabletFriendly)
     }
 
