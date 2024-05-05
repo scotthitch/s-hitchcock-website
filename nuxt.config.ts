@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+    nitro: {
+      static: true
+    },
+    ssr: false,
     // routeRules: {
     //     "/projects": { ssr: false },
     //     "/contact": { ssr: false },
