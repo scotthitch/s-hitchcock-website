@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --header-height: 80px;
+}
+
+
+.p5Button {
+    font-size: 40px;
+    border-radius: 25px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+.fadeToNothing {
+    animation: fadeOut 1.3s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s forwards;
+}
+
+.slide-from-right-40 {
+    animation-name: slideFromRight40, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
+}
+
+.slide-from-right-60 {
+    animation-name: slideFromRight60, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
+}
+
+.slide-from-right-80 {
+    animation-name: slideFromRight80, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
+}
+
+.slide-from-left-40 {
+    animation-name: slideFromLeft40, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
+}
+
+.slide-from-left-60 {
+    animation-name: slideFromLeft60, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
+}
+
+.slide-from-left-80 {
+    animation-name: slideFromLeft80, fadeIn;
+    animation-duration: 0.6s;
+    animation-direction: forwards;
+}
+
+@keyframes slideFromLeft40 {
+    from {
+        transform: translateX(-40px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromLeft60 {
+    from {
+        transform: translateX(-60px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromLeft80 {
+    from {
+        transform: translateX(-80px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromRight40 {
+    from {
+        transform: translateX(40px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromRight60 {
+    from {
+        transform: translateX(60px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideFromRight80 {
+    from {
+        transform: translateX(80px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
