@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
     routeRules: {
         "/projects": { ssr: false },
+        "/contact": { ssr: false },
       },
     devtools: { enabled: true },
     modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@pinia/nuxt'],

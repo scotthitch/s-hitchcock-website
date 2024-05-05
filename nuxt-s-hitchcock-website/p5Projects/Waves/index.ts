@@ -25,7 +25,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         const SCREEN_BEARING = p5Instance.PI + p5Instance.HALF_PI + SCREEN_THETA
         const WAVE_VERTEX_SPACING = 0.5 // Distance between each horizontal location
         const WAVE_AMPLITUDE = 16.0 // Height of wave
-        const WAVE_STROKE_WEIGHT = 10 
+        const WAVE_STROKE_WEIGHT = 10
         const WAVE_PERIOD = 120.0 // How many pixels before the wave repeats
         const DELTA_X = (p5Instance.TWO_PI / WAVE_PERIOD) * WAVE_VERTEX_SPACING // Value for incrementing x
         const SPACE_BETWEEN_WAVES = 80
@@ -38,16 +38,17 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
-
+            
             yValues = new Array(p5Instance.floor(WAVE_LENGTH / WAVE_VERTEX_SPACING))
         }
-
+        
         p5Instance.draw = () => {
             p5Instance.rotate(SCREEN_BEARING)
             p5Instance.translate(-WAVE_LENGTH / 2, 0)
             p5Instance.background(BACKGROUND_COLOUR)
             calcWave()
-
+            
+            // console.log(BACKGROUND_COLOUR)
             const startHeight = wavesShift
             const endHeight = SCREEN_HYPOTENUSE + wavesShift
             for (let height = startHeight; height <= endHeight; height += SPACE_BETWEEN_WAVES) {
