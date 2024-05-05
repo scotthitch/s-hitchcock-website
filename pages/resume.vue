@@ -18,7 +18,7 @@ import TextContent from '~/components/resume/TextContent.vue'
                     class="text-col-light basis-[33%] flex flex-col gap-5 sm:gap-7 px-3 sm:px-6 pb-4 bg-col-primary"
                 >
                     <div class="flex flex-col justify-center text-center">
-                        <NuxtImg src="/profile_photo.png" class="mx-auto w-14 xs:w-24 sm:w-30" />
+                        <img src="/profile_photo.png" class="mx-auto w-14 xs:w-24 sm:w-30" />
                         <div
                             class="font-bold italic text-base xs:text-lg sm:text-xl xl:text-2xl text-center"
                         >

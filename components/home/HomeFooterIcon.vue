@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
     <a :href="props.externalLink">
         <div class="flex flex-col gap-1 items-center">
-            <NuxtImg
+            <img
                 :src="`/buildToolsLogos/${props.fileName}`"
                 :alt="props.iconAlt"
                 class="h-7 sm:h-9"
