@@ -29,8 +29,14 @@ import TextContent from '~/components/resume/TextContent.vue'
                     </div>
                     <div>
                         <PrimaryTitle content="Links" />
-                        <TextContent content="LinkedIn" />
-                        <TextContent content="Github" />
+                        <NuxtLink to="https://www.linkedin.com/in/scott-hitchcock-7aa0aa1b6" target="_blank">
+                            <TextContent class="underline" content="LinkedIn" />
+                        </NuxtLink>
+
+
+                        <NuxtLink to="https://github.com/scotthitch/s-hitchcock-website" target="_blank">
+                            <TextContent class="underline" content="Github" />
+                        </NuxtLink>
                     </div>
 
                     <!-- SKILLS -->
