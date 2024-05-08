@@ -2,10 +2,10 @@
 
 <template>
     <div class="h-full overflow-scroll">
-        <div class="flex h-[80svh] sm:h-[80svh] bg-col-dark">
+        <div class="flex h-[80svh] sm:h-[80svh] bg-col-light">
             <div class="m-auto grid grid-cols-3 p-3">
                 <div
-                    class="text-col-light text-6xl sm:text-8xl font-bold italic slide-from-left-60 col-span-2"
+                    class="text-col-dark text-6xl sm:text-8xl font-bold italic slide-from-left-60 col-span-2"
                 >
                     Scott
                 </div>
@@ -18,7 +18,7 @@
                 </div>
 
                 <div
-                    class="text-col-light text-6xl sm:text-8xl font-bold italic slide-from-left-80 col-span-3"
+                    class="text-col-dark text-6xl sm:text-8xl font-bold italic slide-from-left-80 col-span-3"
                 >
                     Hitchcock
                 </div>
