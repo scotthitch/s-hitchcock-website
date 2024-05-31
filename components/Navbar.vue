@@ -27,7 +27,7 @@ const navBarRoutes = [
     <!-- Add some negative margin on the bottom to ensure navbar overlaps whatevever's visible below -->
     <header
         class="fixed h-[var(--header-height)] z-30 items-center bg-col-dark flex flex-row justify-between w-full px-6 sm:px-10"
-        id="header"
+        id="navbar"
     >
         <div class="italic text-col-light text-xl xs:text-2xl font-semibold" id="navbarTitle">
             <router-link to="/" class="py-2">
