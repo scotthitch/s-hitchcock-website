@@ -36,7 +36,7 @@ const setProjectVisibilityStates = () => {
 
         if (
             projectBoundingRect.top < window.innerHeight - 10 && // 10px for a buffer
-            projectBoundingRect.bottom > navbarBoundingRect.height
+            projectBoundingRect.bottom > navbarBoundingRect.height + 10
         ) {
             projectStates.value[i] = 'visible'
             wasPreviousProjectVisible = true
