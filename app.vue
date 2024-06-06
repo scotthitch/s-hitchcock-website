@@ -2,7 +2,7 @@
 useHead({
     title: "Scott Hitchcock",
     bodyAttrs: {
-        class: "bg-col-light"
+        class: "bg-col-dark"
     }
 })
 </script>

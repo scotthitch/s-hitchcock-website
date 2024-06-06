@@ -21,7 +21,7 @@ onUnmounted(() => {
 
 <template>
     <div>
-        <div class="bg-col-white overflow-scroll">
+        <div class="bg-col-light overflow-scroll">
             <PageIntro pageName="Contact Me" />
             <div class="static container lg:max-w-[1000px] m-auto sm:px-12">
                 <div
