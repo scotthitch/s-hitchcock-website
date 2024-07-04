@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     //     "/contact": { ssr: false },
     //   },
     devtools: { enabled: true },
-    modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@pinia/nuxt'],
+    modules: [
+      '@nuxtjs/tailwindcss',
+      '@nuxt/image',
+      '@pinia/nuxt',
+      "@nuxtjs/google-fonts"
+    ],
     css: ['~/assets/css/main.css']
 })
