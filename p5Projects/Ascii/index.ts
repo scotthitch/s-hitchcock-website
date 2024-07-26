@@ -1,20 +1,12 @@
 import P5 from 'p5' // Package from npm
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 import toGreyScale from '~/helpers/toGreyScale'
+import p5 from 'p5'
 // interface P5VideoElement extends P5.Element {
 //     pixels: number[]
 //     loadPixels: () => null
 //     updatePixels: () => null
 // }
-
-const FONT = {
-    name: 'Courier',
-    aspectRatio: 5 / 3
-}
-
-const TEXT_COLOUR = '#000000'
-const BACKGROUND_COLOUR = '#EB1E4E'
-const N_SPACES = 45
 
 const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number): number => {
     if (screenDimensions.width > screenDimensions.height) {
@@ -27,20 +19,30 @@ const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number
 }
 
 const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+    const FONT = {
+        name: 'Courier',
+        aspectRatio: 5 / 3
+    }
+
+    const TEXT_COLOUR = '#000000'
+    const BACKGROUND_COLOUR = '#EB1E4E'
+    const ASCII_ONLY_DENSITY_MAP =
+    "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
+    
     const script = (p5Instance: P5): void => {
         // Setup the ascii density map
-        const ASCII_ONLY_DENSITY_MAP =
-            "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
-        const SPACES = Array(N_SPACES).fill(' ')
-        const ASCII_DENSITY_MAP = ASCII_ONLY_DENSITY_MAP.concat(SPACES)
+        let nSpaces = 35
+
+        let spaces = Array(nSpaces).fill(' ')
+        let asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
 
         const brightnessToAscii = (brightnessValue: number): string => {
             // Map the brightness value to an index in the ascii density map
             const index = Math.floor(
-                p5Instance.map(brightnessValue, 0, 255, 0, ASCII_DENSITY_MAP.length)
+                p5Instance.map(brightnessValue, 0, 255, 0, asciiDensityMap.length)
             )
             // Return a char from the map
-            return ASCII_DENSITY_MAP[index]
+            return asciiDensityMap[index]
         }
 
         const setTextFeatures = (imageSize: number): void => {
@@ -94,6 +96,23 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             console.log(video)
             video.remove()
             p5Instance.noLoop()
+        }
+
+        p5Instance.keyPressed = () => {
+            // console.log(p5Instance.keyCode == p5Instance.LEFT_ARROW)
+            switch (p5Instance.keyCode) {
+                case p5Instance.UP_ARROW:
+                    nSpaces += 5
+                    break
+                case p5Instance.DOWN_ARROW:
+                    nSpaces -= 5
+            }
+
+            spaces = Array(nSpaces).fill(' ')
+            asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
+
+
+            // console.log(nSpaces)
         }
     }
     return script
