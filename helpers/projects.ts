@@ -21,11 +21,11 @@ interface projectsType {
 
 const projects: projectsType[] = [
     {
-        title: "Ascii",
+        title: 'Ascii',
         scriptID: 'ascii',
-        description: "Converts image to Ascii",
+        description: 'Converts the video feed into ASCII art',
         scriptWrapper: asciiScriptWrapper,
-        isMobileOrTabletFriendly: true,
+        isMobileOrTabletFriendly: true
     },
     // {
     //     title: 'Waterfall',
