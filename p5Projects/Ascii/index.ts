@@ -14,12 +14,12 @@ const FONT = {
 
 const TEXT_COLOUR = '#000000'
 const BACKGROUND_COLOUR = '#EB1E4E'
-const N_SPACES = 35
+const N_SPACES = 45
 
 const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number): number => {
     if (screenDimensions.width > screenDimensions.height) {
         // Large screen e.g. desktop
-        return (screenDimensions.height / imageSize) * 0.85
+        return (screenDimensions.height / imageSize) * 0.9
     } else {
         // Small screen e.g. mobile
         return (screenDimensions.width / imageSize) * 0.9
@@ -91,9 +91,9 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.text(asciiImage, p5Instance.width / 2, p5Instance.height / 2)
         }
         p5Instance.mouseClicked = () => {
-            video.stop()
-            // video.src = ''
-            video.enabled = false;
+            console.log(video)
+            video.remove()
+            p5Instance.noLoop()
         }
     }
     return script
