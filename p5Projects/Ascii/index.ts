@@ -1,13 +1,7 @@
-import P5, { Font } from 'p5' // Package from npm
+import P5 from 'p5' // Package from npm
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 import toGreyScale from '~/helpers/toGreyScale'
-import p5 from 'p5'
 import WebcamPixelComponent from '~/helpers/WebcamPixelComponent'
-// interface P5VideoElement extends P5.Element {
-//     pixels: number[]
-//     loadPixels: () => null
-//     updatePixels: () => null
-// }
 
 const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number): number => {
     if (screenDimensions.width > screenDimensions.height) {
@@ -29,7 +23,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         aspectRatio: 5 / 3
     }
     const IMAGE_SIZE = 80
-    const videoConstraints = {
+    const VIDEO_CONTRAINTS = {
         width: Math.ceil(IMAGE_SIZE * FONT.aspectRatio),
         height: IMAGE_SIZE,
         frameRate: 30
@@ -57,8 +51,8 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             return asciiDensityMap[index]
         }
 
-        const setTextFeatures = (imageSize: number): void => {
-            const drawingSize = calculateTextSize(screenDimensions, imageSize)
+        const setTextFeatures = (): void => {
+            const drawingSize = calculateTextSize(screenDimensions, IMAGE_SIZE)
             console.log(drawingSize)
             p5Instance.textFont(FONT.name)
             p5Instance.textSize(drawingSize)
@@ -67,13 +61,15 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.fill(TEXT_COLOUR)
             p5Instance.textStyle('bold')
         }
+        const initialiseWebCam = (): void => {
+            webcam = new WebcamPixelComponent(handlePixels, VIDEO_CONTRAINTS)
+            webcam.startWebcam()
+        }
 
-        const imageSize = 80
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
-            webcam = new WebcamPixelComponent(handlePixels, videoConstraints)
-            webcam.startWebcam()
-            setTextFeatures(imageSize)
+            initialiseWebCam()
+            setTextFeatures()
         }
 
         p5Instance.draw = () => {
@@ -82,11 +78,11 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
                 return
             }
             let asciiImage: string = ''
-            for (let j = 0; j < videoConstraints.height; j++) {
+            for (let j = 0; j < VIDEO_CONTRAINTS.height; j++) {
                 // Iterate in reverse direction to horizontally flip the image
-                for (let i = videoConstraints.width - 1; i >= 0; i--) {
+                for (let i = VIDEO_CONTRAINTS.width - 1; i >= 0; i--) {
                     // Get rgb values
-                    let pixelIndex = (i + j * videoConstraints.width) * 4
+                    let pixelIndex = (i + j * VIDEO_CONTRAINTS.width) * 4
                     const r = pixelStream[pixelIndex + 0]
                     const g = pixelStream[pixelIndex + 1]
                     const b = pixelStream[pixelIndex + 2]
@@ -106,7 +102,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.text(asciiImage, p5Instance.width / 2, p5Instance.height / 2)
         }
         p5Instance.mouseClicked = () => {
-            p5Instance.noLoop()
+            webcam.stopWebcam()
         }
 
         p5Instance.keyPressed = () => {
