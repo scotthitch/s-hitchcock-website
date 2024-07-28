@@ -1,18 +1,13 @@
-import P5 from 'p5' // Package from npm
+import P5, { Font } from 'p5' // Package from npm
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 import toGreyScale from '~/helpers/toGreyScale'
 import p5 from 'p5'
-import WebcamPixelComponent  from '~/helpers/WebcamPixelComponent'
+import WebcamPixelComponent from '~/helpers/WebcamPixelComponent'
 // interface P5VideoElement extends P5.Element {
 //     pixels: number[]
 //     loadPixels: () => null
 //     updatePixels: () => null
 // }
-
-const handlePixels = (pixels: Uint8ClampedArray) => {
-    console.log(pixels)
-    // console.log('hey')
-}
 
 const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number): number => {
     if (screenDimensions.width > screenDimensions.height) {
@@ -25,17 +20,26 @@ const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number
 }
 
 const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+    let pixelStream: Uint8ClampedArray
+    const handlePixels = (pixels: Uint8ClampedArray) => {
+        pixelStream = pixels
+    }
     const FONT = {
         name: 'Courier',
         aspectRatio: 5 / 3
+    }
+    const IMAGE_SIZE = 80
+    const videoConstraints = {
+        width: Math.ceil(IMAGE_SIZE * FONT.aspectRatio),
+        height: IMAGE_SIZE,
+        frameRate: 30
     }
 
     const TEXT_COLOUR = '#000000'
     const BACKGROUND_COLOUR = '#EB1E4E'
     const ASCII_ONLY_DENSITY_MAP =
         "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
-    let webcam = new WebcamPixelComponent(handlePixels)
-    webcam.startWebcam()
+    let webcam: WebcamPixelComponent
 
     const script = (p5Instance: P5): void => {
         // Setup the ascii density map
@@ -54,38 +58,38 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         }
 
         const setTextFeatures = (imageSize: number): void => {
-            const textSize = calculateTextSize(screenDimensions, imageSize)
+            const drawingSize = calculateTextSize(screenDimensions, imageSize)
+            console.log(drawingSize)
             p5Instance.textFont(FONT.name)
-            p5Instance.textSize(textSize)
-            p5Instance.textLeading(textSize)
+            p5Instance.textSize(drawingSize)
+            p5Instance.textLeading(drawingSize)
             p5Instance.textAlign(p5Instance.CENTER, p5Instance.CENTER)
             p5Instance.fill(TEXT_COLOUR)
             p5Instance.textStyle('bold')
         }
-        let video: P5.Element
 
         const imageSize = 80
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
-            video = p5Instance.createCapture('video')
-            video.size(imageSize * FONT.aspectRatio, imageSize)
-            video.hide()
+            webcam = new WebcamPixelComponent(handlePixels, videoConstraints)
+            webcam.startWebcam()
             setTextFeatures(imageSize)
         }
 
         p5Instance.draw = () => {
             p5Instance.background(BACKGROUND_COLOUR)
-            video.loadPixels()
+            if (pixelStream === undefined) {
+                return
+            }
             let asciiImage: string = ''
-            // console.log(video.pixels)
-            for (let j = 0; j < video.height; j++) {
+            for (let j = 0; j < videoConstraints.height; j++) {
                 // Iterate in reverse direction to horizontally flip the image
-                for (let i = video.width - 1; i >= 0; i--) {
+                for (let i = videoConstraints.width - 1; i >= 0; i--) {
                     // Get rgb values
-                    let pixelIndex = (i + j * video.width) * 4
-                    const r = video.pixels[pixelIndex + 0]
-                    const g = video.pixels[pixelIndex + 1]
-                    const b = video.pixels[pixelIndex + 2]
+                    let pixelIndex = (i + j * videoConstraints.width) * 4
+                    const r = pixelStream[pixelIndex + 0]
+                    const g = pixelStream[pixelIndex + 1]
+                    const b = pixelStream[pixelIndex + 2]
 
                     // Convert rbg to greyscale
                     const grey = toGreyScale(r, g, b)
@@ -102,8 +106,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.text(asciiImage, p5Instance.width / 2, p5Instance.height / 2)
         }
         p5Instance.mouseClicked = () => {
-            console.log(video)
-            video.remove()
             p5Instance.noLoop()
         }
 
@@ -119,8 +121,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
             spaces = Array(nSpaces).fill(' ')
             asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
-
-            // console.log(nSpaces)
         }
     }
     return script
