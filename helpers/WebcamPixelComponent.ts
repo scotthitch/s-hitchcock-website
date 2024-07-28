@@ -71,9 +71,11 @@ class WebcamPixelComponent {
 
     stopWebcam() {
         if (this.videoTrack) {
+            this.videoTrack.enabled = false
             this.videoTrack.stop()
         }
         if (this.videoElement) {
+            this.videoElement.src = ""
             this.videoElement.pause()
             this.videoElement.srcObject = null
         }
