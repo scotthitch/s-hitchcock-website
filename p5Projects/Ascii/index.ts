@@ -2,11 +2,17 @@ import P5 from 'p5' // Package from npm
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 import toGreyScale from '~/helpers/toGreyScale'
 import p5 from 'p5'
+import WebcamPixelComponent  from '~/helpers/WebcamPixelComponent'
 // interface P5VideoElement extends P5.Element {
 //     pixels: number[]
 //     loadPixels: () => null
 //     updatePixels: () => null
 // }
+
+const handlePixels = (pixels: Uint8ClampedArray) => {
+    console.log(pixels)
+    // console.log('hey')
+}
 
 const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number): number => {
     if (screenDimensions.width > screenDimensions.height) {
@@ -27,8 +33,10 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
     const TEXT_COLOUR = '#000000'
     const BACKGROUND_COLOUR = '#EB1E4E'
     const ASCII_ONLY_DENSITY_MAP =
-    "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
-    
+        "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
+    let webcam = new WebcamPixelComponent(handlePixels)
+    webcam.startWebcam()
+
     const script = (p5Instance: P5): void => {
         // Setup the ascii density map
         let nSpaces = 35
@@ -69,6 +77,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.background(BACKGROUND_COLOUR)
             video.loadPixels()
             let asciiImage: string = ''
+            // console.log(video.pixels)
             for (let j = 0; j < video.height; j++) {
                 // Iterate in reverse direction to horizontally flip the image
                 for (let i = video.width - 1; i >= 0; i--) {
@@ -110,7 +119,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
             spaces = Array(nSpaces).fill(' ')
             asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
-
 
             // console.log(nSpaces)
         }
