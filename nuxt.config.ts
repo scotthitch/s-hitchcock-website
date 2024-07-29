@@ -8,7 +8,13 @@ export default defineNuxtConfig({
     //     "/projects": { ssr: false },
     //     "/contact": { ssr: false },
     //   },
-    devtools: { enabled: true },
+    devtools: {
+      enabled: true,
+
+      timeline: {
+        enabled: true
+      }
+    },
     modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@pinia/nuxt'],
     css: ['~/assets/css/main.css']
 })
