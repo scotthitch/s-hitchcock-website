@@ -1,3 +1,4 @@
+import EventEmitter from 'events'
 class WebcamPixelComponent {
     static count = 0
     instanceId: number
@@ -7,6 +8,8 @@ class WebcamPixelComponent {
     canvasContext: CanvasRenderingContext2D | null
     onFrameCallback: (pixels: Uint8ClampedArray) => void
     videoTrack: MediaStreamTrack | null
+    startupPromise: Promise<void> | null
+    startupResolve: (() => void) | null
 
     constructor(
         onFrameCallback: (pixels: Uint8ClampedArray) => void,
@@ -21,10 +24,15 @@ class WebcamPixelComponent {
         this.canvasContext = this.canvasElement.getContext('2d', { willReadFrequently: true })
         this.onFrameCallback = onFrameCallback
         this.videoTrack = null
+        this.startupPromise = null
+        this.startupResolve = null
     }
 
     async startWebcam() {
         console.log(`beginning start id: ${this.instanceId}`)
+        this.startupPromise = new Promise<void>((resolve) => {
+            this.startupResolve = resolve
+        })
 
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
@@ -42,11 +50,13 @@ class WebcamPixelComponent {
                 this.canvasElement.height = this.videoElement.videoHeight
                 this.processFrame()
             }
-            console.log(`done start id: ${this.instanceId}`)
+            if (this.startupResolve) this.startupResolve()
+
+            // console.log(`done start id: ${this.instanceId}`)
         } catch (error) {
             console.log(`error start id: ${this.instanceId}`)
-
             console.error('Error accessing webcam:', error)
+
             throw error // Rethrow the error to be handled by the caller
         }
     }
@@ -90,13 +100,18 @@ class WebcamPixelComponent {
     async stopWebcam() {
         console.log(`beginning stop id: ${this.instanceId}`)
 
+        // Ensure that startup has completed before stopping the webcam
+        if (this.startupPromise) {
+            await this.startupPromise
+        }
+        // await this.startupPromise
         if (this.videoTrack) {
-            console.log('this.videoTrack')
+            console.log('remove this.videoTrack id: ', this.instanceId)
             this.videoTrack.enabled = false
             this.videoTrack.stop()
         }
         if (this.videoElement) {
-            console.log('this.videoElement')
+            console.log('remove this.videoElement id: ', this.instanceId)
             this.videoElement.pause()
             this.videoElement.srcObject = null
         }
