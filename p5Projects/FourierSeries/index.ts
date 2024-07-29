@@ -2,7 +2,9 @@ import P5 from 'p5' // Package from npm
 import createIncrementalP5Button from '~/helpers/createIncrementalP5Button'
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 
-const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+const scriptWrapper: p5ScriptWrapper = (
+    screenDimensions: ScreenDimensions
+): { script: p5Script } => {
     const script = (p5Instance: P5): void => {
         const N_ORBITERS_MAX = 101
         const orbiters: Orbiter[] = []
@@ -43,6 +45,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         }
 
         p5Instance.draw = () => {
+            // console.log(p5Instance.frameRate())
             p5Instance.background(247, 37, 133)
             orbiters[0].orbit(origin.x, origin.y)
             orbiters[0].render()
@@ -162,7 +165,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             }
         }
     }
-    return script
+    return { script }
 }
 
 export default scriptWrapper

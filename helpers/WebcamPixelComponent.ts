@@ -40,13 +40,16 @@ class WebcamPixelComponent {
                 this.isRunning = true
                 this.processFrame()
             }
+            console.log('started')
         } catch (error) {
             console.error('Error accessing webcam:', error)
+            throw error // Rethrow the error to be handled by the caller
         }
     }
 
     processFrame() {
         if (this.isRunning === false) {
+            console.log('cant')
             return
         }
         if (this.canvasContext === null) {
@@ -75,7 +78,7 @@ class WebcamPixelComponent {
         requestAnimationFrame(() => this.processFrame())
     }
 
-    stopWebcam() {
+    async stopWebcam() {
         this.isRunning = false
         if (this.videoTrack) {
             this.videoTrack.enabled = false
@@ -86,6 +89,7 @@ class WebcamPixelComponent {
             this.videoElement.pause()
             this.videoElement.srcObject = null
         }
+        console.log('stopped')
     }
 }
 

@@ -33,7 +33,10 @@ export interface P5ProjectProps {
 
 export type p5Script = (p5: P5) => void
 
-export type p5ScriptWrapper = (screenDimensions: ScreenDimensions) => p5Script
+export type p5ScriptWrapper = (screenDimensions: ScreenDimensions) => {
+    script: p5Script
+    teardown?: emptyFunction
+}
 
 export type emptyFunction = () => void
 

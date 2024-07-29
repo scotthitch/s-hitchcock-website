@@ -1,5 +1,5 @@
 import P5 from 'p5' // Package from npm
-import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
+import type { emptyFunction, p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 import toGreyScale from '~/helpers/toGreyScale'
 import WebcamPixelComponent from '~/helpers/WebcamPixelComponent'
 
@@ -13,27 +13,37 @@ const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number
     }
 }
 
-const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+const FONT = {
+    name: 'Courier',
+    aspectRatio: 5 / 3
+}
+const IMAGE_SIZE = 80
+const VIDEO_CONTRAINTS = {
+    width: Math.ceil(IMAGE_SIZE * FONT.aspectRatio),
+    height: IMAGE_SIZE,
+    frameRate: 60
+}
+
+const TEXT_COLOUR = '#000000'
+const BACKGROUND_COLOUR = '#EB1E4E'
+const ASCII_ONLY_DENSITY_MAP =
+    "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
+
+const scriptWrapper: p5ScriptWrapper = (
+    screenDimensions: ScreenDimensions
+): { script: p5Script; teardown: emptyFunction } => {
     let pixelStream: Uint8ClampedArray
     const handlePixels = (pixels: Uint8ClampedArray) => {
         pixelStream = pixels
-    }
-    const FONT = {
-        name: 'Courier',
-        aspectRatio: 5 / 3
-    }
-    const IMAGE_SIZE = 80
-    const VIDEO_CONTRAINTS = {
-        width: Math.ceil(IMAGE_SIZE * FONT.aspectRatio),
-        height: IMAGE_SIZE,
-        frameRate: 30
+        console.log('a')
     }
 
-    const TEXT_COLOUR = '#000000'
-    const BACKGROUND_COLOUR = '#EB1E4E'
-    const ASCII_ONLY_DENSITY_MAP =
-        "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
     let webcam: WebcamPixelComponent
+
+    const teardown = () => {
+        console.log('teardown')
+        webcam.stopWebcam()
+    }
 
     const script = (p5Instance: P5): void => {
         // Setup the ascii density map
@@ -53,7 +63,6 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
         const setTextFeatures = (): void => {
             const drawingSize = calculateTextSize(screenDimensions, IMAGE_SIZE)
-            console.log(drawingSize)
             p5Instance.textFont(FONT.name)
             p5Instance.textSize(drawingSize)
             p5Instance.textLeading(drawingSize)
@@ -61,9 +70,13 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.fill(TEXT_COLOUR)
             p5Instance.textStyle('bold')
         }
-        const initialiseWebCam = (): void => {
-            webcam = new WebcamPixelComponent(handlePixels, VIDEO_CONTRAINTS)
-            webcam.startWebcam()
+        const initialiseWebCam = async () => {
+            try {
+                webcam = new WebcamPixelComponent(handlePixels, VIDEO_CONTRAINTS)
+                await webcam.startWebcam()
+            } catch (err) {
+                console.log(err)
+            }
         }
 
         p5Instance.setup = () => {
@@ -103,23 +116,24 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
         }
         p5Instance.mouseClicked = () => {
             webcam.stopWebcam()
+            // delete webcam
         }
 
         p5Instance.keyPressed = () => {
-            // console.log(p5Instance.keyCode == p5Instance.LEFT_ARROW)
             switch (p5Instance.keyCode) {
                 case p5Instance.UP_ARROW:
                     nSpaces += 5
                     break
                 case p5Instance.DOWN_ARROW:
-                    nSpaces -= 5
+                    nSpaces = Math.max(nSpaces - 5, 0)
+                    break
             }
 
             spaces = Array(nSpaces).fill(' ')
             asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
         }
     }
-    return script
+    return { script, teardown }
 }
 
 export default scriptWrapper

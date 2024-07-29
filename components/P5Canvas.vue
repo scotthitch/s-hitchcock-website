@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import P5 from 'p5' // Package from npm
 import { onMounted, ref, onUnmounted, onUpdated } from 'vue'
-import type { P5CanvasProps } from '~/types'
+import type { P5CanvasProps, emptyFunction } from '~/types'
 import { useElementSize } from '@vueuse/core'
 
 const el = ref(null)
@@ -12,9 +12,13 @@ const props = defineProps<P5CanvasProps>()
 
 const p5 = ref<P5>()
 
+const p5Teardown = ref<undefined | emptyFunction>()
+
 const generateNewP5Sketch = () => {
     const targetElement = document.getElementById(props.scriptID) || undefined
-    p5.value = new P5(props.scriptWrapper({ width: width.value, height: height.value }), targetElement)
+    const { script, teardown } = props.scriptWrapper({ width: width.value, height: height.value })
+    p5.value = new P5(script, targetElement)
+    p5Teardown.value = teardown
 }
 
 const handleP5SketchGeneration = () => {
@@ -37,6 +41,9 @@ const handleP5SketchGeneration = () => {
             p5.value?.remove()
             generateNewP5Sketch()
             p5.value?.noLoop()
+            if (p5Teardown.value !== undefined) {
+                p5Teardown.value()
+            }
     }
 }
 
