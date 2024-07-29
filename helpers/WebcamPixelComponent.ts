@@ -1,4 +1,5 @@
 class WebcamPixelComponent {
+    isRunning: boolean
     videoConstraints: MediaTrackConstraints
     videoElement: HTMLVideoElement
     canvasElement: HTMLCanvasElement
@@ -35,6 +36,7 @@ class WebcamPixelComponent {
             this.videoElement.onloadedmetadata = () => {
                 this.canvasElement.width = this.videoElement.videoWidth
                 this.canvasElement.height = this.videoElement.videoHeight
+                this.isRunning = true
                 this.processFrame()
             }
         } catch (error) {
@@ -43,6 +45,9 @@ class WebcamPixelComponent {
     }
 
     processFrame() {
+        if (this.isRunning === false) {
+            return
+        }
         if (this.canvasContext === null) {
             console.log('No canvas context')
             return
@@ -70,12 +75,13 @@ class WebcamPixelComponent {
     }
 
     stopWebcam() {
+        this.isRunning = false
         if (this.videoTrack) {
             this.videoTrack.enabled = false
             this.videoTrack.stop()
         }
         if (this.videoElement) {
-            this.videoElement.src = ""
+            this.videoElement.src = ''
             this.videoElement.pause()
             this.videoElement.srcObject = null
         }
