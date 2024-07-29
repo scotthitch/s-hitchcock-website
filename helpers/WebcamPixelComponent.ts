@@ -1,7 +1,6 @@
 class WebcamPixelComponent {
     static count = 0
     instanceId: number
-    isRunning: boolean
     videoConstraints: MediaTrackConstraints
     videoElement: HTMLVideoElement
     canvasElement: HTMLCanvasElement
@@ -22,10 +21,11 @@ class WebcamPixelComponent {
         this.canvasContext = this.canvasElement.getContext('2d', { willReadFrequently: true })
         this.onFrameCallback = onFrameCallback
         this.videoTrack = null
-        this.isRunning = false
     }
 
     async startWebcam() {
+        console.log(`beginning start id: ${this.instanceId}`)
+
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
                 video: this.videoConstraints,
@@ -40,27 +40,27 @@ class WebcamPixelComponent {
             this.videoElement.onloadedmetadata = () => {
                 this.canvasElement.width = this.videoElement.videoWidth
                 this.canvasElement.height = this.videoElement.videoHeight
-                this.isRunning = true
                 this.processFrame()
             }
-            console.log('started')
+            console.log(`done start id: ${this.instanceId}`)
         } catch (error) {
+            console.log(`error start id: ${this.instanceId}`)
+
             console.error('Error accessing webcam:', error)
             throw error // Rethrow the error to be handled by the caller
         }
     }
 
     processFrame() {
-        // console.log(`id: ${this.instanceId}`)
+        console.log(`id: ${this.instanceId}`)
 
-        if (this.isRunning === false) {
-            console.log('cant run')
-            return
-        }
+        // could be better to delete the cavnas context, canvas el and video el instead of having isrunnning bool
         if (this.canvasContext === null) {
             console.log('No canvas context')
             return
         }
+
+        // Draw the video element frame onto the canvas
         this.canvasContext.drawImage(
             this.videoElement,
             0,
@@ -68,12 +68,16 @@ class WebcamPixelComponent {
             this.canvasElement.width,
             this.canvasElement.height
         )
+
+        // Retrieve the image data that you just drew
         const imageData = this.canvasContext.getImageData(
             0,
             0,
             this.canvasElement.width,
             this.canvasElement.height
         )
+
+        // Retireve the pixel array from the image data
         const pixels = imageData.data
 
         // Call the callback with pixel data
@@ -84,8 +88,8 @@ class WebcamPixelComponent {
     }
 
     async stopWebcam() {
-        console.log('stopping')
-        this.isRunning = false
+        console.log(`beginning stop id: ${this.instanceId}`)
+
         if (this.videoTrack) {
             console.log('this.videoTrack')
             this.videoTrack.enabled = false
@@ -93,12 +97,13 @@ class WebcamPixelComponent {
         }
         if (this.videoElement) {
             console.log('this.videoElement')
-
-            this.videoElement.src = ''
             this.videoElement.pause()
             this.videoElement.srcObject = null
         }
-        console.log('stopped')
+        this.canvasContext = null
+        this.videoElement.remove()
+        this.canvasElement.remove()
+        console.log(`done stop id: ${this.instanceId}`)
     }
 }
 
