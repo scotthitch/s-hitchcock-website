@@ -19,6 +19,7 @@ class WebcamPixelComponent {
         this.canvasContext = this.canvasElement.getContext('2d', { willReadFrequently: true })
         this.onFrameCallback = onFrameCallback
         this.videoTrack = null
+        this.isRunning = false
     }
 
     async startWebcam() {
