@@ -38,12 +38,13 @@ const handleP5SketchGeneration = () => {
 
         // If it's a neighbour then remove the old sketch, make a new one then pause
         case 'neighbour':
-            p5.value?.remove()
-            generateNewP5Sketch()
-            p5.value?.noLoop()
             if (p5Teardown.value !== undefined) {
                 p5Teardown.value()
             }
+            p5.value?.remove()
+            generateNewP5Sketch()
+            p5.value?.noLoop()
+            break
     }
 }
 

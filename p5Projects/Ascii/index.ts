@@ -35,7 +35,7 @@ const scriptWrapper: p5ScriptWrapper = (
     let pixelStream: Uint8ClampedArray
     const handlePixels = (pixels: Uint8ClampedArray) => {
         pixelStream = pixels
-        console.log('a')
+        // console.log('a')
     }
 
     let webcam: WebcamPixelComponent

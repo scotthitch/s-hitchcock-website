@@ -1,4 +1,6 @@
 class WebcamPixelComponent {
+    static count = 0
+    instanceId: number
     isRunning: boolean
     videoConstraints: MediaTrackConstraints
     videoElement: HTMLVideoElement
@@ -11,6 +13,7 @@ class WebcamPixelComponent {
         onFrameCallback: (pixels: Uint8ClampedArray) => void,
         videoConstraints: MediaTrackConstraints
     ) {
+        this.instanceId = WebcamPixelComponent.count++
         this.videoConstraints = videoConstraints
         this.videoElement = document.createElement('video')
         this.canvasElement = document.createElement('canvas')
@@ -48,8 +51,10 @@ class WebcamPixelComponent {
     }
 
     processFrame() {
+        // console.log(`id: ${this.instanceId}`)
+
         if (this.isRunning === false) {
-            console.log('cant')
+            console.log('cant run')
             return
         }
         if (this.canvasContext === null) {
@@ -79,12 +84,16 @@ class WebcamPixelComponent {
     }
 
     async stopWebcam() {
+        console.log('stopping')
         this.isRunning = false
         if (this.videoTrack) {
+            console.log('this.videoTrack')
             this.videoTrack.enabled = false
             this.videoTrack.stop()
         }
         if (this.videoElement) {
+            console.log('this.videoElement')
+
             this.videoElement.src = ''
             this.videoElement.pause()
             this.videoElement.srcObject = null

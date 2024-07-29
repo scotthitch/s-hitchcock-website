@@ -27,21 +27,21 @@ const projects: projectsType[] = [
         scriptWrapper: asciiScriptWrapper,
         isMobileOrTabletFriendly: true
     },
-    // {
-    //     title: 'Waterfall',
-    //     scriptID: 'waterfall',
-    //     description: 'A cascade of veils built using Perlin Noise',
-    //     scriptWrapper: waterfallScriptWrapper,
-    //     isMobileOrTabletFriendly: true
-    // },
-    // {
-    //     title: 'Fourier Series',
-    //     scriptID: 'fourier-series',
-    //     description:
-    //         'Sinusoidal terms summing to approximate a square wave. Click to change the number of terms',
-    //     scriptWrapper: fourierSeriesScriptWrapper,
-    //     isMobileOrTabletFriendly: true
-    // },
+    {
+        title: 'Fourier Series',
+        scriptID: 'fourier-series',
+        description:
+        'Sinusoidal terms summing to approximate a square wave. Click to change the number of terms',
+        scriptWrapper: fourierSeriesScriptWrapper,
+        isMobileOrTabletFriendly: true
+    },
+    {
+        title: 'Waterfall',
+        scriptID: 'waterfall',
+        description: 'A cascade of veils built using Perlin Noise',
+        scriptWrapper: waterfallScriptWrapper,
+        isMobileOrTabletFriendly: true
+    },
     // {
     //     title: 'Unknown Pleasures',
     //     scriptID: 'unknown-pleasures',
