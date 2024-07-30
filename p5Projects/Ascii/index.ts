@@ -2,34 +2,8 @@ import P5 from 'p5' // Package from npm
 import type { emptyFunction, p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 import pixelsToAscii from './pixelsToAscii'
 import WebcamPixelComponent from './WebcamPixelComponent'
-
-const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number): number => {
-    if (screenDimensions.width > screenDimensions.height) {
-        // Large screen e.g. desktop
-        return (screenDimensions.height / imageSize) * 0.9
-    } else {
-        // Small screen e.g. mobile
-        return (screenDimensions.width / imageSize) * 0.9
-    }
-}
-
-const FONT = {
-    name: 'Courier',
-    aspectRatio: 5 / 3
-}
-const IMAGE_SIZE = 100
-const VIDEO_CONTRAINTS = {
-    width: Math.floor(IMAGE_SIZE * FONT.aspectRatio),
-    // width: IMAGE_SIZE,
-    height: IMAGE_SIZE,
-    frameRate: 60,
-    facingMode: { ideal: 'user' }
-}
-
-const TEXT_COLOUR = '#000000'
-const BACKGROUND_COLOUR = '#EB1E4E'
-const ASCII_ONLY_DENSITY_MAP =
-    "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
+import calculateTextSize from './calculateTextSize'
+import * as CONSTANTS from './constants'
 
 const scriptWrapper: p5ScriptWrapper = (
     screenDimensions: ScreenDimensions
@@ -49,9 +23,8 @@ const scriptWrapper: p5ScriptWrapper = (
         // Setup the ascii density map
         let nSpaces = 35
         let asciiImage: string = ''
-
         let spaces = Array(nSpaces).fill(' ')
-        let asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
+        let asciiDensityMap = CONSTANTS.ASCII_ONLY_DENSITY_MAP.concat(spaces)
 
         const pixelToAsciiMapper = (brightnessValue: number): string => {
             // Map the brightness value to an index in the ascii density map
@@ -63,17 +36,17 @@ const scriptWrapper: p5ScriptWrapper = (
         }
 
         const setTextFeatures = (): void => {
-            const drawingSize = calculateTextSize(screenDimensions, IMAGE_SIZE)
-            p5Instance.textFont(FONT.name)
+            const drawingSize = calculateTextSize(screenDimensions, CONSTANTS.IMAGE_SIZE)
+            p5Instance.textFont(CONSTANTS.FONT.name)
             p5Instance.textSize(drawingSize)
             p5Instance.textLeading(drawingSize)
             p5Instance.textAlign(p5Instance.CENTER, p5Instance.CENTER)
-            p5Instance.fill(TEXT_COLOUR)
+            p5Instance.fill(CONSTANTS.TEXT_COLOUR)
             p5Instance.textStyle('bold')
         }
         const initialiseWebCam = async () => {
             try {
-                webcam = new WebcamPixelComponent(handlePixels, VIDEO_CONTRAINTS)
+                webcam = new WebcamPixelComponent(handlePixels, CONSTANTS.VIDEO_CONTRAINTS)
                 await webcam.startWebcam()
             } catch (err) {
                 console.log(err)
@@ -87,14 +60,14 @@ const scriptWrapper: p5ScriptWrapper = (
         }
 
         p5Instance.draw = () => {
-            p5Instance.background(BACKGROUND_COLOUR)
+            p5Instance.background(CONSTANTS.BACKGROUND_COLOUR)
             if (pixelStream === undefined) {
                 return
             }
             asciiImage = pixelsToAscii(
                 pixelStream,
-                VIDEO_CONTRAINTS.width,
-                VIDEO_CONTRAINTS.height,
+                CONSTANTS.VIDEO_CONTRAINTS.width as number,
+                CONSTANTS.VIDEO_CONTRAINTS.height as number,
                 pixelToAsciiMapper
             )
 
@@ -118,7 +91,7 @@ const scriptWrapper: p5ScriptWrapper = (
             }
 
             spaces = Array(nSpaces).fill(' ')
-            asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
+            asciiDensityMap = CONSTANTS.ASCII_ONLY_DENSITY_MAP.concat(spaces)
         }
     }
     return { script, cleanup }
