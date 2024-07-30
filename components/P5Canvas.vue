@@ -14,13 +14,15 @@ const p5 = ref<P5>()
 
 const doNothing = () => {}
 
-const p5Teardown = ref<emptyFunction>(doNothing)
+const p5Cleanup = ref<emptyFunction>(doNothing)
 
 const generateNewP5Sketch = () => {
     const targetElement = document.getElementById(props.scriptID) || undefined
-    const { script, teardown } = props.scriptWrapper({ width: width.value, height: height.value })
+    const { script, cleanup } = props.scriptWrapper({ width: width.value, height: height.value })
     p5.value = new P5(script, targetElement)
-    p5Teardown.value = teardown !== undefined ? teardown : doNothing
+    if (cleanup !== undefined) {
+        p5Cleanup.value = cleanup
+    }
 }
 
 const handleP5SketchGeneration = () => {
@@ -40,10 +42,8 @@ const handleP5SketchGeneration = () => {
 
         // If it's a neighbour then remove the old sketch, make a new one then pause
         case 'neighbour':
-            // First call the teardown method
-            // console.log('nei')
-
-            p5Teardown.value()
+            // First call the cleanup method
+            p5Cleanup.value()
             p5.value?.remove()
             generateNewP5Sketch()
             p5.value?.noLoop()
@@ -63,7 +63,7 @@ onMounted(() => {
 
 onUnmounted(() => {
     // console.log('onm')
-    p5Teardown.value()
+    p5Cleanup.value()
     p5.value?.remove()
 })
 </script>
