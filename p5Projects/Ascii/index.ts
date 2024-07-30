@@ -41,7 +41,6 @@ const scriptWrapper: p5ScriptWrapper = (
     let webcam: WebcamPixelComponent
 
     const cleanup = () => {
-        console.log('cleanup')
         webcam.stopWebcam()
     }
 
@@ -116,7 +115,6 @@ const scriptWrapper: p5ScriptWrapper = (
         }
         p5Instance.mouseClicked = () => {
             webcam.stopWebcam()
-            // delete webcam
         }
 
         p5Instance.keyPressed = () => {
