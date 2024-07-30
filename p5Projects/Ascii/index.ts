@@ -17,9 +17,10 @@ const FONT = {
     name: 'Courier',
     aspectRatio: 5 / 3
 }
-const IMAGE_SIZE = 80
+const IMAGE_SIZE = 100
 const VIDEO_CONTRAINTS = {
-    width: Math.ceil(IMAGE_SIZE * FONT.aspectRatio),
+    width: Math.floor(IMAGE_SIZE * FONT.aspectRatio),
+    // width: IMAGE_SIZE,
     height: IMAGE_SIZE,
     frameRate: 60
 }
@@ -38,6 +39,50 @@ const scriptWrapper: p5ScriptWrapper = (
     }
 
     let webcam: WebcamPixelComponent
+    // const canvasElement = document.createElement('canvas')
+    // document.body.appendChild(canvasElement) // Append to the body to ensure it's part of the DOM
+    // const canvasContext = canvasElement.getContext('2d')
+    // canvasElement.style.display = 'none' // Hide the canvas
+
+    // canvasElement.width = VIDEO_CONTRAINTS.width
+    // canvasElement.height = VIDEO_CONTRAINTS.height
+
+    // const img = new Image()
+
+    // img.addEventListener('load', () => {
+    //     if (canvasContext !== null) {
+    //         console.log('Image loaded successfully.')
+    //         canvasContext.drawImage(img, 0, 0, canvasElement.width, canvasElement.height)
+
+    //         const imageData = canvasContext.getImageData(
+    //             0,
+    //             0,
+    //             canvasElement.width,
+    //             canvasElement.height
+    //         )
+    //         const pixels = imageData.data
+
+    //         console.log(pixels.every((val) => val === 0))
+    //         console.log(pixels)
+
+    //         pixelStream = pixels // Ensure pixelStream is defined in the appropriate scope
+    //     } else {
+    //         console.error('Canvas context is null.')
+    //     }
+    // })
+
+    // img.addEventListener('error', (e) => {
+    //     console.error('Failed to load the image.', e)
+    // })
+
+    // img.src = '/vidfeed.png' // Ensure the correct path to the image
+
+    // if (canvasContext !== null) {
+    //     // Draw the video element frame onto the canvas
+    //     canvasContext.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height)
+    // }
+
+    // const ctx = document.getElementById("canvas2").getContext("2d");
 
     const cleanup = () => {
         webcam.stopWebcam()
