@@ -1,6 +1,3 @@
-// const classPrint = (toPrint: string) => {
-//     console.log(toPrint)
-// }
 class WebcamPixelComponent {
     static count = 0
     instanceId: number
