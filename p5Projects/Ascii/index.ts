@@ -1,7 +1,7 @@
 import P5 from 'p5' // Package from npm
 import type { emptyFunction, p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
-import toGreyScale from '~/helpers/toGreyScale'
-import WebcamPixelComponent from '~/helpers/WebcamPixelComponent'
+import pixelsToAscii from './pixelsToAscii'
+import WebcamPixelComponent from './WebcamPixelComponent'
 
 const calculateTextSize = (screenDimensions: ScreenDimensions, imageSize: number): number => {
     if (screenDimensions.width > screenDimensions.height) {
@@ -35,7 +35,6 @@ const scriptWrapper: p5ScriptWrapper = (
     let pixelStream: Uint8ClampedArray
     const handlePixels = (pixels: Uint8ClampedArray) => {
         pixelStream = pixels
-        // console.log('a')
     }
 
     let webcam: WebcamPixelComponent
@@ -47,11 +46,12 @@ const scriptWrapper: p5ScriptWrapper = (
     const script = (p5Instance: P5): void => {
         // Setup the ascii density map
         let nSpaces = 35
+        let asciiImage: string = ''
 
         let spaces = Array(nSpaces).fill(' ')
         let asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
 
-        const brightnessToAscii = (brightnessValue: number): string => {
+        const pixelToAsciiMapper = (brightnessValue: number): string => {
             // Map the brightness value to an index in the ascii density map
             const index = Math.floor(
                 p5Instance.map(brightnessValue, 0, 255, 0, asciiDensityMap.length)
@@ -89,31 +89,19 @@ const scriptWrapper: p5ScriptWrapper = (
             if (pixelStream === undefined) {
                 return
             }
-            let asciiImage: string = ''
-            for (let j = 0; j < VIDEO_CONTRAINTS.height; j++) {
-                // Iterate in reverse direction to horizontally flip the image
-                for (let i = VIDEO_CONTRAINTS.width - 1; i >= 0; i--) {
-                    // Get rgb values
-                    let pixelIndex = (i + j * VIDEO_CONTRAINTS.width) * 4
-                    const r = pixelStream[pixelIndex + 0]
-                    const g = pixelStream[pixelIndex + 1]
-                    const b = pixelStream[pixelIndex + 2]
-
-                    // Convert rbg to greyscale
-                    const grey = toGreyScale(r, g, b)
-
-                    // Add on new char
-                    asciiImage += brightnessToAscii(grey)
-                }
-
-                // Append a new line character after each row
-                asciiImage += '\n'
-            }
+            asciiImage = pixelsToAscii(
+                pixelStream,
+                VIDEO_CONTRAINTS.width,
+                VIDEO_CONTRAINTS.height,
+                pixelToAsciiMapper
+            )
 
             // Display the image in the middle of the screen
             p5Instance.text(asciiImage, p5Instance.width / 2, p5Instance.height / 2)
         }
         p5Instance.mouseClicked = () => {
+            navigator.clipboard.writeText(asciiImage)
+            console.log(asciiImage)
             webcam.stopWebcam()
         }
 
