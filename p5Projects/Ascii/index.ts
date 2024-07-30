@@ -31,7 +31,7 @@ const ASCII_ONLY_DENSITY_MAP =
 
 const scriptWrapper: p5ScriptWrapper = (
     screenDimensions: ScreenDimensions
-): { script: p5Script; teardown: emptyFunction } => {
+): { script: p5Script; cleanup: emptyFunction } => {
     let pixelStream: Uint8ClampedArray
     const handlePixels = (pixels: Uint8ClampedArray) => {
         pixelStream = pixels
@@ -40,8 +40,8 @@ const scriptWrapper: p5ScriptWrapper = (
 
     let webcam: WebcamPixelComponent
 
-    const teardown = () => {
-        console.log('teardown')
+    const cleanup = () => {
+        console.log('cleanup')
         webcam.stopWebcam()
     }
 
@@ -133,7 +133,7 @@ const scriptWrapper: p5ScriptWrapper = (
             asciiDensityMap = ASCII_ONLY_DENSITY_MAP.concat(spaces)
         }
     }
-    return { script, teardown }
+    return { script, cleanup }
 }
 
 export default scriptWrapper

@@ -35,7 +35,7 @@ export type p5Script = (p5: P5) => void
 
 export type p5ScriptWrapper = (screenDimensions: ScreenDimensions) => {
     script: p5Script
-    teardown?: emptyFunction
+    cleanup?: emptyFunction
 }
 
 export type emptyFunction = () => void
