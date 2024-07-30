@@ -15,3 +15,5 @@ export const TEXT_COLOUR = '#000000'
 export const BACKGROUND_COLOUR = '#EB1E4E'
 export const ASCII_ONLY_DENSITY_MAP =
     "░░░$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft|()1{}[]?-_+~i!lI;:,^`'.".split('')
+
+export const BRIGHTNESS_INCREMENT = 5

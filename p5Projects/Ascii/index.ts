@@ -77,16 +77,16 @@ const scriptWrapper: p5ScriptWrapper = (
         p5Instance.mouseClicked = () => {
             navigator.clipboard.writeText(asciiImage)
             console.log(asciiImage)
-            webcam.stopWebcam()
+            // webcam.stopWebcam()
         }
 
         p5Instance.keyPressed = () => {
             switch (p5Instance.keyCode) {
                 case p5Instance.UP_ARROW:
-                    nSpaces += 5
+                    nSpaces += CONSTANTS.BRIGHTNESS_INCREMENT
                     break
                 case p5Instance.DOWN_ARROW:
-                    nSpaces = Math.max(nSpaces - 5, 0)
+                    nSpaces = Math.max(nSpaces - CONSTANTS.BRIGHTNESS_INCREMENT, 0)
                     break
             }
 
