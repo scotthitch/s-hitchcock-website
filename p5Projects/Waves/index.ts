@@ -1,7 +1,9 @@
 import P5 from 'p5' // Package from npm
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 
-const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+const scriptWrapper: p5ScriptWrapper = (
+    screenDimensions: ScreenDimensions
+): { script: p5Script } => {
     const script = (p5Instance: P5): void => {
         const BACKGROUND_COLOUR = '#007271'
         const WAVE_COLOUR = '#06BAAD'
@@ -38,16 +40,16 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
         p5Instance.setup = () => {
             p5Instance.createCanvas(screenDimensions.width, screenDimensions.height)
-            
+
             yValues = new Array(p5Instance.floor(WAVE_LENGTH / WAVE_VERTEX_SPACING))
         }
-        
+
         p5Instance.draw = () => {
             p5Instance.rotate(SCREEN_BEARING)
             p5Instance.translate(-WAVE_LENGTH / 2, 0)
             p5Instance.background(BACKGROUND_COLOUR)
             calcWave()
-            
+
             // console.log(BACKGROUND_COLOUR)
             const startHeight = wavesShift
             const endHeight = SCREEN_HYPOTENUSE + wavesShift
@@ -87,7 +89,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.endShape()
         }
     }
-    return script
+    return { script }
 }
 
 export default scriptWrapper

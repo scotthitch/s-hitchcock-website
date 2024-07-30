@@ -7,7 +7,9 @@ import type {
 } from '~/types'
 import P5 from 'p5' // Package from npm
 
-const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+const scriptWrapper: p5ScriptWrapper = (
+    screenDimensions: ScreenDimensions
+): { script: p5Script } => {
     const script = (p5Instance: P5): void => {
         const BACKGROUND_COLOUR = 0
 
@@ -164,7 +166,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             p5Instance.background(BACKGROUND_COLOUR)
         }
     }
-    return script
+    return { script }
 }
 
 export default scriptWrapper

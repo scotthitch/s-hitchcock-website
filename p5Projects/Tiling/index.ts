@@ -2,7 +2,9 @@ import P5 from 'p5' // Package from npm
 import createUpDownLeftOrRightP5Button from '~/helpers/createUpDownLeftOrRightP5Button'
 import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
 
-const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+const scriptWrapper: p5ScriptWrapper = (
+    screenDimensions: ScreenDimensions
+): { script: p5Script } => {
     const script = (p5Instance: P5): void => {
         const BACKGROUND_COLOUR = '#037171'
         const RECTANGLE_COLOUR = '#00B9AE'
@@ -123,7 +125,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
             }
         }
     }
-    return script
+    return { script }
 }
 
 export default scriptWrapper

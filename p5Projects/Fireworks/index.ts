@@ -10,7 +10,9 @@ interface FlightParams {
     explodeTime: number
 }
 
-const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5Script => {
+const scriptWrapper: p5ScriptWrapper = (
+    screenDimensions: ScreenDimensions
+): { script: p5Script } => {
     const script = (p5Instance: P5): void => {
         const GRAVITY = p5Instance.createVector(0, 0.15)
         const PARENT_MASS = 1
@@ -158,7 +160,7 @@ const scriptWrapper: p5ScriptWrapper = (screenDimensions: ScreenDimensions): p5S
 
         window.addEventListener(interactionEvent, createParentFireworkFromInteractionEvent)
     }
-    return script
+    return { script }
 }
 
 export default scriptWrapper

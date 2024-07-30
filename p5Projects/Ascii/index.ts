@@ -18,7 +18,7 @@ const FONT = {
     aspectRatio: 5 / 3
 }
 const IMAGE_SIZE = 100
-const VIDEO_CONTRAINTS: MediaTrackConstraints = {
+const VIDEO_CONTRAINTS = {
     width: Math.floor(IMAGE_SIZE * FONT.aspectRatio),
     // width: IMAGE_SIZE,
     height: IMAGE_SIZE,
