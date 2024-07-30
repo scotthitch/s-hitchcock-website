@@ -1,4 +1,6 @@
-import EventEmitter from 'events'
+// const classPrint = (toPrint: string) => {
+//     console.log(toPrint)
+// }
 class WebcamPixelComponent {
     static count = 0
     instanceId: number
@@ -33,6 +35,7 @@ class WebcamPixelComponent {
         this.startupPromise = new Promise<void>((resolve) => {
             this.startupResolve = resolve
         })
+        console.log('just made', this.startupPromise, 'id: ', this.instanceId)
 
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
@@ -42,15 +45,16 @@ class WebcamPixelComponent {
 
             this.videoTrack = stream.getVideoTracks()[0]
             this.videoElement.srcObject = stream
-            this.videoElement.play()
+            await this.videoElement.play() // putting await here causes nothing to load
+            // console.log(start)
+            console.log('played id:', this.instanceId)
 
             // Wait for the video to start playing and set the canvas dimensions
-            this.videoElement.onloadedmetadata = () => {
-                this.canvasElement.width = this.videoElement.videoWidth
-                this.canvasElement.height = this.videoElement.videoHeight
-                this.processFrame()
-            }
-            if (this.startupResolve) this.startupResolve()
+            // this.videoElement.onloadedmetadata = () => {
+            this.canvasElement.width = this.videoElement.videoWidth
+            this.canvasElement.height = this.videoElement.videoHeight
+            this.processFrame()
+            // }
 
             // console.log(`done start id: ${this.instanceId}`)
         } catch (error) {
@@ -59,6 +63,10 @@ class WebcamPixelComponent {
 
             throw error // Rethrow the error to be handled by the caller
         }
+        if (this.startupResolve) {
+            this.startupResolve()
+        }
+        console.log(`done start id: ${this.instanceId}`)
     }
 
     processFrame() {
@@ -98,11 +106,15 @@ class WebcamPixelComponent {
     }
 
     async stopWebcam() {
+        // console.log(this)
         console.log(`beginning stop id: ${this.instanceId}`)
 
         // Ensure that startup has completed before stopping the webcam
         if (this.startupPromise) {
+            console.log('awaint id: ', this.instanceId)
+            console.log(this.startupPromise, 'id: ', this.instanceId)
             await this.startupPromise
+            console.log(this.startupPromise, 'id: ', this.instanceId)
         }
         // await this.startupPromise
         if (this.videoTrack) {
@@ -114,9 +126,9 @@ class WebcamPixelComponent {
             console.log('remove this.videoElement id: ', this.instanceId)
             this.videoElement.pause()
             this.videoElement.srcObject = null
+            this.videoElement.remove()
         }
         this.canvasContext = null
-        this.videoElement.remove()
         this.canvasElement.remove()
         console.log(`done stop id: ${this.instanceId}`)
     }
