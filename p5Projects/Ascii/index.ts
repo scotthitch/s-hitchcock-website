@@ -18,11 +18,12 @@ const FONT = {
     aspectRatio: 5 / 3
 }
 const IMAGE_SIZE = 100
-const VIDEO_CONTRAINTS = {
+const VIDEO_CONTRAINTS: MediaTrackConstraints = {
     width: Math.floor(IMAGE_SIZE * FONT.aspectRatio),
     // width: IMAGE_SIZE,
     height: IMAGE_SIZE,
-    frameRate: 60
+    frameRate: 60,
+    facingMode: { ideal: 'user' }
 }
 
 const TEXT_COLOUR = '#000000'
