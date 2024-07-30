@@ -42,14 +42,14 @@ const projects: projectsType[] = [
         scriptWrapper: waterfallScriptWrapper,
         isMobileOrTabletFriendly: true
     },
-    // {
-    //     title: 'Unknown Pleasures',
-    //     scriptID: 'unknown-pleasures',
-    //     description:
-    //         "Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise",
-    //     scriptWrapper: unknownPleasuresScriptWrapper,
-    //     isMobileOrTabletFriendly: false
-    // },
+    {
+        title: 'Unknown Pleasures',
+        scriptID: 'unknown-pleasures',
+        description:
+            "Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise",
+        scriptWrapper: unknownPleasuresScriptWrapper,
+        isMobileOrTabletFriendly: false
+    },
     // {
     //     title: 'Perlin Flow Field',
     //     scriptID: 'perlin-flow-field',
