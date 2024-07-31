@@ -1,8 +1,10 @@
+import { isMobileOrTablet } from '~/helpers/deviceType'
+
 export const FONT = {
     name: 'Courier',
     aspectRatio: 5 / 3
 }
-export const IMAGE_SIZE = 100
+export const IMAGE_SIZE = isMobileOrTablet ? 65 : 100
 
 // Ensure that width and height are numbers
 interface CustomMediaTrackConstraints extends MediaTrackConstraints {
