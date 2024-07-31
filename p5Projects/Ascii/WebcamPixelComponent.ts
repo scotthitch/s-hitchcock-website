@@ -22,6 +22,7 @@ class WebcamPixelComponent {
         this.canvasElement = document.createElement('canvas')
         this.canvasElement.style.display = 'none' // Hide the canvas
         document.body.appendChild(this.canvasElement) // Append to the body to ensure it's part of the DOM
+        document.body.appendChild(this.videoElement) // Append to the body to ensure it's part of the DOM
         this.canvasContext = this.canvasElement.getContext('2d', { willReadFrequently: true })
         this.onFrameCallback = onFrameCallback
         this.videoTrack = null
