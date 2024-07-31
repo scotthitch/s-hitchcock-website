@@ -4,12 +4,18 @@ export const FONT = {
 }
 export const IMAGE_SIZE = 100
 
-export const VIDEO_CONTRAINTS: MediaTrackConstraints = {
+// Ensure that width and height are numbers
+interface CustomMediaTrackConstraints extends MediaTrackConstraints {
+    width: number
+    height: number
+}
+
+export const MEDIA_CONTRAINTS: CustomMediaTrackConstraints = {
     width: Math.floor(IMAGE_SIZE * FONT.aspectRatio),
     height: IMAGE_SIZE,
     frameRate: 60,
     facingMode: { ideal: 'user' }
-} as const
+}
 
 export const TEXT_COLOUR = '#000000'
 export const BACKGROUND_COLOUR = '#EB1E4E'

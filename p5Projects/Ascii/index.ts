@@ -8,15 +8,14 @@ import * as CONSTANTS from './constants'
 const scriptWrapper: p5ScriptWrapper = (
     screenDimensions: ScreenDimensions
 ): { script: p5Script; cleanup: emptyFunction } => {
+    let webcam: WebcamPixelComponent
+    const cleanup = () => {
+        webcam.stopWebcam()
+    }
+
     let pixelStream: Uint8ClampedArray
     const handlePixels = (pixels: Uint8ClampedArray) => {
         pixelStream = pixels
-    }
-
-    let webcam: WebcamPixelComponent
-
-    const cleanup = () => {
-        webcam.stopWebcam()
     }
 
     const script = (p5Instance: P5): void => {
@@ -46,7 +45,7 @@ const scriptWrapper: p5ScriptWrapper = (
         }
         const initialiseWebCam = async () => {
             try {
-                webcam = new WebcamPixelComponent(handlePixels, CONSTANTS.VIDEO_CONTRAINTS)
+                webcam = new WebcamPixelComponent(handlePixels, CONSTANTS.MEDIA_CONTRAINTS)
                 await webcam.startWebcam()
             } catch (err) {
                 console.log(err)
@@ -66,8 +65,8 @@ const scriptWrapper: p5ScriptWrapper = (
             }
             asciiImage = pixelsToAscii(
                 pixelStream,
-                CONSTANTS.VIDEO_CONTRAINTS.width as number,
-                CONSTANTS.VIDEO_CONTRAINTS.height as number,
+                CONSTANTS.MEDIA_CONTRAINTS.width,
+                CONSTANTS.MEDIA_CONTRAINTS.height,
                 pixelToAsciiMapper
             )
 
