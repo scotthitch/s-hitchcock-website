@@ -17,6 +17,8 @@ class WebcamPixelComponent {
         this.instanceId = WebcamPixelComponent.count++
         this.videoConstraints = videoConstraints
         this.videoElement = document.createElement('video')
+        this.videoElement.playsInline = true
+        this.videoElement.muted = true
         this.canvasElement = document.createElement('canvas')
         this.canvasElement.style.display = 'none' // Hide the canvas
         document.body.appendChild(this.canvasElement) // Append to the body to ensure it's part of the DOM

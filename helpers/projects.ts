@@ -40,7 +40,7 @@ const projects: projectsType[] = [
         scriptID: 'ascii',
         description: 'Converts the video feed into ASCII art',
         scriptWrapper: asciiScriptWrapper,
-        isMobileOrTabletFriendly: false
+        isMobileOrTabletFriendly: true
     },
     {
         title: 'Unknown Pleasures',

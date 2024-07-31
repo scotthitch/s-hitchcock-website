@@ -13,8 +13,8 @@ interface CustomMediaTrackConstraints extends MediaTrackConstraints {
 export const MEDIA_CONTRAINTS: CustomMediaTrackConstraints = {
     width: Math.floor(IMAGE_SIZE * FONT.aspectRatio),
     height: IMAGE_SIZE,
-    frameRate: 60,
-    facingMode: { ideal: 'user' }
+    frameRate: 60
+    // facingMode: { ideal: 'user' }
 }
 
 export const TEXT_COLOUR = '#000000'
