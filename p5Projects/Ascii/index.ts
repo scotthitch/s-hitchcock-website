@@ -74,7 +74,7 @@ const scriptWrapper: p5ScriptWrapper = (
             p5Instance.text(asciiImage, p5Instance.width / 2, p5Instance.height / 2)
         }
         p5Instance.mouseClicked = () => {
-            navigator.clipboard.writeText(asciiImage)
+            navigator.clipboard.writeText(pixelStream.toString())
             console.log(asciiImage)
             // webcam.stopWebcam()
         }
