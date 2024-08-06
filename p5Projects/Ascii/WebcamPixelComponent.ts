@@ -16,30 +16,42 @@ class WebcamPixelComponent {
         onFrameCallback: (pixels: Uint8ClampedArray) => void,
         videoConstraints: MediaTrackConstraints
     ) {
-        let newVideoConstraints = videoConstraints
+        this.instanceId = WebcamPixelComponent.count++
+        this.videoConstraints = this.setVideoConstraints(videoConstraints)
+        this.videoElement = this.createVideoElement()
+        this.canvasElement = this.createCanvasElement()
+        this.canvasContext = this.canvasElement.getContext('2d', { willReadFrequently: true })
+        this.onFrameCallback = onFrameCallback
+        this.videoTrack = null
+        this.startupPromise = null
+        this.startupResolve = null
+    }
 
+    private setVideoConstraints(constraints: MediaTrackConstraints): MediaTrackConstraints {
         if (isPortrait) {
-            const { width, height, ...rest } = videoConstraints
-            newVideoConstraints = {
+            const { width, height, ...rest } = constraints
+            return {
                 width: height,
                 height: width,
                 ...rest
             }
         }
 
-        this.instanceId = WebcamPixelComponent.count++
-        this.videoConstraints = newVideoConstraints
-        this.videoElement = document.createElement('video')
-        this.videoElement.playsInline = true
-        this.videoElement.muted = true
-        this.canvasElement = document.createElement('canvas')
-        this.canvasElement.style.display = 'none' // Hide the canvas
-        document.body.appendChild(this.canvasElement) // Append to the body to ensure it's part of the DOM
-        this.canvasContext = this.canvasElement.getContext('2d', { willReadFrequently: true })
-        this.onFrameCallback = onFrameCallback
-        this.videoTrack = null
-        this.startupPromise = null
-        this.startupResolve = null
+        return constraints
+    }
+
+    private createVideoElement(): HTMLVideoElement {
+        const video = document.createElement('video')
+        video.playsInline = true
+        video.muted = true
+        return video
+    }
+
+    private createCanvasElement(): HTMLCanvasElement {
+        const canvas = document.createElement('canvas')
+        canvas.style.display = 'none' // Hide the canvas
+        document.body.appendChild(canvas) // Append to the body to ensure it's part of the DOM
+        return canvas
     }
 
     async startWebcam() {
