@@ -8,6 +8,20 @@ import type { projectsType } from '~/types'
 import projects from '~/helpers/projects'
 
 const selectedProject = ref<null | projectsType>(null)
+
+const p5ProjectKey = ref(0)
+
+const handleResize = () => {
+    p5ProjectKey.value++
+}
+
+onMounted(() => {
+    window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <template>
@@ -24,6 +38,7 @@ const selectedProject = ref<null | projectsType>(null)
                 <P5Project
                     v-if="selectedProject !== null"
                     class="rounded-lg"
+                    :key="p5ProjectKey"
                     :title="selectedProject.title"
                     :scriptID="selectedProject.scriptID"
                     :description="selectedProject.description"
