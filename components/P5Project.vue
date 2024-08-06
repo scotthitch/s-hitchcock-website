@@ -8,7 +8,7 @@ const props = defineProps<P5ProjectProps>()
 <template>
     <div class="verticalPan relative h-full">
         <div class="h-full">
-            <div class="h-full">
+            <div class="h-full rounded-[28px]">
                 <P5Canvas :scriptID="props.scriptID" :scriptWrapper="props.scriptWrapper" />
             </div>
 

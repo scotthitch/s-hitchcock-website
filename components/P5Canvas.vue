@@ -16,6 +16,13 @@ const doNothing = () => {}
 
 const p5Cleanup = ref<emptyFunction>(doNothing)
 
+const applyStyling = () => {
+    const p5Canvas = document.getElementById('defaultCanvas0')
+    if (p5Canvas !== null) {
+        p5Canvas.style.borderRadius = 'inherit'
+    }
+}
+
 const generateNewP5Sketch = () => {
     const targetElement = document.getElementById(props.scriptID) || undefined
     const { script, cleanup } = props.scriptWrapper({ width: width.value, height: height.value })
@@ -23,6 +30,7 @@ const generateNewP5Sketch = () => {
     if (cleanup !== undefined) {
         p5Cleanup.value = cleanup
     }
+    applyStyling()
 }
 
 const handleP5SketchGeneration = () => {
@@ -40,12 +48,11 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-    console.log('onm')
     p5Cleanup.value()
     p5.value?.remove()
 })
 </script>
 
 <template>
-    <div ref="el" class="w-full h-full" :id="props.scriptID"></div>
+    <div ref="el" class="w-full h-full rounded-[inherit]" :id="props.scriptID"></div>
 </template>
