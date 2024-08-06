@@ -45,7 +45,7 @@ const projects: projectsType[] = [
     {
         title: 'Perlin Flow Field',
         scriptID: 'perlin-flow-field',
-        description: 'A random vector flow field generated using 2D Perlin Noise.',
+        description: 'A random vector flow field generated using 2D Perlin Noise',
         scriptWrapper: perlinFlowFieldScriptWrapper,
         isMobileOrTabletFriendly: true
     },
@@ -80,7 +80,7 @@ const projects: projectsType[] = [
     {
         title: 'Fireworks',
         scriptID: 'fireworks',
-        description: 'Click to shoot some fireworks.',
+        description: 'Click to shoot some fireworks',
         scriptWrapper: fireworksScriptWrapper,
         isMobileOrTabletFriendly: true
     }
