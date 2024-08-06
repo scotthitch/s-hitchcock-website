@@ -11,11 +11,6 @@ const navBarRoutes = [
         title: 'Projects'
     },
     {
-        to: '/resume',
-        id: 'resume',
-        title: 'Resume'
-    },
-    {
         to: '/contact',
         id: 'contact',
         title: 'Contact'
