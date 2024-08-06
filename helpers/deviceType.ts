@@ -7,3 +7,5 @@ export const isDeviceAppleTouchScreen = /iPad|iPhone|iPod/.test(deviceType)
 export const interactionEvent: 'touchend' | 'click' = isDeviceAppleTouchScreen
     ? 'touchend'
     : 'click'
+
+export const isPortrait = screen.availHeight > screen.availWidth
