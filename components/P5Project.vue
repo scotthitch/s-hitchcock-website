@@ -8,7 +8,7 @@ const props = defineProps<P5ProjectProps>()
 <template>
     <div class="relative h-full flex flex-col gap-1">
         <!-- <div class="h-full"> -->
-        <div class="basis-[90%] rounded-[32px] shadow-xl">
+        <div class="basis-[90%] rounded-[32px] shadow-2xl">
             <P5Canvas :scriptID="props.scriptID" :scriptWrapper="props.scriptWrapper" />
         </div>
         <p class="text-center mt-2">
