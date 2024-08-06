@@ -1,3 +1,5 @@
+import { isPortrait } from '~/helpers/deviceType'
+
 class WebcamPixelComponent {
     static count = 0
     instanceId: number
@@ -14,8 +16,19 @@ class WebcamPixelComponent {
         onFrameCallback: (pixels: Uint8ClampedArray) => void,
         videoConstraints: MediaTrackConstraints
     ) {
+        let newVideoConstraints = videoConstraints
+
+        if (isPortrait) {
+            const { width, height, ...rest } = videoConstraints
+            newVideoConstraints = {
+                width: height,
+                height: width,
+                ...rest
+            }
+        }
+
         this.instanceId = WebcamPixelComponent.count++
-        this.videoConstraints = videoConstraints
+        this.videoConstraints = newVideoConstraints
         this.videoElement = document.createElement('video')
         this.videoElement.playsInline = true
         this.videoElement.muted = true

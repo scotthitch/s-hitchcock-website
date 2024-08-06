@@ -1,4 +1,4 @@
-import { isMobileOrTablet, isPortrait } from '~/helpers/deviceType'
+import { isMobileOrTablet } from '~/helpers/deviceType'
 
 export const FONT = {
     name: 'Courier' as const,
@@ -13,8 +13,8 @@ interface CustomMediaTrackConstraints extends MediaTrackConstraints {
 }
 
 export const MEDIA_CONSTRAINTS: CustomMediaTrackConstraints = {
-    width: isPortrait ? IMAGE_SIZE : Math.floor(IMAGE_SIZE * FONT.aspectRatio),
-    height: isPortrait ? Math.floor(IMAGE_SIZE * FONT.aspectRatio) : IMAGE_SIZE,
+    width: Math.floor(IMAGE_SIZE * FONT.aspectRatio),
+    height: IMAGE_SIZE,
     frameRate: 60
     // facingMode: { ideal: 'user' }
 }
