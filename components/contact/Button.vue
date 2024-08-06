@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
     <button
-        class="w-full border-[1.5px] border-col-dark text-sm font-semibold py-2 hover:scale-105 buttonGrow"
+        class="w-full rounded-[6px] border-[1.5px] border-col-dark text-sm font-semibold py-2 hover:scale-105 buttonGrow"
         :type="props.type"
         :form="props.formId"
         :value="props.label"
