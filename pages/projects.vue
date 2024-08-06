@@ -22,15 +22,21 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('resize', handleResize)
 })
+// const projectClick = () => {}
 </script>
 
 <template>
     <div class="container mx-auto h-[100svh]">
-        <div class="flex flex-row text-col-light h-[80svh]">
-            <div class="basis-1/4">
-                <ul>
-                    <li v-for="(project, i) in projects" @click="selectedProject = projects[i]">
-                        {{ project.title + i }}
+        <div class="flex flex-row text-col-dark h-[80svh]">
+            <div class="basis-1/5">
+                <ul class="flex flex-col gap-12">
+                    <li
+                        v-for="(project, i) in projects"
+                        class="hover:text-lg text-left font-medium"
+                    >
+                        <button @mouseenter="selectedProject = project">
+                            {{ project.title }}
+                        </button>
                     </li>
                 </ul>
             </div>
