@@ -4,7 +4,7 @@ export const FONT = {
     name: 'Courier' as const,
     aspectRatio: 5 / 3
 } as const
-export const IMAGE_SIZE = isMobileOrTablet ? 85 : 100
+export const IMAGE_SIZE = isMobileOrTablet ? 75 : 100
 
 // Ensure that width and height are numbers
 interface CustomMediaTrackConstraints extends MediaTrackConstraints {
