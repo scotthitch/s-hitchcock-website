@@ -33,10 +33,20 @@ onUnmounted(() => {
 <template>
     <div class="container mx-auto h-full">
         <div class="pt-2 flex flex-row text-col-dark h-full gap-6">
-            <div class="basis-1/5 pl-12">
-                <ul class="flex flex-col gap-14 h-full py-4 text-lg overflow-scroll">
-                    <li v-for="(project, i) in projects" class="text-left font-medium" :key="i">
-                        <button @mouseenter="selectedProjectIndex = i">
+            <div class="basis-1/5 px-8">
+                <ul class="flex flex-col h-full pt-4 pb-16 text-lg overflow-scroll px-4">
+                    <li
+                        v-for="(project, i) in projects"
+                        class="text-left font-medium py-5"
+                        :key="i"
+                        :class="
+                            i == selectedProjectIndex &&
+                            'scale-[1.1] border-4 rounded-[20px] shadow-md'
+                        "
+                        @mouseenter="selectedProjectIndex = i"
+                        @click="selectedProjectIndex = i"
+                    >
+                        <button class="px-3">
                             {{ project.title }}
                         </button>
                     </li>
