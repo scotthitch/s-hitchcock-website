@@ -37,18 +37,16 @@ onUnmounted(() => {
                 <ul class="flex flex-col h-full pt-4 pb-16 text-lg overflow-scroll px-4">
                     <li
                         v-for="(project, i) in projects"
-                        class="text-left font-medium py-5"
+                        class="text-left font-medium py-5 button px-3"
                         :key="i"
                         :class="
                             i == selectedProjectIndex &&
-                            'scale-[1.1] border-4 rounded-[20px] shadow-md'
+                            'scale-[1.1] rounded-[20px] shadow-md transition ease-in-out'
                         "
                         @mouseenter="selectedProjectIndex = i"
                         @click="selectedProjectIndex = i"
                     >
-                        <button class="px-3">
-                            {{ project.title }}
-                        </button>
+                        {{ project.title }}
                     </li>
                 </ul>
             </div>
