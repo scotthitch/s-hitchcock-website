@@ -40,6 +40,8 @@ export type p5ScriptWrapper = (screenDimensions: ScreenDimensions) => {
 
 export type emptyFunction = () => void
 
+export type pixelHandler = (pixels: Uint8ClampedArray) => void
+
 export type QuadraticRoot = {
     real: number
     imaginary: number

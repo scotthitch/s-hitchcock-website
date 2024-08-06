@@ -1,5 +1,11 @@
 import P5 from 'p5' // Package from npm
-import type { emptyFunction, p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types'
+import type {
+    emptyFunction,
+    p5Script,
+    p5ScriptWrapper,
+    pixelHandler,
+    ScreenDimensions
+} from '~/types'
 import pixelsToAscii from './pixelsToAscii'
 import WebcamPixelComponent from './WebcamPixelComponent'
 import calculateTextSize from './calculateTextSize'
@@ -14,7 +20,7 @@ const scriptWrapper: p5ScriptWrapper = (
     }
 
     let pixelStream: Uint8ClampedArray
-    const handlePixels = (pixels: Uint8ClampedArray) => {
+    const handlePixels: pixelHandler = (pixels: Uint8ClampedArray) => {
         pixelStream = pixels
     }
 
