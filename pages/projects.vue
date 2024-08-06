@@ -37,7 +37,7 @@ onUnmounted(() => {
                 <ul class="flex flex-col h-full pt-4 pb-16 text-lg overflow-scroll px-4">
                     <li
                         v-for="(project, i) in projects"
-                        class="text-left font-medium py-5 button px-3"
+                        class="text-left font-medium py-4 my-2 button px-3"
                         :key="i"
                         :class="
                             i == selectedProjectIndex &&
@@ -52,16 +52,39 @@ onUnmounted(() => {
             </div>
             <div class="grow h-full content-center">
                 <div class="h-full pb-6">
-                    <P5Project
-                        v-if="selectedProject !== null"
-                        :key="p5ProjectKey"
-                        :title="selectedProject.title"
-                        :scriptID="selectedProject.scriptID"
-                        :description="selectedProject.description"
-                        :scriptWrapper="selectedProject.scriptWrapper"
-                    />
+                    <Transition name="fade-transition">
+                        <P5Project
+                            v-if="selectedProject !== null"
+                            :key="p5ProjectKey + selectedProject.scriptID"
+                            :title="selectedProject.title"
+                            :scriptID="selectedProject.scriptID"
+                            :description="selectedProject.description"
+                            :scriptWrapper="selectedProject.scriptWrapper"
+                        />
+                    </Transition>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<style>
+.fade-transition-enter-active {
+    animation: fade-in 0.3s;
+}
+
+.fade-transition-leave-to {
+    opacity: 0;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0.98);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 100;
+    }
+}
+</style>
