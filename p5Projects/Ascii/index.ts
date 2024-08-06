@@ -45,7 +45,7 @@ const scriptWrapper: p5ScriptWrapper = (
         }
         const initialiseWebCam = async () => {
             try {
-                webcam = new WebcamPixelComponent(handlePixels, CONSTANTS.MEDIA_CONTRAINTS)
+                webcam = new WebcamPixelComponent(handlePixels, CONSTANTS.MEDIA_CONSTRAINTS)
                 await webcam.startWebcam()
             } catch (err) {
                 console.log(err)
@@ -65,8 +65,8 @@ const scriptWrapper: p5ScriptWrapper = (
             }
             asciiImage = pixelsToAscii(
                 pixelStream,
-                CONSTANTS.MEDIA_CONTRAINTS.width,
-                CONSTANTS.MEDIA_CONTRAINTS.height,
+                CONSTANTS.MEDIA_CONSTRAINTS.width,
+                CONSTANTS.MEDIA_CONSTRAINTS.height,
                 pixelToAsciiMapper
             )
 
