@@ -36,9 +36,9 @@ const navBarRoutes = [
             </router-link>
         </div>
 
-        <div class="flex flex-row gap-3 xs:gap-4 md:gap-6">
+        <div class="flex flex-row gap-6 xs:gap-6 md:gap-6">
             <div
-                class="text-col-dark hover:text-col-dark text-sm xs:text-base navbarRoute font-bold"
+                class="text-col-dark hover:text-col-dark text-sm xs:text-lg navbarRoute font-semibold"
                 v-for="(navBarRoute, index) in navBarRoutes"
                 v-bind:key="index"
             >
