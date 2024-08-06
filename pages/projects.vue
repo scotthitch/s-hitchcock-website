@@ -7,8 +7,13 @@ import { isMobileOrTablet } from '~/helpers/deviceType'
 import type { projectsType } from '~/types'
 import projects from '~/helpers/projects'
 
-const selectedProject = ref<null | projectsType>(null)
-
+const selectedProjectIndex = ref<null | number>(null)
+const selectedProject = computed(() => {
+    if (selectedProjectIndex.value === null) {
+        return null
+    }
+    return projects[selectedProjectIndex.value]
+})
 const p5ProjectKey = ref(0)
 
 const handleResize = () => {
@@ -30,8 +35,8 @@ onUnmounted(() => {
         <div class="pt-2 flex flex-row text-col-dark h-full gap-6">
             <div class="basis-1/5 pl-12">
                 <ul class="flex flex-col gap-14 h-full py-4 text-lg overflow-scroll">
-                    <li v-for="(project, i) in projects" class="text-left font-medium">
-                        <button @mouseenter="selectedProject = project">
+                    <li v-for="(project, i) in projects" class="text-left font-medium" :key="i">
+                        <button @mouseenter="selectedProjectIndex = i">
                             {{ project.title }}
                         </button>
                     </li>
