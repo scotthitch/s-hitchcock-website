@@ -1,8 +1,8 @@
 <script setup lang="ts">
 useHead({
-    title: "Scott Hitchcock",
+    title: 'Scott Hitchcock',
     bodyAttrs: {
-        class: "bg-col-dark"
+        class: 'bg-col-light'
     }
 })
 </script>

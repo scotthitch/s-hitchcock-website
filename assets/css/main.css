@@ -2,11 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-    --header-height: 80px;
+    --header-height: 120px;
 }
-
 
 .p5Button {
     font-size: 40px;
