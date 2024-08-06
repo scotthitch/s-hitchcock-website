@@ -34,7 +34,7 @@ onUnmounted(() => {
     <div class="container mx-auto h-full">
         <div class="pt-2 flex flex-row text-col-dark h-full gap-6">
             <div class="basis-1/5 px-8">
-                <ul class="flex flex-col h-full pt-4 pb-16 text-lg overflow-scroll px-4">
+                <ul class="flex flex-col h-full pb-16 text-lg overflow-scroll px-4">
                     <li
                         v-for="(project, i) in projects"
                         class="text-left font-medium py-4 my-2 button px-3"
