@@ -27,8 +27,4 @@ const props = defineProps<P5ProjectProps>()
     </div>
 </template>
 
-<style scoped>
-.verticalPan {
-    touch-action: pan-y;
-}
-</style>
+<style></style>
