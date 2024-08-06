@@ -26,43 +26,21 @@ const generateNewP5Sketch = () => {
 }
 
 const handleP5SketchGeneration = () => {
-    switch (props.state) {
-        // If invisible then do nothing
-        case 'invisible':
-            break
-
-        // If it's visible then play the sketch
-        case 'visible':
-            // First check if one has been made yet
-            if (p5.value === undefined) {
-                generateNewP5Sketch()
-            }
-            p5.value?.loop()
-            break
-
-        // If it's a neighbour then remove the old sketch, make a new one then pause
-        case 'neighbour':
-            // First call the cleanup method
-            p5Cleanup.value()
-            p5.value?.remove()
-            generateNewP5Sketch()
-            p5.value?.noLoop()
-            break
-    }
+    generateNewP5Sketch()
 }
 
 onUpdated(() => {
+    p5Cleanup.value()
+    p5.value?.remove()
     handleP5SketchGeneration()
 })
 
 onMounted(() => {
-    // console.log('mounting', props.scriptID)
-
     handleP5SketchGeneration()
 })
 
 onUnmounted(() => {
-    // console.log('onm')
+    console.log('onm')
     p5Cleanup.value()
     p5.value?.remove()
 })

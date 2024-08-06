@@ -15,12 +15,11 @@ export type ScreenDimensions = {
     height: number
 }
 
-export type P5ProjectState = 'visible' | 'neighbour' | 'invisible'
+// export type P5ProjectState = 'visible' | 'neighbour' | 'invisible'
 
 export type P5CanvasProps = {
     scriptID: string
     scriptWrapper: p5ScriptWrapper
-    state: P5ProjectState
 }
 
 export type P5ProjectProps = {
@@ -28,7 +27,14 @@ export type P5ProjectProps = {
     scriptID: string
     description: string
     scriptWrapper: p5ScriptWrapper
-    state: P5ProjectState
+}
+
+export type projectsType = {
+    title: string
+    scriptID: string
+    description: string
+    scriptWrapper: p5ScriptWrapper
+    isMobileOrTabletFriendly: boolean
 }
 
 export type p5Script = (p5: P5) => void

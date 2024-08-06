@@ -9,15 +9,7 @@ import unknownPleasuresScriptWrapper from '~/p5Projects/UnknownPleasures'
 import waterfallScriptWrapper from '~/p5Projects/Waterfall'
 import asciiScriptWrapper from '~/p5Projects/Ascii'
 
-import type { p5ScriptWrapper } from '~/types'
-
-interface projectsType {
-    title: string
-    scriptID: string
-    description: string
-    scriptWrapper: p5ScriptWrapper
-    isMobileOrTabletFriendly: boolean
-}
+import type { projectsType } from '~/types'
 
 const projects: projectsType[] = [
     {

@@ -6,14 +6,10 @@ const props = defineProps<P5ProjectProps>()
 </script>
 
 <template>
-    <div class="verticalPan relative h-full snap-always snap-center">
-        <div class="h-full" v-if="props.state !== 'invisible'">
+    <div class="verticalPan relative h-full">
+        <div class="h-full">
             <div class="h-full">
-                <P5Canvas
-                    :scriptID="props.scriptID"
-                    :scriptWrapper="props.scriptWrapper"
-                    :state="props.state"
-                />
+                <P5Canvas :scriptID="props.scriptID" :scriptWrapper="props.scriptWrapper" />
             </div>
 
             <div class="absolute bottom-2 left-2 slide-from-left-40">
