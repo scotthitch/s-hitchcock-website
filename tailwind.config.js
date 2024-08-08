@@ -16,9 +16,7 @@ export default {
             colors: {
                 'col-dark': '#181818',
                 'col-light': '#FFFFFF',
-                'col-mid': '#717171',
-                'col-primary': '#0F365B',
-                'col-secondary': '#BB0A21'
+                'col-mid': '#717171'
             },
             screens: {
                 xs: '400px'
