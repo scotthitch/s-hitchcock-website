@@ -14,10 +14,6 @@ export default {
     theme: {
         extend: {
             colors: {
-                // 'cv-blue': '#0F365B',
-                // 'col-primary': '#181818',
-                // 'col-secondary': "#F0F0F0",
-                // 'col-tertiary': "#D9D9D9",
                 'col-dark': '#181818',
                 'col-light': '#FFFFFF',
                 'col-mid': '#717171',
@@ -30,4 +26,4 @@ export default {
         }
     },
     plugins: []
-}
+};

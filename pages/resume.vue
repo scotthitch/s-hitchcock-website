@@ -12,10 +12,10 @@ import TextContent from '~/components/resume/TextContent.vue';
     <div class="overflow-scroll">
         <PageIntro pageName="Resume" />
         <div class="flex flex-row justify-center">
-            <div class="grow bg-col-primary"></div>
+            <div class="grow bg-col-dark"></div>
             <div class="flex max-w-[800px] basis-[100%] flex-row sm:basis-[90%] md:basis-[85%]">
                 <div
-                    class="flex basis-[33%] flex-col gap-5 bg-col-primary px-3 pb-4 text-col-light sm:gap-7 sm:px-6"
+                    class="flex basis-[33%] flex-col gap-5 bg-col-dark px-3 pb-4 text-col-light sm:gap-7 sm:px-6"
                 >
                     <div class="flex flex-col justify-center text-center">
                         <img src="/profile_photo.png" class="sm:w-30 mx-auto w-14 xs:w-24" />
