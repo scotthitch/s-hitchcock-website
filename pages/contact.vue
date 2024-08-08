@@ -19,15 +19,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="h-full container lg:max-w-[1000px] mx-auto sm:px-12 content-center pb-12">
+    <div class="container mx-auto h-full content-center pb-12 sm:px-12 lg:max-w-[1000px]">
         <div
-            class="h-[93%] flex flex-col-reverse md:flex-row rounded-[32px] border-2 border-neutral-300 border-spacing-8 outline outline-2 outline-col-dark -outline-offset-[24px] bg-col-light"
+            class="flex h-[93%] border-spacing-8 flex-col-reverse rounded-[32px] border-2 border-neutral-300 bg-col-light outline outline-2 -outline-offset-[24px] outline-col-dark md:flex-row"
         >
-            <ContactMeForm class="basis-full md:basis-1/2 m-4 md:m-2" />
-            <div class="md:block md:basis-1/2 w-full h-[120px] md:h-auto">
+            <ContactMeForm class="m-4 basis-full md:m-2 md:basis-1/2" />
+            <div class="h-[120px] w-full md:block md:h-auto md:basis-1/2">
                 <WavesCanvas
                     :key="p5CanvasKey"
-                    class="rounded-t-[30px] md:rounded-tl-[0px] md:rounded-br-[30px]"
+                    class="rounded-t-[30px] md:rounded-br-[30px] md:rounded-tl-[0px]"
                 />
             </div>
         </div>

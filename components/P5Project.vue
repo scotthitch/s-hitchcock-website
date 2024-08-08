@@ -6,18 +6,18 @@ const props = defineProps<P5ProjectProps>()
 </script>
 
 <template>
-    <div class="relative h-full flex flex-col gap-1">
+    <div class="relative flex h-full flex-col gap-1">
         <!-- <div class="h-full"> -->
-        <div class="basis-[90%] rounded-[32px] shadow-2xl project-enter">
+        <div class="project-enter basis-[90%] rounded-[32px] shadow-2xl">
             <P5Canvas :scriptID="props.scriptID" :scriptWrapper="props.scriptWrapper" />
         </div>
-        <p class="text-center mt-2">
+        <p class="mt-2 text-center">
             <!-- <span class="font-bold text-col-dark">{{ $props.title }}</span> -->
-            <span class="font-bold text-lg text-col-darl">{{ props.title }}</span>
+            <span class="text-col-darl text-lg font-bold">{{ props.title }}</span>
         </p>
         <p class="text-center">
             <!-- <span class="font-bold text-col-dark">{{ $props.title }}</span> -->
-            <span class="font-medium text-col-mid italic">{{ props.description }}.</span>
+            <span class="font-medium italic text-col-mid">{{ props.description }}.</span>
         </p>
 
         <!-- <div class="absolute bottom-2 left-4 slide-from-left-40">

@@ -2,23 +2,23 @@
 
 <template>
     <div class="h-full overflow-scroll">
-        <div class="flex h-[80svh] sm:h-[80svh] bg-col-dark">
+        <div class="flex h-[80svh] bg-col-dark sm:h-[80svh]">
             <div class="m-auto grid grid-cols-3 p-3">
                 <div
-                    class="text-col-light text-6xl sm:text-8xl font-bold italic slide-from-left-60 col-span-2"
+                    class="slide-from-left-60 col-span-2 text-6xl font-bold italic text-col-light sm:text-8xl"
                 >
                     Scott
                 </div>
 
                 <div
-                    class="flex flex-col-reverse text-sm sm:text-2xl text-col-mid italic font-semibold slide-from-right-40 text-end"
+                    class="slide-from-right-40 flex flex-col-reverse text-end text-sm font-semibold italic text-col-mid sm:text-2xl"
                 >
                     <div>Engineer</div>
                     <div>Mechatronics</div>
                 </div>
 
                 <div
-                    class="text-col-light text-6xl sm:text-8xl font-bold italic slide-from-left-80 col-span-3"
+                    class="slide-from-left-80 col-span-3 text-6xl font-bold italic text-col-light sm:text-8xl"
                 >
                     Hitchcock
                 </div>

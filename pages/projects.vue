@@ -27,16 +27,16 @@ onUnmounted(() => {
 
 <template>
     <div class="container mx-auto h-full">
-        <div class="pt-2 flex flex-row text-col-dark h-full gap-6">
-            <div class="basis-1/5 sm:basis-1/4 px-8">
-                <ul class="flex flex-col h-full pb-16 overflow-scroll px-4 sm:pl-12">
+        <div class="flex h-full flex-row gap-6 pt-2 text-col-dark">
+            <div class="basis-1/5 px-8 sm:basis-1/4">
+                <ul class="flex h-full flex-col overflow-scroll px-4 pb-16 sm:pl-12">
                     <li
                         v-for="(project, i) in projects"
-                        class="text-base text-left font-medium py-4 my-2 button px-3"
+                        class="button my-2 px-3 py-4 text-left text-base font-medium"
                         :key="i"
                         :class="
                             i == selectedProjectIndex &&
-                            'scale-[1.1] rounded-[20px] shadow-md transition ease-in-out bg-col-light'
+                            'scale-[1.1] rounded-[20px] bg-col-light shadow-md transition ease-in-out'
                         "
                         @mouseenter="selectedProjectIndex = i"
                         @click="selectedProjectIndex = i"
@@ -45,7 +45,7 @@ onUnmounted(() => {
                     </li>
                 </ul>
             </div>
-            <div class="grow h-full content-center">
+            <div class="h-full grow content-center">
                 <div class="h-full pb-6">
                     <P5Project
                         v-if="selectedProject !== null"
@@ -57,7 +57,7 @@ onUnmounted(() => {
                     />
                     <div
                         v-else
-                        class="italic font-semibold text-2xl text-col-mid relative h-full text-center content-center pb-[80px]"
+                        class="relative h-full content-center pb-[80px] text-center text-2xl font-semibold italic text-col-mid"
                     >
                         Check out some of the things I’ve built...
                     </div>

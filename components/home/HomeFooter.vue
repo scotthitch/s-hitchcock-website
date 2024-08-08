@@ -1,10 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="relative flex flex-col gap-2 items-center bottom-0 w-full pb-4 pt-2 bg-col-light">
-        <div class="text-sm sm:text-base font-bold text-col-dark">Tools Used</div>
+    <div class="relative bottom-0 flex w-full flex-col items-center gap-2 bg-col-light pb-4 pt-2">
+        <div class="text-sm font-bold text-col-dark sm:text-base">Tools Used</div>
 
-        <div class="w-full flex flex-row gap-[12svw] sm:gap-20 md:gap-24 justify-center">
+        <div class="flex w-full flex-row justify-center gap-[12svw] sm:gap-20 md:gap-24">
             <HomeFooterIcon
                 file-name="vuejs.png"
                 icon-name="Vue.js"

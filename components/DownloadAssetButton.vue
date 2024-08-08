@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
     <a :href="props.assetPath" :download="`${downloadName}.${assetFileType}`">
         <button
-            class="text-xs sm:text-sm md:text-md border-col-dark border-2 bg-white font-semibold text-col-dark rounded-md px-2 py-1"
+            class="md:text-md rounded-md border-2 border-col-dark bg-white px-2 py-1 text-xs font-semibold text-col-dark sm:text-sm"
         >
             {{ buttonName }}
         </button>

@@ -21,11 +21,11 @@ const navBarRoutes = [
 <template>
     <!-- Add some negative margin on the bottom to ensure navbar overlaps whatevever's visible below -->
     <header
-        class="fixed h-[var(--header-height)] z-30 items-center bg-col-light flex flex-row justify-between w-full px-6 sm:px-10"
+        class="fixed z-30 flex h-[var(--header-height)] w-full flex-row items-center justify-between bg-col-light px-6 sm:px-10"
         id="navbar"
     >
-        <div class="italic text-col-dark text-xl xs:text-2xl font-semibold" id="navbarTitle">
-            <router-link to="/" class="py-2 flex flex-row items-center gap-8">
+        <div class="text-xl font-semibold italic text-col-dark xs:text-2xl" id="navbarTitle">
+            <router-link to="/" class="flex flex-row items-center gap-8 py-2">
                 <img src="~/assets/shnz.svg" />
                 <div class="hidden md:block">Scott Hitchcock</div>
             </router-link>
@@ -33,7 +33,7 @@ const navBarRoutes = [
 
         <div class="flex flex-row gap-6 xs:gap-6 md:gap-6">
             <div
-                class="text-col-dark hover:text-col-dark text-sm xs:text-lg navbarRoute font-semibold"
+                class="navbarRoute text-sm font-semibold text-col-dark hover:text-col-dark xs:text-lg"
                 v-for="(navBarRoute, index) in navBarRoutes"
                 v-bind:key="index"
             >

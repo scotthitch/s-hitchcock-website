@@ -13,28 +13,33 @@ import TextContent from '~/components/resume/TextContent.vue'
         <PageIntro pageName="Resume" />
         <div class="flex flex-row justify-center">
             <div class="grow bg-col-primary"></div>
-            <div class="basis-[100%] sm:basis-[90%] md:basis-[85%] max-w-[800px] flex flex-row">
+            <div class="flex max-w-[800px] basis-[100%] flex-row sm:basis-[90%] md:basis-[85%]">
                 <div
-                    class="text-col-light basis-[33%] flex flex-col gap-5 sm:gap-7 px-3 sm:px-6 pb-4 bg-col-primary"
+                    class="flex basis-[33%] flex-col gap-5 bg-col-primary px-3 pb-4 text-col-light sm:gap-7 sm:px-6"
                 >
                     <div class="flex flex-col justify-center text-center">
-                        <img src="/profile_photo.png" class="mx-auto w-14 xs:w-24 sm:w-30" />
+                        <img src="/profile_photo.png" class="sm:w-30 mx-auto w-14 xs:w-24" />
                         <div
-                            class="font-bold italic text-base xs:text-lg sm:text-xl xl:text-2xl text-center"
+                            class="text-center text-base font-bold italic xs:text-lg sm:text-xl xl:text-2xl"
                         >
                             Scott Hitchcock
                         </div>
-                        <div class="h-[1.5px] w-6 bg-col-light self-center my-3"></div>
+                        <div class="my-3 h-[1.5px] w-6 self-center bg-col-light"></div>
                         <TextContent content="MECHATRONICS GRADUATE" />
                     </div>
                     <div>
                         <PrimaryTitle content="Links" />
-                        <NuxtLink to="https://www.linkedin.com/in/scott-hitchcock-7aa0aa1b6" target="_blank">
+                        <NuxtLink
+                            to="https://www.linkedin.com/in/scott-hitchcock-7aa0aa1b6"
+                            target="_blank"
+                        >
                             <TextContent class="underline" content="LinkedIn" />
                         </NuxtLink>
 
-
-                        <NuxtLink to="https://github.com/scotthitch/s-hitchcock-website" target="_blank">
+                        <NuxtLink
+                            to="https://github.com/scotthitch/s-hitchcock-website"
+                            target="_blank"
+                        >
                             <TextContent class="underline" content="Github" />
                         </NuxtLink>
                     </div>
@@ -106,7 +111,7 @@ import TextContent from '~/components/resume/TextContent.vue'
                     </div>
                 </div>
                 <div
-                    class="text-col-dark basis-[67%] flex flex-col gap-5 sm:gap-7 px-2 xs:px-4 sm:px-6 py-4 bg-col-light"
+                    class="flex basis-[67%] flex-col gap-5 bg-col-light px-2 py-4 text-col-dark xs:px-4 sm:gap-7 sm:px-6"
                 >
                     <div>
                         <PrimaryTitle content="Profile" />
@@ -216,7 +221,7 @@ import TextContent from '~/components/resume/TextContent.vue'
                         <div>
                             <SecondaryTitle content="Wacky Racers" />
                             <DateTitle content="MARCH 2023 - MAY 2023" />
-                            <div class="font-medium text-sm">
+                            <div class="text-sm font-medium">
                                 <TextContent
                                     content="In a four-member team, we designed, assembled, and programmed PCBs for
                         'Wacky Racers' in our final year embedded systems course. Our goal was to

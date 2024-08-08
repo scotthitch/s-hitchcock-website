@@ -49,5 +49,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div ref="el" class="w-full h-full rounded-[inherit]" :id="props.scriptID"></div>
+    <div ref="el" class="h-full w-full rounded-[inherit]" :id="props.scriptID"></div>
 </template>
