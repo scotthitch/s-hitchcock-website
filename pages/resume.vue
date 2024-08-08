@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // import DownloadAssetButton from '../../components/DownloadAssetButton.vue'
 // import cvURL from '~/assets/scott_hitchcock_cv.pdf'
-import PageIntro from '~/components/PageIntro.vue'
-import PrimaryTitle from '~/components/resume/PrimaryTitle.vue'
-import SecondaryTitle from '~/components/resume/SecondaryTitle.vue'
-import DateTitle from '~/components/resume/DateTitle.vue'
-import TextContent from '~/components/resume/TextContent.vue'
+import PageIntro from '~/components/PageIntro.vue';
+import PrimaryTitle from '~/components/resume/PrimaryTitle.vue';
+import SecondaryTitle from '~/components/resume/SecondaryTitle.vue';
+import DateTitle from '~/components/resume/DateTitle.vue';
+import TextContent from '~/components/resume/TextContent.vue';
 </script>
 
 <template>

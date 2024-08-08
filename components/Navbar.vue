@@ -15,7 +15,7 @@ const navBarRoutes = [
         id: 'contact',
         title: 'Contact'
     }
-]
+];
 </script>
 
 <template>

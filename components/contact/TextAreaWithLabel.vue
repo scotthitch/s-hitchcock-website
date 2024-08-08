@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
-    label: string
-    placeholder: string
-    type: 'text' | 'number' | 'email'
-    id: string
-}>()
+    label: string;
+    placeholder: string;
+    type: 'text' | 'number' | 'email';
+    id: string;
+}>();
 </script>
 
 <template>

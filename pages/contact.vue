@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import PageIntro from '~/components/PageIntro.vue'
-import ContactMeForm from '~/components/contact/ContactMeForm.vue'
-import WavesCanvas from '~/components/contact/WavesCanvas.vue'
+import PageIntro from '~/components/PageIntro.vue';
+import ContactMeForm from '~/components/contact/ContactMeForm.vue';
+import WavesCanvas from '~/components/contact/WavesCanvas.vue';
 
-const p5CanvasKey = ref(0)
+const p5CanvasKey = ref(0);
 
 const handleResize = () => {
-    p5CanvasKey.value++
-}
+    p5CanvasKey.value++;
+};
 
 onMounted(() => {
-    window.addEventListener('resize', handleResize)
-})
+    window.addEventListener('resize', handleResize);
+});
 
 onUnmounted(() => {
-    window.removeEventListener('resize', handleResize)
-})
+    window.removeEventListener('resize', handleResize);
+});
 </script>
 
 <template>

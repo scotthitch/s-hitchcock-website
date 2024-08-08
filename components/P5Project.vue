@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { P5ProjectProps } from '~/types'
-import P5Canvas from './P5Canvas.vue'
+import type { P5ProjectProps } from '~/types';
+import P5Canvas from './P5Canvas.vue';
 
-const props = defineProps<P5ProjectProps>()
+const props = defineProps<P5ProjectProps>();
 </script>
 
 <template>

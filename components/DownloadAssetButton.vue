@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
-    assetPath: string
-    assetFileType: string
-    downloadName: string
-    buttonName: string
-}>()
+    assetPath: string;
+    assetFileType: string;
+    downloadName: string;
+    buttonName: string;
+}>();
 </script>
 
 <template>

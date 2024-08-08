@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import InputWithLabel from './InputWithLabel.vue'
-import TextAreaWithLabel from './TextAreaWithLabel.vue'
-import Button from './Button.vue'
+import InputWithLabel from './InputWithLabel.vue';
+import TextAreaWithLabel from './TextAreaWithLabel.vue';
+import Button from './Button.vue';
 
-const HERO_TOFU_CONTACT_ME_URL = import.meta.env.VITE_HERO_TOFU_CONTACT_ME_URL
+const HERO_TOFU_CONTACT_ME_URL = import.meta.env.VITE_HERO_TOFU_CONTACT_ME_URL;
 </script>
 
 <template>

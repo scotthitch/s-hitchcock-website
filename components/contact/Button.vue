@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const props = defineProps<{
-    label: string
-    type: 'button' | 'reset' | 'submit'
-    formId: string
-}>()
+    label: string;
+    type: 'button' | 'reset' | 'submit';
+    formId: string;
+}>();
 </script>
 
 <template>

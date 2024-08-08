@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
-    iconName: string
-    fileName: string
-    iconAlt: string
-    externalLink: string
-}>()
+    iconName: string;
+    fileName: string;
+    iconAlt: string;
+    externalLink: string;
+}>();
 </script>
 
 <template>

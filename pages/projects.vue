@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import P5Project from '~/components/P5Project.vue'
-import projects from '~/helpers/projects'
+import P5Project from '~/components/P5Project.vue';
+import projects from '~/helpers/projects';
 
-const selectedProjectIndex = ref<null | number>(null)
+const selectedProjectIndex = ref<null | number>(null);
 const selectedProject = computed(() => {
     if (selectedProjectIndex.value === null) {
-        return null
+        return null;
     }
-    return projects[selectedProjectIndex.value]
-})
-const p5ProjectKey = ref(0)
+    return projects[selectedProjectIndex.value];
+});
+const p5ProjectKey = ref(0);
 
 const handleResize = () => {
-    p5ProjectKey.value++
-}
+    p5ProjectKey.value++;
+};
 
 onMounted(() => {
-    window.addEventListener('resize', handleResize)
-})
+    window.addEventListener('resize', handleResize);
+});
 
 onUnmounted(() => {
-    window.removeEventListener('resize', handleResize)
-})
+    window.removeEventListener('resize', handleResize);
+});
 // const projectClick = () => {}
 </script>
 

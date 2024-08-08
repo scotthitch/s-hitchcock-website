@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ pageName: string }>()
+const props = defineProps<{ pageName: string }>();
 </script>
 
 <template>
