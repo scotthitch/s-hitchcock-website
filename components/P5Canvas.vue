@@ -33,18 +33,14 @@ const generateNewP5Sketch = () => {
     applyStyling()
 }
 
-const handleP5SketchGeneration = () => {
-    generateNewP5Sketch()
-}
-
 onUpdated(() => {
     p5Cleanup.value()
     p5.value?.remove()
-    handleP5SketchGeneration()
+    generateNewP5Sketch()
 })
 
 onMounted(() => {
-    handleP5SketchGeneration()
+    generateNewP5Sketch()
 })
 
 onUnmounted(() => {
