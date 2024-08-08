@@ -66,6 +66,13 @@
     --header-height: 120px;
 }
 
+@media (max-width: 640px) {
+    /* Adjust the header height for small screens*/
+    :root {
+        --header-height: 90px;
+    }
+}
+
 .p5Button {
     font-size: 40px;
     border-radius: 25px;
