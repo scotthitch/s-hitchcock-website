@@ -2,7 +2,6 @@
 import PageIntro from '~/components/PageIntro.vue'
 import ContactMeForm from '~/components/contact/ContactMeForm.vue'
 import WavesCanvas from '~/components/contact/WavesCanvas.vue'
-import { ref, onMounted, onUnmounted } from 'vue'
 
 const p5CanvasKey = ref(0)
 

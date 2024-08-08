@@ -1,10 +1,5 @@
 <script setup lang="ts">
 import P5Project from '~/components/P5Project.vue'
-import PageIntro from '~/components/PageIntro.vue'
-// import ExploreMoreProjectsOnDesktop from './ExploreMoreProjectsOnDesktop.vue'
-import { ref, onMounted, onUnmounted } from 'vue'
-import { isMobileOrTablet } from '~/helpers/deviceType'
-import type { projectsType } from '~/types'
 import projects from '~/helpers/projects'
 
 const selectedProjectIndex = ref<null | number>(null)
