@@ -8,7 +8,7 @@ const props = defineProps<P5ProjectProps>()
 <template>
     <div class="relative h-full flex flex-col gap-1">
         <!-- <div class="h-full"> -->
-        <div class="basis-[90%] rounded-[32px] shadow-2xl">
+        <div class="basis-[90%] rounded-[32px] shadow-2xl project-enter">
             <P5Canvas :scriptID="props.scriptID" :scriptWrapper="props.scriptWrapper" />
         </div>
         <p class="text-center mt-2">
@@ -35,4 +35,19 @@ const props = defineProps<P5ProjectProps>()
     </div>
 </template>
 
-<style></style>
+<style>
+.project-enter {
+    animation: fade-in 0.4s;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0.98);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+</style>

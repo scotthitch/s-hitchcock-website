@@ -33,11 +33,11 @@ onUnmounted(() => {
 <template>
     <div class="container mx-auto h-full">
         <div class="pt-2 flex flex-row text-col-dark h-full gap-6">
-            <div class="basis-1/5 px-8">
-                <ul class="flex flex-col h-full pb-16 text-lg overflow-scroll px-4">
+            <div class="basis-1/5 sm:basis-1/4 px-8">
+                <ul class="flex flex-col h-full pb-16 overflow-scroll px-4 sm:pl-12">
                     <li
                         v-for="(project, i) in projects"
-                        class="text-left font-medium py-4 my-2 button px-3"
+                        class="text-base text-left font-medium py-4 my-2 button px-3"
                         :key="i"
                         :class="
                             i == selectedProjectIndex &&
@@ -52,39 +52,24 @@ onUnmounted(() => {
             </div>
             <div class="grow h-full content-center">
                 <div class="h-full pb-6">
-                    <Transition name="fade-transition">
-                        <P5Project
-                            v-if="selectedProject !== null"
-                            :key="p5ProjectKey + selectedProject.scriptID"
-                            :title="selectedProject.title"
-                            :scriptID="selectedProject.scriptID"
-                            :description="selectedProject.description"
-                            :scriptWrapper="selectedProject.scriptWrapper"
-                        />
-                    </Transition>
+                    <P5Project
+                        v-if="selectedProject !== null"
+                        :key="p5ProjectKey + selectedProject.scriptID"
+                        :title="selectedProject.title"
+                        :scriptID="selectedProject.scriptID"
+                        :description="selectedProject.description"
+                        :scriptWrapper="selectedProject.scriptWrapper"
+                    />
+                    <div
+                        v-else
+                        class="italic font-semibold text-2xl text-col-mid relative h-full text-center content-center pb-[80px]"
+                    >
+                        Check out some of the things I’ve built...
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<style>
-.fade-transition-enter-active {
-    animation: fade-in 0.3s;
-}
-
-.fade-transition-leave-to {
-    opacity: 0;
-}
-
-@keyframes fade-in {
-    0% {
-        transform: scale(0.98);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 100;
-    }
-}
-</style>
+<style></style>
