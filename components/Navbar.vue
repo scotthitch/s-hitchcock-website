@@ -33,7 +33,7 @@ const navBarRoutes = [
 
         <div class="flex flex-row gap-6 xs:gap-6 md:gap-6">
             <div
-                class="navbarRoute text-sm font-semibold text-col-dark hover:text-col-dark xs:text-lg"
+                class="navbarRoute text-base font-semibold text-col-mid hover:text-col-dark xs:text-lg"
                 v-for="(navBarRoute, index) in navBarRoutes"
                 v-bind:key="index"
             >
@@ -41,7 +41,7 @@ const navBarRoutes = [
                     class="sm:p-2"
                     :to="navBarRoute.to"
                     :id="navBarRoute.id"
-                    exact-active-class="underline text-col-dark"
+                    exact-active-class="text-col-dark"
                     >{{ navBarRoute.title }}</NuxtLink
                 >
             </div>
