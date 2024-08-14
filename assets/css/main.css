@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root {
+        --color-bg: 24 24 24;
+        --color-content: 255 255 255;
+        --color-mid: 133 133 133;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color-bg: 255 255 255;
+            --color-content: 24 24 24;
+            --color-mid: 133 133 133;
+        }
+    }
+}
+
 @font-face {
     font-family: 'Geist';
     src: url(/fonts/Geist-Black.woff2) format('woff2');

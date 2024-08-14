@@ -14,9 +14,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                'col-dark': '#181818',
-                'col-light': '#FFFFFF',
-                'col-mid': '#717171'
+                'col-dark': 'rgb(var(--color-bg) / <alpha-value>)',
+                'col-light': 'rgb(var(--color-content) / <alpha-value>)',
+                'col-mid': 'rgb(var(--color-mid) / <alpha-value>)'
             },
             screens: {
                 xs: '400px'
