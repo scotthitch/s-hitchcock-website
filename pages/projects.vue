@@ -28,8 +28,8 @@ onUnmounted(() => {
 <template>
     <div class="container mx-auto h-full">
         <div class="flex h-full flex-row gap-6 pt-2 text-col-dark">
-            <div class="basis-1/5 px-8 sm:basis-1/4">
-                <ul class="flex h-full flex-col overflow-scroll px-4 pb-16 sm:pl-12">
+            <div class="basis-1/5 px-3 sm:basis-1/4 lg:px-8">
+                <ul class="flex h-full flex-col overflow-scroll px-4 pb-16 lg:pl-12">
                     <li
                         v-for="(project, i) in projects"
                         class="button my-2 px-3 py-4 text-left text-base font-medium"
