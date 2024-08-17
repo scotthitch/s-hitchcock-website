@@ -45,7 +45,7 @@ onUnmounted(() => {
                     </li>
                 </ul>
             </div>
-            <div class="h-full grow content-center">
+            <div class="h-full basis-4/5 content-center sm:basis-3/4">
                 <div class="h-full pb-6">
                     <P5Project
                         v-if="selectedProject !== null"
