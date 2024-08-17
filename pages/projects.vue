@@ -36,7 +36,7 @@ onUnmounted(() => {
                         :key="i"
                         :class="
                             i == selectedProjectIndex &&
-                            'scale-[1.1] rounded-[20px] bg-col-light shadow-md transition ease-in-out'
+                            'scale-[1.1] rounded-[25px] bg-col-light shadow-md transition ease-in-out'
                         "
                         @mouseenter="selectedProjectIndex = i"
                         @click="selectedProjectIndex = i"
