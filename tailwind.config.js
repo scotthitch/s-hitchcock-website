@@ -20,6 +20,9 @@ export default {
             },
             screens: {
                 xs: '400px'
+            },
+            spacing: {
+                header: 'var(--header-height)'
             }
         }
     },
