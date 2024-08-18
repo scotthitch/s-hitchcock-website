@@ -27,11 +27,11 @@ onUnmounted(() => {
 
 <template>
     <div class="container mx-auto">
-        <div class="w-1/5 px-3 pb-12 sm:w-1/4 lg:px-8">
+        <div class="w-full px-3 pb-12 pt-8 sm:w-1/4 sm:pt-0 lg:px-8">
             <ul class="flex flex-col px-4 lg:pl-12">
                 <li
                     v-for="(project, i) in projects"
-                    class="button my-2 px-4 py-5 text-left text-base font-medium text-col-dark"
+                    class="button my-2 px-4 py-5 text-center text-base font-medium text-col-dark sm:text-left"
                     :key="i"
                     :class="
                         i == selectedProjectIndex &&
@@ -44,7 +44,9 @@ onUnmounted(() => {
                 </li>
             </ul>
         </div>
-        <div class="pt-header fixed right-0 top-0 h-full w-4/5 content-center px-10 sm:w-3/4">
+        <div
+            class="pt-header fixed right-0 top-0 hidden h-full w-4/5 content-center px-10 sm:block sm:w-3/4"
+        >
             <div class="h-full pb-6">
                 <P5Project
                     v-if="selectedProject !== null"
