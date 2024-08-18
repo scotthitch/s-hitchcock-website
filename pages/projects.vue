@@ -26,41 +26,39 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="container mx-auto h-full">
-        <div class="flex h-full flex-row gap-6 pt-2 text-col-dark">
-            <div class="basis-1/5 px-3 sm:basis-1/4 lg:px-8">
-                <ul class="flex h-full flex-col overflow-scroll px-4 pb-16 lg:pl-12">
-                    <li
-                        v-for="(project, i) in projects"
-                        class="button my-2 px-3 py-4 text-left text-base font-medium"
-                        :key="i"
-                        :class="
-                            i == selectedProjectIndex &&
-                            'scale-[1.1] rounded-[25px] bg-col-light shadow-md transition ease-in-out'
-                        "
-                        @mouseenter="selectedProjectIndex = i"
-                        @click="selectedProjectIndex = i"
-                    >
-                        {{ project.title }}
-                    </li>
-                </ul>
-            </div>
-            <div class="h-full basis-4/5 content-center sm:basis-3/4">
-                <div class="h-full pb-6">
-                    <P5Project
-                        v-if="selectedProject !== null"
-                        :key="p5ProjectKey + selectedProject.scriptID"
-                        :title="selectedProject.title"
-                        :scriptID="selectedProject.scriptID"
-                        :description="selectedProject.description"
-                        :scriptWrapper="selectedProject.scriptWrapper"
-                    />
-                    <div
-                        v-else
-                        class="relative h-full content-center pb-[80px] text-center text-2xl font-semibold italic text-col-mid"
-                    >
-                        Check out some of the things I’ve built...
-                    </div>
+    <div class="container mx-auto">
+        <div class="w-1/5 px-3 pb-12 sm:w-1/4 lg:px-8">
+            <ul class="flex flex-col px-4 lg:pl-12">
+                <li
+                    v-for="(project, i) in projects"
+                    class="button my-2 px-4 py-5 text-left text-base font-medium text-col-dark"
+                    :key="i"
+                    :class="
+                        i == selectedProjectIndex &&
+                        'scale-[1.1] rounded-[25px] bg-col-light shadow-md transition ease-in-out'
+                    "
+                    @mouseenter="selectedProjectIndex = i"
+                    @click="selectedProjectIndex = i"
+                >
+                    {{ project.title }}
+                </li>
+            </ul>
+        </div>
+        <div class="pt-header fixed right-0 top-0 h-full w-4/5 content-center px-10 sm:w-3/4">
+            <div class="h-full pb-6">
+                <P5Project
+                    v-if="selectedProject !== null"
+                    :key="p5ProjectKey + selectedProject.scriptID"
+                    :title="selectedProject.title"
+                    :scriptID="selectedProject.scriptID"
+                    :description="selectedProject.description"
+                    :scriptWrapper="selectedProject.scriptWrapper"
+                />
+                <div
+                    v-else
+                    class="relative h-full content-center pb-[80px] text-center text-2xl font-semibold italic text-col-mid"
+                >
+                    Check out some of the things I’ve built...
                 </div>
             </div>
         </div>
