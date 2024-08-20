@@ -8,9 +8,11 @@ const HERO_TOFU_CONTACT_ME_URL = import.meta.env.VITE_HERO_TOFU_CONTACT_ME_URL;
 
 <template>
     <div class="content-center p-6 sm:p-8 lg:p-16">
-        <div class="text-4xl font-bold italic md:text-5xl">Thank you for visiting.</div>
+        <div class="text-4xl font-bold italic text-col-dark md:text-5xl">
+            Thank you for visiting.
+        </div>
 
-        <div class="py-2 text-lg font-semibold sm:pb-8 sm:pt-6">
+        <div class="py-2 text-lg font-semibold text-col-dark sm:pb-8 sm:pt-6">
             Please fill out the form to get in touch with me
         </div>
 
@@ -41,7 +43,12 @@ const HERO_TOFU_CONTACT_ME_URL = import.meta.env.VITE_HERO_TOFU_CONTACT_ME_URL;
                 />
             </div>
             <div>
-                <Button class="mt-3" label="Send" type="submit" formId="contact-form" />
+                <Button
+                    class="mt-3 text-col-dark"
+                    label="Send"
+                    type="submit"
+                    formId="contact-form"
+                />
                 <div
                     style="
                         text-indent: -99999px;
