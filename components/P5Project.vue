@@ -13,11 +13,13 @@ const props = defineProps<P5ProjectProps>();
         </div>
         <p class="mt-2 text-center">
             <!-- <span class="font-bold text-col-dark">{{ $props.title }}</span> -->
-            <span class="text-lg font-bold text-col-dark">{{ props.title }}</span>
+            <span class="text-base font-bold text-col-light sm:text-lg">{{ props.title }}</span>
         </p>
         <p class="text-center">
             <!-- <span class="font-bold text-col-dark">{{ $props.title }}</span> -->
-            <span class="font-medium italic text-col-mid">{{ props.description }}.</span>
+            <span class="text-sm font-medium italic text-col-mid sm:text-base"
+                >{{ props.description }}.</span
+            >
         </p>
 
         <!-- <div class="absolute bottom-2 left-4 slide-from-left-40">
