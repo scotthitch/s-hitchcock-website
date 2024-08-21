@@ -9,12 +9,12 @@ const props = defineProps<{
 
 <template>
     <div>
-        <label :for="props.id" class="text-col-primary font-semibold">{{ props.label }}</label>
+        <label :for="props.id" class="text-col-bg font-semibold">{{ props.label }}</label>
         <input
             :name="props.label"
             :type="props.type"
             :id="props.id"
-            class="text-md text-col-primary block w-full rounded-none border-b-[1.5px] border-col-mid bg-col-light py-1 placeholder:font-semibold placeholder:text-neutral-300 focus:outline-none"
+            class="text-md text-col-bg block w-full rounded-none border-b-[1.5px] border-col-mid bg-col-light py-1 placeholder:font-semibold placeholder:text-neutral-300 focus:outline-none"
             :placeholder="props.placeholder"
             required
         />

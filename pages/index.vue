@@ -5,7 +5,7 @@
         <div class="flex h-[75svh] bg-col-light">
             <div class="m-auto grid grid-cols-3 p-3">
                 <div
-                    class="slide-from-left-60 text-col-primary col-span-2 text-6xl font-bold italic sm:text-8xl"
+                    class="slide-from-left-60 text-col-bg col-span-2 text-6xl font-bold italic sm:text-8xl"
                 >
                     Scott
                 </div>
@@ -18,7 +18,7 @@
                 </div>
 
                 <div
-                    class="slide-from-left-80 text-col-primary col-span-3 text-6xl font-bold italic sm:text-8xl"
+                    class="slide-from-left-80 text-col-bg col-span-3 text-6xl font-bold italic sm:text-8xl"
                 >
                     Hitchcock
                 </div>

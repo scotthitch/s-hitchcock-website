@@ -17,7 +17,7 @@ const props = defineProps<{ project: projectsType | null }>();
                 />
             </div>
             <p class="mt-2 text-center">
-                <span class="text-col-primary text-base font-bold sm:text-lg">{{
+                <span class="text-col-bg text-base font-bold sm:text-lg">{{
                     props.project.title
                 }}</span>
             </p>
