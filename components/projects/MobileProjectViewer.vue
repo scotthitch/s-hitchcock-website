@@ -29,7 +29,7 @@ onUnmounted(() => {
     <div
         v-if="props.project !== null"
         id="mobile-project-viewer"
-        class="fixed inset-0 z-50 flex touch-none items-center justify-center bg-black bg-opacity-75 backdrop-blur-md sm:hidden"
+        class="fixed inset-0 z-50 flex touch-none items-center justify-center bg-black bg-opacity-75 backdrop-blur-md"
     >
         <!-- Modal Content -->
         <div class="relative mx-auto mt-12 h-[92%] w-[85%] py-4">
