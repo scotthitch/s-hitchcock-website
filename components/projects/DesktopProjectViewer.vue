@@ -5,7 +5,10 @@ const props = defineProps<{ project: projectsType | null }>();
 </script>
 
 <template>
-    <div class="fixed right-0 top-0 h-full w-4/5 px-10 pb-6 pt-header sm:w-3/4">
+    <div
+        class="fixed right-0 top-0 h-full w-4/5 px-10 pb-6 pt-header sm:w-3/4"
+        id="desktop-project-viewer"
+    >
         <P5Project
             v-if="props.project !== null"
             :title="props.project.title"
