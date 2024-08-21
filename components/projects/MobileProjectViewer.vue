@@ -53,12 +53,24 @@ onUnmounted(() => {
                     ></path>
                 </svg>
             </button>
-            <P5Project
-                :title="props.project.title"
-                :scriptID="props.project.scriptID"
-                :description="props.project.description"
-                :scriptWrapper="props.project.scriptWrapper"
-            />
+            <div class="relative flex h-full flex-col gap-1">
+                <div class="project-enter basis-[90%] rounded-[32px] shadow-2xl">
+                    <P5Canvas
+                        :scriptID="props.project.scriptID"
+                        :scriptWrapper="props.project.scriptWrapper"
+                    />
+                </div>
+                <p class="mt-2 text-center">
+                    <span class="text-base font-bold text-col-dark sm:text-lg">{{
+                        props.project.title
+                    }}</span>
+                </p>
+                <p class="text-center">
+                    <span class="text-sm font-medium italic text-col-mid sm:text-base"
+                        >{{ props.project.description }}.</span
+                    >
+                </p>
+            </div>
         </div>
     </div>
 </template>
