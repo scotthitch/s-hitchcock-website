@@ -9,12 +9,14 @@ const props = defineProps<{
 
 <template>
     <div>
-        <label :for="props.id" class="text-col-bg font-semibold">{{ props.label }}</label>
+        <label :for="props.id" class="text-col-bg dark:text-col-content font-semibold">{{
+            props.label
+        }}</label>
         <textarea
             :name="props.label"
             :type="props.type"
             :id="props.id"
-            class="text-md text-col-bg bg-col-content block max-h-24 min-h-12 w-full rounded-none border-b-[1.5px] border-col-mid py-1 placeholder:font-semibold placeholder:text-neutral-300 focus:outline-none"
+            class="text-md text-col-bg dark:text-col-content bg-col-content dark:bg-col-bg block max-h-24 min-h-12 w-full rounded-none border-b-[1.5px] border-col-mid py-1 placeholder:font-semibold placeholder:text-neutral-300 focus:outline-none"
             :placeholder="props.placeholder"
             required
         />
