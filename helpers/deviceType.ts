@@ -10,6 +10,7 @@ export const interactionEvent: 'touchend' | 'click' = isDeviceAppleTouchScreen
 
 export const isPortrait = screen.availHeight > screen.availWidth;
 
-export const isSmallScreen = () => {
+export const checkSmallScreen = (): boolean => {
+    console.log(window.innerWidth < 640);
     return window.innerWidth < 640;
 };
