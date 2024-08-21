@@ -1,6 +1,9 @@
 <script setup lang="ts">
-// const emit = defineEmits(['closeModal']);
+import type { projectsType } from '~/types';
 import { defineEmits } from 'vue';
+
+const props = defineProps<{ project: projectsType | null }>();
+
 const emit = defineEmits(['closeModal']);
 
 const closeModal = () => {
@@ -24,8 +27,9 @@ onUnmounted(() => {
 
 <template>
     <div
-        id="modal"
-        class="fixed inset-0 z-50 flex touch-none items-center justify-center bg-black bg-opacity-75 backdrop-blur-md"
+        v-if="props.project !== null"
+        id="mobile-project-viewer"
+        class="fixed inset-0 z-50 flex touch-none items-center justify-center bg-black bg-opacity-75 backdrop-blur-md sm:hidden"
     >
         <!-- Modal Content -->
         <div class="relative mx-auto mt-12 h-[92%] w-[85%] py-4">
@@ -49,7 +53,12 @@ onUnmounted(() => {
                     ></path>
                 </svg>
             </button>
-            <slot></slot>
+            <P5Project
+                :title="props.project.title"
+                :scriptID="props.project.scriptID"
+                :description="props.project.description"
+                :scriptWrapper="props.project.scriptWrapper"
+            />
         </div>
     </div>
 </template>
