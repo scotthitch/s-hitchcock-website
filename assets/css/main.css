@@ -88,6 +88,21 @@
     }
 }
 
+.project-enter {
+    animation: fade-in 0.4s;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0.98);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 .p5Button {
     font-size: 40px;
     border-radius: 25px;
