@@ -48,15 +48,15 @@ onUnmounted(() => {
         </div>
 
         <ProjectsMobileProjectViewer
+            v-if="isSmallScreen"
             :key="p5ProjectKey + '-mobile'"
             :project="selectedProject"
             @closeModal="selectedProjectIndex = null"
-            v-if="isSmallScreen"
         />
         <ProjectsDesktopProjectViewer
-            :project="selectedProject"
-            :key="p5ProjectKey + '-desktop'"
             v-else
+            :key="p5ProjectKey + '-desktop'"
+            :project="selectedProject"
         />
     </div>
 </template>
