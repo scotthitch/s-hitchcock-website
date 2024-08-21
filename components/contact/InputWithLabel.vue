@@ -14,7 +14,7 @@ const props = defineProps<{
             :name="props.label"
             :type="props.type"
             :id="props.id"
-            class="text-md text-col-bg block w-full rounded-none border-b-[1.5px] border-col-mid bg-col-light py-1 placeholder:font-semibold placeholder:text-neutral-300 focus:outline-none"
+            class="text-md text-col-bg bg-col-content block w-full rounded-none border-b-[1.5px] border-col-mid py-1 placeholder:font-semibold placeholder:text-neutral-300 focus:outline-none"
             :placeholder="props.placeholder"
             required
         />

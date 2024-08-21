@@ -36,7 +36,7 @@ onUnmounted(() => {
             <button
                 @click="$emit('closeModal')"
                 id="close-modal"
-                class="absolute -right-4 -top-0 z-10 rounded-full bg-col-light p-3"
+                class="bg-col-content absolute -right-4 -top-0 z-10 rounded-full p-3"
             >
                 <svg
                     class="h-6 w-6"

@@ -15,7 +15,7 @@ import TextContent from '~/components/resume/TextContent.vue';
             <div class="bg-col-bg grow"></div>
             <div class="flex max-w-[800px] basis-[100%] flex-row sm:basis-[90%] md:basis-[85%]">
                 <div
-                    class="bg-col-bg flex basis-[33%] flex-col gap-5 px-3 pb-4 text-col-light sm:gap-7 sm:px-6"
+                    class="bg-col-bg text-col-content flex basis-[33%] flex-col gap-5 px-3 pb-4 sm:gap-7 sm:px-6"
                 >
                     <div class="flex flex-col justify-center text-center">
                         <img src="/profile_photo.png" class="sm:w-30 mx-auto w-14 xs:w-24" />
@@ -24,7 +24,7 @@ import TextContent from '~/components/resume/TextContent.vue';
                         >
                             Scott Hitchcock
                         </div>
-                        <div class="my-3 h-[1.5px] w-6 self-center bg-col-light"></div>
+                        <div class="bg-col-content my-3 h-[1.5px] w-6 self-center"></div>
                         <TextContent content="MECHATRONICS GRADUATE" />
                     </div>
                     <div>
@@ -111,7 +111,7 @@ import TextContent from '~/components/resume/TextContent.vue';
                     </div>
                 </div>
                 <div
-                    class="text-col-bg flex basis-[67%] flex-col gap-5 bg-col-light px-2 py-4 xs:px-4 sm:gap-7 sm:px-6"
+                    class="text-col-bg bg-col-content flex basis-[67%] flex-col gap-5 px-2 py-4 xs:px-4 sm:gap-7 sm:px-6"
                 >
                     <div>
                         <PrimaryTitle content="Profile" />
@@ -258,7 +258,7 @@ import TextContent from '~/components/resume/TextContent.vue';
                     </div>
                 </div>
             </div>
-            <div class="grow bg-col-light"></div>
+            <div class="bg-col-content grow"></div>
         </div>
         <!-- <DownloadAssetButton
             buttonName="Download a Copy Here"

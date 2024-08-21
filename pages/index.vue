@@ -2,7 +2,7 @@
 
 <template>
     <div class="h-full overflow-scroll">
-        <div class="flex h-[75svh] bg-col-light">
+        <div class="bg-col-content flex h-[75svh]">
             <div class="m-auto grid grid-cols-3 p-3">
                 <div
                     class="slide-from-left-60 text-col-bg col-span-2 text-6xl font-bold italic sm:text-8xl"

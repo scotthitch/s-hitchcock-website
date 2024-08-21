@@ -15,7 +15,7 @@ export default {
         extend: {
             colors: {
                 'col-bg': 'rgb(var(--color-bg) / <alpha-value>)',
-                'col-light': 'rgb(var(--color-content) / <alpha-value>)',
+                'col-content': 'rgb(var(--color-content) / <alpha-value>)',
                 'col-mid': 'rgb(var(--color-mid) / <alpha-value>)'
             },
             screens: {

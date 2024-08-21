@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="relative bottom-0 flex w-full flex-col items-center gap-2 bg-col-light pb-4 pt-2">
+    <div class="bg-col-content relative bottom-0 flex w-full flex-col items-center gap-2 pb-4 pt-2">
         <div class="text-col-bg text-sm font-bold sm:text-base">Tools Used</div>
 
         <div class="flex w-full flex-row justify-center gap-[12svw] sm:gap-20 md:gap-24">
