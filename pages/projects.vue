@@ -47,26 +47,17 @@ onUnmounted(() => {
             </ul>
         </div>
 
-        <!-- 
-        if small screen {
-            if project selected {
-                p5project
-            } else {
-                see my projects
-            }
-        } else {
-            if project selected {
-                p5project
-            }         
-        }
-        
-        -->
-        <ProjectsDesktopProjectViewer :project="selectedProject" :key="p5ProjectKey" />
-        <!-- <ProjectsMobileProjectViewer
-            :key="p5ProjectKey"
+        <ProjectsMobileProjectViewer
+            :key="p5ProjectKey + '-mobile'"
             :project="selectedProject"
             @closeModal="selectedProjectIndex = null"
-        /> -->
+            v-if="isSmallScreen"
+        />
+        <ProjectsDesktopProjectViewer
+            :project="selectedProject"
+            :key="p5ProjectKey + '-desktop'"
+            v-else
+        />
     </div>
 </template>
 
