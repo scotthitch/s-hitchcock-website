@@ -2,7 +2,8 @@
 import projects from '~/helpers/projects';
 import { checkSmallScreen } from '~/helpers/deviceType';
 
-const selectedProjectIndex = ref<null | number>(null);
+// Selects the project to display from index
+const selectedProjectIndex = ref<number | null>(null);
 const selectedProject = computed(() => {
     if (selectedProjectIndex.value === null) {
         return null;
@@ -12,6 +13,8 @@ const selectedProject = computed(() => {
 
 // Refresh the project viewer components upon screen resize
 const p5ProjectKey = ref(0);
+
+// For different project viewers (can't use hidden as must only compute one canvas per project)
 const isSmallScreen = ref<boolean>(false);
 
 const handleResize = () => {
@@ -27,27 +30,15 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
 });
-// const projectClick = () => {}
 </script>
 
 <template>
     <div class="container mx-auto">
-        <div class="w-full px-3 pb-12 pt-8 sm:w-1/4 sm:pt-0 lg:px-8">
-            <ul class="flex flex-col px-4 lg:pl-12">
-                <li v-for="(project, i) in projects" :key="i" class="my-2">
-                    <button
-                        @click="selectedProjectIndex = i"
-                        :class="[
-                            'text-col-bg w-full px-4 py-5 text-center text-base font-medium sm:text-left',
-                            i == selectedProjectIndex &&
-                                'bg-col-content scale-[1.1] rounded-[25px] shadow-md transition ease-in-out'
-                        ]"
-                    >
-                        {{ project.title }}
-                    </button>
-                </li>
-            </ul>
-        </div>
+        <ProjectsProjectSelector
+            :selectedProjectIndex="selectedProjectIndex"
+            :projects="projects"
+            @setSelectedProjectIndex="(i: number) => (selectedProjectIndex = i)"
+        />
 
         <ProjectsMobileProjectViewer
             v-if="isSmallScreen"
