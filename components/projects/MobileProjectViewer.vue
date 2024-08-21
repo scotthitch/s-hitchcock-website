@@ -29,14 +29,14 @@ onUnmounted(() => {
     <div
         v-if="props.project !== null"
         id="mobile-project-viewer"
-        class="fixed inset-0 z-50 flex touch-none items-center justify-center bg-black bg-opacity-75 backdrop-blur-md"
+        class="fixed inset-0 z-50 flex touch-none items-center justify-center bg-black bg-opacity-75 backdrop-blur-md dark:bg-opacity-50"
     >
         <!-- Modal Content -->
         <div class="relative mx-auto mt-12 h-[92%] w-[85%] py-4">
             <button
                 @click="$emit('closeModal')"
                 id="close-modal"
-                class="bg-col-content absolute -right-4 -top-0 z-10 rounded-full p-3"
+                class="bg-col-content dark:bg-col-bg absolute -right-4 -top-0 z-10 rounded-full p-3"
             >
                 <svg
                     class="h-6 w-6"
@@ -61,9 +61,10 @@ onUnmounted(() => {
                     />
                 </div>
                 <p class="mt-2 text-center">
-                    <span class="text-col-bg text-base font-bold sm:text-lg">{{
-                        props.project.title
-                    }}</span>
+                    <span
+                        class="text-col-content dark:text-col-bg text-base font-bold sm:text-lg"
+                        >{{ props.project.title }}</span
+                    >
                 </p>
                 <p class="text-center">
                     <span class="text-sm font-medium italic text-col-mid sm:text-base"
