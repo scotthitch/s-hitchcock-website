@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { projectsType } from '~/types';
-import { defineEmits } from 'vue';
 
 const props = defineProps<{ project: projectsType | null }>();
 
