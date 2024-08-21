@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import P5Project from '~/components/P5Project.vue';
 import projects from '~/helpers/projects';
 import { checkSmallScreen } from '~/helpers/deviceType';
 
