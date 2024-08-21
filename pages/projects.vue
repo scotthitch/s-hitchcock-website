@@ -9,6 +9,8 @@ const selectedProject = computed(() => {
     }
     return projects[selectedProjectIndex.value];
 });
+
+// Refresh the project viewer components upon screen resize
 const p5ProjectKey = ref(0);
 const isSmallScreen = ref<boolean>(false);
 
@@ -18,6 +20,7 @@ const handleResize = () => {
 };
 
 onMounted(() => {
+    isSmallScreen.value = checkSmallScreen();
     window.addEventListener('resize', handleResize);
 });
 
