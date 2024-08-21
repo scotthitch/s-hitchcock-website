@@ -61,27 +61,12 @@ onUnmounted(() => {
         }
         
         -->
-        <!-- <div class="fixed right-0 top-0 hidden h-full w-4/5 px-10 pb-6 pt-header sm:block sm:w-3/4">
-            <P5Project
-                v-if="selectedProject !== null"
-                :key="p5ProjectKey + selectedProject.scriptID"
-                :title="selectedProject.title"
-                :scriptID="selectedProject.scriptID"
-                :description="selectedProject.description"
-                :scriptWrapper="selectedProject.scriptWrapper"
-            />
-            <div
-                v-else
-                class="relative h-full content-center pb-[80px] text-center text-2xl font-semibold italic text-col-mid"
-            >
-                Check out some of the things I’ve built...
-            </div>
-        </div> -->
-        <ProjectsMobileProjectViewer
+        <ProjectsDesktopProjectViewer :project="selectedProject" :key="p5ProjectKey" />
+        <!-- <ProjectsMobileProjectViewer
             :key="p5ProjectKey"
             :project="selectedProject"
             @closeModal="selectedProjectIndex = null"
-        />
+        /> -->
     </div>
 </template>
 
