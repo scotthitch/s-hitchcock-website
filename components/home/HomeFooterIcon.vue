@@ -16,7 +16,7 @@ const props = defineProps<{
                 class="h-7 sm:h-9"
             />
 
-            <div class="text-sm font-medium text-col-dark">
+            <div class="text-col-primary text-sm font-medium">
                 {{ props.iconName }}
             </div>
         </div>

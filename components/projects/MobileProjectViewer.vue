@@ -36,7 +36,7 @@ onUnmounted(() => {
             <button
                 @click="$emit('closeModal')"
                 id="close-modal"
-                class="absolute -right-4 -top-0 z-10 rounded-full bg-col-light p-3 text-col-dark"
+                class="absolute -right-4 -top-0 z-10 rounded-full bg-col-light p-3"
             >
                 <svg
                     class="h-6 w-6"
@@ -61,7 +61,7 @@ onUnmounted(() => {
                     />
                 </div>
                 <p class="mt-2 text-center">
-                    <span class="text-base font-bold text-col-dark sm:text-lg">{{
+                    <span class="text-col-primary text-base font-bold sm:text-lg">{{
                         props.project.title
                     }}</span>
                 </p>

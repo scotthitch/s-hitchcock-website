@@ -21,10 +21,10 @@ const navBarRoutes = [
 <template>
     <!-- Add some negative margin on the bottom to ensure navbar overlaps whatevever's visible below -->
     <header
-        class="h-header fixed z-30 flex w-full flex-row items-center justify-between bg-col-light px-6 sm:px-10"
+        class="fixed z-30 flex h-header w-full flex-row items-center justify-between bg-col-light px-6 sm:px-10"
         id="navbar"
     >
-        <div class="text-xl font-semibold italic text-col-dark xs:text-2xl" id="navbarTitle">
+        <div class="text-col-primary text-xl font-semibold italic xs:text-2xl" id="navbarTitle">
             <router-link to="/" class="flex flex-row items-center gap-8 py-2">
                 <!-- sh nz svg -->
                 <svg
@@ -32,7 +32,7 @@ const navBarRoutes = [
                     height="51"
                     viewBox="0 0 45 51"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="fill-col-dark"
+                    class="fill-col-primary"
                 >
                     <path
                         d="M20.521 13.1384L14.5789 13.2991C14.5879 12.8616 14.4891 12.4777 14.2825 12.1473C14.0759 11.808 13.784 11.5446 13.4067 11.3571C13.0294 11.1696 12.5803 11.0759 12.0593 11.0759C11.2149 11.0759 10.4559 11.2634 9.78217 11.6384C9.11745 12.0134 8.74467 12.5 8.66382 13.0982C8.60094 13.4196 8.69077 13.7009 8.9333 13.942C9.17584 14.1741 9.7148 14.3795 10.5502 14.558L14.4307 15.308C16.4249 15.7009 17.8711 16.3839 18.7694 17.3571C19.6766 18.3214 20 19.5982 19.7395 21.1875C19.5059 22.5446 18.9041 23.7188 17.934 24.7098C16.9728 25.7009 15.7467 26.4688 14.2556 27.0134C12.7734 27.5491 11.1341 27.817 9.33753 27.817C6.30137 27.817 4.01078 27.2098 2.46575 25.9955C0.92971 24.7723 0.211094 23.1518 0.309903 21.1339L6.72356 20.9732C6.75051 21.7321 7.00651 22.3036 7.49158 22.6875C7.98563 23.0625 8.65484 23.2589 9.49921 23.2768C10.4244 23.2946 11.2239 23.1027 11.8976 22.7009C12.5713 22.2991 12.9486 21.8036 13.0294 21.2143C13.0833 20.8304 12.9531 20.5312 12.6387 20.317C12.3333 20.1027 11.7629 19.9107 10.9275 19.7411L7.42421 19.058C5.41208 18.6741 3.95688 17.9509 3.05861 16.8884C2.16932 15.817 1.86391 14.4509 2.14238 12.7902C2.37593 11.4688 2.92387 10.3482 3.78621 9.42857C4.65753 8.5 5.79385 7.79464 7.19515 7.3125C8.60543 6.83036 10.2133 6.58929 12.0189 6.58929C14.9113 6.58929 17.0941 7.17411 18.5673 8.34375C20.0494 9.50447 20.7006 11.1027 20.521 13.1384Z"
@@ -54,7 +54,7 @@ const navBarRoutes = [
 
         <div class="flex flex-row gap-6 xs:gap-6 md:gap-6">
             <div
-                class="navbarRoute text-base font-semibold text-col-mid hover:text-col-dark xs:text-lg"
+                class="navbarRoute hover:text-col-primary text-base font-semibold text-col-mid xs:text-lg"
                 v-for="(navBarRoute, index) in navBarRoutes"
                 v-bind:key="index"
             >
@@ -62,7 +62,7 @@ const navBarRoutes = [
                     class="sm:p-2"
                     :to="navBarRoute.to"
                     :id="navBarRoute.id"
-                    exact-active-class="text-col-dark"
+                    exact-active-class="text-col-primary"
                     >{{ navBarRoute.title }}</NuxtLink
                 >
             </div>

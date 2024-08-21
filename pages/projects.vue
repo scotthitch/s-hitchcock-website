@@ -35,7 +35,7 @@ onUnmounted(() => {
                     <button
                         @click="selectedProjectIndex = i"
                         :class="[
-                            'w-full px-4 py-5 text-center text-base font-medium text-col-dark sm:text-left',
+                            'text-col-primary w-full px-4 py-5 text-center text-base font-medium sm:text-left',
                             i == selectedProjectIndex &&
                                 'scale-[1.1] rounded-[25px] bg-col-light shadow-md transition ease-in-out'
                         ]"

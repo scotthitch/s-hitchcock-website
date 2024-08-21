@@ -14,7 +14,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                'col-dark': 'rgb(var(--color-bg) / <alpha-value>)',
+                'col-primary': 'rgb(var(--color-bg) / <alpha-value>)',
                 'col-light': 'rgb(var(--color-content) / <alpha-value>)',
                 'col-mid': 'rgb(var(--color-mid) / <alpha-value>)'
             },
