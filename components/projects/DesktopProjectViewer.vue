@@ -6,7 +6,7 @@ const props = defineProps<{ project: projectsType | null }>();
 
 <template>
     <div
-        class="project-enter fixed right-0 top-0 h-full w-4/5 px-10 pb-6 pt-header sm:w-3/4"
+        class="project-enter fixed right-0 top-0 h-full w-4/5 pb-6 pr-8 pt-header md:w-2/3 lg:w-3/4 xl:px-16"
         id="desktop-project-viewer"
     >
         <div class="relative flex h-full flex-col gap-1" v-if="props.project !== null">

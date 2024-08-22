@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import projects from '~/helpers/projects';
-import { checkSmallScreen } from '~/helpers/deviceType';
+import { checkMediumScreen } from '~/helpers/deviceType';
 
 // Selects the project to display from index
 const selectedProjectIndex = ref<number | null>(null);
@@ -25,11 +25,11 @@ const isSmallScreen = ref<boolean>(false);
 
 const handleResize = () => {
     p5ProjectKey.value++;
-    isSmallScreen.value = checkSmallScreen();
+    isSmallScreen.value = checkMediumScreen();
 };
 
 onMounted(() => {
-    isSmallScreen.value = checkSmallScreen();
+    isSmallScreen.value = checkMediumScreen();
     window.addEventListener('resize', handleResize);
 });
 
@@ -39,25 +39,23 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="container mx-auto">
-        <ProjectsProjectSelector
-            :selectedProjectIndex="selectedProjectIndex"
-            :projects="projects"
-            @setSelectedProjectIndex="handleSelectedProjectIndexUpdate"
-        />
+    <ProjectsProjectSelector
+        :selectedProjectIndex="selectedProjectIndex"
+        :projects="projects"
+        @setSelectedProjectIndex="handleSelectedProjectIndexUpdate"
+    />
 
-        <ProjectsMobileProjectViewer
-            v-if="isSmallScreen"
-            :key="p5ProjectKey + '-mobile'"
-            :project="selectedProject"
-            @closeModal="selectedProjectIndex = null"
-        />
-        <ProjectsDesktopProjectViewer
-            v-else
-            :key="p5ProjectKey + '-desktop'"
-            :project="selectedProject"
-        />
-    </div>
+    <ProjectsMobileProjectViewer
+        v-if="isSmallScreen"
+        :key="p5ProjectKey + '-mobile'"
+        :project="selectedProject"
+        @closeModal="selectedProjectIndex = null"
+    />
+    <ProjectsDesktopProjectViewer
+        v-else
+        :key="p5ProjectKey + '-desktop'"
+        :project="selectedProject"
+    />
 </template>
 
 <style></style>

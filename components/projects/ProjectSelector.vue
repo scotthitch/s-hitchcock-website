@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { projectsType } from '~/types';
-import { checkSmallScreen } from '~/helpers/deviceType';
+import { checkMediumScreen } from '~/helpers/deviceType';
 
 const props = defineProps<{ selectedProjectIndex: number | null; projects: projectsType[] }>();
 
@@ -14,7 +14,7 @@ const handleClick = (i: number) => {
 
 const handleHover = (i: number) => {
     hoverIndex.value = i;
-    if (checkSmallScreen()) {
+    if (checkMediumScreen()) {
         return;
     }
     // emit('setSelectedProjectIndex', i);
@@ -22,26 +22,29 @@ const handleHover = (i: number) => {
 </script>
 
 <template>
-    <div class="w-full px-3 pb-12 pt-8 sm:w-1/4 sm:pt-0 lg:px-8">
-        <ul class="flex flex-col px-4 lg:pl-12">
-            <li v-for="(project, i) in projects" :key="i" class="my-2 text-col-mid">
-                <button
-                    @click="handleClick(i)"
-                    @mouseenter="handleHover(i)"
-                    @mouseleave="hoverIndex = null"
-                    :class="[
-                        'w-full px-4 py-5 text-center text-base font-medium sm:text-left',
-                        i === hoverIndex &&
-                            'bg-col-content text-col-bg scale-[1.05] rounded-[25px] shadow-md transition ease-in-out',
+    <ul class="flex w-full flex-col px-6 pb-12 pt-8 md:w-1/3 md:px-8 lg:w-1/4 lg:px-10">
+        <li v-for="(project, i) in projects" :key="i" class="my-2 text-col-mid">
+            <button
+                @click="handleClick(i)"
+                @mouseenter="handleHover(i)"
+                @mouseleave="hoverIndex = null"
+                :class="[
+                    'w-full px-4 py-3 text-center text-base font-medium md:text-left',
+                    i === hoverIndex &&
+                        'bg-col-content text-col-bg scale-[1.02] rounded-[25px] shadow-md transition ease-in-out md:scale-[1.05]',
 
-                        i == props.selectedProjectIndex && 'text-col-bg'
-                    ]"
-                >
-                    {{ project.title }}
-                </button>
-            </li>
-        </ul>
-    </div>
+                    i == props.selectedProjectIndex && 'text-col-bg'
+                ]"
+            >
+                <div class="flex flex-row justify-between space-x-6">
+                    <div>
+                        {{ project.title }}
+                    </div>
+                    <div class="italic">2022</div>
+                </div>
+            </button>
+        </li>
+    </ul>
 </template>
 
 <style></style>
