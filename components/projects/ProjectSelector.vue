@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import type { projectsType } from '~/types';
+import { checkSmallScreen } from '~/helpers/deviceType';
 
 const props = defineProps<{ selectedProjectIndex: number | null; projects: projectsType[] }>();
 
 const emit = defineEmits(['setSelectedProjectIndex']);
 
 const handleClick = (i: number) => {
+    emit('setSelectedProjectIndex', i);
+};
+
+const handleHover = (i: number) => {
+    if (checkSmallScreen()) {
+        return;
+    }
     emit('setSelectedProjectIndex', i);
 };
 </script>
