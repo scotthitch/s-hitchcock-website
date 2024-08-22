@@ -27,12 +27,7 @@ const props = defineProps<{ project: projectsType | null }>();
                 >
             </p>
         </div>
-        <div
-            v-else
-            class="relative h-full content-center pb-[80px] text-center text-2xl font-semibold italic text-col-mid"
-        >
-            Check out some of the things I’ve built...
-        </div>
+        <ProjectsCheckThisOut v-else class="relative h-full pb-[80px] text-col-mid" />
     </div>
 </template>
 
