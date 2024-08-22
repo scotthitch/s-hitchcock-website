@@ -11,6 +11,12 @@ const selectedProject = computed(() => {
     return projects[selectedProjectIndex.value];
 });
 
+// Handle project selector emits
+const handleSelectedProjectIndexUpdate = (i: number) => {
+    selectedProjectIndex.value = i;
+    p5ProjectKey.value++;
+};
+
 // Refresh the project viewer components upon screen resize
 const p5ProjectKey = ref(0);
 
@@ -37,7 +43,7 @@ onUnmounted(() => {
         <ProjectsProjectSelector
             :selectedProjectIndex="selectedProjectIndex"
             :projects="projects"
-            @setSelectedProjectIndex="(i: number) => (selectedProjectIndex = i)"
+            @setSelectedProjectIndex="handleSelectedProjectIndexUpdate"
         />
 
         <ProjectsMobileProjectViewer
