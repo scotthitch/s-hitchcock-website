@@ -10,17 +10,17 @@ function mapping(
     withinBounds: boolean = false
 ): number {
     // Calculate the proportion of the value within the source range
-    const proportion = (value - start1) / (stop1 - start1)
+    const proportion = (value - start1) / (stop1 - start1);
 
     // Map the proportion to the target range
-    let mappedValue = start2 + proportion * (stop2 - start2)
+    let mappedValue = start2 + proportion * (stop2 - start2);
 
     // Optionally constrain the mapped value to the target range
     if (withinBounds) {
-        mappedValue = Math.max(start2, Math.min(stop2, mappedValue))
+        mappedValue = Math.max(start2, Math.min(stop2, mappedValue));
     }
 
-    return mappedValue
+    return mappedValue;
 }
 
-export default mapping
+export default mapping;

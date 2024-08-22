@@ -1,15 +1,15 @@
-import ballCascadeScriptWrapper from '~/p5Projects/BallCascade'
-import fireworksScriptWrapper from '~/p5Projects/Fireworks'
-import fourierSeriesScriptWrapper from '~/p5Projects/FourierSeries'
-import growingCircleScriptWrapper from '~/p5Projects/GrowingCircle'
-import perlinFlowFieldScriptWrapper from '~/p5Projects/PerlinFlowField'
-import radialScriptWrapper from '~/p5Projects/Radial'
-import tilingScriptWrapper from '~/p5Projects/Tiling'
-import unknownPleasuresScriptWrapper from '~/p5Projects/UnknownPleasures'
-import waterfallScriptWrapper from '~/p5Projects/Waterfall'
-import asciiScriptWrapper from '~/p5Projects/Ascii'
+import ballCascadeScriptWrapper from '~/p5Projects/BallCascade';
+import fireworksScriptWrapper from '~/p5Projects/Fireworks';
+import fourierSeriesScriptWrapper from '~/p5Projects/FourierSeries';
+import growingCircleScriptWrapper from '~/p5Projects/GrowingCircle';
+import perlinFlowFieldScriptWrapper from '~/p5Projects/PerlinFlowField';
+import radialScriptWrapper from '~/p5Projects/Radial';
+import tilingScriptWrapper from '~/p5Projects/Tiling';
+import unknownPleasuresScriptWrapper from '~/p5Projects/UnknownPleasures';
+import waterfallScriptWrapper from '~/p5Projects/Waterfall';
+import asciiScriptWrapper from '~/p5Projects/Ascii';
 
-import type { projectsType } from '~/types'
+import type { projectsType } from '~/types';
 
 const projects: projectsType[] = [
     {
@@ -84,6 +84,6 @@ const projects: projectsType[] = [
         scriptWrapper: fireworksScriptWrapper,
         isMobileOrTabletFriendly: true
     }
-]
+];
 
-export default projects
+export default projects;
