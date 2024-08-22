@@ -75,6 +75,8 @@
 
 * {
     font-family: 'Geist', sans-serif;
+    /* background: rgb(0 100 0 / 0.03) !important;
+    outline: 1px solid limegreen !important; */
 }
 
 :root {
