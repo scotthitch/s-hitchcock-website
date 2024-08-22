@@ -17,12 +17,12 @@ const handleClick = (i: number) => {
             <button
                 @click="handleClick(i)"
                 :class="[
-                    'hover:bg-col-content hover:text-col-bg w-full px-4 py-3 text-center text-base font-medium duration-[20ms] ease-linear hover:scale-[1.02] hover:rounded-[25px] hover:shadow-lg md:text-left hover:md:scale-[1.05]',
+                    'hover:bg-col-content hover:text-col-bg w-full px-4 py-3 text-center text-base font-medium duration-[20ms] ease-linear hover:scale-[1.02] hover:rounded-[25px] hover:bg-opacity-30 hover:shadow-lg hover:backdrop-blur-md md:text-left hover:md:scale-[1.05]',
 
                     i == props.selectedProjectIndex && 'text-col-bg'
                 ]"
             >
-                <div class="flex flex-row justify-between space-x-6">
+                <div class="flex flex-row items-center justify-between space-x-6">
                     <div>
                         {{ project.title }}
                     </div>
