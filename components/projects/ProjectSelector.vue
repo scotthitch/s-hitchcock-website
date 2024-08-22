@@ -4,20 +4,10 @@ import { checkMediumScreen } from '~/helpers/deviceType';
 
 const props = defineProps<{ selectedProjectIndex: number | null; projects: projectsType[] }>();
 
-const hoverIndex = ref<null | number>(null);
-
 const emit = defineEmits(['setSelectedProjectIndex']);
 
 const handleClick = (i: number) => {
     emit('setSelectedProjectIndex', i);
-};
-
-const handleHover = (i: number) => {
-    hoverIndex.value = i;
-    if (checkMediumScreen()) {
-        return;
-    }
-    // emit('setSelectedProjectIndex', i);
 };
 </script>
 
@@ -26,12 +16,8 @@ const handleHover = (i: number) => {
         <li v-for="(project, i) in projects" :key="i" class="my-2 text-col-mid">
             <button
                 @click="handleClick(i)"
-                @mouseenter="handleHover(i)"
-                @mouseleave="hoverIndex = null"
                 :class="[
-                    'w-full px-4 py-3 text-center text-base font-medium md:text-left',
-                    i === hoverIndex &&
-                        'bg-col-content text-col-bg scale-[1.02] rounded-[25px] shadow-md transition ease-in-out md:scale-[1.05]',
+                    'hover:bg-col-content hover:text-col-bg w-full px-4 py-3 text-center text-base font-medium duration-[20ms] ease-linear hover:scale-[1.02] hover:rounded-[25px] hover:shadow-lg md:text-left hover:md:scale-[1.05]',
 
                     i == props.selectedProjectIndex && 'text-col-bg'
                 ]"
