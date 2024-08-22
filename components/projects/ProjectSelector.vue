@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { projectsType } from '~/types';
-import { checkMediumScreen } from '~/helpers/deviceType';
+import type { projectType } from '~/types';
+import { format } from 'date-fns';
 
-const props = defineProps<{ selectedProjectIndex: number | null; projects: projectsType[] }>();
+const props = defineProps<{ selectedProjectIndex: number | null; projects: projectType[] }>();
 
 const emit = defineEmits(['setSelectedProjectIndex']);
 
@@ -29,7 +29,7 @@ const handleClick = (i: number) => {
                         <div>
                             {{ project.title }}
                         </div>
-                        <div class="italic">2022</div>
+                        <div class="italic">{{ format(project.date, 'yyyy') }}</div>
                     </div>
                 </button>
             </li>

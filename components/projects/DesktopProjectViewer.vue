@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { projectsType } from '~/types';
+import type { projectType } from '~/types';
 
-const props = defineProps<{ project: projectsType | null }>();
+const props = defineProps<{ project: projectType | null }>();
 </script>
 
 <template>
