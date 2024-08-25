@@ -13,14 +13,14 @@ const handleClick = (i: number) => {
 
 <template>
     <div class="w-full px-6 pb-12 pt-8 md:w-1/3 md:px-8 lg:w-1/4 lg:px-10">
-        <ProjectsCheckThisOut class="block px-24 py-24 text-col-bg md:hidden" />
+        <ProjectsCheckThisOut class="block px-12 py-24 text-col-bg sm:px-24 md:hidden" />
 
         <ul class="flex w-full flex-col">
             <li v-for="(project, i) in projects" :key="i" class="my-2 text-col-mid">
                 <button
                     @click="handleClick(i)"
                     :class="[
-                        'w-full px-4 py-3 text-center text-base font-medium duration-[20ms] ease-linear hover:scale-[1.02] hover:rounded-[25px] hover:bg-col-content hover:bg-opacity-30 hover:text-col-bg hover:shadow-lg hover:backdrop-blur-md md:text-left hover:md:scale-[1.05]',
+                        'w-full rounded-[25px] px-4 py-3 text-center text-base font-medium duration-[20ms] ease-linear hover:scale-[1.02] hover:bg-col-content hover:bg-opacity-30 hover:text-col-bg hover:shadow-lg hover:backdrop-blur-md md:text-left hover:md:scale-[1.05]',
 
                         i == props.selectedProjectIndex && 'text-col-bg'
                     ]"
