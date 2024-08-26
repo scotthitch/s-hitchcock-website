@@ -8,11 +8,12 @@ import tilingScriptWrapper from '~/p5Projects/Tiling';
 import unknownPleasuresScriptWrapper from '~/p5Projects/UnknownPleasures';
 import waterfallScriptWrapper from '~/p5Projects/Waterfall';
 import asciiScriptWrapper from '~/p5Projects/Ascii';
-import { parse } from 'date-fns';
+import { parse, compareAsc } from 'date-fns';
+import { isMobileOrTablet } from '~/helpers/deviceType';
 
 import type { projectType } from '~/types';
 
-const inputFormat = 'MM-yyyy';
+const MONTH_YEAR_FORMAT = 'MM-yyyy';
 
 const projects: projectType[] = [
     {
@@ -22,7 +23,7 @@ const projects: projectType[] = [
             'Sinusoidal terms summing to approximate a square wave. Click to change the number of terms',
         scriptWrapper: fourierSeriesScriptWrapper,
         isMobileOrTabletFriendly: true,
-        date: parse('08-2024', inputFormat, new Date())
+        date: parse('06-2022', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Waterfall',
@@ -30,7 +31,7 @@ const projects: projectType[] = [
         description: 'A cascade of veils built using Perlin Noise',
         scriptWrapper: waterfallScriptWrapper,
         isMobileOrTabletFriendly: true,
-        date: parse('08-2024', inputFormat, new Date())
+        date: parse('07-2022', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Ascii',
@@ -38,7 +39,7 @@ const projects: projectType[] = [
         description: 'Converts the video feed into ASCII art',
         scriptWrapper: asciiScriptWrapper,
         isMobileOrTabletFriendly: true,
-        date: parse('08-2023', inputFormat, new Date())
+        date: parse('08-2024', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Unknown Pleasures',
@@ -46,8 +47,8 @@ const projects: projectType[] = [
         description:
             "Inspired by Joy Division's Unknown Pleasures album art and built using Gaussian distribution plus some random noise",
         scriptWrapper: unknownPleasuresScriptWrapper,
-        isMobileOrTabletFriendly: false,
-        date: parse('08-2023', inputFormat, new Date())
+        isMobileOrTabletFriendly: true,
+        date: parse('02-2023', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Perlin Flow Field',
@@ -55,7 +56,7 @@ const projects: projectType[] = [
         description: 'A random vector flow field generated using 2D Perlin Noise',
         scriptWrapper: perlinFlowFieldScriptWrapper,
         isMobileOrTabletFriendly: true,
-        date: parse('08-2023', inputFormat, new Date())
+        date: parse('08-2023', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Tiling',
@@ -63,15 +64,15 @@ const projects: projectType[] = [
         description: 'Click to change the zoom and tilt',
         scriptWrapper: tilingScriptWrapper,
         isMobileOrTabletFriendly: true,
-        date: parse('08-2023', inputFormat, new Date())
+        date: parse('02-2022', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Radial',
         scriptID: 'radial',
         description: 'Press the up and down arrows to change the number of reflections',
         scriptWrapper: radialScriptWrapper,
-        isMobileOrTabletFriendly: false,
-        date: parse('08-2023', inputFormat, new Date())
+        isMobileOrTabletFriendly: true,
+        date: parse('05-2021', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Ball Cascade',
@@ -79,7 +80,7 @@ const projects: projectType[] = [
         description: 'Not much to do here. You can flip gravity by clicking',
         scriptWrapper: ballCascadeScriptWrapper,
         isMobileOrTabletFriendly: false,
-        date: parse('08-2023', inputFormat, new Date())
+        date: parse('03-2021', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Growing Circle',
@@ -87,7 +88,7 @@ const projects: projectType[] = [
         description: 'Just sit back and relax',
         scriptWrapper: growingCircleScriptWrapper,
         isMobileOrTabletFriendly: true,
-        date: parse('08-2023', inputFormat, new Date())
+        date: parse('02-2024', MONTH_YEAR_FORMAT, new Date())
     },
     {
         title: 'Fireworks',
@@ -95,8 +96,28 @@ const projects: projectType[] = [
         description: 'Click to shoot some fireworks',
         scriptWrapper: fireworksScriptWrapper,
         isMobileOrTabletFriendly: true,
-        date: parse('08-2023', inputFormat, new Date())
+        date: parse('05-2024', MONTH_YEAR_FORMAT, new Date())
     }
 ];
 
-export default projects;
+// Omit non-mobile friendly projects if on mobile or tablet
+const filterProjects = (projects: projectType[]): projectType[] => {
+    if (isMobileOrTablet()) {
+        return projects.filter((project) => project.isMobileOrTabletFriendly);
+    }
+
+    return projects;
+};
+
+// Sort by date in descending order
+const sortProjects = (projects: projectType[]): projectType[] => {
+    const sortedProjects = [...projects].sort((a: projectType, b: projectType) =>
+        compareAsc(b.date, a.date)
+    );
+    return sortedProjects;
+};
+
+// Filter then sort then export result
+const filteredProjects = filterProjects(projects);
+const sortedProjects = sortProjects(filteredProjects);
+export default sortedProjects;
