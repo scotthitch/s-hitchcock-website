@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import P5 from 'p5'; // Package from npm
-import type { P5CanvasProps, emptyFunction } from '~/types';
+import type { P5CanvasProps, EmptyFunction } from '~/types';
 import { useElementSize } from '@vueuse/core';
 
 const el = ref(null);
@@ -13,7 +13,7 @@ const p5 = ref<P5>();
 
 const doNothing = () => {};
 
-const p5Cleanup = ref<emptyFunction>(doNothing);
+const p5Cleanup = ref<EmptyFunction>(doNothing);
 
 const applyStyling = () => {
     const p5Canvas = document.getElementById('defaultCanvas0');

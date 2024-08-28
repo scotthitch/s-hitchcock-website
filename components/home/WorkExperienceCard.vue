@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { workExperience, ComapanyColourVariants } from '~/types';
+import type { WorkExperience, ComapanyColourVariants } from '~/types';
 
-const props = defineProps<workExperience>();
+const props = defineProps<WorkExperience>();
 
 // Must be available here for tailwind
 const comapanyColourVariants: ComapanyColourVariants = {

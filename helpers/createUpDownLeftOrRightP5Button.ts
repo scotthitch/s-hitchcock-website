@@ -1,10 +1,10 @@
 import P5 from 'p5'; // Package from npm
-import type { emptyFunction } from '../types';
+import type { EmptyFunction } from '../types';
 
 const createUpDownLeftOrRightP5Button = (
     p5Instance: P5,
     name: '+' | '-' | '<' | '>',
-    event: emptyFunction
+    event: EmptyFunction
 ): P5.Element => {
     const p5button = p5Instance.createButton(name);
     p5button.addClass('p5Button');

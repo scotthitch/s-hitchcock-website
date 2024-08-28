@@ -15,53 +15,51 @@ export type ScreenDimensions = {
     height: number;
 };
 
-// export type P5ProjectState = 'visible' | 'neighbour' | 'invisible'
-
 export type P5CanvasProps = {
     scriptID: string;
-    scriptWrapper: p5ScriptWrapper;
+    scriptWrapper: P5ScriptWrapper;
 };
 
 export type P5ProjectProps = {
     title: string;
     scriptID: string;
     description: string;
-    scriptWrapper: p5ScriptWrapper;
+    scriptWrapper: P5ScriptWrapper;
 };
 
-export type projectType = {
+export type ProjectType = {
     title: string;
     scriptID: string;
     description: string;
-    scriptWrapper: p5ScriptWrapper;
+    scriptWrapper: P5ScriptWrapper;
     isMobileOrTabletFriendly: boolean;
     date: Date;
 };
 
-export type p5Script = (p5: P5) => void;
+export type P5Script = (p5: P5) => void;
 
-export type p5ScriptWrapper = (screenDimensions: ScreenDimensions) => {
-    script: p5Script;
-    cleanup?: emptyFunction;
+export type P5ScriptWrapper = (screenDimensions: ScreenDimensions) => {
+    script: P5Script;
+    cleanup?: EmptyFunction;
 };
 
-export type companies = 'trimble' | 'bluelab' | 'axys';
+export type Companies = 'trimble' | 'bluelab' | 'axys';
 
-export type workExperience = {
-    company: companies;
+export type WorkExperience = {
+    company: Companies;
     imgSrc: string;
     dateRange: string;
     href: string;
 };
 
 export type ComapanyColourVariants = {
-    bg: Record<companies, string>;
-    content: Record<companies, string>;
+    bg: Record<Companies, string>;
+    content: Record<Companies, string>;
 };
 
-export type emptyFunction = () => void;
+export type EmptyFunction = () => void;
 
-export type pixelHandler = (pixels: Uint8ClampedArray) => void;
+export type PixelHandler = (pixels: Uint8ClampedArray) => void;
 
 export type QuadraticRoot = {
     real: number;

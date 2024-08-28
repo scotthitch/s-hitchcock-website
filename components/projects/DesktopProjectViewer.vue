@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { projectType } from '~/types';
+import type { ProjectType } from '~/types';
 
-const props = defineProps<{ project: projectType | null }>();
+const props = defineProps<{ project: ProjectType | null }>();
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const props = defineProps<{ project: projectType | null }>();
                 />
             </div>
             <p class="mt-2 text-center">
-                <span class="text-col-bg text-base font-bold sm:text-lg">{{
+                <span class="text-base font-bold text-col-bg sm:text-lg">{{
                     props.project.title
                 }}</span>
             </p>

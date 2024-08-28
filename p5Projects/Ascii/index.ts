@@ -1,9 +1,9 @@
 import P5 from 'p5'; // Package from npm
 import type {
-    emptyFunction,
-    p5Script,
-    p5ScriptWrapper,
-    pixelHandler,
+    EmptyFunction,
+    P5Script,
+    P5ScriptWrapper,
+    PixelHandler,
     ScreenDimensions
 } from '~/types';
 import pixelsToAscii from './pixelsToAscii';
@@ -11,16 +11,16 @@ import WebcamPixelComponent from './WebcamPixelComponent';
 import calculateTextSize from './calculateTextSize';
 import * as CONSTANTS from './constants';
 
-const scriptWrapper: p5ScriptWrapper = (
+const scriptWrapper: P5ScriptWrapper = (
     screenDimensions: ScreenDimensions
-): { script: p5Script; cleanup: emptyFunction } => {
+): { script: P5Script; cleanup: EmptyFunction } => {
     let webcam: WebcamPixelComponent;
     const cleanup = () => {
         webcam.stopWebcam();
     };
 
     let pixelStream: Uint8ClampedArray;
-    const handlePixels: pixelHandler = (pixels: Uint8ClampedArray) => {
+    const handlePixels: PixelHandler = (pixels: Uint8ClampedArray) => {
         pixelStream = pixels;
     };
 

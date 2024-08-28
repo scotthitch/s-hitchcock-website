@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { workExperience } from '~/types';
+import type { WorkExperience } from '~/types';
 
-const workExperiences: workExperience[] = [
+const workExperiences: WorkExperience[] = [
     {
         company: 'trimble',
         imgSrc: '/companyLogos/trimble.png',

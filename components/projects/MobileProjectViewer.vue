@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { projectType } from '~/types';
+import type { ProjectType } from '~/types';
 
-const props = defineProps<{ project: projectType | null }>();
+const props = defineProps<{ project: ProjectType | null }>();
 
 const emit = defineEmits(['closeModal']);
 
@@ -35,7 +35,7 @@ onUnmounted(() => {
             <button
                 @click="$emit('closeModal')"
                 id="close-modal"
-                class="bg-col-content dark:bg-col-bg absolute -right-4 -top-0 z-10 rounded-full p-3"
+                class="absolute -right-4 -top-0 z-10 rounded-full bg-col-content p-3 dark:bg-col-bg"
             >
                 <svg
                     class="h-6 w-6"
@@ -61,7 +61,7 @@ onUnmounted(() => {
                 </div>
                 <p class="mt-2 text-center">
                     <span
-                        class="text-col-content dark:text-col-bg text-base font-bold sm:text-lg"
+                        class="text-base font-bold text-col-content sm:text-lg dark:text-col-bg"
                         >{{ props.project.title }}</span
                     >
                 </p>

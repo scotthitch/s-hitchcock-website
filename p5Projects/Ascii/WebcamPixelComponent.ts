@@ -1,5 +1,5 @@
 import { isPortrait } from '~/helpers/deviceType';
-import type { pixelHandler } from '~/types';
+import type { PixelHandler } from '~/types';
 
 class WebcamPixelComponent {
     static count = 0;
@@ -8,12 +8,12 @@ class WebcamPixelComponent {
     videoElement: HTMLVideoElement;
     canvasElement: HTMLCanvasElement;
     canvasContext: CanvasRenderingContext2D | null;
-    onFrameCallback: pixelHandler;
+    onFrameCallback: PixelHandler;
     videoTrack: MediaStreamTrack | null;
     startupPromise: Promise<void> | null;
     startupResolve: (() => void) | null;
 
-    constructor(onFrameCallback: pixelHandler, videoConstraints: MediaTrackConstraints) {
+    constructor(onFrameCallback: PixelHandler, videoConstraints: MediaTrackConstraints) {
         this.instanceId = WebcamPixelComponent.count++;
         this.videoConstraints = this.setVideoConstraints(videoConstraints);
         this.videoElement = this.createVideoElement();

@@ -1,9 +1,9 @@
 import P5 from 'p5'; // Package from npm
-import type { p5Script, p5ScriptWrapper, ScreenDimensions } from '~/types';
+import type { P5Script, P5ScriptWrapper, ScreenDimensions } from '~/types';
 
-const scriptWrapper: p5ScriptWrapper = (
+const scriptWrapper: P5ScriptWrapper = (
     screenDimensions: ScreenDimensions
-): { script: p5Script } => {
+): { script: P5Script } => {
     const script = (p5Instance: P5): void => {
         const veils: Veil[] = [];
         const NUM_VEILS = 16;
