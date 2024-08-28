@@ -27,7 +27,7 @@ const comapanyColourVariants: {
         :class="`${comapanyColourVariants.bg[props.company]}`"
     >
         <div class="flex flex-grow items-center justify-center">
-            <img :src="props.imgSrc" />
+            <img :src="props.imgSrc" class="max-h-12" />
         </div>
         <div
             class="absolute bottom-0 mb-4 text-base font-semibold italic"
