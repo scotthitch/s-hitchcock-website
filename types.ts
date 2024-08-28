@@ -54,6 +54,11 @@ export type workExperience = {
     href: string;
 };
 
+export type ComapanyColourVariants = {
+    bg: Record<companies, string>;
+    content: Record<companies, string>;
+};
+
 export type emptyFunction = () => void;
 
 export type pixelHandler = (pixels: Uint8ClampedArray) => void;
