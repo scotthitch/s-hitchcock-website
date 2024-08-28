@@ -11,11 +11,11 @@ import asciiScriptWrapper from '~/p5Projects/Ascii';
 import { parse, compareAsc } from 'date-fns';
 import { isMobileOrTablet } from '~/helpers/deviceType';
 
-import type { ProjectType } from '~/types';
+import type { Project } from '~/types';
 
 const MONTH_YEAR_FORMAT = 'MM-yyyy';
 
-const projects: ProjectType[] = [
+const projects: Project[] = [
     {
         title: 'Fourier Series',
         scriptID: 'fourier-series',
@@ -101,7 +101,7 @@ const projects: ProjectType[] = [
 ];
 
 // Omit non-mobile friendly projects if on mobile or tablet
-const filterProjects = (projects: ProjectType[]): ProjectType[] => {
+const filterProjects = (projects: Project[]): Project[] => {
     if (isMobileOrTablet()) {
         return projects.filter((project) => project.isMobileOrTabletFriendly);
     }
@@ -110,8 +110,8 @@ const filterProjects = (projects: ProjectType[]): ProjectType[] => {
 };
 
 // Sort by date in descending order
-const sortProjects = (projects: ProjectType[]): ProjectType[] => {
-    const sortedProjects = [...projects].sort((a: ProjectType, b: ProjectType) =>
+const sortProjects = (projects: Project[]): Project[] => {
+    const sortedProjects = [...projects].sort((a: Project, b: Project) =>
         compareAsc(b.date, a.date)
     );
     return sortedProjects;

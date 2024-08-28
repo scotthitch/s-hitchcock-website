@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ProjectType } from '~/types';
+import type { Project } from '~/types';
 
-const props = defineProps<{ project: ProjectType | null }>();
+const props = defineProps<{ project: Project | null }>();
 
 const emit = defineEmits(['closeModal']);
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { ProjectType } from '~/types';
+import type { Project } from '~/types';
 import { format } from 'date-fns';
 
-const props = defineProps<{ selectedProjectIndex: number | null; projects: ProjectType[] }>();
+const props = defineProps<{ selectedProjectIndex: number | null; projects: Project[] }>();
 
 const emit = defineEmits(['setSelectedProjectIndex']);
 

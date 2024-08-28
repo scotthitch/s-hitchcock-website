@@ -27,7 +27,7 @@ export type P5ProjectProps = {
     scriptWrapper: P5ScriptWrapper;
 };
 
-export type ProjectType = {
+export type Project = {
     title: string;
     scriptID: string;
     description: string;
