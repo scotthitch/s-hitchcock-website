@@ -21,7 +21,7 @@ const navBarRoutes = [
 <template>
     <!-- Add some negative margin on the bottom to ensure navbar overlaps whatevever's visible below -->
     <header
-        class="fixed z-30 flex h-header w-full flex-row items-center justify-between border-col-mid bg-col-content px-6 sm:px-10"
+        class="fixed z-30 flex h-header w-full flex-row items-center justify-between border-col-mid bg-col-content bg-opacity-60 px-6 backdrop-blur-lg sm:px-10"
         id="navbar"
     >
         <div class="text-xl font-semibold italic text-col-bg xs:text-2xl" id="navbarTitle">
