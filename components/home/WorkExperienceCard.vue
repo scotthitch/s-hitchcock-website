@@ -30,7 +30,7 @@ const comapanyColourVariants: {
             <img :src="props.imgSrc" class="max-h-12" />
         </div>
         <div
-            class="absolute bottom-0 mb-4 text-base font-semibold italic"
+            class="absolute bottom-0 mb-4 text-sm font-semibold italic xl:text-base"
             :class="`${comapanyColourVariants.content[props.company]}`"
         >
             {{ props.dateRange }}
