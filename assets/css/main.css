@@ -2,26 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --header-height: 120px;
+    --bg-grid-opacity: 0.01;
+}
+
+@media (max-width: 640px) {
+    /* Adjust the header height for small screens*/
+    :root {
+        --header-height: 90px;
+    }
+}
+
 @layer base {
     :root {
         --color-bg: 24 24 24;
         --color-content: 255 255 255;
         --color-mid: 133 133 133;
+        --color-grid: 0, 0, 0;
     }
     @media (prefers-color-scheme: dark) {
         :root {
             --color-bg: 255 255 255;
             --color-content: 24 24 24;
             --color-mid: 133 133 133;
+            --color-grid: 255, 255, 255;
         }
     }
 }
 body {
-    background-color: white; /* Base color */
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.008) 2px, transparent 2px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.008) 2px, transparent 2px),
-        linear-gradient(to right, rgba(0, 0, 0, 0.008) 0.8px, transparent 0.8px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.008) 0.8px, transparent 0.8px);
+    background-image: linear-gradient(
+            to right,
+            rgba(var(--color-grid), var(--bg-grid-opacity)) 2px,
+            transparent 2px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(var(--color-grid), var(--bg-grid-opacity)) 2px,
+            transparent 2px
+        ),
+        linear-gradient(
+            to right,
+            rgba(var(--color-grid), var(--bg-grid-opacity)) 0.8px,
+            transparent 0.8px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(var(--color-grid), var(--bg-grid-opacity)) 0.8px,
+            transparent 0.8px
+        );
     background-size:
         100px 100px,
         100px 100px,
@@ -89,17 +118,6 @@ body {
     font-family: 'Geist', sans-serif;
     /* background: rgb(0 100 0 / 0.03) !important;
     outline: 1px solid limegreen !important; */
-}
-
-:root {
-    --header-height: 120px;
-}
-
-@media (max-width: 640px) {
-    /* Adjust the header height for small screens*/
-    :root {
-        --header-height: 90px;
-    }
 }
 
 .project-enter {
