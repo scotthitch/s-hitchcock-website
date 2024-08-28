@@ -45,6 +45,15 @@ export type p5ScriptWrapper = (screenDimensions: ScreenDimensions) => {
     cleanup?: emptyFunction;
 };
 
+export type companies = 'trimble' | 'bluelab' | 'axys';
+
+export type workExperience = {
+    company: companies;
+    imgSrc: string;
+    dateRange: string;
+    href: string;
+};
+
 export type emptyFunction = () => void;
 
 export type pixelHandler = (pixels: Uint8ClampedArray) => void;

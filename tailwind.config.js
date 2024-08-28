@@ -9,7 +9,7 @@ export default {
         './error.vue'
     ],
     future: {
-        hoverOnlyWhenSupported: true
+        hoverOnlyWhenSupported: false
     },
     theme: {
         extend: {
