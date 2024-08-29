@@ -22,7 +22,8 @@ export default {
                 xs: '400px'
             },
             spacing: {
-                header: 'var(--header-height)'
+                header: 'calc(var(--header-height))',
+                'header-buffer': 'calc(var(--header-height) * 1.1)'
             }
         }
     },
