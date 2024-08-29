@@ -48,7 +48,7 @@ const handleClick = () => {
             </div>
             <div
                 v-else
-                class="flex h-full flex-col gap-5 p-7 xl:p-10"
+                class="flex h-full flex-col gap-5 p-7 xl:p-9"
                 :class="`${comapanyColourVariants.content[props.company]}`"
             >
                 <div class="flex flex-row items-center justify-between">
