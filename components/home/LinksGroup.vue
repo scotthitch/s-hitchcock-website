@@ -1,8 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { SVGGitHub, SVGLinkedIn } from '#components';
+
+const svgs: {
+    component: Component;
+    to: string;
+}[] = [
+    { component: SVGLinkedIn, to: 'https://www.linkedin.com/in/scott-hitchcock/' },
+    {
+        component: SVGGitHub,
+        to: 'https://github.com/scotthitch/'
+    }
+];
+</script>
 <template>
-    <div class="mt-header-buffer absolute right-8 top-0 flex h-8 flex-row gap-3">
-        <SVGLinkedIn />
-        <SVGGitHub />
+    <div class="absolute right-6 top-6 mt-header flex flex-row gap-3 sm:right-8">
+        <NuxtLink v-for="svg in svgs" :to="svg.to" class="size-7 sm:size-9">
+            <component :is="svg.component" />
+        </NuxtLink>
     </div>
 </template>
 
