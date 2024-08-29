@@ -23,7 +23,7 @@ export default {
             },
             spacing: {
                 header: 'calc(var(--header-height))',
-                'header-buffer': 'calc(var(--header-height) * 1.1)'
+                'header-buffer': 'calc(var(--header-height) * 1.05)'
             }
         }
     },

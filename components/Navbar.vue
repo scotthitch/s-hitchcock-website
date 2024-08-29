@@ -31,9 +31,9 @@ const navBarRoutes = [
             </router-link>
         </div>
 
-        <div class="flex flex-row gap-6 xs:gap-6 md:gap-6">
+        <div class="flex flex-row gap-6">
             <div
-                class="navbarRoute text-base font-semibold text-col-mid hover:text-col-bg xs:text-lg"
+                class="text-base font-semibold text-col-mid transition ease-in-out hover:text-col-bg xs:text-lg"
                 v-for="(navBarRoute, index) in navBarRoutes"
                 v-bind:key="index"
             >
@@ -49,8 +49,4 @@ const navBarRoutes = [
     </header>
 </template>
 
-<style>
-.navbarRoute {
-    transition: 0.25s ease-in-out;
-}
-</style>
+<style></style>
