@@ -25,7 +25,16 @@ const workExperiences: WorkExperience[] = [
         dateRange: '2021-2022',
         href: 'https://bluelab.com/',
         brief: 'I built a web app for Bluelab to give insights into production performance. I worked with stakeholders, designed and prototyped the system, documented everything, and delivered a final product.',
-        skills: ['React', 'PostgreSQL', 'FASTApi', 'AWS', 'Asana', 'Confluence'],
+        skills: [
+            'TypeScript',
+            'Python',
+            'React',
+            'FASTApi',
+            'PostgreSQL',
+            'AWS',
+            'Asana',
+            'Confluence'
+        ],
         location: 'Tauranga'
     },
     {
@@ -34,7 +43,7 @@ const workExperiences: WorkExperience[] = [
         dateRange: '2021',
         href: 'https://axys.systems/nala/',
         brief: 'During my second year at university, I helped build Nala, a hall management app at a student startup. I built a seamless user experience and a robust backend to simplify administration for students and staff alike.',
-        skills: ['React', 'Flask', 'SQLite', 'Figma'],
+        skills: ['TypeScript', 'Python', 'React', 'Flask', 'SQLite', 'Figma'],
         location: 'Christchurch'
     }
 ];
@@ -45,7 +54,7 @@ const workExperiences: WorkExperience[] = [
         <div
             class="container mx-auto text-4xl font-semibold text-col-bg md:text-5xl xl:text-center"
         >
-            <div>Work Experience.</div>
+            <div>Past Work Experience</div>
         </div>
         <div
             class="mt-8 flex w-full flex-row gap-6 overflow-x-scroll px-5 pb-16 pt-2 md:px-12 xl:mt-12 xl:gap-16"
