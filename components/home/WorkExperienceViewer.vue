@@ -6,19 +6,25 @@ const workExperiences: WorkExperience[] = [
         company: 'trimble',
         imgSrc: '/companyLogos/trimble.png',
         dateRange: '2022-2023',
-        href: 'https://www.trimble.com/en'
+        href: 'https://www.trimble.com/en',
+        brief: 'This was a good job',
+        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership']
     },
     {
         company: 'bluelab',
         imgSrc: '/companyLogos/bluelab.png',
         dateRange: '2021-2022',
-        href: 'https://bluelab.com/'
+        href: 'https://bluelab.com/',
+        brief: 'This was a good job',
+        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership']
     },
     {
         company: 'axys',
         imgSrc: '/companyLogos/axys.webp',
         dateRange: '2021',
-        href: 'https://axys.systems/nala/'
+        href: 'https://axys.systems/nala/',
+        brief: 'This was a good job',
+        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership']
     }
 ];
 </script>

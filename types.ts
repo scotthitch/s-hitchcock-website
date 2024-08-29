@@ -50,6 +50,8 @@ export type WorkExperience = {
     imgSrc: string;
     dateRange: string;
     href: string;
+    skills: string[];
+    brief: string;
 };
 
 export type ComapanyColourVariants = {
