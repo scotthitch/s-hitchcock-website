@@ -16,23 +16,48 @@ const comapanyColourVariants: ComapanyColourVariants = {
         axys: 'text-[#000000]'
     }
 };
+
+const isSelected = ref<boolean>(false);
+
+const handleClick = () => {
+    isSelected.value = !isSelected.value;
+};
 </script>
 
 <template>
     <button
-        class="relative flex h-[380px] min-w-[250px] max-w-[450px] basis-1/3 flex-col items-center justify-center overflow-x-visible rounded-[28px] px-12 shadow-2xl transition ease-in-out hover:scale-[0.97]"
+        @click="handleClick"
+        class="h-[400px] min-w-[280px] max-w-[430px] basis-1/3 rounded-[28px] shadow-2xl transition ease-in-out hover:scale-[0.97]"
         :class="`${comapanyColourVariants.bg[props.company]}`"
     >
-        <div class="flex flex-grow items-center justify-center">
-            <img :src="props.imgSrc" class="max-h-12" />
-        </div>
-        <div
-            class="absolute bottom-0 mb-4 text-sm font-semibold italic xl:text-base"
-            :class="`${comapanyColourVariants.content[props.company]}`"
-        >
-            {{ props.dateRange }}
-        </div>
+        <Transition mode="out-in">
+            <div
+                class="relative flex h-full flex-col items-center justify-center px-12 transition ease-in-out"
+                v-if="!isSelected"
+            >
+                <div class="flex flex-grow items-center justify-center">
+                    <img :src="props.imgSrc" class="max-h-12" />
+                </div>
+                <div
+                    class="absolute bottom-0 mb-4 text-sm font-semibold italic xl:text-base"
+                    :class="`${comapanyColourVariants.content[props.company]}`"
+                >
+                    {{ props.dateRange }}
+                </div>
+            </div>
+            <div v-else>Hey</div>
+        </Transition>
     </button>
 </template>
 
-<style></style>
+<style>
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+</style>
