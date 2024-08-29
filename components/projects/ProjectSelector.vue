@@ -12,7 +12,7 @@ const handleClick = (i: number) => {
 </script>
 
 <template>
-    <div class="w-full px-6 pb-12 pt-8 md:w-1/3 md:px-8 lg:w-1/4 lg:px-10">
+    <div class="w-full px-6 pb-12 pt-10 md:w-1/3 md:px-8 lg:w-1/4 lg:px-10">
         <ProjectsCheckThisOut class="block px-12 py-24 text-col-bg sm:px-24 md:hidden" />
 
         <ul class="flex w-full flex-col">
