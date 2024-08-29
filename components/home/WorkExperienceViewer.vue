@@ -33,7 +33,7 @@ const workExperiences: WorkExperience[] = [
         imgSrc: '/companyLogos/axys.webp',
         dateRange: '2021',
         href: 'https://axys.systems/nala/',
-        brief: 'In a student startup I helped build a hall management app in my second year. The app linked students to notifications and forms and made administration easier for staff. This was to create a seamless user experience and robust backend.',
+        brief: 'During my second year at university, I helped build Nala, a hall management app at a student startup. I built a seamless user experience and a robust backend to simplify administration for students and staff alike.',
         skills: ['React', 'Flask', 'SQLite', 'Figma'],
         location: 'Christchurch'
     }
@@ -41,7 +41,7 @@ const workExperiences: WorkExperience[] = [
 </script>
 
 <template>
-    <div class="my-24 pb-96">
+    <div>
         <div
             class="container mx-auto text-4xl font-semibold text-col-bg md:text-5xl xl:text-center"
         >
