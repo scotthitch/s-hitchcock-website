@@ -52,6 +52,7 @@ export type WorkExperience = {
     href: string;
     skills: string[];
     brief: string;
+    location: string;
 };
 
 export type ComapanyColourVariants = {

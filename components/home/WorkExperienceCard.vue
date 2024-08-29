@@ -27,7 +27,7 @@ const handleClick = () => {
 <template>
     <button
         @click="handleClick"
-        class="h-[400px] min-w-[280px] max-w-[430px] basis-1/3 rounded-[28px] shadow-2xl transition ease-in-out hover:scale-[0.97]"
+        class="min-h-[420px] min-w-[300px] max-w-[430px] basis-1/3 rounded-[28px] shadow-2xl transition ease-in-out hover:scale-[1.03]"
         :class="`${comapanyColourVariants.bg[props.company]}`"
     >
         <Transition mode="out-in">
@@ -36,6 +36,7 @@ const handleClick = () => {
                 v-if="!isSelected"
             >
                 <div class="flex flex-grow items-center justify-center">
+                    <!-- TODO: use NuxtImg when ssr sorted -->
                     <img :src="props.imgSrc" class="max-h-12" />
                 </div>
                 <div
@@ -45,7 +46,36 @@ const handleClick = () => {
                     {{ props.dateRange }}
                 </div>
             </div>
-            <div v-else>Hey</div>
+            <div
+                v-else
+                class="flex h-full flex-col gap-5 p-7"
+                :class="`${comapanyColourVariants.content[props.company]}`"
+            >
+                <div class="flex flex-row items-center justify-between">
+                    <img :src="props.imgSrc" class="max-h-7" />
+                    <div
+                        class="text-sm font-medium italic xl:text-base"
+                        :class="`${comapanyColourVariants.content[props.company]}`"
+                    >
+                        {{ props.dateRange }}
+                    </div>
+                </div>
+                <div class="text-start">
+                    <div class="font-semibold italic">Brief</div>
+                    <div>
+                        {{ props.brief }}
+                    </div>
+                </div>
+
+                <div class="text-start">
+                    <div class="font-semibold italic">Skills & Tools</div>
+                    <ul class="grid grid-cols-2 pl-3">
+                        <li v-for="skill in props.skills" class="list-disc">
+                            {{ skill }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </Transition>
     </button>
 </template>

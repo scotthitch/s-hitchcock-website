@@ -7,16 +7,18 @@ const workExperiences: WorkExperience[] = [
         imgSrc: '/companyLogos/trimble.png',
         dateRange: '2022-2023',
         href: 'https://www.trimble.com/en',
-        brief: 'This was a good job',
-        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership']
+        brief: 'Developed and tested Earthworks at Trimble in Christchurch, enhancing my Scrum and teamwork skills while working with various development tools',
+        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership'],
+        location: 'Christchurch'
     },
     {
         company: 'bluelab',
         imgSrc: '/companyLogos/bluelab.png',
         dateRange: '2021-2022',
         href: 'https://bluelab.com/',
-        brief: 'This was a good job',
-        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership']
+        brief: 'I built a web app for Bluelab to give insights into production performance. I worked with stakeholders, designed and prototyped the system, documented everything, and delivered a final product.',
+        skills: ['React', 'PostgreSQL', 'FASTApi', 'AWS', 'Asana', 'Confluence'],
+        location: 'Tauranga'
     },
     {
         company: 'axys',
@@ -24,7 +26,8 @@ const workExperiences: WorkExperience[] = [
         dateRange: '2021',
         href: 'https://axys.systems/nala/',
         brief: 'This was a good job',
-        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership']
+        skills: ['vue.js', 'nuxt.js', 'postgres', 'leadership'],
+        location: 'Christchurch'
     }
 ];
 </script>
@@ -37,7 +40,7 @@ const workExperiences: WorkExperience[] = [
             <div>Work Experience.</div>
         </div>
         <div
-            class="mt-8 flex w-full flex-row gap-6 overflow-x-scroll px-12 pb-16 md:mt-12 xl:gap-16"
+            class="mt-8 flex w-full flex-row gap-6 overflow-x-scroll px-12 pb-16 pt-2 md:mt-12 xl:gap-16"
         >
             <HomeWorkExperienceCard
                 v-for="workExperience in workExperiences"
