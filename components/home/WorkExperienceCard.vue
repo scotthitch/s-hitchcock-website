@@ -20,7 +20,7 @@ const comapanyColourVariants: ComapanyColourVariants = {
 
 <template>
     <button
-        class="relative flex h-[380px] min-w-[250px] max-w-[450px] basis-1/3 flex-col items-center justify-center overflow-x-visible rounded-[28px] px-12 shadow-2xl transition ease-in-out hover:scale-[0.95]"
+        class="relative flex h-[380px] min-w-[250px] max-w-[450px] basis-1/3 flex-col items-center justify-center overflow-x-visible rounded-[28px] px-12 shadow-2xl transition ease-in-out hover:scale-[0.97]"
         :class="`${comapanyColourVariants.bg[props.company]}`"
     >
         <div class="flex flex-grow items-center justify-center">
