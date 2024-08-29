@@ -27,7 +27,7 @@ const handleClick = () => {
 <template>
     <button
         @click="handleClick"
-        class="min-h-[420px] min-w-[300px] max-w-[430px] basis-1/3 rounded-[28px] shadow-2xl transition ease-in-out hover:scale-[1.03]"
+        class="min-h-[435px] min-w-[320px] max-w-[430px] basis-1/3 rounded-[28px] shadow-2xl transition ease-in-out hover:scale-[1.03]"
         :class="`${comapanyColourVariants.bg[props.company]}`"
     >
         <Transition mode="out-in">
@@ -43,12 +43,12 @@ const handleClick = () => {
                     class="absolute bottom-0 mb-4 text-sm font-semibold italic xl:text-base"
                     :class="`${comapanyColourVariants.content[props.company]}`"
                 >
-                    {{ props.dateRange }}
+                    {{ props.location }}, {{ props.dateRange }}
                 </div>
             </div>
             <div
                 v-else
-                class="flex h-full flex-col gap-5 p-7"
+                class="flex h-full flex-col gap-5 p-7 xl:p-10"
                 :class="`${comapanyColourVariants.content[props.company]}`"
             >
                 <div class="flex flex-row items-center justify-between">
@@ -60,16 +60,16 @@ const handleClick = () => {
                         {{ props.dateRange }}
                     </div>
                 </div>
-                <div class="text-start">
+                <div class="text-start xl:mt-2">
                     <div class="font-semibold italic">Brief</div>
-                    <div>
+                    <div class="">
                         {{ props.brief }}
                     </div>
                 </div>
 
                 <div class="text-start">
                     <div class="font-semibold italic">Skills & Tools</div>
-                    <ul class="grid grid-cols-2 pl-3">
+                    <ul class="grid grid-cols-2 gap-x-8 pl-3">
                         <li v-for="skill in props.skills" class="list-disc">
                             {{ skill }}
                         </li>
