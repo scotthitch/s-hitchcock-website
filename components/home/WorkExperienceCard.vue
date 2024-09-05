@@ -61,15 +61,15 @@ const handleClick = () => {
                     </div>
                 </div>
                 <div class="text-start xl:mt-2">
-                    <div class="font-semibold italic">Brief</div>
-                    <div class="">
+                    <div class="text-lg font-semibold italic">{{ props.role }}</div>
+                    <div class="text-base">
                         {{ props.brief }}
                     </div>
                 </div>
 
                 <div class="text-start">
-                    <div class="font-semibold italic">Skills & Tools</div>
-                    <ul class="grid grid-cols-2 gap-x-8 pl-3">
+                    <div class="text-lg font-semibold italic">Skills & Tools</div>
+                    <ul class="grid grid-cols-2 gap-x-8 pl-3 text-base">
                         <li v-for="skill in props.skills" class="list-disc">
                             {{ skill }}
                         </li>
