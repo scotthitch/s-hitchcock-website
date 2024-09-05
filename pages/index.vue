@@ -4,6 +4,7 @@
     <HomeLinksGroup />
     <HomeIntroBanner />
     <HomeWorkExperienceViewer />
+    <HomeToolsBeltSlider />
 </template>
 
 <style></style>

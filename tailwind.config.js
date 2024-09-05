@@ -24,6 +24,15 @@ export default {
             spacing: {
                 header: 'calc(var(--header-height))',
                 'header-buffer': 'calc(var(--header-height) * 1.05)'
+            },
+            keyframes: {
+                'slide-left': {
+                    from: { transform: 'translateX(0)' },
+                    to: { transform: 'translateX(-100%)' }
+                }
+            },
+            animation: {
+                'slide-left-infinite': 'slide-left 20s linear infinite'
             }
         }
     },
