@@ -55,11 +55,7 @@ const workExperiences: WorkExperience[] = [
 
 <template>
     <div id="work_experience" class="scroll-m-header-buffer">
-        <div
-            class="container mx-auto text-4xl font-semibold text-col-bg md:text-5xl xl:text-center"
-        >
-            <div>Check Out Some of My <span class="text-col-mid">Past Work Experience</span></div>
-        </div>
+        <HomeSectionTitle text1="Check Out Some of My" text2="Past Work Experience" />
         <div
             class="mt-8 flex w-full flex-row gap-6 overflow-x-scroll px-5 pb-16 pt-2 md:overflow-x-auto md:px-12 xl:mt-12 xl:gap-16"
         >
