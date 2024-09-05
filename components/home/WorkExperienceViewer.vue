@@ -17,7 +17,8 @@ const workExperiences: WorkExperience[] = [
             'Scrum',
             'JIRA'
         ],
-        location: 'Christchurch'
+        location: 'Christchurch',
+        role: 'Software Development Intern'
     },
     {
         company: 'bluelab',
@@ -35,16 +36,19 @@ const workExperiences: WorkExperience[] = [
             'Asana',
             'Confluence'
         ],
-        location: 'Tauranga'
+        location: 'Tauranga',
+
+        role: 'Production Insight Intern'
     },
     {
         company: 'axys',
         imgSrc: '/companyLogos/axys.webp',
         dateRange: '2021',
         href: 'https://axys.systems/nala/',
-        brief: 'During my second year at university, I helped build Nala, a hall management app at a student startup. I built a seamless user experience and a robust backend to simplify administration for students and staff alike.',
+        brief: 'During my second year at university, I helped build Nala, a hall management web app at a student startup. I built a seamless user experience and a robust backend to simplify administration for students and staff alike.',
         skills: ['TypeScript', 'Python', 'React', 'Flask', 'SQLite', 'Figma'],
-        location: 'Christchurch'
+        location: 'Christchurch',
+        role: 'Web App Developer'
     }
 ];
 </script>
@@ -54,10 +58,10 @@ const workExperiences: WorkExperience[] = [
         <div
             class="container mx-auto text-4xl font-semibold text-col-bg md:text-5xl xl:text-center"
         >
-            <div>Past Work Experience</div>
+            <div>Check Out Some of My <span class="text-col-mid">Past Work Experience</span></div>
         </div>
         <div
-            class="mt-8 flex w-full flex-row gap-6 overflow-x-scroll px-5 pb-16 pt-2 md:px-12 xl:mt-12 xl:gap-16"
+            class="mt-8 flex w-full flex-row gap-6 overflow-x-scroll px-5 pb-16 pt-2 md:overflow-x-auto md:px-12 xl:mt-12 xl:gap-16"
         >
             <HomeWorkExperienceCard
                 v-for="workExperience in workExperiences"
