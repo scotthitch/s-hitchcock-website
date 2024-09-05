@@ -54,7 +54,7 @@ const workExperiences: WorkExperience[] = [
 </script>
 
 <template>
-    <div>
+    <div id="work_experience" class="scroll-m-header-buffer">
         <div
             class="container mx-auto text-4xl font-semibold text-col-bg md:text-5xl xl:text-center"
         >
