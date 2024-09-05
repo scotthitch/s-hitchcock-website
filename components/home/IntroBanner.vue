@@ -10,6 +10,7 @@
         <div class="mt-4 text-2xl italic text-col-mid">
             I’m a Mechatronics Engineer and Software Developer based in Ōtautahi, Christchurch
         </div>
+        <HomeSeeMore />
     </div>
 </template>
 
